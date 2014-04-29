@@ -2,6 +2,13 @@
 	position: relative;
 	margin: 0 auto;
 	width: 980px;
+	opacity: .5;
+}
+.filter {
+	width: 200px;
+	height: 40px;
+	color: red;
+	cursor: pointer;
 }
 .countries {
 	fill: none;

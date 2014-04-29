@@ -613,7 +613,7 @@
                 ]
             },
             "properties": {
-                "country": "Antigua and Barbuda"
+                "country": "Antigua-and-Barbuda"
             },
             "id": "AG"
         },
@@ -1865,7 +1865,7 @@
                 ]
             },
             "properties": {
-                "country": "Bahamas, The"
+                "country": "The-Bahamas"
             },
             "id": "BS"
         },
@@ -2509,7 +2509,7 @@
                 ]
             },
             "properties": {
-                "country": "Bosnia and Herzegovina"
+                "country": "Bosnia-and-Herzegovina"
             },
             "id": "BA"
         },
@@ -2629,7 +2629,7 @@
                 ]
             },
             "properties": {
-                "country": "Bouvet Island"
+                "country": "Bouvet-Island"
             },
             "id": "BV"
         },
@@ -3301,7 +3301,7 @@
                 ]
             },
             "properties": {
-                "country": "British Indian Ocean Territory"
+                "country": "British-Indian-Ocean-Territory"
             },
             "id": "IO"
         },
@@ -3437,7 +3437,7 @@
                 ]
             },
             "properties": {
-                "country": "Solomon Islands"
+                "country": "Solomon-Islands"
             },
             "id": "SB"
         },
@@ -3469,7 +3469,7 @@
                 ]
             },
             "properties": {
-                "country": "British Virgin Islands"
+                "country": "British-Virgin-Islands"
             },
             "id": "VG"
         },
@@ -8183,7 +8183,7 @@
                 ]
             },
             "properties": {
-                "country": "Cape Verde"
+                "country": "Cape-Verde"
             },
             "id": "CV"
         },
@@ -8215,7 +8215,7 @@
                 ]
             },
             "properties": {
-                "country": "Cayman Islands"
+                "country": "Cayman-Islands"
             },
             "id": "KY"
         },
@@ -8323,7 +8323,7 @@
                 ]
             },
             "properties": {
-                "country": "Central African Republic"
+                "country": "Central-African-Republic"
             },
             "id": "CF"
         },
@@ -8391,7 +8391,7 @@
                 ]
             },
             "properties": {
-                "country": "Sri Lanka"
+                "country": "Sri-Lanka"
             },
             "id": "LK"
         },
@@ -10673,7 +10673,7 @@
                 ]
             },
             "properties": {
-                "country": "Cocos (Keeling) Islands"
+                "country": "Cocos-(Keeling)-Islands"
             },
             "id": "CC"
         },
@@ -11101,7 +11101,7 @@
                 ]
             },
             "properties": {
-                "country": "Congo, Republic of the"
+                "country": "Republic of the Congo"
             },
             "id": "CG"
         },
@@ -11325,7 +11325,7 @@
                 ]
             },
             "properties": {
-                "country": "Congo, Democratic Republic of the"
+                "country": "Democratic-Republic-of-the-Congo"
             },
             "id": "CD"
         },
@@ -11397,7 +11397,7 @@
                 ]
             },
             "properties": {
-                "country": "Cook Islands"
+                "country": "Cook-Islands"
             },
             "id": "CK"
         },
@@ -11457,7 +11457,7 @@
                 ]
             },
             "properties": {
-                "country": "Costa Rica"
+                "country": "Costa-Rica"
             },
             "id": "CR"
         },
@@ -11853,7 +11853,7 @@
                 ]
             },
             "properties": {
-                "country": "Czech Republic"
+                "country": "Czech-Republic"
             },
             "id": "CZ"
         },
@@ -12225,7 +12225,7 @@
                 ]
             },
             "properties": {
-                "country": "Dominican Republic"
+                "country": "Dominican-Republic"
             },
             "id": "DO"
         },
@@ -12393,7 +12393,7 @@
                 ]
             },
             "properties": {
-                "country": "El Salvador"
+                "country": "El-Salvador"
             },
             "id": "SV"
         },
@@ -12437,7 +12437,7 @@
                 ]
             },
             "properties": {
-                "country": "Equatorial Guinea"
+                "country": "Equatorial-Guinea"
             },
             "id": "GQ"
         },
@@ -12813,7 +12813,7 @@
                 ]
             },
             "properties": {
-                "country": "Faroe Islands"
+                "country": "Faroe-Islands"
             },
             "id": "FO"
         },
@@ -12873,7 +12873,7 @@
                 ]
             },
             "properties": {
-                "country": "Falkland Islands (Islas Malvinas)"
+                "country": "Falkland-Islands"
             },
             "id": "FK"
         },
@@ -12905,7 +12905,7 @@
                 ]
             },
             "properties": {
-                "country": "South Georgia South Sandwich Islands"
+                "country": "South-Georgia-South-Sandwich-Islands"
             },
             "id": "GS"
         },
@@ -13153,7 +13153,7 @@
                 ]
             },
             "properties": {
-                "country": "Aland Islands"
+                "country": "Aland-Islands"
             },
             "id": "AX"
         },
@@ -13449,7 +13449,7 @@
                 ]
             },
             "properties": {
-                "country": "French Guiana"
+                "country": "French-Guiana"
             },
             "id": "GF"
         },
@@ -13541,7 +13541,7 @@
                 ]
             },
             "properties": {
-                "country": "French Polynesia"
+                "country": "French-Polynesia"
             },
             "id": "PF"
         },
@@ -13585,7 +13585,7 @@
                 ]
             },
             "properties": {
-                "country": "French Southern and Antarctic Lands"
+                "country": "French-Southern-and-Antarctic-Lands"
             },
             "id": "TF"
         },
@@ -13897,7 +13897,7 @@
                 ]
             },
             "properties": {
-                "country": "Gambia, The"
+                "country": "The-Gambia"
             },
             "id": "GM"
         },
@@ -16451,7 +16451,7 @@
                 ]
             },
             "properties": {
-                "country": "Heard Island and McDonald Islands"
+                "country": "Heard-Island-and-McDonald-Islands"
             },
             "id": "HM"
         },
@@ -16483,7 +16483,7 @@
                 ]
             },
             "properties": {
-                "country": "Holy See (Vatican City)"
+                "country": "Vatican-City"
             },
             "id": "VA"
         },
@@ -16619,7 +16619,7 @@
                 ]
             },
             "properties": {
-                "country": "Hong Kong"
+                "country": "Hong-Kong"
             },
             "id": "HK"
         },
@@ -19263,7 +19263,7 @@
                 ]
             },
             "properties": {
-                "country": "Cote d'Ivoire"
+                "country": "Cote-d'Ivoire"
             },
             "id": "CI"
         },
@@ -20267,7 +20267,7 @@
                 ]
             },
             "properties": {
-                "country": "Korea, North"
+                "country": "North-Korea"
             },
             "id": "KP"
         },
@@ -20327,7 +20327,7 @@
                 ]
             },
             "properties": {
-                "country": "Korea, South"
+                "country": "South-Korea"
             },
             "id": "KR"
         },
@@ -23535,7 +23535,7 @@
                 ]
             },
             "properties": {
-                "country": "Netherlands Antilles"
+                "country": "Netherlands-Antilles"
             },
             "id": "AN"
         },
@@ -23603,7 +23603,7 @@
                 ]
             },
             "properties": {
-                "country": "New Caledonia"
+                "country": "New-Caledonia"
             },
             "id": "NC"
         },
@@ -23859,7 +23859,7 @@
                 ]
             },
             "properties": {
-                "country": "New Zealand"
+                "country": "New-Zealand"
             },
             "id": "NZ"
         },
@@ -24251,7 +24251,7 @@
                 ]
             },
             "properties": {
-                "country": "Norfolk Island"
+                "country": "Norfolk-Island"
             },
             "id": "NF"
         },
@@ -25237,7 +25237,7 @@
                 ]
             },
             "properties": {
-                "country": "Northern Mariana Islands"
+                "country": "Northern-Mariana-Islands"
             },
             "id": "MP"
         },
@@ -25309,7 +25309,7 @@
                 ]
             },
             "properties": {
-                "country": "Micronesia, Federated States of"
+                "country": "Federated-States-of-Micronesia"
             },
             "id": "FM"
         },
@@ -25381,7 +25381,7 @@
                 ]
             },
             "properties": {
-                "country": "Marshall Islands"
+                "country": "Marshall-Islands"
             },
             "id": "MH"
         },
@@ -25865,7 +25865,7 @@
                 ]
             },
             "properties": {
-                "country": "Papua New Guinea"
+                "country": "Papua-New-Guinea"
             },
             "id": "PG"
         },
@@ -26573,7 +26573,7 @@
                 ]
             },
             "properties": {
-                "country": "Pitcairn Islands"
+                "country": "Pitcairn-Islands"
             },
             "id": "PN"
         },
@@ -26869,7 +26869,7 @@
                 ]
             },
             "properties": {
-                "country": "Timor-Leste"
+                "country": "Timor_Leste"
             },
             "id": "TL"
         },
@@ -26901,7 +26901,7 @@
                 ]
             },
             "properties": {
-                "country": "Puerto Rico"
+                "country": "Puerto-Rico"
             },
             "id": "PR"
         },
@@ -29499,7 +29499,7 @@
                 ]
             },
             "properties": {
-                "country": "Saint Barthelemy"
+                "country": "Saint-Barthelemy"
             },
             "id": "BL"
         },
@@ -29531,7 +29531,7 @@
                 ]
             },
             "properties": {
-                "country": "Saint Helena"
+                "country": "Saint-Helena"
             },
             "id": "SH"
         },
@@ -29583,7 +29583,7 @@
                 ]
             },
             "properties": {
-                "country": "Saint Kitts and Nevis"
+                "country": "Saint-Kitts-and-Nevis"
             },
             "id": "KN"
         },
@@ -29647,7 +29647,7 @@
                 ]
             },
             "properties": {
-                "country": "Saint Lucia"
+                "country": "Saint-Lucia"
             },
             "id": "LC"
         },
@@ -29679,7 +29679,7 @@
                 ]
             },
             "properties": {
-                "country": "Saint Martin"
+                "country": "Saint-Martin"
             },
             "id": "MF"
         },
@@ -29731,7 +29731,7 @@
                 ]
             },
             "properties": {
-                "country": "Saint Pierre and Miquelon"
+                "country": "Saint-Pierre-and-Miquelon"
             },
             "id": "PM"
         },
@@ -29763,7 +29763,7 @@
                 ]
             },
             "properties": {
-                "country": "Saint Vincent and the Grenadines"
+                "country": "Saint-Vincent-and-the-Grenadines"
             },
             "id": "VC"
         },
@@ -29795,7 +29795,7 @@
                 ]
             },
             "properties": {
-                "country": "San Marino"
+                "country": "San-Marino"
             },
             "id": "SM"
         },
@@ -29847,7 +29847,7 @@
                 ]
             },
             "properties": {
-                "country": "Sao Tome and Principe"
+                "country": "Sao-Tome-and-Principe"
             },
             "id": "ST"
         },
@@ -29999,7 +29999,7 @@
                 ]
             },
             "properties": {
-                "country": "Saudi Arabia"
+                "country": "Saudi-Arabia"
             },
             "id": "SA"
         },
@@ -30275,7 +30275,7 @@
                 ]
             },
             "properties": {
-                "country": "Sierra Leone"
+                "country": "Sierra-Leone"
             },
             "id": "SL"
         },
@@ -30897,7 +30897,7 @@
                 ]
             },
             "properties": {
-                "country": "South Africa"
+                "country": "South-Africa"
             },
             "id": "ZA"
         },
@@ -31281,7 +31281,7 @@
                 ]
             },
             "properties": {
-                "country": "Western Sahara"
+                "country": "Western-Sahara"
             },
             "id": "EH"
         },
@@ -31505,7 +31505,7 @@
                 ]
             },
             "properties": {
-                "country": "Suricountry"
+                "country": "Suriname"
             },
             "id": "SR"
         },
@@ -32733,7 +32733,7 @@
                 ]
             },
             "properties": {
-                "country": "Trinidad and Tobago"
+                "country": "Trinidad-and-Tobago"
             },
             "id": "TT"
         },
@@ -32789,7 +32789,7 @@
                 ]
             },
             "properties": {
-                "country": "United Arab Emirates"
+                "country": "United-Arab-Emirates"
             },
             "id": "AE"
         },
@@ -33305,7 +33305,7 @@
                 ]
             },
             "properties": {
-                "country": "Turks and Caicos Islands"
+                "country": "Turks-and-Caicos-Islands"
             },
             "id": "TC"
         },
@@ -34201,7 +34201,7 @@
                 ]
             },
             "properties": {
-                "country": "United Kingdom"
+                "country": "United-Kingdom"
             },
             "id": "GB"
         },
@@ -34297,7 +34297,7 @@
                 ]
             },
             "properties": {
-                "country": "Isle of Man"
+                "country": "Isle-of-Man"
             },
             "id": "IM"
         },
@@ -35813,7 +35813,7 @@
                 ]
             },
             "properties": {
-                "country": "United States"
+                "country": "United-States-of-America"
             },
             "id": "US"
         },
@@ -35845,7 +35845,7 @@
                 ]
             },
             "properties": {
-                "country": "Virgin Islands"
+                "country": "Virgin-Islands"
             },
             "id": "VI"
         },
@@ -35941,7 +35941,7 @@
                 ]
             },
             "properties": {
-                "country": "Burkina Faso"
+                "country": "Burkina-Faso"
             },
             "id": "BF"
         },
@@ -36477,7 +36477,7 @@
                 ]
             },
             "properties": {
-                "country": "Wallis and Futuna"
+                "country": "Wallis-and-Futuna"
             },
             "id": "WF"
         },
