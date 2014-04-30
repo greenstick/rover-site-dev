@@ -2,23 +2,55 @@
 	position: relative;
 	margin: 0 auto;
 	width: 980px;
-	opacity: .5;
 }
 .filter {
-	width: 200px;
+	width: 180px;
 	height: 40px;
-	color: red;
+	color: navy;
 	cursor: pointer;
+	display: inline-block;
+	text-align: center;
 }
-.countries {
-	fill: none;
+.country {
+	fill: lightgrey;
 }
-.colored .q0-9{fill:rgb(247,251,255)}
-.colored .q1-9{fill:rgb(222,235,247)}
-.colored .q2-9{fill:rgb(198,219,239)}
-.colored .q3-9{fill:rgb(158,202,225)}
-.colored .q4-9{fill:rgb(107,174,214)}
-.colored .q5-9{fill:rgb(66,146,198)}
-.colored .q6-9{fill:rgb(33,113,181)}
-.colored .q7-9{fill:rgb(8,81,156)}
-.colored .q8-9{fill:rgb(8,48,107)}
+
+/* Color Layers */
+.orange-5-5 {
+	fill: rgb(207, 74, 0);
+}
+.orange-4-5 {
+	fill: rgb(207, 93, 0);
+}
+.orange-3-5 {
+	fill: rgb(207, 109, 0);
+}
+.orange-2-5 {
+	fill: rgb(207, 128, 0);
+}
+.orange-1-5 {
+	fill: rgb(207, 149, 0);
+}
+.orange-0-5 {
+	fill: rgb(207, 171, 0);
+}
+
+/* Color Layers */
+.blue-5-5 {
+	fill: rgb(0, 74, 207);
+}
+.blue-4-5 {
+	fill: rgb(0, 93, 207);
+}
+.blue-3-5 {
+	fill: rgb(0, 109, 207);
+}
+.blue-2-5 {
+	fill: rgb(0, 128, 207);
+}
+.blue-1-5 {
+	fill: rgb(0, 149, 207);
+}
+.blue-0-5 {
+	fill: rgb(0, 167, 207);
+}

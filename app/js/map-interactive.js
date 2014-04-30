@@ -2,7 +2,7 @@
 Data-Driven Choropleth Prototype Object
 @Params: object                 -   (object,    required)
          object.geoData         -   (geoJSON,   required)   Draws Choropleth
-         object.coreData        -   (JSON,      required)   Renders Data to Choropleth
+         object.coreData        -   (JSON,      required)   Data to be Bound to Choropleth
          object.wrapper         -   (string,    optional)
          object.container       -   (string,    optional)
          object.projection      -   (string,    optional)   See options: https://github.com/mbostock/d3/wiki/Geo-Projections
@@ -13,6 +13,8 @@ Data-Driven Choropleth Prototype Object
          object.scale           -   (number,    optional)
          object.translateX      -   (number,    optional)
          object.translateY      -   (number,    optional)
+         object.layers          -   (number,    optional)   Number of Color Layers - CSS Dependent
+         object.pathClass       -   (string,    optional)   Name of CSS Class for Land Masses
 */
 
 var Choropleth = function (args) {
@@ -31,6 +33,8 @@ var Choropleth = function (args) {
         map.translateX  =   args.translateX     ||   0,
         map.translateY  =   args.translateY     ||   0,
         map.layers      =   args.layers         ||   5,
+        map.pathClass   =   args.pathClass      ||   "country",
+        map.chronoCache,
 
         //Stores Instantiated Settings (Prior to D3 Manipulation)
         map.settings    =   {
@@ -58,11 +62,10 @@ var Choropleth = function (args) {
 'Private' Methods
 */
 
-        map.bucket = function (value, max, min, layers) {
-            var bucket = d3.scale.quantize().domain([max, min]).range(d3.range(layers)).map(function (i) {
-                 return "quantize" + i + "-" + layers;
-            });
-            console.log(bucket(value));
+        map.bucket = function (value, max, min, layers, color) {
+            var bucket  = d3.scale.quantize().domain([max, min]).range(d3.range(layers).map(function (i) {
+                 return color + "-" + i + "-" + layers;
+            }));
             return bucket(value);
         },
 
@@ -73,9 +76,8 @@ var Choropleth = function (args) {
                         .data(data.features).enter()
                         .append('path')
                         .attr('d', map.path)
-                        .attr('id', function (d) {
-                            return d.id;
-                        })
+                        .attr('id', function (d) { return d.id; })
+                        .attr('class', map.pathClass)
                         .attr('stroke', map.stroke)
                         .attr('stroke-width', map.strokeWidth);
             });
@@ -84,37 +86,38 @@ var Choropleth = function (args) {
         },
 
         //Parse Filter Argument, XHR Data, Apply Quantize Function, Then Bind to Elements - Callback Optional
-        map.filter = function (filter, callback) {
-            //Parse Filter String
-            var split   =   filter.split('_'),
-                filter  =   split[0],
-                chrono  =   split[1],
-                arr     =   [];
-
+        map.filter = function (filter, chrono, callback) {
+            var arr = [];
                 d3.json(map.coreData, function (data) {
                     //Create Array of Value
-                    for (var i = 0; i < data[filter].length; i++) {
-                        arr.push(data[filter][i][chrono])
+                    for (var i = 0; i < data[filter].countries.length; i++) {
+                        arr.push(data[filter].countries[i][chrono])
                     };
                     //Set Max & Min
                     var max     = Math.max.apply(null, arr),
                         min     = Math.min.apply(null, arr);
                     //Loop Through Values and Set Fill
-                    for (var i = 0; i < data[filter].length; i++) {
-                        d3.select('#' + data[filter][i].id).attr('class', function (d) {
-                            console.log(data[filter][i][chrono])
-                            return map.bucket(data[filter][i][chrono], max, min, map.layers);
-                        });
+                    for (var i = 0; i < data[filter].countries.length; i++) {
+                        if (data[filter].countries[i][chrono] != null) {
+                            // console.log(data[filter].countries[i].id);
+                            d3.select('#' + data[filter].countries[i].id).attr('class', function (d) {
+                                return map.bucket(data[filter].countries[i][chrono], max, min, map.layers, data[filter].color) + " " + map.pathClass;
+                            });
+                        }
                     };
                 });
-                //Execute Callback
-                typeof callback == 'function' ? callback() : void(0);
+                this.currentFilter = filter;
+            //Execute Callback
+            typeof callback == 'function' ? callback() : void(0);
         },
 
-        //Scale Map
-        map.scale = function () {
-
-        };
+        //Toggle Between Present or Future & Set Cache
+        map.chronology = function () {
+            var cache;
+                this.chronoCache === "present" ? cache = "future" : cache = "present";
+                this.chronoCache = cache;
+            return this.chronoCache;
+        }
 };
 
 /*
@@ -125,15 +128,14 @@ Public Methods
 Choropleth.prototype.init = function () {
     this.draw();
     //Sets Default Filter
-    this.filter('wealthDistribution_now');
-};
-//Scales Map to Browser
-Choropleth.prototype.update = function () {
-    this.scale();
+    this.filter('wealthDistribution', this.chronology());
 };
 //Triggered By Filter Selection
-Choropleth.prototype.filter = function (filter) {
-    this.filter(filter);
+Choropleth.prototype.updateFilter = function (filter) {
+    this.filter(filter, this.chronoCache);
+};
+Choropleth.prototype.updateChronology = function (chrono) {
+    this.filter(this.currentFilter, this.chronology());
 };
 
 /*
@@ -145,7 +147,7 @@ var choropleth = new Choropleth({
     "coreData"     :   "js/json/core-data.json",
     "wrapper"      :   "#map-wrapper",
     "container"    :   "#map-container",
-    "strokeWidth"  :   "1px",
+    "strokeWidth"  :   "0px",
     "stroke"       :   "azure",
     "scale"        :   ".9",
     "projection"   :   "mercator",
@@ -164,5 +166,8 @@ Event Bindings
 
 $('.filter').on("click", function (e) {
     var filter = e.currentTarget.id;
-    choropleth.filter(filter);
+    choropleth.updateFilter(filter);
+});
+$('.chronology').on("click", function (e) {
+    choropleth.updateChronology();
 });
