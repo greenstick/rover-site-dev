@@ -2,55 +2,202 @@
 	position: relative;
 	margin: 0 auto;
 	width: 980px;
+	font-family: helvetica;
 }
 .filter {
-	width: 180px;
-	height: 40px;
-	color: navy;
+	width: 178px;
+	height: 26px;
+	padding: 12px 0 0 0;
+	border: 1px solid lime;
+	color: white;
 	cursor: pointer;
 	display: inline-block;
 	text-align: center;
+	background-color: black;
+}
+.filter.active {
+	color: black;
+	background-color: white;
+}
+.chronology {
+	width: 178px;
+	height: 26px;
+	padding: 12px 0 0 0;
+	border: 1px solid lime;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	background-color: black
+}
+.chronology.active {
+	color: black;
+	background-color: white;
 }
 .country {
 	fill: lightgrey;
 }
 
-/* Color Layers */
-.orange-5-5 {
-	fill: rgb(207, 74, 0);
+/*
+Color Layers
+*/
+
+/* Olive */
+
+.olive-5-5 {
+	fill: #87815B;
 }
-.orange-4-5 {
-	fill: rgb(207, 93, 0);
+.olive-4-5 {
+	fill: #757150;
 }
-.orange-3-5 {
-	fill: rgb(207, 109, 0);
+.olive-3-5 {
+	fill: #625E44;
 }
-.orange-2-5 {
-	fill: rgb(207, 128, 0);
+.olive-2-5 {
+	fill: #504D39;
 }
-.orange-1-5 {
-	fill: rgb(207, 149, 0);
+.olive-1-5 {
+	fill: #3D3B2D;
 }
-.orange-0-5 {
-	fill: rgb(207, 171, 0);
+.olive-0-5 {
+	fill: #302E24;
 }
 
-/* Color Layers */
-.blue-5-5 {
-	fill: rgb(0, 74, 207);
+/* Green */
+.green-5-5 {
+	fill: #97935C;
 }
-.blue-4-5 {
-	fill: rgb(0, 93, 207);
+.green-4-5 {
+	fill: #858152;
 }
-.blue-3-5 {
-	fill: rgb(0, 109, 207);
+.green-3-5 {
+	fill: #726E48;
 }
-.blue-2-5 {
-	fill: rgb(0, 128, 207);
+.green-2-5 {
+	fill: #605D3E;
 }
-.blue-1-5 {
-	fill: rgb(0, 149, 207);
+.green-1-5 {
+	fill: #4D4B34;
 }
-.blue-0-5 {
-	fill: rgb(0, 167, 207);
+.green-0-5 {
+	fill: #3B392A;
+}
+
+/* Yellow */
+.yellow-5-5 {
+	fill: #D6B862;
+}
+.yellow-4-5 {
+	fill: #C4A95B;
+}
+.yellow-3-5 {
+	fill: #B19A57;
+}
+.yellow-2-5 {
+	fill: #9F8A50;
+}
+.yellow-1-5 {
+	fill: #8C7B4A;
+}
+.yellow-0-5 {
+	fill: #7A6C43;
+}
+
+/* Orange */
+.orange-5-5 {
+	fill: #CC9A5D;
+}
+.orange-4-5 {
+	fill: #BA8D57;
+}
+.orange-3-5 {
+	fill: #A77F51;
+}
+.orange-2-5 {
+	fill: #95734B;
+}
+.orange-1-5 {
+	fill: #826644;
+}
+.orange-0-5 {
+	fill: #70593E;
+}
+
+/* Brown */
+.brown-5-5 {
+	fill: #976551;
+}
+.brown-4-5 {
+	fill: #855A49;
+}
+.brown-3-5 {
+	fill: #724F40;
+}
+.brown-2-5 {
+	fill: #604338;
+}
+.brown-1-5 {
+	fill: #4D372E;
+}
+.brown-0-5 {
+	fill: #3B2C25;
+}
+
+/* Burgandy */
+.burgandy-5-5 {
+	fill: #80595C;
+}
+.burgandy-4-5 {
+	fill: #6D4E50;
+}
+.burgandy-3-5 {
+	fill: #5A4243;
+}
+.burgandy-2-5 {
+	fill: #493637;
+}
+.burgandy-1-5 {
+	fill: #35292A;
+}
+.burgandy-0-5 {
+	fill: #2B2222;
+}
+
+/* Indigo */
+.indigo-5-5 {
+	fill: #826C8B;
+}
+.indigo-4-5 {
+	fill: #725F79;
+}
+.indigo-3-5 {
+	fill: #5F5166;
+}
+.indigo-2-5 {
+	fill: #4F4454;
+}
+.indigo-1-5 {
+	fill: #3E3741;
+}
+.indigo-0-5 {
+	fill: #383539;
+}
+/* Lavendar */
+.lavendar-5-5 {
+	fill: #8981BA;
+}
+.lavendar-4-5 {
+	fill: #7D76A8;
+}
+.lavendar-3-5 {
+	fill: #716B95;
+}
+.lavendar-2-5 {
+	fill: #656183;
+}
+.lavendar-1-5 {
+	fill: #595570;
+}
+.lavendar-0-5 {
+	fill: #4D4A5E;
 }

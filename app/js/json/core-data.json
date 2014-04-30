@@ -1,6 +1,7 @@
 {
     "wealthDistribution": {
-        "color": "blue",
+        "color": "burgandy",
+        "sort": "ascending",
         "countries": [
             {
                 "id": "AF",
@@ -23,8 +24,8 @@
             {
                 "id": "AD",
                 "country": "Andorra",
-                "present": 0,
-                "future": 0
+                "present": 7201,
+                "future": 5102
             },
             {
                 "id": "AO",
@@ -53,8 +54,8 @@
             {
                 "id": "AW",
                 "country": "Aruba",
-                "present": 0,
-                "future": 0
+                "present": 2491,
+                "future": 401
             },
             {
                 "id": "AU",
@@ -71,8 +72,8 @@
             {
                 "id": "AZ",
                 "country": "Azerbaijan",
-                "present": 7,
-                "future": 8
+                "present": 17941,
+                "future": 1024
             },
             {
                 "id": "BS",
@@ -83,8 +84,8 @@
             {
                 "id": "BH",
                 "country": "Bahrain",
-                "present": 0,
-                "future": 0
+                "present": 4902,
+                "future": 2151
             },
             {
                 "id": "BD",
@@ -113,8 +114,8 @@
             {
                 "id": "BZ",
                 "country": "Belize",
-                "present": 0,
-                "future": 0
+                "present": 215,
+                "future": 16
             },
             {
                 "id": "BJ",
@@ -154,7 +155,7 @@
             },
             {
                 "id": "BN",
-                "country": "Brunei ",
+                "country": "Brunei",
                 "present": 41,
                 "future": 55
             },
@@ -173,8 +174,8 @@
             {
                 "id": "MM",
                 "country": "Burma",
-                "present": 0,
-                "future": 0
+                "present": 6,
+                "future": 2
             },
             {
                 "id": "BI",
@@ -203,8 +204,8 @@
             {
                 "id": "CV",
                 "country": "Cape Verde",
-                "present": 0,
-                "future": 0
+                "present": 31,
+                "future": 15
             },
             {
                 "id": "CF",
@@ -275,14 +276,14 @@
             {
                 "id": "CU",
                 "country": "Cuba",
-                "present": 0,
-                "future": 0
+                "present": 17,
+                "future": 12
             },
             {
                 "id": "CW",
                 "country": "Curacao",
-                "present": 0,
-                "future": 0
+                "present": 161,
+                "future": 85
             },
             {
                 "id": "CY",
@@ -305,8 +306,8 @@
             {
                 "id": "DJ",
                 "country": "Djibouti",
-                "present": 0,
-                "future": 0
+                "present": 163,
+                "future": 136
             },
             {
                 "id": "DM",
@@ -467,7 +468,7 @@
             {
                 "id": "VA",
                 "country": "Holy See",
-                "present": 0,
+                "present": 13651,
                 "future": 0
             },
             {
@@ -509,8 +510,8 @@
             {
                 "id": "IR",
                 "country": "Iran",
-                "present": 0,
-                "future": 0
+                "present": 9113,
+                "future": 5315
             },
             {
                 "id": "IQ",
@@ -527,8 +528,8 @@
             {
                 "id": "IL",
                 "country": "Israel",
-                "present": 0,
-                "future": 0
+                "present": 11611,
+                "future": 3159
             },
             {
                 "id": "IT",
@@ -575,8 +576,8 @@
             {
                 "id": "KP",
                 "country": "North Korea",
-                "present": 0,
-                "future": 0
+                "present": 25,
+                "future": 22
             },
             {
                 "id": "KR",
@@ -593,8 +594,8 @@
             {
                 "id": "KW",
                 "country": "Kuwait",
-                "present": 0,
-                "future": 0
+                "present": 20156,
+                "future": 5610
             },
             {
                 "id": "KG",
@@ -635,14 +636,14 @@
             {
                 "id": "LY",
                 "country": "Libya",
-                "present": 0,
-                "future": 0
+                "present": 135,
+                "future": 16
             },
             {
                 "id": "LI",
                 "country": "Liechtenstein",
-                "present": 0,
-                "future": 0
+                "present": 17035,
+                "future": 16421
             },
             {
                 "id": "LT",
@@ -743,8 +744,8 @@
             {
                 "id": "MC",
                 "country": "Monaco",
-                "present": 0,
-                "future": 0
+                "present": 70422,
+                "future": 2686
             },
             {
                 "id": "MN",
@@ -779,8 +780,8 @@
             {
                 "id": "NR",
                 "country": "Nauru",
-                "present": 0,
-                "future": 0
+                "present": 274,
+                "future": 263
             },
             {
                 "id": "NP",
@@ -797,8 +798,8 @@
             {
                 "id": "AN",
                 "country": "Netherlands Antilles",
-                "present": 0,
-                "future": 0
+                "present": 24623,
+                "future": 2356
             },
             {
                 "id": "NC",
@@ -831,12 +832,6 @@
                 "future": 867
             },
             {
-                "id": "KP",
-                "country": "North Korea",
-                "present": 0,
-                "future": 0
-            },
-            {
                 "id": "NO",
                 "country": "Norway",
                 "present": 99,
@@ -845,8 +840,8 @@
             {
                 "id": "OM",
                 "country": "Oman",
-                "present": 0,
-                "future": 0
+                "present": 16512,
+                "future": 2534
             },
             {
                 "id": "PK",
@@ -863,8 +858,8 @@
             {
                 "id": "PS",
                 "country": "Palestinian Territories",
-                "present": 0,
-                "future": 0
+                "present": 1135,
+                "future": 185
             },
             {
                 "id": "PA",
@@ -911,8 +906,8 @@
             {
                 "id": "QA",
                 "country": "Qatar",
-                "present": 0,
-                "future": 0
+                "present": 26135,
+                "future": 1963
             },
             {
                 "id": "RO",
@@ -935,32 +930,32 @@
             {
                 "id": "KN",
                 "country": "Saint Kitts and Nevis",
-                "present": 0,
-                "future": 0
+                "present": 23,
+                "future": 14
             },
             {
                 "id": "LC",
                 "country": "Saint Lucia",
-                "present": 0,
-                "future": 0
+                "present": 14,
+                "future": 64
             },
             {
                 "id": "VC",
                 "country": "Saint Vincent and the Grenadines",
-                "present": 0,
-                "future": 0
+                "present": 14,
+                "future": 64
             },
             {
                 "id": "WS",
-                "country": "Samoa ",
+                "country": "Samoa",
                 "present": 3,
                 "future": 2
             },
             {
                 "id": "SM",
                 "country": "San Marino",
-                "present": 0,
-                "future": 0
+                "present": 363,
+                "future": 134
             },
             {
                 "id": "ST",
@@ -978,7 +973,7 @@
                 "id": "SN",
                 "country": "Senegal",
                 "present": 1,
-                "future": 999
+                "future": 234
             },
             {
                 "id": "RS",
@@ -1007,8 +1002,8 @@
             {
                 "id": "MF",
                 "country": "Saint Martin",
-                "present": 0,
-                "future": 0
+                "present": 234,
+                "future": 304
             },
             {
                 "id": "SK",
@@ -1031,20 +1026,14 @@
             {
                 "id": "SO",
                 "country": "Somalia",
-                "present": 0,
-                "future": 0
+                "present": 2,
+                "future": 55
             },
             {
                 "id": "ZA",
                 "country": "South Africa",
                 "present": 7,
                 "future": 6
-            },
-            {
-                "id": "KR",
-                "country": "South Korea",
-                "present": 0,
-                "future": 0
             },
             {
                 "id": "SS",
@@ -1054,7 +1043,7 @@
             },
             {
                 "id": "ES",
-                "country": "Spain ",
+                "country": "Spain",
                 "present": 28,
                 "future": 23
             },
@@ -1079,12 +1068,12 @@
             {
                 "id": "SJ",
                 "country": "Svalbard",
-                "present": 0,
-                "future": 0
+                "present": 2531,
+                "future": 14632
             },
             {
                 "id": "SZ",
-                "country": "Swaziland ",
+                "country": "Swaziland",
                 "present": 3,
                 "future": 1
             },
@@ -1109,8 +1098,8 @@
             {
                 "id": "TW",
                 "country": "Taiwan",
-                "present": 0,
-                "future": 0
+                "present": 7456,
+                "future": 8495
             },
             {
                 "id": "TJ",
@@ -1193,8 +1182,8 @@
             {
                 "id": "AE",
                 "country": "United Arab Emirates",
-                "present": 0,
-                "future": 0
+                "present": 34732,
+                "future": 7438
             },
             {
                 "id": "GB",
@@ -1205,8 +1194,8 @@
             {
                 "id": "US",
                 "country": "United States of America",
-                "present": 42,
-                "future": 8
+                "present": 37023,
+                "future": 4610
             },
             {
                 "id": "UY",
@@ -1271,13 +1260,14 @@
         ]
     },
     "incomeInequality": {
-        "color": "orange",
+        "color": "brown",
+        "sort": 0,
         "countries": [
             {
                 "id": "AF",
                 "country": "Afghanistan",
-                "present": 0,
-                "future": 0
+                "present": 6.7,
+                "future": 3.1
             },
             {
                 "id": "AL",
@@ -1294,20 +1284,20 @@
             {
                 "id": "AD",
                 "country": "Andorra",
-                "present": 0,
-                "future": 0
+                "present": 2.2,
+                "future": 3.1
             },
             {
                 "id": "AO",
                 "country": "Angola",
-                "present": 0,
-                "future": 0
+                "present": 3.3,
+                "future": 7.3
             },
             {
                 "id": "AG",
                 "country": "Antigua and Barbuda",
-                "present": 0,
-                "future": 0
+                "present": 7.2,
+                "future": 8.5
             },
             {
                 "id": "AR",
@@ -1324,8 +1314,8 @@
             {
                 "id": "AW",
                 "country": "Aruba",
-                "present": 0,
-                "future": 0
+                "present": 3.7,
+                "future": 7.7
             },
             {
                 "id": "AU",
@@ -1348,14 +1338,14 @@
             {
                 "id": "BS",
                 "country": "Bahamas, The",
-                "present": 0,
-                "future": 0
+                "present": 3.7,
+                "future": 5.8
             },
             {
                 "id": "BH",
                 "country": "Bahrain",
-                "present": 0,
-                "future": 0
+                "present": 36.3,
+                "future": 8.5
             },
             {
                 "id": "BD",
@@ -1366,8 +1356,8 @@
             {
                 "id": "BB",
                 "country": "Barbados",
-                "present": 0,
-                "future": 0
+                "present": 5.8,
+                "future": 8.5
             },
             {
                 "id": "BY",
@@ -1384,8 +1374,8 @@
             {
                 "id": "BZ",
                 "country": "Belize",
-                "present": 0,
-                "future": 0
+                "present": 5.8,
+                "future": 8.5
             },
             {
                 "id": "BJ",
@@ -1396,8 +1386,8 @@
             {
                 "id": "BT",
                 "country": "Bhutan",
-                "present": 0,
-                "future": 0
+                "present": 4.1,
+                "future": 3.5
             },
             {
                 "id": "BO",
@@ -1425,7 +1415,7 @@
             },
             {
                 "id": "BN",
-                "country": "Brunei ",
+                "country": "Brunei",
                 "present": 0,
                 "future": 0
             },
@@ -2223,7 +2213,7 @@
             },
             {
                 "id": "WS",
-                "country": "Samoa ",
+                "country": "Samoa",
                 "present": 0,
                 "future": 0
             },
@@ -2325,7 +2315,7 @@
             },
             {
                 "id": "ES",
-                "country": "Spain ",
+                "country": "Spain",
                 "present": 10.3,
                 "future": 14.7
             },
@@ -2355,7 +2345,7 @@
             },
             {
                 "id": "SZ",
-                "country": "Swaziland ",
+                "country": "Swaziland",
                 "present": 25.1,
                 "future": 29.9
             },
@@ -2397,7 +2387,7 @@
             },
             {
                 "id": "TH",
-                "country": "Thailand ",
+                "country": "Thailand",
                 "present": 12.6,
                 "future": 6
             },
@@ -2537,6 +2527,7 @@
     },
     "resourceWealth": {
         "color": "orange",
+        "sort": "descending",
         "countries": [
             {
                 "id": "AF",
@@ -2558,7 +2549,7 @@
             },
             {
                 "id": "WS",
-                "country": "American Samoa",
+                "country": "Samoa",
                 "present": 0,
                 "future": 0
             },
@@ -2702,7 +2693,7 @@
             },
             {
                 "id": "BN",
-                "country": "Brunei Darussalam",
+                "country": "Brunei",
                 "present": 183,
                 "future": 40
             },
@@ -2870,7 +2861,7 @@
             },
             {
                 "id": "EG",
-                "country": "Egypt, Arab Rep.",
+                "country": "Egypt",
                 "present": 4,
                 "future": 999
             },
@@ -3031,8 +3022,8 @@
                 "future": 999
             },
             {
-                "id": "HKCN",
-                "country": "Hong Kong, China",
+                "id": "HK",
+                "country": "Hong Kong",
                 "present": 10,
                 "future": 100
             },
@@ -3062,7 +3053,7 @@
             },
             {
                 "id": "IR",
-                "country": "Iran, Islamic Rep.",
+                "country": "Iran",
                 "present": 17,
                 "future": 999
             },
@@ -3211,14 +3202,8 @@
                 "future": 999
             },
             {
-                "id": "CN",
-                "country": "Macao, China",
-                "present": 0,
-                "future": 100
-            },
-            {
                 "id": "MK",
-                "country": "Macedonia, FYR",
+                "country": "Macedonia",
                 "present": 3,
                 "future": 999
             },
@@ -3290,7 +3275,7 @@
             },
             {
                 "id": "FM",
-                "country": "Micronesia, Fed. Sts.",
+                "country": "Micronesia",
                 "present": 0,
                 "future": 0
             },
@@ -3758,7 +3743,7 @@
             },
             {
                 "id": "VE",
-                "country": "Venezuela, RB",
+                "country": "Venezuela",
                 "present": 30567,
                 "future": 10000
             },
@@ -3782,7 +3767,7 @@
             },
             {
                 "id": "YE",
-                "country": "Yemen, Rep.",
+                "country": "Yemen",
                 "present": 0,
                 "future": 0
             },
@@ -3807,7 +3792,8 @@
         ]
     },
     "politicalInstability": {
-        "color": "orange",
+        "color": "yellow",
+        "sort": "descending",
         "countries": [
             {
                 "id": "AF",
@@ -3961,7 +3947,7 @@
             },
             {
                 "id": "BN",
-                "country": "Brunei ",
+                "country": "Brunei",
                 "present": 5,
                 "future": 4
             },
@@ -4747,7 +4733,7 @@
             },
             {
                 "id": "WS",
-                "country": "Samoa ",
+                "country": "Samoa",
                 "present": 5,
                 "future": 4
             },
@@ -4849,7 +4835,7 @@
             },
             {
                 "id": "ES",
-                "country": "Spain ",
+                "country": "Spain",
                 "present": 3,
                 "future": 2
             },
@@ -4879,7 +4865,7 @@
             },
             {
                 "id": "SZ",
-                "country": "Swaziland ",
+                "country": "Swaziland",
                 "present": 3,
                 "future": 2
             },
@@ -4921,7 +4907,7 @@
             },
             {
                 "id": "TH",
-                "country": "Thailand ",
+                "country": "Thailand",
                 "present": 2,
                 "future": 1
             },
@@ -5060,7 +5046,8 @@
         ]
     },
     "unemploymentRate": {
-        "color": "orange",
+        "color": "green",
+        "sort": "ascending",
         "countries": [
             {
                 "id": "AF",
@@ -5214,7 +5201,7 @@
             },
             {
                 "id": "BN",
-                "country": "Brunei ",
+                "country": "Brunei",
                 "present": 0,
                 "future": 0
             },
@@ -6012,7 +5999,7 @@
             },
             {
                 "id": "WS",
-                "country": "Samoa ",
+                "country": "Samoa",
                 "present": 0,
                 "future": 0
             },
@@ -6114,7 +6101,7 @@
             },
             {
                 "id": "ES",
-                "country": "Spain ",
+                "country": "Spain",
                 "present": 25,
                 "future": 30.05
             },
@@ -6144,7 +6131,7 @@
             },
             {
                 "id": "SZ",
-                "country": "Swaziland ",
+                "country": "Swaziland",
                 "present": 0,
                 "future": 0
             },
@@ -6186,7 +6173,7 @@
             },
             {
                 "id": "TH",
-                "country": "Thailand ",
+                "country": "Thailand",
                 "present": 0.7,
                 "future": 0.4
             },
@@ -6325,7 +6312,8 @@
         ]
     },
     "lifeExpectancy": {
-        "color": "orange",
+        "color": "olive",
+        "sort": "ascending",
         "countries": [
             {
                 "id": "AF",
@@ -6479,7 +6467,7 @@
             },
             {
                 "id": "BN",
-                "country": "Brunei ",
+                "country": "Brunei",
                 "present": 78,
                 "future": 85
             },
@@ -7277,7 +7265,7 @@
             },
             {
                 "id": "WS",
-                "country": "Samoa ",
+                "country": "Samoa",
                 "present": 73,
                 "future": 62
             },
@@ -7379,7 +7367,7 @@
             },
             {
                 "id": "ES",
-                "country": "Spain ",
+                "country": "Spain",
                 "present": 82,
                 "future": 78
             },
@@ -7409,7 +7397,7 @@
             },
             {
                 "id": "SZ",
-                "country": "Swaziland ",
+                "country": "Swaziland",
                 "present": 49,
                 "future": 44
             },
@@ -7451,7 +7439,7 @@
             },
             {
                 "id": "TH",
-                "country": "Thailand ",
+                "country": "Thailand",
                 "present": 74,
                 "future": 75
             },
