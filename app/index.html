@@ -1,20 +1,53 @@
 <html>
 	<head>
+		<link href="css/normalize.min.css" type="text/css" rel="stylesheet" />
+		<link href="css/trade-gothic-bold.css" type="text/css" rel="stylesheet" />
 		<link href="css/main.css" type="text/css" rel="stylesheet" />
 		<link href="css/map-interactive.css" type="text/css" rel="stylesheet" />
 		<link href="css/timeline-interactive.css" type="text/css" rel="stylesheet" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 	</head>
 	<body>
-		<div id="map-wrapper">
-			<div id="wealthDistribution" class="filter">Wealth Distribution</div>
-			<div id="incomeInequality" class="filter">Income Inequality</div>
-			<div id="resourceWealth" class="filter">Resource Wealth</div>
-			<div id="politicalInstability" class="filter">Political Instability</div>
-			<div id="unemploymentRate" class="filter">Unemployment Rate</div>
-			<div id="present" class="chronology">Present</div>
-			<div id="future" class="chronology">Future</div>
-			<div id="map-container">
-
+		<div id="wrapper">
+			<div id="3" class="page">
+				<div id="map-interactive">
+					<div id="map-header">REMAPPING THE FUTURE</div>
+					<div id="map-wrapper">
+						<div id="map-background">
+							<img data-bind="attr: {src: 'img/map/background-' + background() + '.png'}"/>
+						</div>
+						<div id="map-container"></div>
+					</div>
+					<div id="filterSelect" class="dropdown">
+						<div class="ddSelected">
+							<div data-bind="text: filterText()"></div>
+							<img src="img/map/dropdown.png" />
+						</div>
+						<div class="ddList">
+							<div id="wealthDistribution" class="filter ddOption active">WEALTH DISTRIBUTION</div>
+							<div id="incomeInequality" class="filter ddOption">INCOME INEQUALITY</div>
+							<div id="resourceWealth" class="filter ddOption">RESOURCE WEALTH</div>
+							<div id="politicalInstability" class="filter ddOption">POLITICAL INSTABILITY</div>
+							<div id="unemploymentRate" class="filter ddOption">UNEMPLOYMENT RATE</div>
+							<div id="lifeExpectancy" class="filter ddOption">LIFE EXPECTANCY</div>
+						</div>
+					</div>
+					<div id="chronologySelect">
+						<div id="present" class="chronology active">PRESENT</div>
+						<div id="future" class="chronology">FUTURE</div>
+					</div>
+					<div id="map-callout" data-bind="text: description()"></div>
+					<div id="map-triangle"></div>
+					<div id="map-key">
+						<span id="filter-metric" data-bind="text: metric()"></span>
+						<div id="filter-range" data-bind="foreach: keyLabels()">
+							<div class="key-color">
+								<div data-bind="attr: {class: color + ' color-value'}"></div>
+								<div class="text-value" data-bind="text: label"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 <!-- JS -->

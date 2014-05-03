@@ -1,0 +1,57 @@
+.menu {
+	position: fixed;
+	left: 30px;
+	top: 30px;
+	height: 30px;
+	padding-top: 5px;
+	display: block;
+	z-index: 1000;
+	color: #FFFFFF;
+	opacity: 0;
+	font-size: 24px;
+	-webkit-backface-visibility: visible important!;
+	-webkit-transition: opacity 700ms linear 0ms;
+	-moz-transition: opacity 700ms linear 0ms;
+	-ms-transition: opacity 700ms linear 0ms;
+	-o-transition: opacity 700ms linear 0ms;
+	transition: opacity 700ms linear 0ms;
+}
+.menu.active {
+	-webkit-transform: translateZ(1px);
+	-moz-transform: translateZ(1px);
+	-ms-transform: translateZ(1px);
+	-o-transform: translateZ(1px);
+	transform: translateZ(1px);
+	opacity: 1;
+}
+.menu span {
+	-webkit-transition: -webkit-transform 200ms cubic-bezier(0.63, 0.62, 0.48, 1.64);
+	-moz-transition: -moz-transform 200ms cubic-bezier(0.63, 0.62, 0.48, 1.64);
+	-ms-transition: -ms-transform 200ms cubic-bezier(0.63, 0.62, 0.48, 1.64);
+	-o-transition: -o-transform 200ms cubic-bezier(0.63, 0.62, 0.48, 1.64);
+	transition: transform 200ms cubic-bezier(0.63, 0.62, 0.48, 1.64);
+	background: #FFFFFF;
+	display: block;
+	width: 30px;
+	height: 3px;
+}
+.menu .menu-line {
+
+}
+.menu .menu-line.outer {
+
+}
+.menu .menu-line.inner {
+	-webkit-transition: opacity 300ms ease-in-out 0ms;
+	-moz-transition: opacity 300ms ease-in-out 0ms;
+	-ms-transition: opacity 300ms ease-in-out 0ms;
+	-o-transition: opacity 300ms ease-in-out 0ms;
+	transition: opacity 300ms ease-in-out 0ms;
+	margin: 0 0 4px 0;
+}
+.menu .menu-line.outer.top {
+	margin: 0 0 4px 0;
+}
+.menu .menu-line.outer.bottom {
+	
+}

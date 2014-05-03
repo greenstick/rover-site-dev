@@ -33,7 +33,7 @@ var Choropleth = function (args) {
         map.scale       =   args.scale          ||   1,
         map.translateX  =   args.translateX     ||   0,
         map.translateY  =   args.translateY     ||   0,
-        map.layers      =   args.layers         ||   5,
+        map.layers      =   args.layers - 1     ||   4,
         map.pathClass   =   args.pathClass      ||   "country",
         map.sort        =   args.sort           ||   "ascending",
         map.chronoCache,  //Declaring Chronology Cache
@@ -60,28 +60,23 @@ var Choropleth = function (args) {
         map.path        =   d3.geo.path().projection(map.projection),
         map.world       =   map.svg.append('g').attr('id', 'world').attr('transform', 'scale(' + map.scale + '), translate(' + map.translateX + ', ' + map.translateY + ')'),
 
+        //Observables
+        map.metric      =   ko.observable(),
+        map.keyLabels   =   ko.observableArray([]),
+        map.filterText  =   ko.observable(),
+        map.description =   ko.observable(),
+        map.background  =   ko.observable('present'),
+
 /*
 'Private' Methods
 */
         //Bucketing / Quantization Function
         //Accepts Value, Range (max and min), the Number of Layers to Map to the Range, A Color (Makes Use of User Defined Gradients in CSS), and a Sort Order
         map.bucket = function (value, max, min, layers, color, sort) {
-            //Sort Ascending
-            if (sort === "ascending" || sort === "asc" || sort === 1) {
-                var bucket  = d3.scale.quantize().domain([max, min]).range(d3.range(layers).map(function (i) {
-                     return color + "-" + i + "-" + layers;
-                }));
-            //Sort Descending
-            } else if (sort === "descending" || sort == "dsc" || sort === 0) {
-                var bucket = d3.scale.quantize().domain([max, min]).range(d3.range(layers).map(function (i) {
-                     return color + "-" + (layers - i) + "-" + layers;
-                }));
-            //Default to Ascending
-            } else {
-                var bucket  = d3.scale.quantize().domain([max, min]).range(d3.range(layers).map(function (i) {
-                     return color + "-" + i + "-" + layers;
-                }));
-            };
+            //If Descending Sort Descending Else Default to Ascending
+            var bucket = d3.scale.quantize().domain([max, min]).range(d3.range(layers).map(function (i) {
+                 return (sort === "descending" || sort == "dsc" || sort === 0) ? color + "-" + (layers - i) : color + "-" + i;
+            }));
             return bucket(value);
         },
 
@@ -103,11 +98,11 @@ var Choropleth = function (args) {
 
         //Parse Filter Argument, XHR Data, Apply Quantize Function, Then Bind to Elements - Callback Optional
         map.filter = function (filter, chrono, callback) {
-            var arr = [];
+            var arr = [], temp = [];
             d3.json(map.coreData, function (data) {
                 //Create Array of Data Values with Requested Chronology
                 for (var i = 0; i < data[filter].countries.length; i++) {
-                    arr.push(data[filter].countries[i][chrono])
+                    arr.push(data[filter].countries[i][chrono]);
                 };
                 //Set Max & Min From Array
                 var max = Math.max.apply(null, arr),
@@ -117,10 +112,18 @@ var Choropleth = function (args) {
                     //Skips Null Values, Ideally no Null Values Would Exist - They Would Be Represented by A Base Numberic Value, i.e. 0
                     if (data[filter].countries[i][chrono] != null) {
                         d3.select('#' + data[filter].countries[i].id).attr('class', function (d) {
-                            return map.bucket(data[filter].countries[i][chrono], max, min, map.layers, data[filter].color, (data[filter].sort || map.sort)) + " " + map.pathClass;
+                            //Bucket Country Data - Searches for Specifc Layer Count and Sort Function in map.coreData Object, Otherwise Defaults to Values Set on Init
+                            var bucket = map.bucket(data[filter].countries[i][chrono], max, min, (data[filter].layers || map.layers), data[filter].color, (data[filter].sort || map.sort));
+                                //Holds all CSS Classes Being Used to Color Map Elements - There Are Duplicates
+                                temp.push(bucket);
+                                return bucket + " " + map.pathClass;
                         });
-                    }
+                    };
                 };
+                //Generate Key
+                map.generateKey(filter, data, temp);
+                //Update Dropdown
+                map.dropdown(filter, data);
             });
             //Cache Filter
             this.currentFilter = filter;
@@ -128,9 +131,41 @@ var Choropleth = function (args) {
             typeof callback == 'function' ? callback() : void(0);
         },
 
+        //Seperate Unique Key Color Values and Push to keyLabels Observable Array, then Retrieve Key Filter Metric and Set to Observable
+        map.generateKey = function (filter, data, array) {
+            var temp = [], arr = new Array(data[filter].layers);
+            //Reset Key Colors Observable Array
+            map.keyLabels([]);
+            //Create Array with Unique Color Class Values
+            for (var i = 0; i < array.length; i++) {
+                if($.inArray(array[i], temp) === -1) {
+                    temp.push(array[i]);
+                };
+            };
+            //Order Temp Array to Correctly Output Color Gradient
+            for (var i = 0; i < temp.length; i++) {
+                var position = parseInt(temp[i].split('-')[1]);
+                arr.splice(position, 1, temp[i]);
+            };
+            //Push Unique Values to Observable Array
+            for (var i = 0; i < arr.length; i++) {
+                map.keyLabels.push({color: arr[i], label: data[filter].labels[i]});
+            };
+            //Set Key Metric Text
+            map.metric(data[filter].metric);
+            //Set Callout Text
+            map.description(data[filter].description);
+        },
+
+        map.dropdown = function (filter, data, array) {
+            //Set Selected Filter Text
+            map.filterText(data[filter].title);
+        },
+
         //Caches and Returns Selected Chronology
         map.chronology = function (chrono) {
             this.chronoCache = chrono || this.chronoCache;
+            map.background(this.chronoCache);
             return this.chronoCache;
         };
 };
@@ -142,68 +177,15 @@ Public Methods
 //Draws Map and Sets Initial Filter
 Choropleth.prototype.init = function () {
     this.draw();
-    //Sets Default Filter & Chronology
-    this.filter('wealthDistribution', this.chronology('present'));
 };
 //Triggered by Filter Selection
 Choropleth.prototype.updateFilter = function (filter) {
-    console.log(filter);
-    this.filter(filter, this.chronoCache);
+    this.filter(filter, this.chronoCache || 'present');
 };
 //Triggered by Chronology Toggle
 Choropleth.prototype.updateChronology = function (chrono) {
     this.filter(this.currentFilter, this.chronology(chrono));
 };
-
-/*
-This was an Interesting Experiment, Ran into Trouble with 'this' Referencing the 
-mapUX Class Instead of the Choropleth Prototype on this.draw() & this.filter(), etc.
-Idea Was to Have an Interactive Class That Inherited the Choropleth Prototype. 
-*/
-
-/*
-var mapUX = function (args) {
-    var ux = this;
-        ux.filterElement       =   args.filterElement,
-        ux.chronology          =   args.chronologyElement,
-        ux.choropleth          =   args.choropleth
-        return {
-            initMap             :   ux.choropleth.init,
-            filterMap           :   ux.choropleth.updateFilter,
-            updateChronology    :   ux.choropleth.updateChronology
-        };
-};
-*/
-
-/*
-Instantiation
-*/
-
-/*
-var interactive = new mapUX ({
-    filterElement       :   '.filter',
-    chronologyElement   :   '.chronology',
-    choropleth          :   new Choropleth({
-            "geoData"       :   "js/json/world-data.json",
-            "coreData"      :   "js/json/core-data.json",
-            "wrapper"       :   "#map-wrapper",
-            "container"     :   "#map-container",
-            "strokeWidth"   :   "0px",
-            "scale"         :   ".9",
-            "width"         :   980,
-            "height"        :   600,
-            "translateX"    :   60,
-            "translateY"    :   200
-    })
-});
-*/
-
-//Initialize Choropleth
-// interactive.initMap();
-
-/*
-Instantiation
-*/
 
 var choropleth = new Choropleth({
     "geoData"      :   "js/json/world-data.json",
@@ -211,21 +193,36 @@ var choropleth = new Choropleth({
     "wrapper"      :   "#map-wrapper",
     "container"    :   "#map-container",
     "strokeWidth"  :   "0px",
-    "scale"        :   ".9",
+    "scale"        :   "1.2",
     "projection"   :   "mercator",
-    "width"        :   980,
-    "height"       :   600,
-    "translateX"   :   60,
-    "translateY"   :   200
+    "width"        :   1920,
+    "height"       :   1080,
+    "translateX"   :   300,
+    "translateY"   :   350
 });
 
+//Apply Bindings
+ko.applyBindings(choropleth);
 //Initialize
 choropleth.init();
+//Set Filter to Default
+choropleth.updateFilter('wealthDistribution', 'present');
+
 
 /*
 Event Bindings
 */
 
+$('.dropdown').on("click", function () {
+    if ($(this).hasClass('active')) {
+        $(this).removeClass('active');
+    } else {
+        $(this).addClass('active');
+    };
+});
+$('.dropdown').on("mouseout", function () {
+    $(this).removeClass('active');
+});
 //Filter Selection Event
 $('.filter').on("click", function (e) {
     $('.filter').removeClass('active');
