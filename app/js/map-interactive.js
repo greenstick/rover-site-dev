@@ -77,9 +77,9 @@ Data-Driven Choropleth Prototype Object
 
             //D3 Setup
             map.projection  =   d3.geo[map.projection](),
-            map.svg         =   d3.select(map.container).append('svg').attr('width', map.width).attr('height', map.height),
+            map.svg         =   d3.select(map.container).append('svg').attr('width', '100%').attr('height', map.height).attr('viewBox', '0 0 ' + map.width + ' ' + map.height),
             map.path        =   d3.geo.path().projection(map.projection),
-            map.world       =   map.svg.append('g').attr('id', 'world').attr('width', map.width).attr('height', map.height).attr('transform', 'scale(' + map.scale + '), translate(' + map.translateX + ', ' + map.translateY + ')'),
+            map.world       =   map.svg.append('g').attr('id', 'world').attr('transform', 'scale(' + map.scale + '), translate(' + map.translateX + ', ' + map.translateY + ')'),
 
             //Observables
             map.metric      =   ko.observable(),
@@ -226,7 +226,7 @@ Data-Driven Choropleth Prototype Object
                 $('.country').on("mousemove", function (e) {
                     $("#map-tooltip").stop().show()
                         .css("position", "absolute")
-                        .css("top", (e.pageY + -124) + "px")
+                        .css("top", (e.pageY + -160) + "px")
                         .css("left", (e.pageX + -160) +"px");
                 });
                 //Country Mouse Out
@@ -316,18 +316,16 @@ Apply Bindings & Initialize
 /*
 Event Bindings
 */
-
+    //Exit Map Intro Modal
     $('#map-intro .exit').on("click", function () {
         $('#map-intro').fadeOut();
     });
-    $('.dropdown').on("click", function () {
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
-        } else {
-            $(this).addClass('active');
-        };
+    //Drop Down Click & Mouseover
+    $('.dropdown').on("click mouseover", function () {
+        $(this).toggleClass('active');
     });
-    $('.dropdown').on("mouseout", function () {
+    //Drop Down Mouseout
+    $('.dropdown').on("click mouseover", function () {
         $(this).removeClass('active');
     });
     //Filter Selection Event
