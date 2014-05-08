@@ -7,6 +7,7 @@
 		<link href="css/trade-gothic-bold.css" type="text/css" rel="stylesheet" />
 		<link href="css/main.css" type="text/css" rel="stylesheet" />
 		<link href="css/map-interactive.css" type="text/css" rel="stylesheet" />
+		<link href="css/map-interactive-queries.css" type="text/css" rel="stylesheet" />
 		<link href="css/timeline-interactive.css" type="text/css" rel="stylesheet" />
 <!-- Metas -->
 		<meta charset="utf-8">
@@ -21,19 +22,19 @@
 	<![endif]-->
 	</head>
 	<body>
-	<div id="map-wrapper" class="container-fluid" data-bind="style: {background: 'url(../app/img/map/background-' + background() + '.png)'}" />
+	<div id="map-wrapper" class="container-fluid" data-bind="style: {backgroundImage: 'url(../app/img/map/background-' + background() + '.png)'}" />
 		<div id="choropleth-wrapper" class="row r1">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
 				<div id="map-container"></div>
 			</div>
 		</div>
 		<div id="map-header" class="row r2">
-			<div class="col-md-12">
+			<div class="col-xs-12 col-sm-12 col-md-12">
 				<div class="h-text">REMAPPING THE FUTURE</div>
 			</div>
 		</div>
 		<div id="map-ui" class="row r3">
-			<div class="col-md-2 col-md-offset-5">
+			<div class="col-xs-2 col-xs-offset-5 col-sm-2 col-sm-offset-5 col-md-2 col-md-offset-5">
 				<div id="filterSelect" class="dropdown">
 					<div class="ddSelected">
 						<div data-bind="text: filterText()"></div>
@@ -50,7 +51,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-2 col-md-offset-3">
+			<div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
 				<div id="chronologySelect">
 					<div id="present" class="chronology active">PRESENT</div>
 					<div id="future" class="chronology">FUTURE</div>
@@ -58,7 +59,7 @@
 			</div>
 		</div>
 		<div id="map-metric" class="row r4">
-			<div class="col-md-2">
+			<div class="col-xs-2 col-sm-2 col-md-2">
 				<div class="callout">
 					<div id="map-callout" data-bind="text: description()"></div>
 					<div id="map-triangle"></div>
@@ -66,11 +67,11 @@
 			</div>
 		</div>
 		<div id="map-legend" class="row r5">
-			<div class="col-md-2">
+			<div class="col-xs-2 col-sm-2 col-md-2">
 				<div id="filter-metric" data-bind="text: metric()"></div>
 			</div>
-			<div class="col-md-8">
-				<div id="map-key" class="bottom">
+			<div class="col-xs-8 col-sm-8 col-md-8">
+				<div id="map-key">
 					<div id="filter-range" data-bind="foreach: keyLabels()">
 						<div class="key-color">
 							<div data-bind="attr: {class: color + ' color-value'}"></div>
@@ -80,10 +81,33 @@
 				</div>
 			</div>
 		</div>
+		<div id="map-intro">
+			<div class="modal-head">
+				A Brief History
+			</div>
+			<div class="modal-exit">
+				<div class="exit">
+					<span class="exit-line-a"></span>
+					<span class="exit-line-b"></span>
+				</div>
+			</div>
+			<div class="modalbody">
+				The world has changed dramatically. Political boundaries are shifting, world economies are fluctuating, and new superpowers are rising to power. The rapacious, and under-regulated Western world has resulted in collapse that has severely shifted the balance of global power. This interactive map is a visual guide that shows the political, environmental, and economical landscape, and how these categories have changed since the collapse.
+				<br /><br />
+				<span class="bold">
+					Explore categories by using the drop-down menu on the top of the page, and hover over a specific country for more information.
+				</span>
+			</div>
+		</div>
 		<div id="map-tooltip">
 			<div id="country-country"></div>
 			<div id="country-present"></div>
 			<div id="country-future"></div>
+		</div>
+	</div>
+	<div id="map-tooSmall">
+		<div class="note">
+			PLEASE INCREASE YOUR BROWSER'S SIZE FOR AN OPTIMAL VIEWING EXPERIENCE
 		</div>
 	</div>
 <!-- JS -->

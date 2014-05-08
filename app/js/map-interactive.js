@@ -77,7 +77,7 @@ Data-Driven Choropleth Prototype Object
 
             //D3 Setup
             map.projection  =   d3.geo[map.projection](),
-            map.svg         =   d3.select(map.container).append('svg').attr('width', '100%').attr('height', map.height).attr('viewBox', '0 0 ' + map.width + ' ' + map.height),
+            map.svg         =   d3.select(map.container).append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', '0 0 ' + map.width + ' ' + map.height),
             map.path        =   d3.geo.path().projection(map.projection),
             map.world       =   map.svg.append('g').attr('id', 'world').attr('transform', 'scale(' + map.scale + '), translate(' + map.translateX + ', ' + map.translateY + ')'),
 
@@ -223,15 +223,15 @@ Data-Driven Choropleth Prototype Object
                     map.bindCountryData(map.currentFilter, e.id, map.tooltip);
                 });
                 //Country Mouse Over     
-                $('.country').on("mousemove", function (e) {
-                    $("#map-tooltip").stop().show()
+                $('.country').on("click mouseover", function (e) {
+                    $("#map-tooltip").toggleClass('active')
                         .css("position", "absolute")
                         .css("top", (e.pageY + -160) + "px")
                         .css("left", (e.pageX + -160) +"px");
                 });
                 //Country Mouse Out
                 $('.country').on("mouseout", function (e) {
-                    $("#map-tooltip").hide();
+                    $("#map-tooltip").removeClass('active');
                     d3.selectAll('.' + map.pathClass).attr('stroke-width', map.strokeWidth);
                 });
             },
@@ -299,7 +299,7 @@ Instantiation
         "width"        :   1298,
         "height"       :   730,
         "translateX"   :   64,
-        "translateY"   :   182,
+        "translateY"   :   152,
         "tooltip"      :   ["country", "present", "future"]
     });
 
@@ -322,10 +322,10 @@ Event Bindings
     });
     //Drop Down Click & Mouseover
     $('.dropdown').on("click mouseover", function () {
-        $(this).toggleClass('active');
+        $(this).addClass('active');
     });
     //Drop Down Mouseout
-    $('.dropdown').on("click mouseover", function () {
+    $('.dropdown').on("mouseout", function () {
         $(this).removeClass('active');
     });
     //Filter Selection Event
