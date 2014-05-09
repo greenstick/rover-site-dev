@@ -26,14 +26,16 @@ Data-Driven Choropleth Prototype Object
          object.stroke          -   (string,            optional)
          object.strokeWidth     -   (string,            optional)
          object.strokeHover     -   (string,            optional)   Stroke Width on Hover
-         object.width           -   (number,            optional)
-         object.height          -   (number,            optional)
+         object.width           -   (number/string(%),  optional)
+         object.height          -   (number/string(%),  optional)
+         object.viewBoxX        -   (number,            optional)
+         object.viewBoxY        -   (number,            optional)
          object.scale           -   (number,            optional)
          object.translateX      -   (number,            optional)
          object.translateY      -   (number,            optional)
          object.layers          -   (number,            optional)   Number of Color Layers - CSS Dependent
          object.pathClass       -   (string,            optional)   Name of CSS Class for Land Masses
-         object.sort            -   (string/number,     optional)   Sort of Colors - Values Accepted: 'ascending', 'asc', 1, 'descending', 'dsc', 0
+         object.sort            -   (string/number,     optional)   Sort of Colors - Values Accepted: 'ascending', 'asc', 1, 'descending', 'dsc', or 0
          object.tooltip         =   (array,             optional)   Array of Data Binding Targets
 */
 
@@ -49,8 +51,8 @@ Data-Driven Choropleth Prototype Object
             map.strokeWidth =   args.strokeWidth    ||   "2px",
             map.width       =   args.width          ||   "100%",
             map.height      =   args.height         ||   "100%",
-            map.viewBoxX    =   args.viewBoxX       ||   "1020",
-            map.viewBoxY    =   args.viewBoxY       ||   "680",
+            map.viewBoxX    =   args.viewBoxX       ||   1020,
+            map.viewBoxY    =   args.viewBoxY       ||   680,
             map.scale       =   args.scale          ||   1,
             map.translateX  =   args.translateX     ||   0,
             map.translateY  =   args.translateY     ||   0,
@@ -148,10 +150,10 @@ Data-Driven Choropleth Prototype Object
                             if (data[filter].countries[i][chrono] != null) {
                                 d3.select('#' + data[filter].countries[i].id).attr('class', function (d) {
                                     //Bucket Country Data - Searches for Specifc Layer Count and Sort Function in map.coreData Object, Otherwise Defaults to Values Set on Init
-                                    var bucket = map.bucket(data[filter].countries[i][chrono], max, min, (data[filter].layers || map.layers), data[filter].color, (data[filter].sort || map.sort));
+                                    var color = map.bucket(data[filter].countries[i][chrono], max, min, (data[filter].layers || map.layers), data[filter].color, (data[filter].sort || map.sort));
                                         //Array Holds all CSS Classes Being Used to Color Map Elements - 
-                                        colors.push(bucket);
-                                        return bucket + " " + map.pathClass;
+                                        colors.push(color);
+                                        return color + " " + map.pathClass;
                                 });
                             };
                         };
@@ -225,14 +227,14 @@ Data-Driven Choropleth Prototype Object
                     map.bindCountryData(map.currentFilter, e.id, map.tooltip);
                 });
                 //Country Mouse Over     
-                $('.country').on("click mouseover", function (e) {
+                $(map.pathClass).on("click mouseover", function (e) {
                     $("#map-tooltip").toggleClass('active')
                         .css("position", "absolute")
                         .css("top", (e.pageY + -160) + "px")
                         .css("left", (e.pageX + -80) +"px");
                 });
                 //Country Mouse Out
-                $('.country').on("mouseout", function (e) {
+                $(map.pathClass).on("mouseout", function (e) {
                     $("#map-tooltip").removeClass('active');
                     d3.selectAll('.' + map.pathClass).attr('stroke-width', map.strokeWidth);
                 });
