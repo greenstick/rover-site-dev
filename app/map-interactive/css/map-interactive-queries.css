@@ -1,0 +1,224 @@
+/*
+Huge
+*/
+
+@media (min-width: 1560px) {
+
+/* 
+Map Interactive Core Styles
+*/
+	
+	#map-wrapper {
+		height: 100%;
+	}
+
+	#choropleth-wrapper {
+		height: 100%;
+	}
+	#map-container {
+		height: 100%;
+		padding: 156px 0 0 0;
+	}
+	#map-header {
+		top: 0px;
+		font-size: 32px;
+		margin: 3% 0 0 0;
+		height: 5%;
+	}
+	#map-ui {
+		top: 0px;
+		margin: 0 0 23% 0;
+		height: 4%;
+	}
+	#map-metric {
+		top: 0px;
+		height: 35%;
+	}
+	#map-legend {
+		top: 0px;
+		height: 7%;
+	}
+	svg g {
+		-webkit-transform: translate(168px, 182px);
+		-moz-transform: translate(168px, 182px);
+    	transform: translate(168px, 182px);
+	}
+
+/*
+Map Intro Modal
+*/
+
+	#map-intro {
+		top: 25%;
+		width: 720px;
+		height: 360px;
+		margin: 0 0 0 -360px;
+		padding: 32px;
+		font-size: 22px;
+		line-height: 30px;
+	}
+	#map-intro .modal-head {
+		top: -12px;
+		width: 90%;
+		font-size: 36px;
+		letter-spacing: 4px;
+		line-height: 48px;
+	}
+	#map-intro .modal-exit {
+		top: 0px;
+		height: 10%;
+	}
+	#map-intro .modal-exit .exit {
+		left: 0px;
+		top: -12px;
+	}
+	#map-intro .modal-exit .exit .exit-line-a, #map-intro .modal-exit .exit .exit-line-b {
+		top: 12px;
+		height: 3px;
+		width: 30px;
+	}
+	#map-intro .modalbody {
+		top: 20%;
+		line-height: 26px;
+	}
+
+/*
+Filter Selection
+*/
+
+#filterSelect {
+	position: absolute;
+	top: 0px;	
+	left: 50%;
+	height: 40px;
+	margin: 0 0 0 -124px;
+	z-index: 1000;
+	letter-spacing: 1px;
+	width: 248px
+}
+
+/*
+Drop Down Menu
+*/
+
+	.dropdown {
+		width: 248px;
+		font-size: 19px;
+	}
+	.dropdown .ddSelected {
+		padding: 8px 0 0 0;
+		width: 248px;
+		height: 40px;
+		padding: 9px 0 0 0;
+	}
+	.dropdown .ddSelected img {
+		left: 224px;
+		top: 17px;
+	}
+	.dropdown:hover .ddSelected, .dropdown.active .ddSelected {
+		height: 42px;
+		color: rgba(255, 248, 217, 1);
+		background-color: rgba(97, 80, 53, .8);
+		border-bottom: 2px solid rgba(255, 248, 217, 1);
+	}
+	.dropdown .ddList {
+		width: 248px;
+	}
+	.dropdown:hover .ddList, .dropdown.active .ddList {
+		height: 278px;
+	}
+	.dropdown .ddList .ddOption{
+		width: 248px;
+		padding: 9px 0 0 0;
+		height: 40px;
+		padding: 9px 0 0 0;
+	}
+
+/*
+Chronology Toggle 
+*/
+
+	#chronologySelect {
+		height: 38px;
+		margin: 0 0 0 -148px;
+	}
+	#chronologySelect .chronology {
+		height: 32px;
+		padding: 6px 0 0 0;
+		font-size: 16px;
+	}
+
+/*
+Dynamic Map Key
+*/
+	
+	#map-key {
+		padding: 8px 0 0 0;
+	}
+	#filter-metric {
+		font-size: 22px;
+		line-height: 28px;
+	}
+	#filter-range .key-color {
+		margin: 0 8px 0 8px;
+	}
+	#filter-range .key-color .text-value {
+		font-size: 22px;
+	}
+
+/*
+Map Key Callout Box
+*/
+
+	.callout {
+		height: 100%;
+	}
+	#map-callout {
+		font-size: 16px;
+		line-height: 24px;
+	}
+
+/*
+Map Tooltip
+*/
+
+	#map-tooltip  {
+		font-size: 16px;
+		line-height: 24px;
+	}
+}
+
+@media (max-width:1048px) {
+	#map-ui {
+		margin: 1% 0 30% 0;
+	}
+}
+
+/*
+Hide
+*/
+
+@media (max-width: 992px) {
+	#map-tooSmall {
+		-webkit-transition: opacity 0.6s linear;
+		transition: opacity 0.6s linear;
+		z-index: 9999;
+		opacity: 1;	
+	}
+}
+@media (max-height: 620px) {
+	#map-tooSmall {
+		-webkit-transition: opacity 0.6s linear;
+		transition: opacity 0.6s linear;
+		z-index: 9999;
+		opacity: 1;	
+	}	
+}
+@media (max-width: 1080px) and (max-height: 720px) {
+	#map-tooSmall {
+		-webkit-transition: opacity 0.6s linear;
+		transition: opacity 0.6s linear;
+		z-index: 9999;
+		opacity: 1;	
+	}
+}

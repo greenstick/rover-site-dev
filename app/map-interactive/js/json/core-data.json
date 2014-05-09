@@ -1310,9 +1310,9 @@
     },
     "incomeInequality": {
         "title": "INCOME INEQUALITY",
-        "metric": "INCOME INEQUALITY (UN R/P 10%)",
+        "metric": "INCOME INEQUALITY",
         "labels": ["< 19", "20 - 39", "40 - 59", "60 - 79", "80 OR MORE"],
-        "description": "Income inequality shows the equal or unequal share of the country’s wealth across the number of people who reside in that country. The higher the number, the more “unequal” the wealth distribution.",
+        "description": "Income inequality (un r/p 10%) shows the equal or unequal share of the country’s wealth across the number of people who reside in that country. The higher the number, the more “unequal” the wealth distribution.",
         "color": "chartreuse",
         "sort": "descending",
         "layers": 5,

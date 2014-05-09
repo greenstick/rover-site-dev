@@ -22,9 +22,9 @@
 	<![endif]-->
 	</head>
 	<body>
-	<div id="map-wrapper" class="container-fluid" data-bind="style: {backgroundImage: 'url(../app/img/map/background-' + background() + '.png)'}" />
+	<div id="map-wrapper" class="container-fluid" data-bind="style: {backgroundImage: 'url(../map-interactive/img/background-' + background() + '.png)'}" />
 		<div id="choropleth-wrapper" class="row r1">
-			<div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+			<div class="full-height col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
 				<div id="map-container"></div>
 			</div>
 		</div>
@@ -38,7 +38,7 @@
 				<div id="filterSelect" class="dropdown">
 					<div class="ddSelected">
 						<div data-bind="text: filterText()"></div>
-						<img src="img/map/dropdown.png" />
+						<img src="img/dropdown.png" />
 					</div>
 					<div class="ddList">
 						<div id="wealthDistribution" class="filter ddOption active">WEALTH DISTRIBUTION</div>
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		<div id="map-metric" class="row r4">
-			<div class="col-xs-2 col-sm-2 col-md-2">
+			<div class="full-height col-xs-2 col-sm-2 col-md-2">
 				<div class="callout">
 					<div id="map-callout" data-bind="text: description()"></div>
 					<div id="map-triangle"></div>
@@ -81,8 +81,24 @@
 				</div>
 			</div>
 		</div>
+		<div id="map-tooltip">
+			<div id="country-country">
+				<span class="stat">COUNTRY: </span>
+				<span class="data"></span>
+			</div>
+			<div id="country-present">
+				<span class="stat">PRESENT: </span>
+				<span class="data"></span>
+			</div>
+			<div id="country-future">
+				<span class="stat">FUTURE: </span>
+				<span class="data"></span>
+			</div>
+		</div>
+	</div>
+	<div id="transparent-mask">
 		<div id="map-intro">
-			<div class="modal-head">
+			<div class="modal-head h-text">
 				A Brief History
 			</div>
 			<div class="modal-exit">
@@ -99,15 +115,14 @@
 				</span>
 			</div>
 		</div>
-		<div id="map-tooltip">
-			<div id="country-country"></div>
-			<div id="country-present"></div>
-			<div id="country-future"></div>
-		</div>
 	</div>
 	<div id="map-tooSmall">
 		<div class="note">
-			PLEASE INCREASE YOUR BROWSER'S SIZE FOR AN OPTIMAL VIEWING EXPERIENCE
+			<div class="note-line"></div>
+			<div class="note-text">
+				INCREASE YOUR<br />BROWSER SIZE FOR THE<br />INTERACTIVE EXPERIENCE.
+			</div>
+			<div class="note-line"></div>
 		</div>
 	</div>
 <!-- JS -->
@@ -120,5 +135,18 @@
 	<script src="js/main.js" type="text/javascript"></script>
 	<script src="js/map-interactive.js" type="text/javascript"></script>
 	<script src="js/timeline-interactive.js" type="text/javascript"></script>
+<!-- Image Pre-loader -->
+	<script>
+	var images = ['img/background-present.png','img/background-future.png','img/dropdown.png'],
+	    k = null,
+	    img = null;
+	    for (k in images) {
+	        if (images.hasOwnProperty(k)) {
+	            img = new Image();
+	            img.src = images[k];
+	            images[k] = img;
+	        };
+	    };
+	</script>
 	</body>
 </html>

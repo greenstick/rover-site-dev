@@ -47,8 +47,10 @@ Data-Driven Choropleth Prototype Object
             map.projection  =   args.projection     ||   "mercator",
             map.stroke      =   args.stroke         ||   "#000000",
             map.strokeWidth =   args.strokeWidth    ||   "2px",
-            map.width       =   args.width          ||   960,
-            map.height      =   args.height         ||   680,
+            map.width       =   args.width          ||   "100%",
+            map.height      =   args.height         ||   "100%",
+            map.viewBoxX    =   args.viewBoxX       ||   "1020",
+            map.viewBoxY    =   args.viewBoxY       ||   "680",
             map.scale       =   args.scale          ||   1,
             map.translateX  =   args.translateX     ||   0,
             map.translateY  =   args.translateY     ||   0,
@@ -77,7 +79,7 @@ Data-Driven Choropleth Prototype Object
 
             //D3 Setup
             map.projection  =   d3.geo[map.projection](),
-            map.svg         =   d3.select(map.container).append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', '0 0 ' + map.width + ' ' + map.height),
+            map.svg         =   d3.select(map.container).append('svg').attr('width', map.width).attr('height', map.height).attr('viewBox', '0 0 ' + map.viewBoxX + ' ' + map.viewBoxY),
             map.path        =   d3.geo.path().projection(map.projection),
             map.world       =   map.svg.append('g').attr('id', 'world').attr('transform', 'scale(' + map.scale + '), translate(' + map.translateX + ', ' + map.translateY + ')'),
 
@@ -227,7 +229,7 @@ Data-Driven Choropleth Prototype Object
                     $("#map-tooltip").toggleClass('active')
                         .css("position", "absolute")
                         .css("top", (e.pageY + -160) + "px")
-                        .css("left", (e.pageX + -160) +"px");
+                        .css("left", (e.pageX + -80) +"px");
                 });
                 //Country Mouse Out
                 $('.country').on("mouseout", function (e) {
@@ -257,7 +259,7 @@ Data-Driven Choropleth Prototype Object
                     } else {
                         value = (obj[target[i]]).toUpperCase();
                     }; 
-                    d3.select('#' + map.pathClass + '-' + target[i]).text(target[i].toUpperCase() + ": " + value);
+                    d3.select('#' + map.pathClass + '-' + target[i] + " .data").text(value);
                 };
             };
     };
@@ -296,8 +298,8 @@ Instantiation
         "strokeHover"  :   "1px",
         "scale"        :   "1.2",
         "projection"   :   "mercator",
-        "width"        :   1298,
-        "height"       :   730,
+        "viewBoxX"     :   1298,
+        "viewBoxY"     :   672,
         "translateX"   :   64,
         "translateY"   :   152,
         "tooltip"      :   ["country", "present", "future"]
@@ -317,8 +319,8 @@ Apply Bindings & Initialize
 Event Bindings
 */
     //Exit Map Intro Modal
-    $('#map-intro .exit').on("click", function () {
-        $('#map-intro').fadeOut();
+    $('#transparent-mask .exit').on("click", function () {
+        $('#transparent-mask').fadeOut();
     });
     //Drop Down Click & Mouseover
     $('.dropdown').on("click mouseover", function () {
