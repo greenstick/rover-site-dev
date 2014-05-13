@@ -4,6 +4,7 @@
 Utility Functions
 */
 
+    //Pretties up Numbers With Some Nice Commas
     var commaNumbers = function (number) {
         var str = number.toString().split('.');
             if (str[0].length >= 4) {
@@ -16,27 +17,37 @@ Utility Functions
     };
 
 /*
-Data-Driven Choropleth Prototype Object
-@Params: object                 -   (object,            required)
-         object.geoData         -   (geoJSON,           required)   Draws Choropleth
-         object.coreData        -   (JSON,              required)   Data to be Bound to Choropleth
-         object.wrapper         -   (string,            optional)
-         object.container       -   (string,            optional)
-         object.projection      -   (string,            optional)   See options: https://github.com/mbostock/d3/wiki/Geo-Projections
-         object.stroke          -   (string,            optional)
-         object.strokeWidth     -   (string,            optional)
-         object.strokeHover     -   (string,            optional)   Stroke Width on Hover
-         object.width           -   (number/string(%),  optional)
-         object.height          -   (number/string(%),  optional)
-         object.viewBoxX        -   (number,            optional)
-         object.viewBoxY        -   (number,            optional)
-         object.scale           -   (number,            optional)
-         object.translateX      -   (number,            optional)
-         object.translateY      -   (number,            optional)
-         object.layers          -   (number,            optional)   Number of Color Layers - CSS Dependent
-         object.pathClass       -   (string,            optional)   Name of CSS Class for Land Masses
-         object.sort            -   (string/number,     optional)   Sort of Colors - Values Accepted: 'ascending', 'asc', 1, 'descending', 'dsc', or 0
-         object.tooltip         =   (array,             optional)   Array of Data Binding Targets
+Data-Driven Choropleth Prototype Object Parameter Map
+@Params: object                     -   (object,            required)
+         object.geoData             -   (geoJSON,           required)   Draws Choropleth
+         object.coreData            -   (JSON,              required)   Data to be Bound to Choropleth
+         object.wrapper             -   (string,            optional)   Map Wrapper Element
+         object.container           -   (string,            optional)   Map Container Element
+         object.projection          -   (string,            optional)   See options: https://github.com/mbostock/d3/wiki/Geo-Projections
+         object.stroke              -   (string,            optional)   Default Stroke Color
+         object.strokeWidth         -   (string,            optional)   Default Stroke Width
+         object.strokeHover         -   (string,            optional)   Stroke Width on Hover
+         object.width               -   (number/string(%),  optional)   SVG Width (Accepts Number and Percentage as String)
+         object.height              -   (number/string(%),  optional)   SVG Height (Accepts Number and Percentage as String)
+         object.viewBoxX            -   (number,            optional)   Set SVG Viewbox X
+         object.viewBoxY            -   (number,            optional)   Set SVG Viewbox Y
+         object.scale               -   (number,            optional)   Scale Map g Element Y
+         object.translateX          -   (number,            optional)   Translate Map g Element X
+         object.translateY          -   (number,            optional)   Translate Map g Element Y
+         object.layers              -   (number,            optional)   Number of Color Layers - CSS Dependent
+         object.pathClass           -   (string,            optional)   Name of CSS Class for Land Masses
+         object.bgPath              -   (string,            optional)   Background Image File Path
+         object.bgImgType           -   (string,            optional)   Image File Format
+         object.sort                -   (string/number,     optional)   Sort of Colors - Values Accepted: 'ascending', 'asc', 1, 'descending', 'dsc', or 0
+         object.ttObj               -   (object,            optional)   Tool Tip Settings Object
+         object.ttObj.ttElement     -   (string,            optional)   Tool Tip Element
+         object.ttObj.ttClasses     -   (array,             optional)   Array of Data Binding Targets
+         object.ttObj.ttOffsetX     -   (number,            optional)   Tool Tip Offset X
+         object.ttObj.ttOffsetY     -   (number,            optional)   Tool Tip Offset Y
+         object.ttObj.ttFollow      -   (boolean,           optional)   Whether Tool Tip Has a Fixed Position or Should Follow Mouse
+         object.defaults            -   (object,            required)   Default Filter and Chronology Settings Object
+         object.defaults.filter     -   (string,            required)   Default Filter - Required if Default Object is Present
+         object.defaults.chronology -   (string,            required)   Default Time Frame - Required if Default Object is Present
 */
 
     var Choropleth = function (args) {
@@ -44,26 +55,42 @@ Data-Driven Choropleth Prototype Object
             //Setup Prototype With Arguments
             map.geoData     =   args.geoData,
             map.coreData    =   args.coreData,
-            map.wrapper     =   args.wrapper        ||   "#interactiveWrapper",
-            map.container   =   args.container      ||   "#container",
-            map.projection  =   args.projection     ||   "mercator",
-            map.stroke      =   args.stroke         ||   "#000000",
-            map.strokeWidth =   args.strokeWidth    ||   "2px",
-            map.width       =   args.width          ||   "100%",
-            map.height      =   args.height         ||   "100%",
-            map.viewBoxX    =   args.viewBoxX       ||   1020,
-            map.viewBoxY    =   args.viewBoxY       ||   680,
-            map.scale       =   args.scale          ||   1,
-            map.translateX  =   args.translateX     ||   0,
-            map.translateY  =   args.translateY     ||   0,
-            map.layers      =   args.layers - 1     ||   4,
-            map.pathClass   =   args.pathClass      ||   "country",
-            map.sort        =   args.sort           ||   "ascending",
-            map.tooltip     =   args.tooltip        ||   false,
-            map.chronoCache,  //Declaring Chronology Cache
+            map.wrapper     =   args.wrapper                ||   "#interactiveWrapper",
+            map.container   =   args.container              ||   "#container",
+            map.projection  =   args.projection             ||   "mercator",
+            map.stroke      =   args.stroke                 ||   "#000000",
+            map.strokeWidth =   args.strokeWidth            ||   "2px",
+            map.width       =   args.width                  ||   "100%",
+            map.height      =   args.height                 ||   "100%",
+            map.viewBoxX    =   args.viewBoxX               ||   1020,
+            map.viewBoxY    =   args.viewBoxY               ||   680,
+            map.scale       =   args.scale                  ||   1,
+            map.translateX  =   args.translateX             ||   0,
+            map.translateY  =   args.translateY             ||   0,
+            map.layers      =   args.layers - 1             ||   4,
+            map.pathClass   =   args.pathClass              ||   "country",
+            map.bgPath      =   args.bgPath                 ||   "../img/background-",
+            map.bgImgType   =   args.bgImgType              ||   ".png",
+            map.sort        =   args.sort                   ||   "ascending",
+
+            //Hover Tooltip Arguments
+            map.ttObj       =   args.tooltip                ||   null,
+            map.ttElement   =   args.tooltip.ttElement      ||   false,
+            map.ttClasses   =   args.tooltip.ttClasses      ||   false,
+            map.ttOffsetX   =   args.tooltip.ttOffsetX      ||   null,
+            map.ttOffsetY   =   args.tooltip.ttOffsetY      ||   null,
+            map.ttFollow    =   args.tooltip.ttFollow       ||   true,
+
+            //Default Filter & Chronology
+            map.defaults    =   args.defaults,
+            map.defFilter   =   args.defaults.filter,
+            map.defChrono   =   args.defaults.chronology,    
+
+            //Caches
+            map.chronoCache,
             map.loadedData,
 
-            //Stores Instantiated Settings (Prior to D3 Manipulation)
+            //Stores Instantiated Settings (Prior to D3 Manipulation) - For Extensibilities Sake
             map.settings    =   {
                                     geoData         :   map.geoData,
                                     coreData        :   map.coreData,
@@ -76,7 +103,12 @@ Data-Driven Choropleth Prototype Object
                                     height          :   map.height,
                                     scale           :   map.scale,
                                     translateX      :   map.translateX,
-                                    translateY      :   map.translateY
+                                    translateY      :   map.translateY,
+                                    layers          :   map.layers,
+                                    pathClass       :   map.pathClass,
+                                    sort            :   map.sort,
+                                    ttObj           :   map.ttObj,
+                                    defaults        :   map.defaults
                                 },
 
             //D3 Setup
@@ -90,10 +122,11 @@ Data-Driven Choropleth Prototype Object
             map.keyLabels   =   ko.observableArray([]),
             map.filterText  =   ko.observable(),
             map.description =   ko.observable(),
-            map.background  =   ko.observable('present'),
+            map.dataSource  =   ko.observable(),
+            map.background  =   ko.observable(),
 
 /*
-'Private' Methods
+Function Specific Methods
 */
 
             
@@ -107,7 +140,7 @@ Data-Driven Choropleth Prototype Object
             map.loaded = function (error, geoData, coreData) {
                 map.loadedData = coreData;
                 map.draw(geoData);
-                map.filter('wealthDistribution', 'present', map.loadedData);
+                map.filter(map.defFilter, map.defChrono, map.loadedData);
                 map.setEvents();
             },
 
@@ -127,9 +160,7 @@ Data-Driven Choropleth Prototype Object
 
             //Parse Filter Argument, XHR Data, Apply Quantize Function, Then Bind to Elements - Callback Optional
             map.filter = function (filter, chrono, data, callback) {
-                var data = data || map.loadedData;
-                // d3.json(map.coreData, function (data) {
-                    var chronology = [], colors = [];
+                var data = data || map.loadedData, chronology = [], colors = [];
                     //Check If Map Should be Rendered Using Image or Data
                     if (data[filter].image.length) {
                         //Construct Color 
@@ -162,7 +193,6 @@ Data-Driven Choropleth Prototype Object
                     map.generateKey(filter, data, colors, (data[filter].sort || map.sort));
                     //Update Dropdown
                     map.dropdown(filter, data);
-                // });
                 //Cache Filter
                 this.currentFilter = filter;
                 //Execute Callback
@@ -194,7 +224,7 @@ Data-Driven Choropleth Prototype Object
                 difference = data[filter].layers - (temp.length - 1);
                 //Order Temp Array to Correctly Output Color Gradient
                 for (var i = 0; i < temp.length; i++) {
-                    //Create Gradient Color Based on Sort Function
+                    //Order Gradient Colors Based on Sort Function
                     var position = (sort === "descending" || sort == "dsc" || sort === 0) ? parseInt(temp[i].split('-')[1] - (data[filter].layers)) : parseInt((data[filter].layers  - difference) - (temp[i].split('-')[1]));
                     arr.splice(position, 1, temp[i]);
                 };
@@ -206,6 +236,8 @@ Data-Driven Choropleth Prototype Object
                 map.metric(data[filter].metric);
                 //Set Callout Text
                 map.description(data[filter].description.toUpperCase());
+                //Set Data Source
+                map.dataSource(data[filter].source.toUpperCase());
             },
 
             map.dropdown = function (filter, data, array) {
@@ -213,31 +245,94 @@ Data-Driven Choropleth Prototype Object
                 map.filterText(data[filter].title);
             },
 
-            //Caches and Returns Selected Chronology, Sets Map Background Based on Selected Chronology
+            //Caches and Returns Selected Chronology
             map.chronology = function (chrono) {
-                this.chronoCache = chrono || this.chronoCache;
-                map.background(this.chronoCache);
+                this.chronoCache = chrono || this.chronoCache || this.defChrono;
                 return this.chronoCache;
             },
 
-            //Set Events Driven by Data-Bound Elements
+            //Sets Map Background Based on Selected Chronology or Chronology Cache or Default Chronology
+            map.setBackground = function (chrono) {
+                map.background(map.bgPath + (chrono || this.chronoCache || this.defChrono) + this.bgImgType);
+            },
+
+            //Place Events Driven by Data-Bound Elements Here
             map.setEvents = function () {
-                //Country Mouseover
-                d3.selectAll('.' + map.pathClass).on('mouseover', function (e) {
-                    map.bindCountryData(map.currentFilter, e.id, map.tooltip);
-                });
-                //Country Mouse Over     
-                $(map.pathClass).on("click mouseover", function (e) {
-                    $("#map-tooltip").toggleClass('active')
-                        .css("position", "absolute")
-                        .css("top", (e.pageY + -160) + "px")
-                        .css("left", (e.pageX + -80) +"px");
-                });
-                //Country Mouse Out
-                $(map.pathClass).on("mouseout", function (e) {
-                    $("#map-tooltip").removeClass('active');
-                    d3.selectAll('.' + map.pathClass).attr('stroke-width', map.strokeWidth);
-                });
+                if (map.tooltip !== null) {
+                    //Country Mouse Over - D3
+                    d3.selectAll('.' + map.pathClass).on('mouseover', function (e) {
+                        map.bindCountryData(map.currentFilter, e.id, map.ttClasses);
+                    });
+                    //Display Tooltip on Country Mouseover
+                    $('.' + map.pathClass).on("click mouseover", function (e) {
+                        if (map.ttFollow === true) {
+                            $("#" + map.ttElement).toggleClass('active')
+                                .css("position", "absolute")
+                                .css("left", (e.pageX + map.ttOffsetX) +"px")
+                                .css("top", (e.pageY + map.ttOffsetY) + "px");
+                        } else {
+                            var pos = $('#' + map.ttElement).offset();
+                            $("#" + map.ttElement).toggleClass('active')
+                                .css("position", "absolute")
+                                .css("left", (pos.left + map.ttOffsetX) +"px")
+                                .css("top", (pos.top + map.ttOffsetY) + "px");
+                        };
+                        console.log(e.pageX + ", " + e.pageY);
+                    });
+                    //Country Mouse Out
+                    $('.' + map.pathClass).on("mouseout", function (e) {
+                        $("#" + map.ttElement).removeClass('active');
+                        d3.selectAll('.' + map.pathClass).attr('stroke-width', map.strokeWidth);
+                    });
+                };
+            },
+
+            //A Nasty Formatting Function - Hopefully I'll Have Some Time to Come Up With a More Extensible Solution
+            map.formatData = function (filter, data) {
+                var format = map.loadedData[filter].format, output;
+                //If Format is Defined...
+                if (format != null) {
+                    //And the Format is Not an Object...
+                    if (typeof format !== 'object') {
+                        //And the Data is a Number...
+                        if (typeof data === 'number') {
+                            //And the Format is Monetary
+                            if (format == 'monetary') {
+                                output = "$" + commaNumbers(data);
+                            //Or a Percentage
+                            } else if (format == 'percentage') {
+                                output = data + "%";
+                            //Or Just a Regular Number
+                            } else {
+                                output = commaNumbers(data);
+                            };
+                        //Or the Data is a String
+                        } else if (typeof data === 'string') {
+                            output = data.toUpperCase();
+                        //Else Just Output the Unformatted Datapoint
+                        } else {
+                            output = data;
+                        };
+                    //If the Format is an Object
+                    } else if (typeof format === 'object') {
+                        //Which Has a Property Called Array but the Data is a String
+                        if (format.array && typeof data === 'string') {
+                            //For Indexes Mapped to a Verbose Value
+                            output = data.toUpperCase();
+                        //Which Has a Property Called Array but the Data is Not a String
+                        } else {
+                            output = format.array[data - 1];
+                        };
+                    //If Neither, Default to Regular Output
+                    } else {
+                        output = data;
+                    };
+                //If Format is Null Output Regular Data
+                } else {
+                    output = data;
+                };
+                //Just Return the Output Already!
+                return output;
             },
 
             //Retrieve Country Data
@@ -256,46 +351,44 @@ Data-Driven Choropleth Prototype Object
                 //Loop Through Selecting Target Elements and Bind Data
                 for (var i = 0; i < target.length; i++) {
                     var value;
-                    if (typeof obj[target[i]] === 'number') {
-                        value = commaNumbers(obj[target[i]]);
-                    } else {
-                        value = (obj[target[i]]).toUpperCase();
-                    }; 
+                    //If Value is a Number, Format With Commas, Otherwise Set String to Upper Case
+                    value = this.formatData(filter, obj[target[i]]);
+                    //Set Tool Tip Text Values to Country Data
                     d3.select('#' + map.pathClass + '-' + target[i] + " .data").text(value);
                 };
             };
     };
 
 /*
-Public Methods
+Macro Methods
 */
 
     //Draws Map and Sets Initial Filter
     Choropleth.prototype.init = function () {
         this.loadData();
-        this.setEvents();
+        this.setBackground(this.chronology());
     };
 
     //Triggered by Filter Selection
     Choropleth.prototype.updateFilter = function (filter) {
-        this.filter(filter, this.chronoCache || 'present');
+        this.filter(filter, this.chronoCache || this.defChrono);
     };
 
     //Triggered by Chronology Toggle
     Choropleth.prototype.updateChronology = function (chrono) {
         this.filter(this.currentFilter, this.chronology(chrono));
+        this.setBackground();
     };
 
 /*
 Instantiation
 */
-
-    var choropleth = new Choropleth({
+    var arguments = {
         "geoData"      :   "js/json/world-data.json",
         "coreData"     :   "js/json/core-data.json",
         "wrapper"      :   "#map-wrapper",
         "container"    :   "#map-container",
-        "stroke"       :   "rgba(0, 0, 0, .8)",
+        "stroke"       :   "rgba(0, 0, 0, .5)",
         "strokeWidth"  :   "0px",
         "strokeHover"  :   "1px",
         "scale"        :   "1.2",
@@ -304,8 +397,19 @@ Instantiation
         "viewBoxY"     :   672,
         "translateX"   :   64,
         "translateY"   :   152,
-        "tooltip"      :   ["country", "present", "future"]
-    });
+        "bgPath"       :   'img/map-interactive/background-',
+        "tooltip"      :   {
+            "ttElement"    :   "map-tooltip",
+            "ttClasses"    :   ["country", "present", "future"],
+            "ttOffsetX"    :   20,
+            "ttOffsetY"    :   -100 
+        },
+        "defaults"     :   {
+            "filter"       :   "economicWealth",
+            "chronology"   :   "present"   
+        }
+    },
+    choropleth = new Choropleth(arguments);
 
 /*
 Apply Bindings & Initialize

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+<!-- Metas -->
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!-- CSS -->
+		<link href="css/normalize.min.css" type="text/css" rel="stylesheet" />
+		<link href="lib/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+		<link href="css/main.css" type="text/css" rel="stylesheet" />
+		<link href="css/map-interactive.css" type="text/css" rel="stylesheet" />
+		<link href="css/timeline-interactive.css" type="text/css" rel="stylesheet" />
+<!-- IE Stuff -->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	</head>
+	<body>
+		<div id="wrapper" class="container-fluid">
+			<div id="home" class="page">
+
+			</div>
+			<div id="directors-statement" class="page">
+				<div id="statement1" class="subPage"></div>
+				<div id="statement2" class="subPage"></div>
+				<div id="statement3" class="subPage"></div>
+			</div>
+			<div id="timeline" class="page">
+
+			</div>
+			<div id="videos" class="page">
+
+			</div>
+			<div id="map" class="page">
+				<div id="map-wrapper" class="container-fluid" data-bind="style: {backgroundImage: 'url(' + background() + ')'}" />
+					<div id="choropleth-wrapper" class="row r1">
+						<div class="full-height col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+							<div id="map-container"></div>
+						</div>
+					</div>
+					<div id="map-header" class="row r2">
+						<div class="col-md-12 col-lg-12">
+							<div class="h-text">REMAPPING THE FUTURE</div>
+						</div>
+					</div>
+					<div id="map-ui" class="row r3">
+						<div class="col-md-2 col-md-offset-5 col-lg-2 col-lg-offset-5">
+							<div id="filterSelect" class="dropdown">
+								<div class="ddSelected">
+									<div data-bind="text: filterText()"></div>
+									<img src="img/map-interactive/dropdown.png" />
+								</div>
+								<div class="ddList">
+									<div id="economicWealth" class="filter ddOption active">ECONOMIG WEALTH</div>
+									<div id="incomeInequality" class="filter ddOption">INCOME INEQUALITY</div>
+									<div id="politicalInstability" class="filter ddOption">POLITICAL INSTABILITY</div>
+									<div id="unemploymentRate" class="filter ddOption">UNEMPLOYMENT RATE</div>
+									<div id="lifeExpectancy" class="filter ddOption">LIFE EXPECTANCY</div>
+									<div id="migration" class="filter ddOption">MIGRATION</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-md-offset-3 col-lg-2 col-lg-offset-3">
+							<div id="chronologySelect">
+								<div id="present" class="chronology active">PRESENT</div>
+								<div id="future" class="chronology">FUTURE</div>
+							</div>
+						</div>
+					</div>
+					<div id="map-metric" class="row r4">
+						<div class="full-height col-md-2 col-lg-2">
+							<div class="callout">
+								<div id="map-callout">
+									 <span data-bind="text: description()"></span>
+									 <div class="sourceText" data-bind="text: dataSource()"></div>
+								</div>
+								<div id="map-triangle"></div>
+							</div>
+						</div>
+					</div>
+					<div id="map-legend" class="row r5">
+						<div class="col-md-2 col-lg-2">
+							<div id="filter-metric" data-bind="text: metric()"></div>
+						</div>
+						<div class="col-md-8 col-lg-8">
+							<div id="map-key">
+								<div id="filter-range" data-bind="foreach: keyLabels()">
+									<div class="key-color">
+										<div data-bind="attr: {class: color + ' color-value'}"></div>
+										<div class="text-value" data-bind="text: label"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="map-tooltip">
+						<div id="country-country">
+							<span class="stat">COUNTRY: </span>
+							<span class="data"></span>
+						</div>
+						<div id="country-present">
+							<span class="stat">PRESENT: </span>
+							<span class="data"></span>
+						</div>
+						<div id="country-future">
+							<span class="stat">FUTURE: </span>
+							<span class="data"></span>
+						</div>
+					</div>
+				</div>
+				<div id="transparent-mask">
+					<div id="map-intro">
+						<div class="modal-head h-text">
+							A Brief History
+						</div>
+						<div class="modal-exit">
+							<div class="exit">
+								<span class="exit-line-a"></span>
+								<span class="exit-line-b"></span>
+							</div>
+						</div>
+						<div class="modalbody">
+							The world has changed dramatically. Political boundaries are shifting, world economies are fluctuating, and new superpowers are rising to power. The rapacious, and under-regulated Western world has resulted in collapse that has severely shifted the balance of global power. This interactive map is a visual guide that shows the political, environmental, and economical landscape, and how these categories have changed since the collapse.
+							<br /><br />
+							<span class="bold">
+								Explore categories by using the drop-down menu on the top of the page, and hover over a specific country for more information.
+							</span>
+						</div>
+					</div>
+				</div>
+				<div id="map-tooSmall">
+					<div class="note">
+						<div class="note-line"></div>
+						<div class="note-text">
+							INCREASE YOUR<br />BROWSER SIZE FOR THE<br />INTERACTIVE EXPERIENCE.
+						</div>
+						<div class="note-line"></div>
+					</div>
+				</div>
+			</div>
+			<div id="gallery" class="page">
+
+			</div>
+			<div id="press" class="page">
+
+			</div>
+			<div id="credits" class="page">
+
+			</div>
+		</div>
+		<div id="navigation" class="container-fluid">
+			<div class="menu">
+				<span class="menu-line outer top"></span>
+				<span class="menu-line inner"></span>
+				<span class="menu-line outer bottom"></span>
+			</div>
+		</div>
+		<div id="modals" class="container-fluid">
+
+		</div>
+<!-- JS -->
+	<script src="lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
+	<script src="lib/knockout/dist/ko.min.js" type="text/javascript"></script>
+	<script src="lib/d3/d3.min.js" type="text/javascript"></script>
+	<script src="lib/d3/d3.queue.min.js" type="text/javascript"></script>
+	<script src="lib/topojson/topojson.min.js" type="text/javascript"></script>
+	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+	<script src="js/map-interactive.js" type="text/javascript"></script>
+	<script src="js/timeline-interactive.js" type="text/javascript"></script>
+<!-- Image Pre-loader -->
+	<script>
+	var images = ['img/map-interactive/background-present.png','img/map-interactive/background-future.png','img/map-interactive/dropdown.png', 'img/map-interactive/shadow.png'],
+	    p = null,
+	    img = null;
+	    for (p in images) {
+	        if (images.hasOwnProperty(p)) {
+	            img = new Image();
+	            img.src = images[p];
+	            images[p] = img;
+	        };
+	    };
+	</script>
+	</body>
+</html>
