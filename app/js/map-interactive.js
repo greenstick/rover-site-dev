@@ -3,7 +3,7 @@
 /*
 Utility Functions
 */
-    var windowHeight;
+
     //Pretties up Numbers With Some Nice Commas
     var commaNumbers = function (number) {
         var str = number.toString().split('.');
@@ -14,9 +14,6 @@ Utility Functions
             str[1] = str[1].replace(/(\d{3})/g, '$1 ');
         };
         return str.join('.');
-    };
-    var getWindowHeight = function (e) {
-        windowHeight = e.currentTarget.innerHeight || $(window).height;
     };
 
 /*
@@ -386,6 +383,7 @@ Macro Methods
 /*
 Instantiation
 */
+    //Define Choropleth Arguments
     var arguments = {
         "geoData"      :   "js/json/world-data.json",
         "coreData"     :   "js/json/core-data.json",
@@ -414,6 +412,7 @@ Instantiation
         }
     },
 
+    //New Choopleth
     choropleth = new Choropleth(arguments);
 
 /*
@@ -430,6 +429,9 @@ Apply Bindings & Initialize
 Event Bindings
 */
 
+    /*
+    NOT FINISHED - TO STOP EVENT BUBBLING
+    */
     $('#map-tooltip').on("mouseover mouseenter mouseleave", function (e) {
         e.stopPropagation();
     });

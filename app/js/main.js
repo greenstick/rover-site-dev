@@ -17,6 +17,20 @@ var Rover = function (args) {
 };
 
 /*
+Parallax Animation
+*/
+
+	Rover.prototype.parallax 		= function (args) {
+		var parallax = $.superscrollorama({
+			isVertical 			: 	args.isVertical,
+			triggerAtCenter 	: 	args.triggerAtCenter,
+			playoutAnimations	: 	args.playoutAnimations,
+			reverse 			: 	args.reverse
+		});
+		return parallax;
+	};
+
+/*
 Micro Methods
 */
 

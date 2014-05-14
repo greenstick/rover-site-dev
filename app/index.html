@@ -48,7 +48,7 @@
 			</div>
 			<div id="map" class="page" data-bind="style: {backgroundImage: 'url(' + background() + ')'}">
 				<div class="fader">
-					<div id="map-wrapper" class="container-fluid" data-bind="style: {backgroundImage: 'url(' + background() + ')'}" />
+					<div id="map-wrapper" class="container-fluid" />
 						<div id="choropleth-wrapper" class="row r1">
 							<div class="full-height col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
 								<div id="map-container"></div>
@@ -67,7 +67,7 @@
 										<img src="img/map-interactive/dropdown.png" />
 									</div>
 									<div class="ddList">
-										<div id="economicWealth" class="filter ddOption active">ECONOMIG WEALTH</div>
+										<div id="economicWealth" class="filter ddOption active">ECONOMIC WEALTH</div>
 										<div id="incomeInequality" class="filter ddOption">INCOME INEQUALITY</div>
 										<div id="politicalInstability" class="filter ddOption">POLITICAL INSTABILITY</div>
 										<div id="unemploymentRate" class="filter ddOption">UNEMPLOYMENT RATE</div>
@@ -221,6 +221,8 @@
 	<script src="lib/d3/d3.queue.min.js" type="text/javascript"></script>
 	<script src="lib/topojson/topojson.min.js" type="text/javascript"></script>
 	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="lib/parallax/TweenMax.js" type="text/javascript"></script>
+	<script src="lib/parallax/superscrollorama.js" type="text/javascript"></script>
 	<script src="js/main.js" type="text/javascript"></script>
 	<script src="js/map-interactive.js" type="text/javascript"></script>
 	<script src="js/timeline-interactive.js" type="text/javascript"></script>
