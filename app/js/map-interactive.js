@@ -3,17 +3,20 @@
 /*
 Utility Functions
 */
-
+    var windowHeight;
     //Pretties up Numbers With Some Nice Commas
     var commaNumbers = function (number) {
         var str = number.toString().split('.');
-            if (str[0].length >= 4) {
-                str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-            }; 
-            if (str[1] && str[1].length >= 5) {
-                str[1] = str[1].replace(/(\d{3})/g, '$1 ');
-            };
+        if (str[0].length >= 4) {
+            str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+        }; 
+        if (str[1] && str[1].length >= 5) {
+            str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+        };
         return str.join('.');
+    };
+    var getWindowHeight = function (e) {
+        windowHeight = e.currentTarget.innerHeight || $(window).height;
     };
 
 /*
@@ -161,38 +164,38 @@ Function Specific Methods
             //Parse Filter Argument, XHR Data, Apply Quantize Function, Then Bind to Elements - Callback Optional
             map.filter = function (filter, chrono, data, callback) {
                 var data = data || map.loadedData, chronology = [], colors = [];
-                    //Check If Map Should be Rendered Using Image or Data
-                    if (data[filter].image.length) {
-                        //Construct Color 
-                        for (var i = 0; i < data[filter].colorClasses.length; i++) {
-                            colors.push(data[filter].colorClasses[i]);
-                        };
-                    } else {
-                        //Create Array of Data Values with Requested Chronology
-                        for (var i = 0; i < data[filter].countries.length; i++) {
-                            chronology.push(data[filter].countries[i][chrono]);
-                        };
-                        //Set Max & Min From Array
-                        var max = Math.max.apply(null, chronology),
-                            min = Math.min.apply(null, chronology);
-                        //Loop Through Values, Bucket / Quantize Values by Appending a Dynamic CSS Class to Element with Correct ID
-                        for (var i = 0; i < data[filter].countries.length; i++) {
-                            //Skips Null Values, Ideally no Null Values Would Exist - They Would Be Represented by A Base Numberic Value, i.e. 0
-                            if (data[filter].countries[i][chrono] != null) {
-                                d3.select('#' + data[filter].countries[i].id).attr('class', function (d) {
-                                    //Bucket Country Data - Searches for Specifc Layer Count and Sort Function in map.coreData Object, Otherwise Defaults to Values Set on Init
-                                    var color = map.bucket(data[filter].countries[i][chrono], max, min, (data[filter].layers || map.layers), data[filter].color, (data[filter].sort || map.sort));
-                                        //Array Holds all CSS Classes Being Used to Color Map Elements - 
-                                        colors.push(color);
-                                        return color + " " + map.pathClass;
-                                });
-                            };
+                //Check If Map Should be Rendered Using Image or Data
+                if (data[filter].image.length) {
+                    //Construct Color 
+                    for (var i = 0; i < data[filter].colorClasses.length; i++) {
+                        colors.push(data[filter].colorClasses[i]);
+                    };
+                } else {
+                    //Create Array of Data Values with Requested Chronology
+                    for (var i = 0; i < data[filter].countries.length; i++) {
+                        chronology.push(data[filter].countries[i][chrono]);
+                    };
+                    //Set Max & Min From Array
+                    var max = Math.max.apply(null, chronology),
+                        min = Math.min.apply(null, chronology);
+                    //Loop Through Values, Bucket / Quantize Values by Appending a Dynamic CSS Class to Element with Correct ID
+                    for (var i = 0; i < data[filter].countries.length; i++) {
+                        //Skips Null Values, Ideally no Null Values Would Exist - They Would Be Represented by A Base Numberic Value, i.e. 0
+                        if (data[filter].countries[i][chrono] != null) {
+                            d3.select('#' + data[filter].countries[i].id).attr('class', function (d) {
+                                //Bucket Country Data - Searches for Specifc Layer Count and Sort Function in map.coreData Object, Otherwise Defaults to Values Set on Init
+                                var color = map.bucket(data[filter].countries[i][chrono], max, min, (data[filter].layers || map.layers), data[filter].color, (data[filter].sort || map.sort));
+                                    //Array Holds all CSS Classes Being Used to Color Map Elements - 
+                                    colors.push(color);
+                                    return color + " " + map.pathClass;
+                            });
                         };
                     };
-                    //Generate Key
-                    map.generateKey(filter, data, colors, (data[filter].sort || map.sort));
-                    //Update Dropdown
-                    map.dropdown(filter, data);
+                };
+                //Generate Key
+                map.generateKey(filter, data, colors, (data[filter].sort || map.sort));
+                //Update Dropdown
+                map.dropdown(filter, data);
                 //Cache Filter
                 this.currentFilter = filter;
                 //Execute Callback
@@ -265,19 +268,20 @@ Function Specific Methods
                     });
                     //Display Tooltip on Country Mouseover
                     $('.' + map.pathClass).on("click mouseover", function (e) {
+                        var pos, ttPos;
                         if (map.ttFollow === true) {
+                            pos = $(map.wrapper).offset();
                             $("#" + map.ttElement).toggleClass('active')
                                 .css("position", "absolute")
                                 .css("left", (e.pageX + map.ttOffsetX) +"px")
-                                .css("top", (e.pageY + map.ttOffsetY) + "px");
+                                .css("top", (e.pageY - pos.top + map.ttOffsetY) + "px");
                         } else {
-                            var pos = $('#' + map.ttElement).offset();
+                            ttPos = $('#' + map.ttElement).offset()
                             $("#" + map.ttElement).toggleClass('active')
                                 .css("position", "absolute")
-                                .css("left", (pos.left + map.ttOffsetX) +"px")
-                                .css("top", (pos.top + map.ttOffsetY) + "px");
+                                .css("left", (ttPos.left + map.ttOffsetX) +"px")
+                                .css("top", (ttPos.top + map.ttOffsetY) + "px");
                         };
-                        console.log(e.pageX + ", " + e.pageY);
                     });
                     //Country Mouse Out
                     $('.' + map.pathClass).on("mouseout", function (e) {
@@ -290,7 +294,7 @@ Function Specific Methods
             //A Nasty Formatting Function - Hopefully I'll Have Some Time to Come Up With a More Extensible Solution
             map.formatData = function (filter, data) {
                 var format = map.loadedData[filter].format, output;
-                //If Format is Defined...
+                //If Format is Not Null...
                 if (format != null) {
                     //And the Format is Not an Object...
                     if (typeof format !== 'object') {
@@ -306,32 +310,31 @@ Function Specific Methods
                             } else {
                                 output = commaNumbers(data);
                             };
-                        //Or the Data is a String
+                        //Or If The Format Is Not an Object and the Data is a String
                         } else if (typeof data === 'string') {
                             output = data.toUpperCase();
-                        //Else Just Output the Unformatted Datapoint
+                        //If The Format Is Not an Object, String, or Number, Just Output the Unformatted Datapoint
                         } else {
                             output = data;
                         };
                     //If the Format is an Object
                     } else if (typeof format === 'object') {
-                        //Which Has a Property Called Array but the Data is a String
+                        //Which Has a Property Called Array but the Data is a String (In This Use Case, The Country Name)
                         if (format.array && typeof data === 'string') {
-                            //For Indexes Mapped to a Verbose Value
                             output = data.toUpperCase();
-                        //Which Has a Property Called Array but the Data is Not a String
+                        //Which Has a Property Called Array and the Data is Not a String
                         } else {
                             output = format.array[data - 1];
                         };
-                    //If Neither, Default to Regular Output
+                    //If Neither of The Above Conditions are Met, Default to Regular Output
                     } else {
                         output = data;
                     };
-                //If Format is Null Output Regular Data
+                //If Format Is Null Output Regular Data
                 } else {
                     output = data;
                 };
-                //Just Return the Output Already!
+                //And then, Finally, Return The Output
                 return output;
             },
 
@@ -398,17 +401,19 @@ Instantiation
         "translateX"   :   64,
         "translateY"   :   152,
         "bgPath"       :   'img/map-interactive/background-',
+        "bgImgType"    :   '.jpg',
         "tooltip"      :   {
             "ttElement"    :   "map-tooltip",
             "ttClasses"    :   ["country", "present", "future"],
-            "ttOffsetX"    :   20,
-            "ttOffsetY"    :   -100 
+            "ttOffsetX"    :   10,
+            "ttOffsetY"    :   -110
         },
         "defaults"     :   {
             "filter"       :   "economicWealth",
             "chronology"   :   "present"   
         }
     },
+
     choropleth = new Choropleth(arguments);
 
 /*
@@ -424,16 +429,20 @@ Apply Bindings & Initialize
 /*
 Event Bindings
 */
+
+    $('#map-tooltip').on("mouseover mouseenter mouseleave", function (e) {
+        e.stopPropagation();
+    });
     //Exit Map Intro Modal
     $('#transparent-mask .exit').on("click", function () {
         $('#transparent-mask').fadeOut();
     });
     //Drop Down Click & Mouseover
-    $('.dropdown').on("click mouseover", function () {
+    $('.dropdown').on("click mouseenter", function () {
         $(this).addClass('active');
     });
     //Drop Down Mouseout
-    $('.dropdown').on("mouseout", function () {
+    $('.dropdown').on("mouseleave", function () {
         $(this).removeClass('active');
     });
     //Filter Selection Event

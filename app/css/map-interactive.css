@@ -1,26 +1,5 @@
 /*
-Fonts
-*/
-
-@font-face {
-	font-family: 'TradeGothicLT-Bold';
-	src: url('../font/TradeGothicLTStd-Bold.otf');
-}
-@font-face {
-	font-family: 'TradeGothicLT-BdCn20';
-	src: url('../font/TradeGothicLTStd BdCn20.otf');
-}
-@font-face {
-	font-family: 'TradeGothicLT-Cn18';
-	src: url('../font/TradeGothicLTStd-Cn18.otf');
-}
-@font-face {
-	font-family: 'AdobeGaramondPro-Regular';
-	src: url('../font/AGaramondPro-Regular.otf');
-}
-
-/*
-Page Styles
+Map Page Styles
 */
 
 #map-wrapper {
@@ -31,6 +10,10 @@ Page Styles
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	background-position: center;
+	background-origin: center;
+	background-attachment: fixed;
+	ba
 	font-family: 'TradeGothicLT-BdCn20';
 	background-color: #2C251C;
 }
