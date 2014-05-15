@@ -22,12 +22,27 @@ Parallax Animation
 
 	Rover.prototype.parallax 		= function (args) {
 		var parallax = $.superscrollorama({
-			isVertical 			: 	args.isVertical,
-			triggerAtCenter 	: 	args.triggerAtCenter,
-			playoutAnimations	: 	args.playoutAnimations,
-			reverse 			: 	args.reverse
+			isVertical 			: 	args.isVertical				|| 		true,
+			triggerAtCenter 	: 	args.triggerAtCenter		|| 		true,
+			playoutAnimations	: 	args.playoutAnimations		|| 		true,
+			reverse 			: 	args.reverse				|| 		true
 		});
 		return parallax;
+	};
+
+	Rover.prototype.animations 		= function (args) {
+		var animations = [];
+		for (var i = 0; i < args.length; i++) {
+			var animation = parallax.addTween(
+				args[i].target,
+				args[i].tween,
+				args[i].duration,
+				args[i].offset,
+				args[i].reverse
+			);
+			animations.push(animation);
+		};
+		return animations
 	};
 
 /*
@@ -66,8 +81,14 @@ Micro Methods
 	};
 
 	/* 		  
-	UI & Event Triggered Methods
-	*/		  
+	UI / Event Triggered Methods
+	*/		
+
+	//Set Body Heigh on Resize
+	Rover.prototype.resize 			= function (e) {
+		var height = e.currentTarget.innerHeight;
+			$('body').height(height);
+	};
 
 	//Fade Out Content When Interacting With Menu
 	Rover.prototype.fadeElements 	= function () {
@@ -122,7 +143,11 @@ Instatiation
 
 /*			
 Event Bindings
-*/			
+*/		
+
+	$(window).on("resize", function (e) {
+		setTimeout(main.resize(e), 100)
+	});				
 
 	/*
 	Menu

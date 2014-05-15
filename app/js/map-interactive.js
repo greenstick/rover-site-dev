@@ -160,7 +160,7 @@ Function Specific Methods
 
             //Parse Filter Argument, XHR Data, Apply Quantize Function, Then Bind to Elements - Callback Optional
             map.filter = function (filter, chrono, data, callback) {
-                var data = data || map.loadedData, chronology = [], colors = [];
+                var data = data || map.loadedData, chronology = [], colors = [], max, min;
                 //Check If Map Should be Rendered Using Image or Data
                 if (data[filter].image.length) {
                     //Construct Color 
@@ -170,15 +170,17 @@ Function Specific Methods
                 } else {
                     //Create Array of Data Values with Requested Chronology
                     for (var i = 0; i < data[filter].countries.length; i++) {
-                        chronology.push(data[filter].countries[i][chrono]);
+                        if (data[filter].countries[i][chrono] !== null) {
+                            chronology.push(data[filter].countries[i][chrono]);
+                        };
                     };
                     //Set Max & Min From Array
-                    var max = Math.max.apply(null, chronology),
-                        min = Math.min.apply(null, chronology);
+                    max = Math.max.apply(null, chronology),
+                    min = Math.min.apply(null, chronology);
                     //Loop Through Values, Bucket / Quantize Values by Appending a Dynamic CSS Class to Element with Correct ID
                     for (var i = 0; i < data[filter].countries.length; i++) {
                         //Skips Null Values, Ideally no Null Values Would Exist - They Would Be Represented by A Base Numberic Value, i.e. 0
-                        if (data[filter].countries[i][chrono] != null) {
+                        if (data[filter].countries[i][chrono] !== null) {
                             d3.select('#' + data[filter].countries[i].id).attr('class', function (d) {
                                 //Bucket Country Data - Searches for Specifc Layer Count and Sort Function in map.coreData Object, Otherwise Defaults to Values Set on Init
                                 var color = map.bucket(data[filter].countries[i][chrono], max, min, (data[filter].layers || map.layers), data[filter].color, (data[filter].sort || map.sort));
@@ -186,11 +188,14 @@ Function Specific Methods
                                     colors.push(color);
                                     return color + " " + map.pathClass;
                             });
+                        //If Null Value, Remove Previous Color Class to Enable Default CSS Color Class
+                        } else {
+                            d3.select('#' + data[filter].countries[i].id).attr('class', map.pathClass);
                         };
                     };
                 };
                 //Generate Key
-                map.generateKey(filter, data, colors, (data[filter].sort || map.sort));
+                map.generateKey(filter, chrono, data, colors, (data[filter].sort || map.sort), max, min);
                 //Update Dropdown
                 map.dropdown(filter, data);
                 //Cache Filter
@@ -210,8 +215,8 @@ Function Specific Methods
             },
 
             //Seperate Unique Key Color Values and Push to keyLabels Observable Array, then Retrieve Key Filter Metric and Set to Observable
-            map.generateKey = function (filter, data, array, sort) {
-                var temp = [], arr = new Array(data[filter].layers), difference;
+            map.generateKey = function (filter, chrono, data, array, sort, max, min) {
+                var temp = [], arr = new Array(data[filter].layers), difference, splitValue = ((max - min) / data[filter].layers).toFixed(0);
                 //Reset Key Colors Observable Array
                 map.keyLabels([]);
                 //Create Array with Unique Color Classes Being Displayed
@@ -225,12 +230,13 @@ Function Specific Methods
                 //Order Temp Array to Correctly Output Color Gradient
                 for (var i = 0; i < temp.length; i++) {
                     //Order Gradient Colors Based on Sort Function
-                    var position = (sort === "descending" || sort == "dsc" || sort === 0) ? parseInt(temp[i].split('-')[1] - (data[filter].layers)) : parseInt((data[filter].layers  - difference) - (temp[i].split('-')[1]));
+                    var position = (sort === "descending" || sort == "dsc" || sort === 0) ? parseInt(temp[i].split('-')[1] - (data[filter].layers)) : (data[filter].layers - temp[i].split('-')[1] - 1);
                     arr.splice(position, 1, temp[i]);
                 };
                 //Push Unique Values to Observable Array
                 for (var i = 0; i < arr.length; i++) {
-                    map.keyLabels.push({color: arr[i], label: data[filter].labels[i]});
+                    // map.keyLabels.push({color: arr[i], label: (min + (splitValue * i) + " - " + (min + (splitValue * (i + 1))))});
+                    map.keyLabels.push({color: arr[i], label: data[filter].labels[chrono][i]})
                 };
                 //Set Key Metric Text
                 map.metric(data[filter].metric);
@@ -288,53 +294,6 @@ Function Specific Methods
                 };
             },
 
-            //A Nasty Formatting Function - Hopefully I'll Have Some Time to Come Up With a More Extensible Solution
-            map.formatData = function (filter, data) {
-                var format = map.loadedData[filter].format, output;
-                //If Format is Not Null...
-                if (format != null) {
-                    //And the Format is Not an Object...
-                    if (typeof format !== 'object') {
-                        //And the Data is a Number...
-                        if (typeof data === 'number') {
-                            //And the Format is Monetary
-                            if (format == 'monetary') {
-                                output = "$" + commaNumbers(data);
-                            //Or a Percentage
-                            } else if (format == 'percentage') {
-                                output = data + "%";
-                            //Or Just a Regular Number
-                            } else {
-                                output = commaNumbers(data);
-                            };
-                        //Or If The Format Is Not an Object and the Data is a String
-                        } else if (typeof data === 'string') {
-                            output = data.toUpperCase();
-                        //If The Format Is Not an Object, String, or Number, Just Output the Unformatted Datapoint
-                        } else {
-                            output = data;
-                        };
-                    //If the Format is an Object
-                    } else if (typeof format === 'object') {
-                        //Which Has a Property Called Array but the Data is a String (In This Use Case, The Country Name)
-                        if (format.array && typeof data === 'string') {
-                            output = data.toUpperCase();
-                        //Which Has a Property Called Array and the Data is Not a String
-                        } else {
-                            output = format.array[data - 1];
-                        };
-                    //If Neither of The Above Conditions are Met, Default to Regular Output
-                    } else {
-                        output = data;
-                    };
-                //If Format Is Null Output Regular Data
-                } else {
-                    output = data;
-                };
-                //And then, Finally, Return The Output
-                return output;
-            },
-
             //Retrieve Country Data
             map.bindCountryData = function (filter, country, target) {
                 var obj;
@@ -352,7 +311,7 @@ Function Specific Methods
                 for (var i = 0; i < target.length; i++) {
                     var value;
                     //If Value is a Number, Format With Commas, Otherwise Set String to Upper Case
-                    value = this.formatData(filter, obj[target[i]]);
+                    value = (obj[target[i]] !== null) ? this.formatData(filter, obj[target[i]]) : "N/A";
                     //Set Tool Tip Text Values to Country Data
                     d3.select('#' + map.pathClass + '-' + target[i] + " .data").text(value);
                 };

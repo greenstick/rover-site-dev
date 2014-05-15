@@ -23,7 +23,7 @@ Fonts
 Core
 */
 
-html, body {
+body {
 	height: 100%;
 	margin: 0 0;
 	font-family: 'TradeGothicLT-BdCn20';
@@ -32,6 +32,14 @@ html, body {
 	position: relative;
 	width: 100%;
 	height: 100%;
+}
+#loaded {
+	display: none;
+}
+#loaded-content {
+	position: relative;
+	height: 100%;
+	display: none;
 }
 #home {
 	background: url('../img/backgrounds/home-bg.jpg') no-repeat center bottom fixed;
@@ -50,6 +58,11 @@ html, body {
 	background-origin: center;
 	background-attachment: fixed;
 }
+#timeline {
+	background-position: center;
+	background-origin: center;
+	background-attachment: fixed;
+}
 #videos {
 	background: url('../img/backgrounds/videos-bg.jpg') no-repeat bottom right fixed;
 }
@@ -60,12 +73,12 @@ html, body {
 	background: url('../img/backgrounds/press-bg.jpg') no-repeat center center fixed;
 }
 #credits {
-	background: url('../img/backgrounds/credits-bg.jpg') no-repeat center top fixed;
+	background: url('../img/backgrounds/credits-bg.jpg') no-repeat center center fixed;
 }
-#home.page, #statement.page #statement1.subPage, #statement.page #statement2.subPage, #statement.page #statement3.subPage, #videos.page, #gallery.page, #press.page, #credits.page, #map.page {
+.page, .subPage {
 	position: relative;
-  	top: 0;
-  	left: 0;
+  	top: 0px;
+  	left: 0px;
   	min-height: 100%;
   	min-width: 360px;
   	width: 100%;
@@ -76,6 +89,9 @@ html, body {
 	background-size: cover;
 	font-size: 0px;
 }
+.subPage {
+	display: inline-block;
+}
 * {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -84,6 +100,10 @@ html, body {
 }
 .container-fluid {
 	padding: 0 !important;
+}
+.fader {
+	position: relative;
+	height: 100%;
 }
 
 /*
@@ -225,7 +245,43 @@ Navigation
 /*
 Home Page
 */
+	#home {
 
+	}
+	#home .r1 {		
+		height: 10%;
+		margin: 0 0 5% 0;
+		text-align: center;
+	}
+	#home .r2 {
+		height: 10%;
+		margin: 0 0 5% 0;
+		text-align: center;
+	}
+	#home .r3 {
+		height: 20%;
+		margin: 0 0 5% 0;
+	}
+	#home .r3 img {
+		position: relative;
+		left: 50%;
+		margin: 0 0 0 -212px;
+	}
+	#home .r4 {
+		height: 15%;
+		text-align: center;
+	}
+	#home .r4 .h-text {
+		font-size: 42px;
+		color: #FFF8D9;
+		letter-spacing: 4px;
+	}
+	#home .r5 {
+		position: absolute;
+		bottom: 20px;
+		height: 5%;
+		text-align: center;
+	}
 /*
 Directors Statement
 */
@@ -311,7 +367,7 @@ Map Interactive Core
 }
 #map-metric {
 	top: 0px;
-	height: 34%;
+	height: 30%;
 }
 #map-legend {
 	top: 0px;
@@ -501,7 +557,7 @@ Drop Down Menu
 	transition: height 0.2s linear;
 }
 .dropdown:hover .ddList, .dropdown.active .ddList {
-	height: 192px;
+	height: 160px;
 }
 .dropdown .ddList .ddOption{
 	width: 228px;
@@ -801,7 +857,7 @@ Drop Down Menu
 		width: 248px;
 	}
 	.dropdown:hover .ddList, .dropdown.active .ddList {
-		height: 240px;
+		height: 200px;
 	}
 	.dropdown .ddList .ddOption{
 		width: 248px;
