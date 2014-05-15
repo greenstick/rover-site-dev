@@ -235,7 +235,9 @@ Function Specific Methods
                 };
                 //Push Unique Values to Observable Array
                 for (var i = 0; i < arr.length; i++) {
+                    //This Was Going to be Used to Dynamically Generate The Labels
                     // map.keyLabels.push({color: arr[i], label: (min + (splitValue * i) + " - " + (min + (splitValue * (i + 1))))});
+                    //The Quick Hack - Pull Labels From Array in JSON Object
                     map.keyLabels.push({color: arr[i], label: data[filter].labels[chrono][i]})
                 };
                 //Set Key Metric Text
@@ -426,7 +428,7 @@ Apply Bindings & Initialize
 */
 
     //Apply Bindings
-    ko.applyBindings(choropleth);
+    ko.applyBindings(choropleth, document.getElementById("map"));
     //Initialize
     choropleth.init();
 
