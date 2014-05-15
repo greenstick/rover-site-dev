@@ -146,7 +146,7 @@ Event Bindings
 */		
 
 	$(window).on("resize", function (e) {
-		setTimeout(main.resize(e), 100)
+		setTimeout(main.resize(e), 150)
 	});				
 
 	/*

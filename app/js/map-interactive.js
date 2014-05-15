@@ -294,6 +294,53 @@ Function Specific Methods
                 };
             },
 
+            //A Nasty Formatting Function - Hopefully I'll Have Some Time to Come Up With a More Extensible Solution
+            map.formatData = function (filter, data) {
+                var format = map.loadedData[filter].format, output;
+                //If Format is Not Null...
+                if (format != null) {
+                    //And the Format is Not an Object...
+                    if (typeof format !== 'object') {
+                        //And the Data is a Number...
+                        if (typeof data === 'number') {
+                            //And the Format is Monetary
+                            if (format == 'monetary') {
+                                output = "$" + commaNumbers(data);
+                            //Or a Percentage
+                            } else if (format == 'percentage') {
+                                output = data + "%";
+                            //Or Just a Regular Numbers
+                            } else {
+                                output = commaNumbers(data);
+                            };
+                        //Or If The Format Is Not an Object and the Data is a String
+                        } else if (typeof data === 'string') {
+                            output = data.toUpperCase();
+                        //If The Format Is Not an Object, String, or Number, Just Output the Unformatted Datapoint
+                        } else {
+                            output = data;
+                        };
+                    //If the Format is an Object
+                    } else if (typeof format === 'object') {
+                        //Which Has a Property Called Array but the Data is a String (In This Use Case, The Country Name)
+                        if (format.array && typeof data === 'string') {
+                            output = data.toUpperCase();
+                        //Which Has a Property Called Array and the Data is Not a String
+                        } else {
+                            output = format.array[data - 1];
+                        };
+                    //If Neither of The Above Conditions are Met, Default to Regular Output
+                    } else {
+                        output = data;
+                    };
+                //If Format Is Null Output Regular Data
+                } else {
+                    output = data;
+                };
+                //And then, Finally, Return The Output
+                return output;
+            },
+
             //Retrieve Country Data
             map.bindCountryData = function (filter, country, target) {
                 var obj;
