@@ -60,17 +60,17 @@
 							<div class="social">
 			                  <a href="http://therover-movie.tumblr.com/" target="_blank" class="tumblr"></a>
 			                  <a href="https://twitter.com/TheRoverMovie" target="_blank" class="twitter"></a>
-			                  <a href="https://www.facebook.com/TheRoverMovie" target="_blank" class="facebook"></a>
+			                  <a href="https://facebook.com/TheRoverMovie" target="_blank" class="facebook"></a>
 			                </div>
 			            </div>
 					</div>
 				</div>
 				<div id="parallax-elements">
-					<div class="p1"></div>
-					<div class="p2"></div>
-					<div class="p3"></div>
-					<div class="p4"></div>
-					<div class="p5"></div>
+					<div class="p1" data-parallaxify-range-x="10"></div>
+					<div class="p2" data-parallaxify-range-x="25"></div>
+					<div class="p3" data-parallaxify-range-x="50"></div>
+					<div class="p4" data-parallaxify-range-x="100"></div>
+					<div class="p5" data-parallaxify-range-x="150"></div>
 				</div>
 			</div>
 			<div id="loaded-content">
@@ -282,9 +282,11 @@
 			.script("lib/topojson/topojson.min.js").wait()
 			.script("lib/bootstrap/dist/js/bootstrap.min.js").wait()
 			.script("lib/parallax/skrollr.min.js").wait()
+			.script("lib/parallax/parallaxify.min.js").wait()
 			.script("js/main.js").wait()
 			.script("js/image-preloader.js").wait(function () {
 				var parallax = skrollr.init();
+				jQuery("#parallax-elements").parallaxify();
 				jQuery(".loaded").fadeIn(2000);
 				jQuery("#loaded-content").show();
 			});

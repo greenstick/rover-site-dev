@@ -395,59 +395,75 @@ Home Parallax
   	min-width: 360px;
   	width: 100%;
   	height: 100%;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
 	z-index: -10;
 }
 #parallax-elements .p1 {
 	position: absolute;
 	top: 0%;
-	left: 0%;
+	left: -10%;
 	height: 100%;
-	width: 100%;
+	width: 120% !important;
 	display: block;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 	background: url('../img/home/parallax-clouds.png') no-repeat center top fixed;
 }
 #parallax-elements .p2 {
 	position: absolute;
 	top: 0%;
-	left: 0%;
+	left: -10%;
 	height: 100%;
-	width: 100%;
+	width: 120% !important;
 	display: block;
-	background: url('../img/home/parallax-mountains.png') no-repeat center top fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background: url('../img/home/parallax-mountains.png') no-repeat center top;
 	z-index: 10;
 }
 #parallax-elements .p3 {
 	position: absolute;
 	top: 0%;
-	left: 0%;
+	left: -10%;
 	height: 100%;
-	width: 100%;
+	width: 120% !important;
 	display: block;
-	background: url('../img/home/parallax-middleground.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background: url('../img/home/parallax-middleground.png') no-repeat center center;
 	z-index: 20;
 }
 #parallax-elements .p4 {
 	position: absolute;
 	top: 0%;
-	left: 0%;
+	left: -10%;
 	height: 100%;
-	width: 100%;
+	width: 120% !important;
 	display: block;
-	background: url('../img/home/parallax-protagonist.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background: url('../img/home/parallax-protagonist.png') no-repeat center center;
 	z-index: 30;
 }
 #parallax-elements .p5 {
 	position: absolute;
 	top: 0%;
-	left: 0%;
+	left: -10%;
 	height: 100%;
-	width: 100%;
+	width: 120% !important;
 	display: block;
-	background: url('../img/home/parallax-foreground.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background: url('../img/home/parallax-foreground.png') no-repeat center center;
 	z-index: 40;
 }
 
