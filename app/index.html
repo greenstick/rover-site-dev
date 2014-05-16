@@ -25,7 +25,7 @@
 						<div class="col-sm-3 col-sm-offset-9 col-md-2 col-md-offset-10 col-lg-2 col-lg-offset-10">
 							<div class="verbiage">
 								NYC/LA JUNE 13<br />
-								NATIONWIDE JUNE 20
+								WIDE JUNE 20
 							</div>
 							<div class="button">
 								WATCH TRAILER
@@ -44,10 +44,7 @@
 					</div>
 					<div class="row r4">
 						<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-							<div class="h-text">
-								FEAR THE MAN WITH<br />
-								NOTHING LEFT TO LOSE.
-							</div>
+					
 						</div>
 					</div>
 					<div class="row r5">
@@ -65,12 +62,17 @@
 			            </div>
 					</div>
 				</div>
-				<div id="parallax-elements">
-					<div class="p1" data-parallaxify-range-x="10"></div>
-					<div class="p2" data-parallaxify-range-x="25"></div>
-					<div class="p3" data-parallaxify-range-x="50"></div>
+				<div class="parallax-element">
+					<div class="p1" data-parallaxify-range-x="10">
+						<div class="h-text">
+							FEAR THE MAN WITH<br />
+							NOTHING LEFT TO LOSE.
+						</div>
+					</div>
+					<div class="p2" data-parallaxify-range-x="20"></div>
+					<div class="p3" data-parallaxify-range-x="75"></div>
 					<div class="p4" data-parallaxify-range-x="100"></div>
-					<div class="p5" data-parallaxify-range-x="150"></div>
+					<div class="p5" data-parallaxify-range-x="125"></div>
 				</div>
 			</div>
 			<div id="loaded-content">
@@ -263,12 +265,21 @@
 			</div>
 		</div>
 		<div id="getTickets" class="button">GET TICKETS</div>
+		<div id="mask" class="container-fluid">
+		
+		</div>
 		<div id="modals" class="container-fluid">
 			<div id="zipcode-modal">
-				<input data-bind="value: zipcode()" placeholder="ZIP CODE" />
-				<a data-bind='attr: {href: "http://www.fandango.com/godzilla2014_157230/movietimes?location=" + zipcode()' target="_blank">
-					SUBMIT
-				</a>
+				<div class="closeIcon">
+					<span class="outer top"></span>
+					<span class="outer bottom"></span>
+				</div>
+				<div class="ui">
+					<input class="input" data-bind="value: zipcode" placeholder="ZIP CODE" pattern="(\d{5}([\-]\d{4})?)" />
+					<a class="submit" data-bind="attr: {href: valid()}" target="_blank">
+						SUBMIT
+					</a>
+				</div>
 			</div>
 		</div>
 <!-- JS Includes -->
@@ -286,7 +297,17 @@
 			.script("js/main.js").wait()
 			.script("js/image-preloader.js").wait(function () {
 				var parallax = skrollr.init();
-				jQuery("#parallax-elements").parallaxify();
+				jQuery(".parallax-element").parallaxify({
+					horizontalParallax: true,
+					verticalParallax: false,
+					positionProperty: 'transform',
+					responsive: true,
+					useMouseMove: true,
+					useGyroscope: true,
+					alphaFilter: 0.5,
+					motionType: 'linear',
+					mouseMotionType: 'linear'
+				});
 				jQuery(".loaded").fadeIn(2000);
 				jQuery("#loaded-content").show();
 			});

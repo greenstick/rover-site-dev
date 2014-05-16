@@ -636,25 +636,48 @@ Zip Code Modal View Model
 
 (function () {
 	//Prototype
-	var Zipcode = function (element) {
-		var zip = this;
-			zip.element = element,
-			zip.zipcode = ko.observable();
+	var Zipcode 		= function (args) {
+		var zip 		= this;
+			zip.element 	= args.element,
+			zip.mask 		= args.mask,
+			zip.location 	= args.location,
+			zip.pattern 	= /(\d{5}([\-]\d{4})?)/,
+			zip.zipcode 	= ko.observable(),
+			zip.valid 	 	= ko.computed(function () {
+				console.log(zip.location + zip.zipcode());
+				return zip.location + zip.zipcode();
+			});
 	};
 
 	//Open Zipcode Modal
-	Zipcode.prototype.open	=	function () {
+	Zipcode.prototype.open		= 	function () {
 		var zip = this;
+		$(zip.mask).fadeIn();
 		$(zip.element).fadeIn();
 	};
 
 	//Close Zipcode Modal
-	Zipcode.prototype.close = function () {
+	Zipcode.prototype.close 	= 	function () {
+		var zip = this;
+		$(zip.mask).fadeOut();
 		$(zip.element).fadeOut();
 	};
 
+	Zipcode.prototype.validate 	=	function () {
+
+	};
+
+	Zipcode.prototype.submit 	= 	function () {
+		var zip = this;
+
+	};
+
 	//Instantiation
-	var zipModal = new Zipcode("#zipcode-modal");
+	var zipModal = new Zipcode({
+		element 	: 	"#zipcode-modal",
+		mask 		: 	"#mask",
+		location 	: 	"http://www.fandango.com/therover_170724/movietimes?location="
+	});
 
 	//Apply Knockout Bindings
 	ko.applyBindings(zipModal, document.getElementById("zipcode-modal"));
@@ -664,12 +687,15 @@ Zip Code Modal View Model
 	*/
 
 	//Open Modal
-	$('#zip-open').on("click", function () {
+	$('#getTickets').on("click", function () {
 		zipModal.open();
 	});
 
 	//Close Modal
-	$('#zipcode-modal .close').on("click", function () {
+	$('#zipcode-modal .closeIcon').on("click", function () {
 		zipModal.close();
 	});
+
+	//Submit
+
 }(jQuery, ko));

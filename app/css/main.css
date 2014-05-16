@@ -44,17 +44,14 @@ body {
 #home {
 	/*background: url('../img/backgrounds/home-bg.jpg') no-repeat center bottom fixed;*/
 }
-#statement {
-	display: inline-block;
-}
 #statement1 {
-	background: url('../img/backgrounds/statement1-bg.jpg') no-repeat center right;
+	background: url('../img/backgrounds/statement1-bg.jpg') no-repeat center right fixed;
 }
 #statement2 {
-	background: url('../img/backgrounds/statement2-bg.jpg') no-repeat bottom left;
+	background: url('../img/backgrounds/statement2-bg.jpg') no-repeat bottom left fixed;
 }
 #statement3 {
-	background: url('../img/backgrounds/statement3-bg.jpg') no-repeat bottom right;
+	background: url('../img/backgrounds/statement3-bg.jpg') no-repeat bottom right fixed;
 }
 #map {
 	background-position: center;
@@ -76,6 +73,9 @@ body {
 #credits {
 	background: url('../img/backgrounds/credits-bg.jpg') no-repeat center center fixed;
 }
+.page {
+	overflow: hiddens;
+}
 #home.page, #map.page, #timeline.page, #videos.page, #gallery.page, #press.page, #credits.page {
 	position: relative;
   	top: 0px;
@@ -94,7 +94,7 @@ body {
 	position: relative;
 	min-height: 100%;
   	min-width: 360px;
-  	width: 300%;
+  	width: 100%;
   	height: 100%;
 	font-size: 0px;
 	overflow: hidden;
@@ -105,7 +105,7 @@ body {
   	left: 0px;
 	min-height: 100%;
   	min-width: 360px;
-  	width: 33.333%;
+  	width: 100%;
   	height: 100%;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -147,7 +147,7 @@ Navigation
 	-o-transition: left 550ms;
 	transition: left 550ms;
 	font-size: 22px;
-	z-index: 9999;
+	z-index: 5000;
 }
 #navigation.active {
 	left: 0px;
@@ -186,12 +186,12 @@ Nom Nom I Can Haz Cheezbrgr Menu
 
 .menu-open {
 	position: fixed;
-	left: 40px;
+	left: 20px;
 	top: 20px;
 	height: 30px;
 	padding-top: 5px;
 	display: block;
-	z-index: 9999;
+	z-index: 5000;
 	opacity: 1;
 	font-size: 24px;
 	cursor: pointer;
@@ -256,13 +256,51 @@ Nom Nom I Can Haz Cheezbrgr Menu
 }
 .menu-open.close .bottom {
 	-webkit-transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
-	-moz-transform: rotateZ(-45deg) translateX(5px) translateY(-1px) !important;
-	-ms-transform: rotateZ(-45deg) translateX(5px) translateY(-1px) !important;
-	-o-transform: rotateZ(-45deg) translateX(5px) translateY(-1px) !important;
-	transform: rotateZ(-45deg) translateX(5px) translateY(-1px) !important;
+	-moz-transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
+	-ms-transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
+	-o-transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
+	transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
 }
 .menu-open.close .inner {
 	opacity: 0;
+}
+
+/*
+Close Icon
+*/
+
+.closeIcon {
+	height: 30px;
+	padding-top: 5px;
+	display: block;
+	z-index: 9999;
+	opacity: 1;
+	font-size: 24px;
+	cursor: pointer;
+}
+.closeIcon span {
+	background: rgba(255, 255, 255, 1);
+	display: block;
+	width: 30px;
+	height: 3px;
+}
+.closeIcon .top {
+	margin: 0 0 3px 0;
+}
+
+.closeIcon .top {
+	-webkit-transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
+	-moz-transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
+	-ms-transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
+	-o-transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
+	transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
+}
+.closeIcon .bottom {
+	-webkit-transform: rotateZ(-45deg) translateX(0px) translateY(1px) !important;
+	-moz-transform: rotateZ(-45deg) translateX(0px) translateY(1px) !important;
+	-ms-transform: rotateZ(-45deg) translateX(0px) translateY(1px) !important;
+	-o-transform: rotateZ(-45deg) translateX(0px) translateY(1px) !important;
+	transform: rotateZ(-45deg) translateX(0px) translateY(1px) !important;
 }
 
 /*
@@ -282,7 +320,7 @@ Get Tickets Button
 	font-size: 16px;
 	border: 2px solid rgba(255, 248, 217, .9);
 	text-align: center;
-	display: none;
+	display: block;
 }
 #getTickets.button:hover {
 	color: #FFF8D9;
@@ -294,14 +332,14 @@ Zip Code Modal
 */
 
 #zipcode-modal {
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	left: 50%;
 	height: 100%;
 	width: 760px;
 	margin: 0 0 0 -380px;
-	z-index: 9999
-	background-color: rgba(255, 255, 255, .7);
+	z-index: 9999;
+	background-color: #19150E;
 	display: none;
 }
 #zipcode-modal .input {
@@ -313,6 +351,40 @@ Zip Code Modal
 	width: 100px;
 	height: 100px;
 }
+#zipcode-modal .closeIcon {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+#zipcode-modal .ui {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 240px;
+	height: 120px;
+	margin: -60px 0 0 -120px;
+	text-align: center;
+}
+#zipcode-modal .ui .input {
+	width: 240px;
+	height: 30px;
+	background-color: #FFFFFF;
+}
+
+/*
+Mask
+*/
+
+#mask {
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .7);
+	display: none;
+	z-index: 7500;
+}
 
 /*
 Home Page
@@ -320,7 +392,7 @@ Home Page
 
 	#home .r1 {		
 		height: 10%;
-		margin: 0 0 5% 0;
+		margin: 0 0 0 0;
 		text-align: center;
 	}
 	#home .r1 .verbiage {
@@ -368,7 +440,13 @@ Home Page
 		height: 20%;
 		text-align: center;
 	}
-	#home .r4 .h-text {
+	#home .p1 .h-text {
+		position: absolute;
+		left: 50%;
+		top: 61%;
+		width: 100%;
+		margin: 0 0 0 -50%;
+		text-align: center;
 		font-size: 42px;
 		color: #FFF8D9;
 		letter-spacing: 4px;
@@ -376,7 +454,7 @@ Home Page
 	#home .r5 {
 		position: relative;
 		height: 5%;
-		margin-top: 3%;
+		margin-top: 8%;
 		text-align: center;
 	}
 	#home .r5 .social {
@@ -409,7 +487,7 @@ Home Page
 Home Parallax
 */
 
-#parallax-elements {
+.parallax-element {
 	position: absolute;
   	top: 0%;
   	left: 0%;
@@ -420,69 +498,69 @@ Home Parallax
   	margin: 0 0 0 -10%;
 	z-index: -10;
 }
-#parallax-elements .p1 {
+.parallax-element .p1 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
 	height: 100%;
 	width: 120%;
 	display: block;
-	background: url('../img/home/parallax-clouds.png') no-repeat center top;
+	background: url('../img/home/parallax-clouds.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
-#parallax-elements .p2 {
+.parallax-element .p2 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
 	height: 100%;
 	width: 120%;
 	display: block;
-	background: url('../img/home/parallax-mountains.png') no-repeat center bottom;
+	background: url('../img/home/parallax-mountains.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	z-index: 10;
 }
-#parallax-elements .p3 {
+.parallax-element .p3 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
 	height: 100%;
 	width: 120%;
 	display: block;
-	background: url('../img/home/parallax-middleground.png') no-repeat center bottom;
+	background: url('../img/home/parallax-middleground.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	z-index: 20;
 }
-#parallax-elements .p4 {
+.parallax-element .p4 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
 	height: 100%;
 	width: 120%;
 	display: block;
-	background: url('../img/home/parallax-protagonist.png') no-repeat center bottom;
+	background: url('../img/home/parallax-protagonist.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	z-index: 30;
 }
-#parallax-elements .p5 {
+.parallax-element .p5 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
-	height: 100%;
+	height: 107%;
 	width: 120%;
 	display: block;
-	background: url('../img/home/parallax-foreground.png') no-repeat center bottom;
+	background: url('../img/home/parallax-foreground.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
