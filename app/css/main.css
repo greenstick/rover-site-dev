@@ -18,6 +18,12 @@ Fonts
 	font-family: 'AdobeGaramondPro-Regular';
 	src: url('../font/AGaramondPro-Regular.woff');
 }
+* {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
 
 /*
 Core
@@ -33,14 +39,26 @@ body {
 	width: 100%;
 	height: 100%;
 }
+.container-fluid {
+	padding: 0 !important;
+}
 .loaded {
 	display: none;
+	/* Chrome Repaint Bug Fix */
+	-webkit-transform: translate3d(0, 0, 0);
 }
 #loaded-content {
 	position: relative;
 	height: 100%;
 	display: none;
+	/* Chrome Repaint Bug Fix */
+	-webkit-transform: translate3d(0, 0, 0);
 }
+
+/*
+Page Backgrounds
+*/
+
 #home {
 	/*background: url('../img/backgrounds/home-bg.jpg') no-repeat center bottom fixed;*/
 }
@@ -61,7 +79,7 @@ body {
 #timeline {
 	background: url('../img/timeline-interactive/bg1.png') no-repeat center center fixed;
 }
-#videos {
+#trailers {
 	background: url('../img/backgrounds/videos-bg.jpg') no-repeat bottom right fixed;
 }
 #gallery {
@@ -73,10 +91,7 @@ body {
 #credits {
 	background: url('../img/backgrounds/credits-bg.jpg') no-repeat center center fixed;
 }
-.page {
-	overflow: hiddens;
-}
-#home.page, #map.page, #timeline.page, #videos.page, #gallery.page, #press.page, #credits.page {
+#home.page, #map.page, #timeline.page, #trailers.page, #gallery.page, #press.page, #credits.page {
 	position: relative;
   	top: 0px;
   	left: 0px;
@@ -89,6 +104,7 @@ body {
 	-o-background-size: cover;
 	background-size: cover;
 	font-size: 0px;
+	overflow: hidden;
 }
 #statement.page {
 	position: relative;
@@ -112,21 +128,7 @@ body {
 	-o-background-size: cover;
 	background-size: cover;
 	font-size: 0px;
-	display: inline-block;
-	float: left;
-}
-* {
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-.container-fluid {
-	padding: 0 !important;
-}
-.fader {
-	position: relative;
-	height: 100%;
+	float: right;
 }
 
 /*
@@ -152,16 +154,16 @@ Navigation
 #navigation.active {
 	left: 0px;
 }
-.menu-expanded {
+#navigation .menu-expanded {
 	width: 100%;
 	height: 100%;
 }
-.menu-expanded .menu-items {
+#navigation .menu-expanded .menu-items {
 	width: 100%;
 	height: auto;
 	margin: 70px 0 0 0;
 }
-.menu-expanded .menu-items .menu-item {
+#navigation .menu-expanded .menu-items .menu-item {
 	width: 280px;
 	height: 40px;
 	padding: 8px 0 0 0;
@@ -170,12 +172,12 @@ Navigation
 	text-align: right;
 	cursor: pointer;
 }
-.menu-expanded .menu-items .menu-item.hover, .menu-expanded .menu-items .menu-item:hover {
+#navigation .menu-expanded .menu-items .menu-item.hover, #navigation .menu-expanded .menu-items .menu-item:hover {
 	color: rgba(255, 255, 255, 1);
 	border-color: rgba(255, 255, 255, 1);
 	border-bottom: 2px solid rgba(255, 255, 255, .7);
 }
-.menu-expanded .menu-items .menu-item.selected {
+#navigation .menu-expanded .menu-items .menu-item.selected {
 	color: rgba(255, 248, 217, 1);
 	border-bottom: 2px solid rgba(255, 255, 255, .7);
 }
@@ -304,27 +306,42 @@ Close Icon
 }
 
 /*
-Get Tickets Button
+Button Class
 */
 
-#getTickets.button {
+.button {
+	display: block;
+	width: 186px;
+	height: 30px;
+	padding: 4px 0 0 0;
+	font-size: 16px;
+	text-align: center;
+	color: #594A31;
+	background-color: rgba(255, 248, 217, .9);
+	border: 2px solid rgba(255, 248, 217, .9);
+	-webkit-transition: all 700ms;
+	-moz-transition: all 700ms;
+	-ms-transition: all 700ms;
+	-o-transition: all 700ms;
+	transition: all 700ms;
+	cursor: pointer;
+}
+.button:hover {
+	color: rgba(255, 255, 255, .9);
+	background-color: transparent;
+	border: 2px solid rgba(255, 255, 255, .9);
+}
+
+/*
+Additional UI
+*/
+
+#getTickets {
 	position: fixed;
 	top: 20px;
 	right: 20px;
-	width: 186px;
-	height: 30px;
-	padding-top: 4px;
-	background-color: rgba(255, 248, 217, .9);
-	color: #594A31;
-	cursor: pointer;
-	font-size: 16px;
-	border: 2px solid rgba(255, 248, 217, .9);
-	text-align: center;
-	display: block;
-}
-#getTickets.button:hover {
-	color: #FFF8D9;
-	border: 2px solid rgba(255, 248, 217, 1);
+	z-index: 5000;
+	/*display: none;*/
 }
 
 /*
@@ -338,37 +355,169 @@ Zip Code Modal
 	height: 100%;
 	width: 760px;
 	margin: 0 0 0 -380px;
-	z-index: 9999;
-	background-color: #19150E;
+	z-index: 9998;
+	background: url('../img/backgrounds/home-bg.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 	display: none;
 }
-#zipcode-modal .input {
-	width: 100px;
-	height: 40px;
+#zipcode-modal .ui {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 320px;
+	height: 120px;
+	margin: -60px 0 0 -160px;
+	font-size: 0px;
 }
-#zipcode-modal a {
-	display: block;
-	width: 100px;
-	height: 100px;
+#zipcode-modal .ui .input {
+	position: absolute;
+	top: 0px;
+	left: 40px;
+	width: 320px;
+	height: 40px;
+	display: inline-block;
+}
+#zipcode-modal .ui .input input {
+	width: 200px;
+	height: 40px;
+	padding: 4px 0 0 0;
+	font-size: 16px;
+	background-color: rgba(0, 0, 0, .6);
+	color: rgba(255, 255, 255, .6);
+	border: none;
+	text-align: center;
+}
+#zipcode-modal .ui .input input:focus {
+	outline: none;
+}
+#zipcode-modal .ui .input a {
+	position: absolute;
+	top: 0px;
+	left: 200px;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-color: rgba(255, 248, 217, .6);
+	cursor: pointer;
+}
+#zipcode-modal .ui .input a:hover {
+	background-color: rgba(255, 248, 217, 1);
+}
+#zipcode-modal .ui .release-open {
+	position: absolute;
+	top: 40px;
+	left: 0px;
+	width: 320px;
+	height: 40px;
+	margin: 30px 0 0 0;
+	text-align: center;
+	letter-spacing: 4px;
+	color: rgba(255, 255, 255, .6);
+	font-size: 16px;
+	cursor: pointer;
+}
+#zipcode-modal .ui .release-open:hover {
+	color: rgba(255, 255, 255, 1);
 }
 #zipcode-modal .closeIcon {
 	position: absolute;
 	top: 20px;
 	right: 20px;
 }
-#zipcode-modal .ui {
-	position: absolute;
-	top: 50%;
+
+/*
+Release Dates Modal
+*/
+
+#release-dates {
+	position: fixed;
+	top: 0px;
 	left: 50%;
-	width: 240px;
-	height: 120px;
-	margin: -60px 0 0 -120px;
+	height: 100%;
+	width: 760px;
+	margin: 0 0 0 -380px;
+	z-index: 9998;
+	background-color: #19150E;
+	display: none;
+}
+#release-dates .closeIcon {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+#release-dates .release-header {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 90px;
+	font-size: 24px;
+	color: #FFF8D9;
+	padding-top: 70px;
+	letter-spacing: 4px;
 	text-align: center;
 }
-#zipcode-modal .ui .input {
-	width: 240px;
-	height: 30px;
-	background-color: #FFFFFF;
+#release-dates .release-body {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	margin: 50px 0 0 60px;
+	height: auto;
+}
+#release-dates .release-body .date {
+	font-size: 20px;
+	letter-spacing: 2px;
+	color: #FFF8D9;
+}
+#release-dates .release-body .location {
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: #FFFFFF;
+}
+#release-dates .release-body .location .city {
+	display: inline-block;
+}
+#release-dates .release-body .location .air {
+	display: inline-block;
+	height: 20px;
+	width: 8px;
+}
+#release-dates .release-body .location .theatre {
+	display: inline-block;
+	opacity: .5;
+}
+
+/*
+Video Modal
+*/
+
+#videos {
+	position: fixed;
+	top: 0px;
+	left: 0%;
+	height: 100%;
+	width: 100%;
+	z-index: 9999;
+	display: none; 
+}
+#videos .closeIcon {	
+	position: fixed;
+	top: 20px;
+	right: 20px;
+}
+#video-1, #video-2, #video-3, #video-4 {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	background-color: rgba(97, 80, 53, .8);
+	display: none;
+	-ms-transform: translate(-50%, -50%); /* IE 9 */
+	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+	transform: translate(-50%, -50%);
 }
 
 /*
@@ -381,7 +530,7 @@ Mask
 	left: 0%;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, .7);
+	background-color: rgba(0, 0, 0, .9);
 	display: none;
 	z-index: 7500;
 }
@@ -396,31 +545,21 @@ Home Page
 		text-align: center;
 	}
 	#home .r1 .verbiage {
-		position: relative;
+		position: absolute;
 		top: 20px;
 		right: 20px;
+		width: 186px;
+		height: 40px;
 		color: #FFFFFF;
 		letter-spacing: 2px;
 		font-size: 16px;
 		line-height: 20px;
 	}
 	#home .r1 .button {
-		position: relative;
-		top: 20px;
-		width: 186px;
-		height: 30px;
-		padding-top: 4px;
-		background-color: rgba(255, 248, 217, .9);
-		color: #594A31;
-		cursor: pointer;
-		font-size: 16px;
-		border: 2px solid rgba(255, 248, 217, .9);
-		left: 50%;
-		margin: 0 0 0 -113px;
-	}
-	#home .r1 .button:hover {
-		color: #FFF8D9;
-		border: 2px solid rgba(255, 248, 217, 1);
+		position: absolute;
+		top: 62px;
+		right: 20px;
+		z-index: 10;
 	}
 	#home .r2 {
 		height: 10%;
@@ -458,29 +597,35 @@ Home Page
 		text-align: center;
 	}
 	#home .r5 .social {
+		position: absolute;
+		bottom: 20px;
+		right: 20px;
 		width: 120px;
 		height: 20px;
 	}
 	#home .r5 .social .tumblr {
-		position: relative;
+		position: absolute;
 		top: 0px;
+		left: 0px;
 		width: 20px;
 		height: 20px;
-		background: url('../img/social/tumblr.png') no-repeat;
+		background: url('../img/social/tumblr.png');
 	}
 	#home .r5 .social .twitter {
-		position: relative;
+		position: absolute;
 		top: 0px;
+		left: 30px;
 		width: 20px;
 		height: 20px;
-		background: url('../img/social/twitter.png') no-repeat;
+		background: url('../img/social/twitter.png');
 	}
 	#home .r5 .social .facebook {
-		position: relative;
+		position: absolute;
 		top: 0px;
+		left: 60px;
 		width: 20px;
 		height: 20px;
-		background: url('../img/social/facebook.png') no-repeat;
+		background: url('../img/social/facebook.png');
 	}
 
 /*
@@ -497,13 +642,16 @@ Home Parallax
   	height: 100%;
   	margin: 0 0 0 -10%;
 	z-index: -10;
+	-ms-transform: translate(5%, 0%); /* IE 9 */
+	-webkit-transform: translate(5%, 0%); /* Chrome, Safari, Opera */
+	transform: translate(5%, 0%);
 }
 .parallax-element .p1 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
 	height: 100%;
-	width: 120%;
+	width: 110%;
 	display: block;
 	background: url('../img/home/parallax-clouds.png') no-repeat center center;
 	-webkit-background-size: cover;
@@ -516,7 +664,7 @@ Home Parallax
 	top: 0%;
 	left: 0%;
 	height: 100%;
-	width: 120%;
+	width: 110%;
 	display: block;
 	background: url('../img/home/parallax-mountains.png') no-repeat center center;
 	-webkit-background-size: cover;
@@ -530,7 +678,7 @@ Home Parallax
 	top: 0%;
 	left: 0%;
 	height: 100%;
-	width: 120%;
+	width: 110%;
 	display: block;
 	background: url('../img/home/parallax-middleground.png') no-repeat center center;
 	-webkit-background-size: cover;
@@ -544,7 +692,7 @@ Home Parallax
 	top: 0%;
 	left: 0%;
 	height: 100%;
-	width: 120%;
+	width: 110%;
 	display: block;
 	background: url('../img/home/parallax-protagonist.png') no-repeat center center;
 	-webkit-background-size: cover;
@@ -557,8 +705,8 @@ Home Parallax
 	position: absolute;
 	top: 0%;
 	left: 0%;
-	height: 107%;
-	width: 120%;
+	height: 100%;
+	width: 110%;
 	display: block;
 	background: url('../img/home/parallax-foreground.png') no-repeat center center;
 	-webkit-background-size: cover;
@@ -580,6 +728,10 @@ Timeline Interactive Page
 Map Interactive Page
 */
 
+#map {
+	/* Chrome Repaint Bug Fix */
+	-webkit-transform: translate3d(0, 0, 0);
+}
 #map-wrapper {
 	position: absolute;
 	width: 100%;
@@ -626,6 +778,8 @@ Map Interactive Core
 	top: 0px;
 	left: 0px;
 	z-index: -10;
+	/* Chrome Repaint Bug Fix */
+	-webkit-transform: translate3d(0, 0, 0);
 }
 #map-container {
 	position: absolute;
@@ -723,7 +877,7 @@ Map Intro Modal
 	font-size: 14px;
 	line-height: 20px;
 	letter-spacing: 1px;
-	z-index: 9999;
+	z-index: 500;
 	font-family: 'AdobeGaramondPro-Regular';
 }
 #map-intro .modal-head {
@@ -781,7 +935,7 @@ Map Intro Modal
 	width: 100%;
 	height: 100%;
 	background-color: transparent;
-	z-index: 9999;
+	z-index: 1000;
 }
 
 /*
@@ -794,7 +948,7 @@ Filter Selection
 	left: 50%;
 	height: 5%;
 	margin: 0 0 0 -114px;
-	z-index: 1000;
+	z-index: 500;
 	letter-spacing: 1px;
 	width: 228px
 }
@@ -874,26 +1028,26 @@ Chronology Toggle
 	left: 50%;
 	height: 28px;
 	margin: 0 0 0 -148px;
-	z-index: 1000; 
+	z-index: 500; 
 	font-size: 0px;
 	letter-spacing: 1px;
 }
 #chronologySelect .chronology {
 	width: 96px;
-	height: 28px;
+	height: 32px;
 	padding: 6px 0 0 0;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 12px;
 	text-align: center;
-	color: rgba(255, 248, 217, 1);
+	color: rgba(255, 248, 217, .9);
 	border: 2px solid #403524;
 	background-color: rgba(97, 80, 53, 1);
 }
 #chronologySelect .chronology.active {
 	color: rgba(46, 39, 29, 1);
-	border: 2px solid #b0ab95;
-	background-color: rgba(255, 248, 217, 1);
+	border: 2px solid rgba(255, 248, 217, .9);
+	background-color: rgba(255, 248, 217, .9);
 }
 
 /*
@@ -904,7 +1058,7 @@ Dynamic Map Key
 	height: 5%;
 	width: 100%;
 	padding: 4px 0 0 0;
-	z-index: 9999;
+	z-index: 500;
 	text-align: center;
 	display: inline-block;
 }
@@ -997,7 +1151,7 @@ Map Tooltip
 	font-size: 12px;
 	line-height: 16px;
 	letter-spacing: 1px;
-	z-index: 1000;
+	z-index: 500;
 	display: none;
 }
 #map-tooltip.active {
