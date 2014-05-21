@@ -1,6 +1,6 @@
 .sass-cache
 .tmp
-.zip
+*.zip
 dist
 node_modules
 app/_/bower_components
