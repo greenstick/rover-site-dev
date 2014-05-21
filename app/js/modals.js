@@ -220,6 +220,12 @@ Video Player
         videos[video].currentTime(0);
         videos[video].play();
     };
+    function stopVideos (video) {
+        for (var i = 0; i < video.length; i++) {
+            videos[video[i]].currentTime(0);
+            videos[video[i]].pause();
+        };
+    };
 
 /*
 Video Modal Event Bindings
@@ -237,6 +243,7 @@ Video Modal Event Bindings
     });
     //Close Video Modal
     $(videoModal.element + " " + videoModal.close).on("click", function (e) {
+        stopVideos(["video-1", "video-2", "video-3", "video-4"]);
         videoModal.closeModal();
         $('.video-element').fadeOut();
         $('.fader').fadeToggle();

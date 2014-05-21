@@ -7,6 +7,11 @@ Core Prototype
 ////////////////////////////////////////////////////////////////////////////////////////////////////////			  
 
 (function () {
+	var press = document.querySelector("#press .blurbs");
+	var msnry = new Masonry (press, {
+		itemSelector: '.blurb',
+		columnWidth: 320
+	});
 	var Core = function (args) {
 		var core = this;
 
@@ -82,12 +87,6 @@ Core Prototype
 			var core = this;
 			$(core.menuOpen).removeClass('active');
 		};
-		//Chrome Redraw Hack
-		Core.prototype.redraw 			= function (element) {
-			return $(element).hide(0, function() {
-		        $(this).show();
-		    });
-		};
 
 /*		   
 Macro Methods
@@ -114,7 +113,6 @@ Instantiation
 		//Set Scroll Data Object
 		$(window).load(function (e) {
 			core.resetScrollData(e);
-			core.redraw('#loaded-content, #map, #map-background');
 		});
 		//Initialize
 		core.init();
@@ -129,8 +127,12 @@ Event Bindings
 			clearTimeout(resize);
 			resize = setTimeout(function () {
 				core.resize(e);
-				core.redraw('#loaded-content, #map, #map-background');
+				masonry.reloadItems();
 			}, 200)
+		});
+		$(window).load(function (e) {
+			core.resize(e);
+			masonry.reloadItems();
 		});
 		//Toggle Menu
 		$(core.menuOpen).on("click", function (e) {
