@@ -451,10 +451,16 @@ Masonry
 
 		//Press Page Masonry
 		var press = document.querySelector("#press");
-		var msnry = new Masonry (press, {
+		var pressLayout = new Isotope (press, {
 			itemSelector: '.blurb'
 		});
-		msnry.bindResize();
+		pressLayout.bindResize();
+		//Trailers Page Masonry
+		var trailers = document.querySelector("#trailers");
+		var trailersLayout = new Isotope (trailers, {
+			itemSelector: '.thumbnail'
+		});
+		trailersLayout.bindResize();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -467,7 +473,8 @@ Global Event Bindings
 			core.setHash();
 			core.resize(e);
 			resizeVideo();
-			msnry.reloadItems();
+			pressLayout.reloadItems();
+			trailersLayout.reloadItems();
 		});
 		//Resize
 		$(window).on("resize", function (e) {

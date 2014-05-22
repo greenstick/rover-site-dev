@@ -1672,8 +1672,27 @@ Map Color Layers
 }
 
 /*
-Video Media Page
+Trailers Page
 */
+
+#trailers .thumbnails {
+	position: relative;
+ 	width: 80%;
+ 	height: auto;
+ 	margin: 120px auto 0 auto;
+}
+#trailers .thumbnails .thumbnail {
+	
+}
+#trailers .thumbnails .thumbnail.big {
+
+}
+#trailers .thumbnails .thumbnail.small {
+
+}
+#trailers .thumbnails .thumbnail .play {
+
+}
 
 /*
 Gallery Page
