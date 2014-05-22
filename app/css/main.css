@@ -330,18 +330,6 @@ Button Class
 }
 
 /*
-Additional UI
-*/
-
-#getTickets {
-	position: fixed;
-	top: 20px;
-	right: 20px;
-	z-index: 5000;
-	/*display: none;*/
-}
-
-/*
 Zip Code Modal
 */
 
@@ -438,6 +426,8 @@ Release Dates Modal
 	margin: 0 0 0 -380px;
 	z-index: 9998;
 	background-color: #19150E;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	display: none;
 }
 #release-dates .closeIcon {
@@ -469,6 +459,7 @@ Release Dates Modal
 	font-size: 20px;
 	letter-spacing: 2px;
 	color: #FFF8D9;
+	margin: 8px 0 0 0;
 }
 #release-dates .release-body .location {
 	font-size: 16px;
@@ -533,13 +524,25 @@ Mask
 }
 
 /*
+Additional UI
+*/
+
+#getTickets {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 5000;
+	display: block;
+}
+
+/*
 Home Page
 */
 
-#home .r1 {		
-	height: 10%;
-	margin: 0 0 0 0;
-	text-align: center;
+#home .r1 {
+	position: relative;
+	height: 25%;
+	width: 100%;
 }
 #home .r1 .verbiage {
 	position: absolute;
@@ -551,6 +554,7 @@ Home Page
 	letter-spacing: 2px;
 	font-size: 16px;
 	line-height: 20px;
+	text-align: center;
 }
 #home .r1 .button {
 	position: absolute;
@@ -558,49 +562,41 @@ Home Page
 	right: 20px;
 	z-index: 10;
 }
+#home .r1 img {
+	position: absolute;
+	bottom: 0%;
+	left: 50%;
+	margin: 0 0 0 -56px;
+}
 #home .r2 {
-	height: 10%;
-	margin: 0 0 5% 0;
-	text-align: center;
+	height: 30%;
+	margin: 0 0 0 0;
 }
-#home .r3 {
-	height: 20%;
-	margin: 0 0 5% 0;
-}
-#home .r3 img {
-	position: relative;
+#home .r2 img {
+	position: absolute;
+	bottom: 0%;
 	left: 50%;
 	margin: 0 0 0 -212px;
 }
-#home .r4 {
-	height: 20%;
-	text-align: center;
-}
-#home .p1 .h-text {
-	position: absolute;
-	left: 50%;
-	top: 61%;
-	width: 100%;
-	margin: 0 0 0 -50%;
-	text-align: center;
-	font-size: 42px;
-	color: #FFF8D9;
-	letter-spacing: 4px;
-}
-#home .r5 {
+#home .r3 {
 	position: relative;
-	height: 5%;
-	margin-top: 8%;
+	height: 45%;
 	text-align: center;
 }
-#home .r5 .social {
+#home .r3 .loaded {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	margin: 0 0 0 -40px;
+}
+#home .r3 .social {
 	position: absolute;
 	bottom: 20px;
 	right: 20px;
-	width: 120px;
+	width: 80px;
 	height: 20px;
 }
-#home .r5 .social .tumblr {
+#home .r3 .social .tumblr {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -608,7 +604,7 @@ Home Page
 	height: 20px;
 	background: url('../img/social/tumblr.png');
 }
-#home .r5 .social .twitter {
+#home .r3 .social .twitter {
 	position: absolute;
 	top: 0px;
 	left: 30px;
@@ -616,7 +612,7 @@ Home Page
 	height: 20px;
 	background: url('../img/social/twitter.png');
 }
-#home .r5 .social .facebook {
+#home .r3 .social .facebook {
 	position: absolute;
 	top: 0px;
 	left: 60px;
@@ -629,7 +625,7 @@ Home Page
 Home Parallax
 */
 
-.parallax-element {
+#home .parallax-element {
 	position: absolute;
   	top: 0%;
   	left: 0%;
@@ -643,7 +639,7 @@ Home Parallax
 	-webkit-transform: translate(5%, 0%); /* Chrome, Safari, Opera */
 	transform: translate(5%, 0%);
 }
-.parallax-element .p1 {
+#home .parallax-element .p1 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
@@ -656,7 +652,18 @@ Home Parallax
 	-o-background-size: cover;
 	background-size: cover;
 }
-.parallax-element .p2 {
+#home .parallax-element .p1 .h-text {
+	position: absolute;
+	left: 50%;
+	top: 61%;
+	width: 100%;
+	margin: 0 0 0 -50%;
+	text-align: center;
+	font-size: 42px;
+	color: #FFF8D9;
+	letter-spacing: 4px;
+}
+#home .parallax-element .p2 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
@@ -670,7 +677,7 @@ Home Parallax
 	background-size: cover;
 	z-index: 10;
 }
-.parallax-element .p3 {
+#home .parallax-element .p3 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
@@ -684,7 +691,7 @@ Home Parallax
 	background-size: cover;
 	z-index: 20;
 }
-.parallax-element .p4 {
+#home .parallax-element .p4 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
@@ -698,7 +705,7 @@ Home Parallax
 	background-size: cover;
 	z-index: 30;
 }
-.parallax-element .p5 {
+#home .parallax-element .p5 {
 	position: absolute;
 	top: 0%;
 	left: 0%;
@@ -744,8 +751,8 @@ Directors Statement
 }
 #statement1 .blurb, #statement2 .blurb, #statement3 .blurb {
 	position: absolute;
-	top: 200px;
-	left: 200px;
+	bottom: 10%;
+	left: 10%;
 	width: 340px;
 	height: auto;
 }
@@ -1665,8 +1672,27 @@ Map Color Layers
 }
 
 /*
-Video Media Page
+Trailers Page
 */
+
+#trailers .thumbnails {
+	position: relative;
+ 	width: 80%;
+ 	height: auto;
+ 	margin: 120px auto 0 auto;
+}
+#trailers .thumbnails .thumbnail {
+	
+}
+#trailers .thumbnails .thumbnail.big {
+
+}
+#trailers .thumbnails .thumbnail.small {
+
+}
+#trailers .thumbnails .thumbnail .play {
+
+}
 
 /*
 Gallery Page
@@ -1693,6 +1719,7 @@ Press Page
 }
 #press .blurbs .blurb .emphasis {
 	font-size: 36px;
+	line-height: 32px;
 	color: rgba(255, 248, 217, 1);
 }
 #press .blurbs .blurb .critic {
@@ -1720,13 +1747,10 @@ Credits Page
 	height: auto;
 	margin: 0 0 0 -160px;
 }
+#credits .blurbs .grid-sizer {
+	width: 25%;
+}
 #credits .blurbs .blurb {
-	position: relative;
-	top: 0px;
-	left: 50%;
-	width: 320px;
-	height: auto;
-	margin: 36px 0 0 -160px;
 	text-align: center;
 }
 #credits .blurbs .blurb .role {
