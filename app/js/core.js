@@ -69,7 +69,7 @@ Core Prototype
 				docHeight = $(document).height(),
 				scrollDirection = (lastScrollTop >= winTop) ? 'up' : 'down';
 
-			console.log(e);
+			// console.log(e);
 		};
 
 	/* 		  
@@ -442,6 +442,23 @@ Statement Event Bindings
 		$("#statement3 .prev").on("click", function () {
 			toStatement('#statement', '#statement2', '#statement3 .blurb', 'easeOutCirc', 800);
 		});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+Gallery
+*/
+		//Gallery Page Isotope
+		var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			itemSelector: '.galleryImg',
+			columnWidth: 320
+		});
+		galleryLayout.bindResize();
+
+
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
