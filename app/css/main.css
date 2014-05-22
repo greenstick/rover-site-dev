@@ -44,15 +44,11 @@ body {
 }
 .loaded {
 	display: none;
-	/* Chrome Repaint Bug Fix */
-	-webkit-transform: translate3d(0, 0, 0);
 }
-#loaded-content {
+.loaded-content {
 	position: relative;
 	height: 100%;
 	display: none;
-	/* Chrome Repaint Bug Fix */
-	-webkit-transform: translate3d(0, 0, 0);
 }
 
 /*
@@ -1682,7 +1678,7 @@ Trailers Page
  	margin: 120px auto 0 auto;
 }
 #trailers .thumbnails .thumbnail {
-	
+
 }
 #trailers .thumbnails .thumbnail.big {
 
