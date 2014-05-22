@@ -182,7 +182,7 @@ Video Player
             }
         ];
 
-    //Create Videos
+    //Creates VideoJS Instances
     function newVideos (args) {
         var obj = {};
         for (var i = 0; i < args.length; i++) {
@@ -198,29 +198,29 @@ Video Player
         };
         return obj;
     };
-    //Create Video Instances
+    //Instantiate Instances
     var videos = newVideos(args);
 
-    //Resize Video
+    //Resize Videos
     function resizeVideo () {
         var width = $(this).width() * 0.8;
         var height = $(this).height() * 0.8;
         var $videos = $("#video-1, #video-2, #video-3, #video-4");
         if (width/height >= 16/9) {
             $videos.width(width);
-            // $trailer.height(width * (9/16));
             $videos.height(width * (10/24));
         } else {
             $videos.height(height);
-            // $trailer.width(height * (16/9));
             $videos.width(height * (24/10));
         };
     };
+    //Plays Video
     function playVideo (video) {
         videos[video].currentTime(0);
         videos[video].play();
     };
-    function stopVideos (video) {
+    //Resets all Videos' Play Positions and Pauses them
+    function resetVideos (video) {
         for (var i = 0; i < video.length; i++) {
             videos[video[i]].currentTime(0);
             videos[video[i]].pause();
@@ -243,7 +243,7 @@ Video Modal Event Bindings
     });
     //Close Video Modal
     $(videoModal.element + " " + videoModal.close).on("click", function (e) {
-        stopVideos(["video-1", "video-2", "video-3", "video-4"]);
+        resetVideos(["video-1", "video-2", "video-3", "video-4"]);
         videoModal.closeModal();
         $('.video-element').fadeOut();
         $('.fader').fadeToggle();
