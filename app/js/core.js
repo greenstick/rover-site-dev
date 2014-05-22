@@ -18,58 +18,124 @@ Core Prototype
 			core.menu 			=		args.menu 			|| 		'#menu',
 			core.menuOpen 		= 		args.menuOpen 		|| 		'.menu-open',
 			core.menuSelection	=		args.menuSelection 	|| 		'#menu .button',
-			core.scrollData 	= 		{};
-
+			core.current 		= 		args.current 		|| 		'current',
+			core.mobile 		= 		(Modernizr.touch) ? true : false,
+			core.scrollData 	= 		{},
+			core.scrolling 		= 		false,
+			core.height,
+			core.delta;
 	};
 
-	/*			   
-	Set Scroll Data Object
-	*/			   
+	/*
+	Controlled Scrolling Navigation
+	*/
 
-		//Updates Index, Scroll Top, and Scroll Left
-		Core.prototype.updateScrollData = function (e) {
-			this.scrollData = {
-				index		: 	Math.round(e.view.scrollY / e.currentTarget.clientHeight),
-				scrollTop	: 	e.view.scrollY,
-				scrollLeft 	: 	e.view.scrollX,
-				width 		: 	e.currentTarget.clientWidth,
-				height 		: 	e.currentTarget.clientHeight
+		//Bind Scroll Handler to Touch Events or Other Scroll Event
+		Core.prototype.bindScroll  			= function () {
+			var start = {x: 0, y: 0}, core = this;
+			//Mobile
+			if (core.mobile === true) {
+				if (window.addEventListener) {
+					window.addEventListener("touchstart", touchStart, false);
+					window.addEventListener("touchmove", touchMove, false);
+				}
+				touchStart = function (e) {
+					start.x = e.touches[0].pageX;
+					start.y = e.touches[0].pageY;
+				};
+				touchMove = function (e) {
+					offset = {};
+					offset.y = start.y - e.touches[0].pageY;
+					core.delta = (offset.y);
+					if (Math.abs(core.delta) >= 10) {
+						$(core.wrapper).on('touchmove', function (e) {
+							e.preventDefault ? e.preventDefault() : e.returnValue = false;
+							core.scrollDirection(core.delta);
+						});
+					};
+				};
+			//Non-Mobile
+			} else {
+				$(core.wrapper).on('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
+					core.delta = 0;
+					if (!e) e = window.event;
+					if (e.originalEvent.wheelDelta) {
+						core.delta = e.originalEvent.wheelDelta / 120;
+					} else if (e.originalEvent.detail) {
+						core.delta = - e.originalEvent.detail / 3;
+					};
+					if (core.delta) {
+						core.scrollDirection();
+						e.preventDefault ? e.preventDefault() : e.returnValue = false;
+					};
+				});
 			};
-			console.log(this.scrollData);
 		};
-		//Set/Reset Scroll Data
-		Core.prototype.resetScrollData = function (e) {
-			this.scrollData = {
-				index 		: 	Math.round(e.currentTarget.scrollY / e.currentTarget.innerHeight),
-				scrollTop 	: 	e.currentTarget.scrollY,
-				scrollLeft 	: 	e.currentTarget.scrollX,
-				width 		: 	e.currentTarget.innerWidth,
-				height 		: 	e.currentTarget.innerHeight
-			};
-			// console.log(this.scrollData);
-		};
-		Core.prototype.setHash 			= function () {
-			if (location.hash == '') {
-				location.hash = '#home';
+
+		//Determined direction to Scroll and Calls scrollPage Function
+		Core.prototype.scrollDirection 	= function () {
+			var core = this;
+			if (core.scrolling === false) {
+				if (core.delta < -1.25) {
+					core.scrolling = true;
+					core.scrollPage('next');
+				} else  if (core.delta > 1.25) {
+					core.scrolling = true;
+					core.scrollPage('prev');
+				};
 			};
 		};
-		//Direct Page Navigation
+
+		//Scrolls to Next or Previous Page
+		Core.prototype.scrollPage		= function (destination) {
+			var core = this, id;
+			//Next Page
+			if (destination === 'next') {
+				if ($('#credits').hasClass('current')) {
+					core.scrolling = false;
+					return;
+				} else {
+					$('.' + core.current).removeClass(core.current).next().addClass(core.current);
+					id = $('.' + core.current).attr("id");
+					var navTimer = setTimeout(function () {
+						core.navTo(id);
+					}, 600);
+				};
+			//Previous Page
+			} else {
+				if ($('#home').hasClass(core.current)) {
+					core.scrolling = false;
+					return;
+				} else {
+					$('.' + core.current).removeClass(core.current).prev().addClass(core.current);
+					id = $('.' + core.current).attr("id");
+					var navTimer = setTimeout(function () {
+						core.navTo(id);
+					}, 600);
+				};
+			};
+		};
+
+	/*
+	Hash Navigation
+	*/
+
+		//Direct Page Hash Navigation
 		Core.prototype.navTo 			= function (page) {
-			if (history.pushState) history.pushState({}, document.title, '#' + page);
-			$(document).scrollTo('#' + page, {
+			var loc = (page) ? '#'+ page : '#home', core = this;
+			if (history.pushState) {
+				history.pushState({}, document.title, loc);
+			} else {
+				location.hash = loc;
+			};
+			core.scrolling = true;
+			$('.' + core.current).removeClass(core.current);
+			$(loc).addClass(core.current);
+			$(document).scrollTo(loc, {
 				duration: 600,
 					axis: "y"
 			});
-		};
-		//Scroll to Navigation
-		Core.prototype.to 				= function (e) {
-			var lastScrollTop = 0,
-				winHeight = $(window).innerHeight(),
-				winTop    = $(window).scrollTop(),
-				docHeight = $(document).height(),
-				scrollDirection = (lastScrollTop >= winTop) ? 'up' : 'down';
-
-			console.log(e);
+			core.scrolling = false;
 		};
 
 	/* 		  
@@ -84,7 +150,7 @@ Core Prototype
 				$('.subPage').width(width);
 		};
 		//Fade Out Content When Interacting With Menu
-		Core.prototype.fadeElements 		= function () {
+		Core.prototype.fadeElements 	= function () {
 			var core = this;
 			$(core.fader).fadeToggle();
 		};
@@ -95,7 +161,7 @@ Core Prototype
 			$(core.menuOpen).toggleClass('close');
 		};
 		//Mouseover Menu Icon
-		Core.prototype.menuOver 			= function () {
+		Core.prototype.menuOver 		= function () {
 			var core = this;
 			$(core.menuOpen).addClass('active');
 		};
@@ -109,11 +175,12 @@ Core Prototype
 Macro Methods
 */		   
 		
-		//Initialization Function
-		Core.prototype.init 				= function () {
-			console.log('initialized');
-		};
-		Core.prototype.toggleNav 			= function () {
+		Core.prototype.init 			= function () {
+			console.log("Mobile: " + this.mobile);
+			console.log("Scrolling: " + this.scrolling);
+		};			
+
+		Core.prototype.toggleNav 		= function () {
 			this.fadeElements();
 			this.toggleMenu();
 		};
@@ -123,40 +190,33 @@ Instantiation
 */		  
 
 		//New Core Prototype With Arguments
-		var core = new Core({
+		var site = new Core({
 			menu 			: '#navigation',
 			menuSelection	: '.menu-item'
 		});
-		//Set Scroll Data Object
-		$(window).load(function (e) {
-			core.resetScrollData(e);
-		});
 		//Initialize
-		core.init();
+		site.init();
 
 /*			
 Core Event Bindings
 */		
 
 		//Toggle Menu
-		$(core.menuOpen).on("click", function (e) {
-			core.toggleNav();
+		$(site.menuOpen).on("click", function (e) {
+			site.toggleNav();
 		});
 		//Mouseover Menu Icon
-		$(core.menuOpen).on("mouseover", function (e) {
-			core.menuOver();
+		$(site.menuOpen).on("mouseover", function (e) {
+			site.menuOver();
 		});
 		//Mouseout Menu Icon
-		$(core.menuOpen).on("mouseover", function (e) {
-			core.menuOut();
+		$(site.menuOpen).on("mouseover", function (e) {
+			site.menuOut();
 		});
-		//Update Scroll Data Object
-		$(core.pageClass).on("click", function (e) {
-			core.updateScrollData(e);
-		});
-		$(core.menuSelection).on("click", function (e) {
+		//Select Page From Menu
+		$(site.menuSelection).on("click", function (e) {
 			var page = $(this).data().to;
-			core.navTo(page);
+			site.navTo(page);
 		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,7 +232,6 @@ Modal Prototype
 				modal.mask 			= args.mask 		|| 	false, //optional
 				modal.open 			= args.open,
 				modal.close 		= args.close;
-
 	        return this;
 		};
 
@@ -450,13 +509,14 @@ Masonry
 */
 
 		//Press Page Masonry
-		var press = document.querySelector("#press");
+		var press = document.querySelector("#press.page");
 		var pressLayout = new Isotope (press, {
 			itemSelector: '.blurb'
 		});
 		pressLayout.bindResize();
+
 		//Trailers Page Masonry
-		var trailers = document.querySelector("#trailers");
+		var trailers = document.querySelector("#trailers.page");
 		var trailersLayout = new Isotope (trailers, {
 			itemSelector: '.thumbnail'
 		});
@@ -470,25 +530,23 @@ Global Event Bindings
 
 		//Setup DOM Sizing and Location
 		$(window).load(function (e) {
-			core.setHash();
-			core.resize(e);
+			site.resize(e);
 			resizeVideo();
-			pressLayout.reloadItems();
-			trailersLayout.reloadItems();
-		});
-		//Resize
-		$(window).on("resize", function (e) {
-			var resize;
-			clearTimeout(resize);
-			resize = setTimeout(function () {
-				core.resize(e);
-				resizeVideo();
-			}, 200);
-		});
-		//Window Scroll
-		$(window).on("scroll", function (e) {
-			core.to(e);
+			site.bindScroll();
+			site.navTo();
+			site.height = e.currentTarget.innerHeight;
 		});
 
+		//Resize
+		$(window).on("resize", function (e) {
+			var resize, id;
+			resize = setTimeout(function () {
+				site.resize(e);
+				resizeVideo();
+				id = $('.' + site.current).attr("id");
+				site.navTo(id);
+				site.height = e.currentTarget.innerHeight;
+			}, 400);
+		});
 
 }(jQuery, d3, ko));

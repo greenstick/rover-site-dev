@@ -31,7 +31,7 @@
 	</head>
 	<body>
 		<div id="wrapper" class="container-fluid">
-			<div id="home" class="page">
+			<div id="home" class="page current">
 				<div class="r1">
 					<img class="fader" src="img/home/cannes-logo.png" />
 					<div class="fader">
@@ -76,318 +76,316 @@
 					<div class="p5" data-parallaxify-range-x="125"></div>
 				</div>
 			</div>
-			<div id="loaded-content">
-				<div id="statement" class="page">
-					<div class="pageHeader fader">DIRECTOR'S STATEMENT</div>
-					<div class="slider">
-						<div id="statement1" class="subPage">
-							<div class="blurb fader">
-								<div class="text-box">
-									The Australian Outback of The Rover
-									is a world ten years after a great
-									Western economic collapse. It's a
-									near future of social and economic
-									decay. Services, utilities, law and
-									order have fallen into dangerous
-									disrepair. And yet people from all
-									corners of the world have come to
-									this place to work the mines that feed
-									the new world alignment, that feed
-									the great powerhouses of this, the
-									Asian century.
-								</div>
-								<div class="next">
-									<img src="img/statement/next.png" />
-								</div>
+			<div id="statement" class="page next loaded-content">
+				<div class="pageHeader fader">DIRECTOR'S STATEMENT</div>
+				<div class="slider">
+					<div id="statement1" class="subPage">
+						<div class="blurb fader">
+							<div class="text-box">
+								The Australian Outback of The Rover
+								is a world ten years after a great
+								Western economic collapse. It's a
+								near future of social and economic
+								decay. Services, utilities, law and
+								order have fallen into dangerous
+								disrepair. And yet people from all
+								corners of the world have come to
+								this place to work the mines that feed
+								the new world alignment, that feed
+								the great powerhouses of this, the
+								Asian century.
+							</div>
+							<div class="next">
+								<img src="img/statement/next.png" />
 							</div>
 						</div>
-						<div id="statement2" class="subPage">
-							<div class="blurb fader">
-								<div class="text-box">
-									The world of the movie, as such,
-									mirrors the American and Australian
-									gold rushes of the 19th century.
-									People are drawn to the land's mines
-									and with them come the leeches, the
-									refuse, the hustlers and criminals who
-									hope to exploit the mines' margins.
-									This isn't a complete collapse of
-									society&mdash;it's an inversion of
-									present&ndash;day global power dynamics.
-								</div>
-								<div class="next">
-									<img src="img/statement/next.png" />
-								</div>
-								<div class="prev">
-									<img src="img/statement/prev.png" />
-								</div>
+					</div>
+					<div id="statement2" class="subPage">
+						<div class="blurb fader">
+							<div class="text-box">
+								The world of the movie, as such,
+								mirrors the American and Australian
+								gold rushes of the 19th century.
+								People are drawn to the land's mines
+								and with them come the leeches, the
+								refuse, the hustlers and criminals who
+								hope to exploit the mines' margins.
+								This isn't a complete collapse of
+								society&mdash;it's an inversion of
+								present&ndash;day global power dynamics.
+							</div>
+							<div class="next">
+								<img src="img/statement/next.png" />
+							</div>
+							<div class="prev">
+								<img src="img/statement/prev.png" />
 							</div>
 						</div>
-						<div id="statement3" class="subPage">
-							<div class="blurb fader">
-								<div class="text-box">
-									And at the centre of this world are
-									two men&ndash;one, a murderously
-									embittered Australian man, a former
-									soldier who has lost his farm and his
-									family; the other, a simle and naive
-									American boy, too young to
-									remember a time when things were
-									anything other than what they are.
-									<br /><br />
-									&ndash;David Mich&ocirc;d
-								</div>
-								<div class="prev">
-									<img src="img/statement/prev.png" />
-								</div>
+					</div>
+					<div id="statement3" class="subPage">
+						<div class="blurb fader">
+							<div class="text-box">
+								And at the centre of this world are
+								two men&ndash;one, a murderously
+								embittered Australian man, a former
+								soldier who has lost his farm and his
+								family; the other, a simle and naive
+								American boy, too young to
+								remember a time when things were
+								anything other than what they are.
+								<br /><br />
+								&ndash;David Mich&ocirc;d
+							</div>
+							<div class="prev">
+								<img src="img/statement/prev.png" />
 							</div>
 						</div>
 					</div>
 				</div>
-				<div id="timeline" class="page">
-					<div class="fader">
+			</div>
+			<div id="timeline" class="page loaded-content">
+				<div class="fader">
 
-					</div>
 				</div>
-				<div id="map" class="page" data-bind="style: {backgroundImage: 'url(' + background() + ')'}">
-					<div class="fader">
-						<div id="map-wrapper" class="container-fluid" />
-							<div id="choropleth-wrapper" class="row r1">
-								<div class="full-height col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
-									<div id="map-background" data-bind="style: {backgroundImage: 'url(' + background() + ')'}"></div>
-									<div id="map-container"></div>
+			</div>
+			<div id="map" class="page loaded-content" data-bind="style: {backgroundImage: 'url(' + background() + ')'}">
+				<div class="fader">
+					<div id="map-wrapper" class="container-fluid" />
+						<div id="choropleth-wrapper" class="row r1">
+							<div class="full-height col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+								<div id="map-background" data-bind="style: {backgroundImage: 'url(' + background() + ')'}"></div>
+								<div id="map-container"></div>
+							</div>
+						</div>
+						<div id="map-header" class="row r2">
+							<div class="col-md-12 col-lg-12">
+								<div class="h-text">REMAPPING THE FUTURE</div>
+							</div>
+						</div>
+						<div id="map-ui" class="row r3">
+							<div class="col-md-2 col-md-offset-5 col-lg-2 col-lg-offset-5">
+								<div id="filterSelect" class="dropdown">
+									<div class="ddSelected">
+										<div data-bind="text: filterText()"></div>
+										<img src="img/map-interactive/dropdown.png" />
+									</div>
+									<div class="ddList">
+										<div id="economicWealth" class="filter ddOption active">ECONOMIC WEALTH</div>
+										<div id="incomeInequality" class="filter ddOption">INCOME INEQUALITY</div>
+										<div id="unemploymentRate" class="filter ddOption">UNEMPLOYMENT RATE</div>
+										<div id="lifeExpectancy" class="filter ddOption">LIFE EXPECTANCY</div>
+										<div id="migration" class="filter ddOption">MIGRATION</div>
+									</div>
 								</div>
 							</div>
-							<div id="map-header" class="row r2">
-								<div class="col-md-12 col-lg-12">
-									<div class="h-text">REMAPPING THE FUTURE</div>
+							<div class="col-md-2 col-md-offset-3 col-lg-2 col-lg-offset-3">
+								<div id="chronologySelect">
+									<div id="present" class="chronology active">PRESENT</div>
+									<div id="future" class="chronology">FUTURE</div>
 								</div>
 							</div>
-							<div id="map-ui" class="row r3">
-								<div class="col-md-2 col-md-offset-5 col-lg-2 col-lg-offset-5">
-									<div id="filterSelect" class="dropdown">
-										<div class="ddSelected">
-											<div data-bind="text: filterText()"></div>
-											<img src="img/map-interactive/dropdown.png" />
+						</div>
+						<div id="map-metric" class="row r4">
+							<div class="full-height col-md-2 col-lg-2">
+								<div class="callout">
+									<div id="map-callout">
+										 <span data-bind="text: description()"></span>
+										 <div class="sourceText" data-bind="text: dataSource()"></div>
+									</div>
+									<div id="map-triangle"></div>
+								</div>
+							</div>
+						</div>
+						<div id="map-legend" class="row r5">
+							<div class="col-md-2 col-lg-2">
+								<div id="filter-metric" data-bind="text: metric()"></div>
+							</div>
+							<div class="col-md-8 col-lg-8">
+								<div id="map-key">
+									<div id="filter-range" data-bind="foreach: keyLabels()">
+										<div class="key-color">
+											<div data-bind="attr: {class: color + ' color-value'}"></div>
+											<div class="text-value" data-bind="text: label"></div>
 										</div>
-										<div class="ddList">
-											<div id="economicWealth" class="filter ddOption active">ECONOMIC WEALTH</div>
-											<div id="incomeInequality" class="filter ddOption">INCOME INEQUALITY</div>
-											<div id="unemploymentRate" class="filter ddOption">UNEMPLOYMENT RATE</div>
-											<div id="lifeExpectancy" class="filter ddOption">LIFE EXPECTANCY</div>
-											<div id="migration" class="filter ddOption">MIGRATION</div>
-										</div>
 									</div>
-								</div>
-								<div class="col-md-2 col-md-offset-3 col-lg-2 col-lg-offset-3">
-									<div id="chronologySelect">
-										<div id="present" class="chronology active">PRESENT</div>
-										<div id="future" class="chronology">FUTURE</div>
-									</div>
-								</div>
-							</div>
-							<div id="map-metric" class="row r4">
-								<div class="full-height col-md-2 col-lg-2">
-									<div class="callout">
-										<div id="map-callout">
-											 <span data-bind="text: description()"></span>
-											 <div class="sourceText" data-bind="text: dataSource()"></div>
-										</div>
-										<div id="map-triangle"></div>
-									</div>
-								</div>
-							</div>
-							<div id="map-legend" class="row r5">
-								<div class="col-md-2 col-lg-2">
-									<div id="filter-metric" data-bind="text: metric()"></div>
-								</div>
-								<div class="col-md-8 col-lg-8">
-									<div id="map-key">
-										<div id="filter-range" data-bind="foreach: keyLabels()">
-											<div class="key-color">
-												<div data-bind="attr: {class: color + ' color-value'}"></div>
-												<div class="text-value" data-bind="text: label"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div id="map-tooltip">
-								<div id="country-country">
-									<span class="stat">COUNTRY: </span>
-									<span class="data"></span>
-								</div>
-								<div id="country-present">
-									<span class="stat">PRESENT: </span>
-									<span class="data"></span>
-								</div>
-								<div id="country-future">
-									<span class="stat">FUTURE: </span>
-									<span class="data"></span>
 								</div>
 							</div>
 						</div>
-						<div id="transparent-mask">
-							<div id="map-intro">
-								<div class="modal-head h-text">
-									A Brief History
-								</div>
-								<div class="modal-exit">
-									<div class="exit">
-										<span class="exit-line-a"></span>
-										<span class="exit-line-b"></span>
-									</div>
-								</div>
-								<div class="modalbody">
-									The world has changed dramatically. Political boundaries are shifting, world economies are fluctuating, and new superpowers are rising to power. The rapacious, and under-regulated Western world has resulted in collapse that has severely shifted the balance of global power. This interactive map is a visual guide that shows the political, environmental, and economical landscape, and how these categories have changed since the collapse.
-									<br /><br />
-									<span class="bold">
-										Explore categories by using the drop-down menu on the top of the page, and hover over a specific country for more information.
-									</span>
-								</div>
+						<div id="map-tooltip">
+							<div id="country-country">
+								<span class="stat">COUNTRY: </span>
+								<span class="data"></span>
+							</div>
+							<div id="country-present">
+								<span class="stat">PRESENT: </span>
+								<span class="data"></span>
+							</div>
+							<div id="country-future">
+								<span class="stat">FUTURE: </span>
+								<span class="data"></span>
 							</div>
 						</div>
-						<div id="map-tooSmall">
-							<div class="note">
-								<div class="note-line"></div>
-								<div class="note-text">
-									INCREASE YOUR<br />BROWSER SIZE FOR THE<br />INTERACTIVE EXPERIENCE.
-								</div>
-								<div class="note-line"></div>
+					</div>
+					<div id="transparent-mask">
+						<div id="map-intro">
+							<div class="modal-head h-text">
+								A Brief History
 							</div>
+							<div class="modal-exit">
+								<div class="exit">
+									<span class="exit-line-a"></span>
+									<span class="exit-line-b"></span>
+								</div>
+							</div>
+							<div class="modalbody">
+								The world has changed dramatically. Political boundaries are shifting, world economies are fluctuating, and new superpowers are rising to power. The rapacious, and under-regulated Western world has resulted in collapse that has severely shifted the balance of global power. This interactive map is a visual guide that shows the political, environmental, and economical landscape, and how these categories have changed since the collapse.
+								<br /><br />
+								<span class="bold">
+									Explore categories by using the drop-down menu on the top of the page, and hover over a specific country for more information.
+								</span>
+							</div>
+						</div>
+					</div>
+					<div id="map-tooSmall">
+						<div class="note">
+							<div class="note-line"></div>
+							<div class="note-text">
+								INCREASE YOUR<br />BROWSER SIZE FOR THE<br />INTERACTIVE EXPERIENCE.
+							</div>
+							<div class="note-line"></div>
 						</div>
 					</div>
 				</div>
-				<div id="trailers" class="page">
-					<div class="pageHeader fader">VIDEOS</div>
-					<div class="thumbnails">
-						<div class="thumbnail big"></div>
-						<div class="thumbnail small"></div>
-						<div class="thumbnail small"></div>
-						<div class="thumbnail small"></div>
+			</div>
+			<div id="trailers" class="page loaded-content">
+				<div class="pageHeader fader">VIDEOS</div>
+				<div class="thumbnails">
+					<div class="thumbnail big"></div>
+					<div class="thumbnail small"></div>
+					<div class="thumbnail small"></div>
+					<div class="thumbnail small"></div>
+				</div>
+			</div>
+			<div id="gallery" class="page loaded-content">
+				<div class="pageHeader fader">GALLERY</div>
+				<div class="fader">
+					<div class="tumblrImgs js-isotope" data-isotope-options='{"itemSelector": ".tImg", "columnWidth": 320}'>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
+						<div class="tImg"></div>
 					</div>
 				</div>
-				<div id="gallery" class="page">
-					<div class="pageHeader fader">GALLERY</div>
-					<div class="fader">
-						<div class="tumblrImgs js-masonry" data-masonry-options='{"itemSelector: ".tImg", "columnWidth": 320}'>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
-							<div class="tImg"></div>
+			</div>
+			<div id="press" class="page loaded-content">
+				<div class="pageHeader fader">PRESS</div>
+				<div class="fader">
+					<div class="blurbs js-masonry" data-masonry-options='{"itemSelector": ".blurb", "columnWidth": 320}'>
+						<div class="grid-sizer"></div>
+						<div class="blurb">
+							“A most impressive piece</br>
+							of filmmaking, tense and 
+							<div class="emphasis">unrelenting,</div> that chills th
+							blood as well as the soul.”
+							<div class="critic">Los Angeles Times</div>
+						</div>
+						<div class="blurb">
+							<div class="emphasis">“Brutally brilliant</div>
+							and brilliantly brutal” 
+							<div class="critic">TheWrap</div>
+						</div>
+						<div class="blurb">
+							<div class="emphasis">“Distinctive</div>
+							and compelling… The Rover 
+							is a mark of just what a talent David 
+							Michôd is... This is how auteurs are made”
+							<div class="critic">The Playlist</div>
+						</div>
+						<div class="blurb">
+							“A <div class="emphasis">career re-defining performance</div> 
+							by Robert Pattinson that reveals 
+							untold depths of sensitivity and 
+							feeling”
+							<div class="critic">Variety</div>
+						</div>
+						<div class="blurb">
+							“David Michôd is one of those rare 
+							filmmakers whose style subverts the 
+							typical notions of straightforward 
+							cinema and challenges audiences to 
+							look deeper”
+							<div class="critic">First Showing</div>
+						</div>
+						<div class="blurb">
+							“If there’s one thing this violent 
+							metaphysical drama emphasizes it’s 
+							that heart is, when all else fails, a 
+							man’s best friend.”
+							<div class="critic">Little White Lies</div>
+						</div>
+						<div class="blurb">
+							“Pearce's barely controlled ferocity as 
+							Eric is exceptional, and Pattinson's 
+							unrecognizable work as Rey is a 
+							revelation.”
+							<div class="critic">Los Angeles Times</div>
+						</div>
+						<div class="blurb">
+							“Pearce gives Eric all the cold-hearted 
+							remorselessness of a classic Western 
+							or film noir anti-hero”
+							<div class="critic">The Hollywood Reporter</div>
+						</div>
+						<div class="blurb">
+							"The Rover announces Pattinson as a 
+							talented actor of range, capable of 
+							disappearing into a complicated role."
+							<div class="critic">Associated Press</div>
+						</div>
+						<div class="blurb">
+							“Gripping and atmospheric. A compellingly
+							nasty vision of the future with plenty to 
+							say about humanity"
+							<div class="critic">Empire Online</div>
+						</div>
+						<div class="blurb">
+							"The Rover further established David
+							Michôd as one of the most gifted young 
+							directors around."
+							<div class="critic">Variety</div>
 						</div>
 					</div>
 				</div>
-				<div id="press" class="page">
-					<div class="pageHeader fader">PRESS</div>
-					<div class="fader">
-						<div class="blurbs js-masonry" data-masonry-options='{"itemSelector": ".blurb", "columnWidth": 320}'>
-							<div class="grid-sizer"></div>
-							<div class="blurb">
-								“A most impressive piece</br>
-								of filmmaking, tense and 
-								<div class="emphasis">unrelenting,</div> that chills th
-								blood as well as the soul.”
-								<div class="critic">Los Angeles Times</div>
-							</div>
-							<div class="blurb">
-								<div class="emphasis">“Brutally brilliant</div>
-								and brilliantly brutal” 
-								<div class="critic">TheWrap</div>
-							</div>
-							<div class="blurb">
-								<div class="emphasis">“Distinctive</div>
-								and compelling… The Rover 
-								is a mark of just what a talent David 
-								Michôd is... This is how auteurs are made”
-								<div class="critic">The Playlist</div>
-							</div>
-							<div class="blurb">
-								“A <div class="emphasis">career re-defining performance</div> 
-								by Robert Pattinson that reveals 
-								untold depths of sensitivity and 
-								feeling”
-								<div class="critic">Variety</div>
-							</div>
-							<div class="blurb">
-								“David Michôd is one of those rare 
-								filmmakers whose style subverts the 
-								typical notions of straightforward 
-								cinema and challenges audiences to 
-								look deeper”
-								<div class="critic">First Showing</div>
-							</div>
-							<div class="blurb">
-								“If there’s one thing this violent 
-								metaphysical drama emphasizes it’s 
-								that heart is, when all else fails, a 
-								man’s best friend.”
-								<div class="critic">Little White Lies</div>
-							</div>
-							<div class="blurb">
-								“Pearce's barely controlled ferocity as 
-								Eric is exceptional, and Pattinson's 
-								unrecognizable work as Rey is a 
-								revelation.”
-								<div class="critic">Los Angeles Times</div>
-							</div>
-							<div class="blurb">
-								“Pearce gives Eric all the cold-hearted 
-								remorselessness of a classic Western 
-								or film noir anti-hero”
-								<div class="critic">The Hollywood Reporter</div>
-							</div>
-							<div class="blurb">
-								"The Rover announces Pattinson as a 
-								talented actor of range, capable of 
-								disappearing into a complicated role."
-								<div class="critic">Associated Press</div>
-							</div>
-							<div class="blurb">
-								“Gripping and atmospheric. A compellingly
-								nasty vision of the future with plenty to 
-								say about humanity"
-								<div class="critic">Empire Online</div>
-							</div>
-							<div class="blurb">
-								"The Rover further established David
-								Michôd as one of the most gifted young 
-								directors around."
-								<div class="critic">Variety</div>
-							</div>
+			</div>
+			<div id="credits" class="page loaded-content">
+				<div class="pageHeader fader">CREDITS</div>
+				<div class="fader">
+					<div class="blurbs">
+						<div class="blurb">
+							<div class="role">STARRING</div>
+							<div class="credited">GUY PEARCE</div>
+							<div class="credited">ROBERT PATTINSON</div>
+						</div>
+						<div class="blurb">
+							<div class="role">WRITTEN AND DIRECTED BY</div>
+							<div class="credited">DAVID MICH&Ocirc;D</div>
+						</div>
+						<div class="blurb">
+							<div class="role">PRODUCERS</div>
+							<div class="credited">LIZ WATTS</div>
+							<div class="credited">DAVID LINDE</div>
+							<div class="credited">DAVID MICH&Ocirc;D</div>
 						</div>
 					</div>
-				</div>
-				<div id="credits" class="page">
-					<div class="pageHeader fader">CREDITS</div>
-					<div class="fader">
-						<div class="blurbs">
-							<div class="blurb">
-								<div class="role">STARRING</div>
-								<div class="credited">GUY PEARCE</div>
-								<div class="credited">ROBERT PATTINSON</div>
-							</div>
-							<div class="blurb">
-								<div class="role">WRITTEN AND DIRECTED BY</div>
-								<div class="credited">DAVID MICH&Ocirc;D</div>
-							</div>
-							<div class="blurb">
-								<div class="role">PRODUCERS</div>
-								<div class="credited">LIZ WATTS</div>
-								<div class="credited">DAVID LINDE</div>
-								<div class="credited">DAVID MICH&Ocirc;D</div>
-							</div>
-						</div>
-						<img class="block" src="img/credits/block.svg"></div>
-					</div>
+					<img class="block" src="img/credits/block.svg"></div>
 				</div>
 			</div>
 		</div>
@@ -794,7 +792,7 @@
 					<div class="location">
 						<span class="city">SARASOTA, FL</span>
 						<span class="air"></span>
-						<span class="theatre">HOLLYWOOD 20&NDASH;SARASOTA</span>
+						<span class="theatre">HOLLYWOOD 20&ndash;SARASOTA</span>
 					</div>
 					<div class="location">
 						<span class="city">STATEN ISLAND, NY</span>
@@ -937,7 +935,7 @@
 				// 	positionProperty: 'position'
 				// });
 				jQuery(".loaded").fadeIn(2000);
-				jQuery("#loaded-content").show();
+				jQuery(".loaded-content").show();
 			});
 	</script>
 	</body>
