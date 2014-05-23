@@ -148,6 +148,8 @@ Core Prototype
 			var width  = e.currentTarget.innerWidth;
 				$('body').height(height);
 				$('.subPage').width(width);
+				console.log('height: ' + height);
+				console.log('width: ' + width);
 		};
 		//Fade Out Content When Interacting With Menu
 		Core.prototype.fadeElements 	= function () {

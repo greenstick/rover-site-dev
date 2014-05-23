@@ -1699,16 +1699,18 @@ Gallery Page
 }
 #gallery .galleryImgs .galleryImg {
 	position: relative;
-	max-width: 320px;
-	max-height: 600px;
+	/*max-width: 320px;
+	max-height: 600px;*/
+	max-width: 25%;
+	max-height: 33%;
 	padding: 10px;
 	font-size: 16px;
 	color: rgba(255, 255, 255, 1);
 	text-align: center;
 }
 #gallery .galleryImgs .galleryImg img {
-	max-width: 300px;
-	max-height: 580px;
+	/*max-width: 23%;
+	max-height: 30%;*/
 }
 
 
