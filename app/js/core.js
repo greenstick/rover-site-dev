@@ -25,6 +25,7 @@ Core Prototype
 			core.scrollData 	= 		{},
 			core.scrolling 		= 		false,
 			core.videos 		= 		{},
+			core.startPosition,
 			core.resizing,
 			core.currentVideo,
 			core.height,
@@ -33,61 +34,86 @@ Core Prototype
 	};
 
 	/*
-	Controlled Scrolling Navigation
+	Bind Scroll
 	*/
 
-		//Bind Scroll Handler to Touch Events or Other Scroll Event
-		Core.prototype.bindScroll  			= function () {
-			var start = {x: 0, y: 0}, core = this;
+		//Determines Whether to Bind Scroll Handler to Touch Events or Desktop Scroll
+		Core.prototype.bindScroll  		= function () {
+			var core = this;
 			//Mobile
 			if (core.mobile === true) {
-				if (window.addEventListener) {
-					window.addEventListener("touchstart", touchStart, false);
-					window.addEventListener("touchmove", touchMove, false);
-				}
-				touchStart = function (e) {
-					start.x = e.touches[0].pageX;
-					start.y = e.touches[0].pageY;
-				};
-				touchMove = function (e) {
-					offset = {};
-					offset.y = start.y - e.touches[0].pageY;
-					core.delta = (offset.y);
-					if (Math.abs(core.delta) >= 10) {
-						$(core.wrapper).on('touchmove', function (e) {
-							e.preventDefault ? e.preventDefault() : e.returnValue = false;
-							core.scrollDirection(core.delta);
-						});
-					};
-				};
-			//Non-Mobile
-			} else {
-				$(core.wrapper).on('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
-					core.delta = 0;
-					if (!e) e = window.event;
-					if (e.originalEvent.wheelDelta) {
-						core.delta = e.originalEvent.wheelDelta / 120;
-					} else if (e.originalEvent.detail) {
-						core.delta = - e.originalEvent.detail / 3;
-					};
-					if (core.delta) {
-						core.scrollDirection();
-						e.preventDefault ? e.preventDefault() : e.returnValue = false;
-					};
+				$(document).on("touchstart", function (e) {
+					core.touchStart(e);
 				});
+				$(document).on("touchmove", function (e) {
+					core.touchMove(e);
+				});
+			//Non-Mobile - Bind Scroll Event
+			} else {
+				$(document).on('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
+					core.scrollDelta(e);
+				});
+			};
+		};
+
+
+
+		//Set Scroll Delta
+		Core.prototype.scrollDelta 		= function (e) {
+			this.delta = 0;
+			if (!e) e = window.event;
+			if (e.originalEvent.wheelDelta) {
+				this.delta = e.originalEvent.wheelDelta / 120;
+			} else if (e.originalEvent.detail) {
+				this.delta = - e.originalEvent.detail / 3;
+			};
+			if (this.delta) {
+				e.preventDefault ? e.preventDefault() : e.returnValue = false;
+				this.scrollDirection();
+			};
+		};
+
+		//Set Touch Start Coordinates
+		Core.prototype.touchStart 		= function (e) {
+			var start = {x: 0, y: 0};
+				start.x = e.originalEvent.pageX;
+				start.y = e.originalEvent.pageY;
+				this.startPosition = start;
+		};
+
+		//Binds touchmove Event to Delta
+		Core.prototype.touchMove 		= function (e) {
+			var offset = {};
+			offset.x = this.startPosition.x - e.originalEvent.pageX;
+			offset.y = this.startPosition.y - e.originalEvent.pageY;
+			this.delta = offset.y;
+			if (Math.abs(this.delta) >= 10) {
+				e.preventDefault ? e.preventDefault() : e.returnValue = false;
+				this.scrollDirection();
 			};
 		};
 
 		//Determined direction to Scroll and Calls scrollPage Function
 		Core.prototype.scrollDirection 	= function () {
-			var core = this;
-			if (core.scrolling === false) {
-				if (core.delta < -1.25) {
-					core.scrolling = true;
-					core.scrollPage('next');
-				} else  if (core.delta > 1.25) {
-					core.scrolling = true;
-					core.scrollPage('prev');
+			if (this.mobile === true) {
+				if (this.scrolling === false) {
+					if (this.delta > -1.25) {
+						this.scrolling = true;
+						this.scrollPage('next');
+					} else  if (this.delta < 1.25) {
+						this.scrolling = true;
+						this.scrollPage('prev');
+					};
+				};
+			} else {
+				if (this.scrolling === false) {
+					if (this.delta < -1.25) {
+						this.scrolling = true;
+						this.scrollPage('next');
+					} else  if (this.delta > 1.25) {
+						this.scrolling = true;
+						this.scrollPage('prev');
+					};
 				};
 			};
 		};
@@ -571,10 +597,11 @@ Global Event Bindings
 			var id;
 			clearTimeout(site.resizing);
 			site.resizing = setTimeout(function () {
-				site.resize(e);
-				resizeVideo();
-				id = $('.' + site.current).attr("id");
-				site.navTo(id);
+				site.resize(e, function () {
+					resizeVideo();
+					id = $('.' + site.current).attr("id");
+					site.navTo(id);
+				});
 			}, 400);
 		});
 

@@ -931,6 +931,10 @@
 			.script("lib/parallax/stellar.js")
 			.script("js/core.js")
 			.script("js/map.js").wait(function () {
+				Modernizr.load({
+					test: Modernizr.touch,
+					yep: "lib/jquery/plugins/touchswipe.min.js"
+				});
 				jQuery(".parallax-element").parallaxify({
 					horizontalParallax: true,
 					verticalParallax: false,
@@ -942,7 +946,6 @@
 					motionType: 'linear',
 					mouseMotionType: 'linear'
 				});
-				$('#statement').stellar();
 				$('#statement').stellar({
 					responsive: true,
 					verticalScrolling: false,
