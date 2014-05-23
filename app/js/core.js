@@ -14,6 +14,7 @@ Core Prototype
 			//Set Elements
 			core.wrapper 		=		args.wrapper 		|| 		'#wrapper',
 			core.pageClass 		= 		args.page 			||		'.page',
+			core.subPage 		= 		args.subPage  		|| 		'.subPage',
 			core.fader 			=		args.fader 			|| 		'.fader',
 			core.menu 			=		args.menu 			|| 		'#menu',
 			core.menuOpen 		= 		args.menuOpen 		|| 		'.menu-open',
@@ -24,8 +25,10 @@ Core Prototype
 			core.scrollData 	= 		{},
 			core.scrolling 		= 		false,
 			core.videos 		= 		{},
+			core.resizing,
 			core.currentVideo,
 			core.height,
+			core.width,
 			core.delta;
 	};
 
@@ -145,14 +148,14 @@ Core Prototype
 	UI & Event Triggered Methods
 	*/		
 
-		//Set Body Heigh on Resize
+		//Set Body and Container Heights on Resize
 		Core.prototype.resize 			= function (e) {
-			var height = e.currentTarget.innerHeight;
-			var width  = e.currentTarget.innerWidth;
-				$('body').height(height);
-				$('.subPage').width(width);
-				console.log('height: ' + height);
-				console.log('width: ' + width);
+			var core = this;
+				core.height = e.currentTarget.innerHeight;
+				core.width  = e.currentTarget.innerWidth;
+			$('body').width(core.width).height(core.height);
+			$(core.pageClass).width(core.width).height(core.height);
+			$(core.subPage).width(core.width).height(core.height);
 		};
 		//Fade Out Content When Interacting With Menu
 		Core.prototype.fadeElements 	= function () {
@@ -561,19 +564,18 @@ Global Event Bindings
 			resizeVideo();
 			site.bindScroll();
 			site.navTo();
-			site.height = e.currentTarget.innerHeight;
 		});
 
 		//Resize
 		$(window).on("resize", function (e) {
-			var resize, id;
-			resize = setTimeout(function () {
+			var id;
+			clearTimeout(site.resizing);
+			site.resizing = setTimeout(function () {
 				site.resize(e);
 				resizeVideo();
 				id = $('.' + site.current).attr("id");
 				site.navTo(id);
-				site.height = e.currentTarget.innerHeight;
 			}, 400);
 		});
 
-}(jQuery, d3, ko));
+}(jQuery, d3));

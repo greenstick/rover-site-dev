@@ -77,7 +77,7 @@ Data-Driven Choropleth Prototype Object Parameter Map
             map.translateY  =   args.translateY             ||   0,
             map.layers      =   args.layers - 1             ||   4,
             map.pathClass   =   args.pathClass              ||   "country",
-            map.bgPath      =   args.bgPath                 ||   "../img/background-",
+            map.bgPath      =   args.bgPath                 ||   "../img/map-interactive/background-",
             map.bgImgType   =   args.bgImgType              ||   ".png",
             map.sort        =   args.sort                   ||   "ascending",
 
