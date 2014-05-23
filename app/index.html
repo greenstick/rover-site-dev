@@ -259,11 +259,15 @@
 			</div>
 			<div id="trailers" class="page loaded-content">
 				<div class="pageHeader fader">VIDEOS</div>
-				<div class="thumbnails">
-					<div class="thumbnail big"></div>
-					<div class="thumbnail small"></div>
-					<div class="thumbnail small"></div>
-					<div class="thumbnail small"></div>
+				<div class="thumb-nails js-isotope" data-isotope-options='{"itemSlector": ".thumb-nail", "columnWidth": 256}'>
+					<div class="thumb-nail small video-open" data-video="video-1">
+						<img src="img/trailers/rover-trailer.png" />
+					</div>
+					<div class="thumb-nail small video-open" data-video="video-2">
+						<img src="img/trailers/god-gave-you-a-bullet.png" />
+					</div>
+					<div class="thumb-nail small"></div>
+					<div class="thumb-nail small"></div>
 				</div>
 			</div>
 			<div id="gallery" class="page loaded-content">
@@ -288,7 +292,7 @@
 			<div id="press" class="page loaded-content">
 				<div class="pageHeader fader">PRESS</div>
 				<div class="fader">
-					<div class="blurbs js-masonry" data-masonry-options='{"itemSelector": ".blurb", "columnWidth": 320}'>
+					<div class="blurbs js-masonry" data-masonry-options='{"itemSelector": ".blurb", "columnWidth": 320, "gutter": 10}'>
 						<div class="grid-sizer"></div>
 						<div class="blurb">
 							“A most impressive piece</br>
@@ -871,19 +875,19 @@
 					<span class="outer top"></span>
 					<span class="outer bottom"></span>
 				</div>
-				<video id="video-1" class="video-element video-js vjs-default-skin" controls preload>
+				<video id="video-1" class="video-element video-js vjs-default-skin" controls>
 					<source src="video/rover_trailer.webm" type="video/webm"></source>
 					<source src="video/rover_trailer.mp4" type="video/mp4"></source>
 				</video>
-				<video id="video-2" class="video-element video-js vjs-default-skin" controls preload>
+				<video id="video-2" class="video-element video-js vjs-default-skin" controls>
+					<source src="video/god_gave_you_a_bullet.webm" type="video/webm"></source>
+					<source src="video/god_gave_you_a_bullet.mp4" type="video/mp4"></source>
+				</video>
+				<video id="video-3" class="video-element video-js vjs-default-skin" controls>
 					<source src="video/rover_trailer.webm" type="video/webm"></source>
 					<source src="video/rover_trailer.mp4" type="video/mp4"></source>
 				</video>
-				<video id="video-3" class="video-element video-js vjs-default-skin" controls preload>
-					<source src="video/rover_trailer.webm" type="video/webm"></source>
-					<source src="video/rover_trailer.mp4" type="video/mp4"></source>
-				</video>
-				<video id="video-4" class="video-element video-js vjs-default-skin" controls preload>
+				<video id="video-4" class="video-element video-js vjs-default-skin" controls>
 					<source src="video/rover_trailer.webm" type="video/webm"></source>
 					<source src="video/rover_trailer.mp4" type="video/mp4"></source>
 				</video>

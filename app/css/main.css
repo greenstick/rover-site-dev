@@ -1671,22 +1671,22 @@ Map Color Layers
 Trailers Page
 */
 
-#trailers .thumbnails {
+#trailers .thumb-nails {
 	position: relative;
  	width: 80%;
  	height: auto;
  	margin: 120px auto 0 auto;
 }
-#trailers .thumbnails .thumbnail {
+#trailers .thumb-nails .thumb-nail {
+	cursor: pointer;
+}
+#trailers .thumb-nails .thumb-nail.big {
 
 }
-#trailers .thumbnails .thumbnail.big {
+#trailers .thumb-nails .thumb-nail.small {
 
 }
-#trailers .thumbnails .thumbnail.small {
-
-}
-#trailers .thumbnails .thumbnail .play {
+#trailers .thumb-nails .thumb-nail .play {
 
 }
 
