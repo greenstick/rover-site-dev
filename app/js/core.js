@@ -446,13 +446,48 @@ Video Modal Event Bindings
 /*
 Gallery
 */
+
+
 		//Gallery Page Isotope
 		var gallery = document.querySelector("#gallery");
 		var galleryLayout = new Isotope (gallery, {
 			itemSelector: '.galleryImg',
-			columnWidth: 320
+			masonry: {
+			    // columnWidth: '.grid-sizer'
+			    rowHeight: '.grid-sizer'
+			}
+			/*masonry: {
+				rowHeight: ".grid-sizer"
+			},*/
+			// columnWidth: ".grid-sizer"
 		});
 		galleryLayout.bindResize();
+
+
+		/*//Gallery Page Isotope
+		var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			layoutMode: 'masonryHorizontal',
+			itemSelector: '.galleryImg',
+			masonryHorizontal: {
+				rowHeight: ".grid-sizer"
+			}
+		});
+		galleryLayout.bindResize();*/
+
+
+
+
+
+
+		//Gallery Page Isotope
+		/*var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			// layoutMode: 'masonryHorizontal',
+			itemSelector: '.galleryImg'//,
+			// columnWidth: '25%'
+		});
+		galleryLayout.bindResize();*/
 
 
 

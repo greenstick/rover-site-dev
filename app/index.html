@@ -272,21 +272,33 @@
 			</div>
 			<div id="gallery" class="page loaded-content">
 				<div class="pageHeader fader">GALLERY</div>
-				<div class="fader">
-					<div class="tumblrImgs js-isotope" data-isotope-options='{"itemSelector": ".tImg", "columnWidth": 320}'>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-						<div class="tImg"></div>
-					</div>
+				<div class="galleryImgs fader js-isotope">
+					<div class="grid-sizer"></div>
+					<img class="galleryImg" src="img/gallery/tumblr1.png" />
+					<img class="galleryImg" src="img/gallery/tumblr2.png" />
+					<img class="galleryImg" src="img/gallery/tumblr3.jpg" />
+					<img class="galleryImg" src="img/gallery/tumblr4.png" />
+					<img class="galleryImg" src="img/gallery/tumblr5.png" />
+					<img class="galleryImg" src="img/gallery/tumblr6.gif" />
+					<img class="galleryImg" src="img/gallery/tumblr7.png" />
+					<img class="galleryImg" src="img/gallery/tumblr8.png" />
+					<img class="galleryImg" src="img/gallery/tumblr9.png" />
+					<img class="galleryImg" src="img/gallery/tumblr10.png" />
+					<img class="galleryImg" src="img/gallery/tumblr11.png" />
+					<img class="galleryImg" src="img/gallery/tumblr12.png" />
+
+					<!-- <div class="galleryImg"><img src="img/gallery/tumblr1.png" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr2.png" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr3.jpg" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr4.png" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr5.png" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr6.gif" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr7.png" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr8.png" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr9.png" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr10.png" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr11.png" /></div>
+					<div class="galleryImg"><img src="img/gallery/tumblr12.png" /></div> -->
 				</div>
 			</div>
 			<div id="press" class="page loaded-content">
@@ -910,6 +922,7 @@
 			.script("lib/knockout/dist/ko.min.js").wait()
 			.script("lib/d3/d3.min.js").wait()
 			.script("lib/isotope/isotope.min.js").wait()
+			.script("lib/isotope/masonry-horizontal.js").wait()
 			.script("lib/jquery/plugins/jquery.scrollTo.min.js")
 			.script("lib/d3/d3.queue.min.js")
 			.script("lib/topojson/topojson.min.js")

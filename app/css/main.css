@@ -1694,24 +1694,60 @@ Trailers Page
 Gallery Page
 */
 
+/* ---- isotope ---- */
+
+div#gallery.page.loaded-content.current {
+	width: 100% !important;
+}
+
+#gallery .galleryImgs.isotope.js-isotope {
+  height: 75%; 
+}
+
+/* clear fix */
+#gallery .galleryImgs.isotope.js-isotope {
+  content: '';
+  display: block;
+  clear: both;
+}
 #gallery .galleryImgs {
+	padding-top: 100px;
+	height: 100%;
+}
+/*, #gallery .galleryImgs .galleryImg*/
+#gallery .galleryImgs .grid-sizer {
+	width: 33%;
+}
+#gallery .galleryImgs .galleryImg {
+	/*width: 100px;*/
+	padding: 10px;
+	max-height: 25%;
+	max-width: 33%;
+}
+
+
+
+
+
+/*#gallery .galleryImgs {
 	margin-top: 100px;
+	height: 100%;
+	width: 100%;
+	position: relative;
 }
 #gallery .galleryImgs .galleryImg {
 	position: relative;
-	/*max-width: 320px;
-	max-height: 600px;*/
+	float: left;
+	max-width: 320px;
+	max-height: 600px;
 	max-width: 25%;
 	max-height: 33%;
 	padding: 10px;
-	font-size: 16px;
-	color: rgba(255, 255, 255, 1);
-	text-align: center;
-}
-#gallery .galleryImgs .galleryImg img {
-	/*max-width: 23%;
-	max-height: 30%;*/
-}
+}*/
+/*#gallery .galleryImgs .galleryImg img {
+	max-width: 300px;
+	max-height: 580px;
+}*/
 
 
 /*
