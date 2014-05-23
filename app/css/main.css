@@ -1694,6 +1694,24 @@ Trailers Page
 Gallery Page
 */
 
+#gallery .galleryImgs {
+	margin-top: 100px;
+}
+#gallery .galleryImgs .galleryImg {
+	position: relative;
+	max-width: 320px;
+	max-height: 600px;
+	padding: 10px;
+	font-size: 16px;
+	color: rgba(255, 255, 255, 1);
+	text-align: center;
+}
+#gallery .galleryImgs .galleryImg img {
+	max-width: 300px;
+	max-height: 580px;
+}
+
+
 /*
 Press Page
 */

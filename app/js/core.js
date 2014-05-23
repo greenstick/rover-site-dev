@@ -442,6 +442,25 @@ Video Modal Event Bindings
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
+Gallery
+*/
+		//Gallery Page Isotope
+		var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			itemSelector: '.galleryImg',
+			columnWidth: 320
+		});
+		galleryLayout.bindResize();
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/*
 Director's Statement Scrolling
 */
 
