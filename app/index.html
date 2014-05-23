@@ -148,12 +148,12 @@
 
 				</div>
 			</div>
-			<div id="map" class="page loaded-content" data-bind="style: {backgroundImage: 'url(' + background() + ')'}">
+			<div id="map" class="page loaded-content">
+				<div id="map-background" data-bind="style: {backgroundImage: 'url(' + background() + ')'}"></div>
 				<div class="fader">
 					<div id="map-wrapper" class="container-fluid" />
 						<div id="choropleth-wrapper" class="row r1">
 							<div class="full-height col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
-								<div id="map-background" data-bind="style: {backgroundImage: 'url(' + background() + ')'}"></div>
 								<div id="map-container"></div>
 							</div>
 						</div>
@@ -930,14 +930,14 @@
 					mouseMotionType: 'linear'
 				});
 				$('#statement').stellar();
-				// $('#statement').stellar({
-				// 	responsive: true,
-				// 	verticalScrolling: false,
-				// 	horizontalScrolling: true,
-				// 	parallaxBackgrounds: false,
-				// 	parallaxElements: true,
-				// 	positionProperty: 'position'
-				// });
+				$('#statement').stellar({
+					responsive: true,
+					verticalScrolling: false,
+					horizontalScrolling: true,
+					parallaxBackgrounds: false,
+					parallaxElements: true,
+					positionProperty: 'position'
+				});
 				jQuery(".loaded").fadeIn(2000);
 				jQuery(".loaded-content").show();
 			});
