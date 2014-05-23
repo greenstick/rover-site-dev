@@ -1692,61 +1692,21 @@ Trailers Page
 Gallery Page
 */
 
-/* ---- isotope ---- */
-
-div#gallery.page.loaded-content.current {
-	width: 100% !important;
-}
-
-#gallery .galleryImgs.isotope.js-isotope {
-  height: 75%; 
-}
-
-/* clear fix */
-#gallery .galleryImgs.isotope.js-isotope {
-  content: '';
-  display: block;
-  clear: both;
-}
-#gallery .galleryImgs {
-	padding-top: 100px;
-	height: 100%;
-}
-/*, #gallery .galleryImgs .galleryImg*/
-#gallery .galleryImgs .grid-sizer {
-	width: 33%;
+#gallery.page .pageHeader {
+	position: relative;
+	height: 50px;
+	margin: 50px auto 10px;
+	color: rgba(255, 248, 217, 1);
+	font-size: 32px;
+	text-align: center;
+	z-index: 10;
+	top: 0;
+	left: 0;
 }
 #gallery .galleryImgs .galleryImg {
-	/*width: 100px;*/
-	padding: 10px;
-	max-height: 25%;
-	max-width: 33%;
+	max-width: 20%;
+	padding: 5px;
 }
-
-
-
-
-
-/*#gallery .galleryImgs {
-	margin-top: 100px;
-	height: 100%;
-	width: 100%;
-	position: relative;
-}
-#gallery .galleryImgs .galleryImg {
-	position: relative;
-	float: left;
-	max-width: 320px;
-	max-height: 600px;
-	max-width: 25%;
-	max-height: 33%;
-	padding: 10px;
-}*/
-/*#gallery .galleryImgs .galleryImg img {
-	max-width: 300px;
-	max-height: 580px;
-}*/
-
 
 /*
 Press Page

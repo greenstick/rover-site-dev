@@ -149,13 +149,14 @@ Core Prototype
 	*/		
 
 		//Set Body and Container Heights on Resize
-		Core.prototype.resize 			= function (e) {
+		Core.prototype.resize 			= function (e, callback) {
 			var core = this;
 				core.height = e.currentTarget.innerHeight;
 				core.width  = e.currentTarget.innerWidth;
 			$('body').width(core.width).height(core.height);
 			$(core.pageClass).width(core.width).height(core.height);
 			$(core.subPage).width(core.width).height(core.height);
+			typeof callback == 'function' ? callback() : void(0);
 		};
 		//Fade Out Content When Interacting With Menu
 		Core.prototype.fadeElements 	= function () {
@@ -454,43 +455,8 @@ Gallery
 		//Gallery Page Isotope
 		var gallery = document.querySelector("#gallery");
 		var galleryLayout = new Isotope (gallery, {
-			itemSelector: '.galleryImg',
-			masonry: {
-			    // columnWidth: '.grid-sizer'
-			    rowHeight: '.grid-sizer'
-			}
-			/*masonry: {
-				rowHeight: ".grid-sizer"
-			},*/
-			// columnWidth: ".grid-sizer"
+			itemSelector: '.galleryImg'
 		});
-		galleryLayout.bindResize();
-
-
-		/*//Gallery Page Isotope
-		var gallery = document.querySelector("#gallery");
-		var galleryLayout = new Isotope (gallery, {
-			layoutMode: 'masonryHorizontal',
-			itemSelector: '.galleryImg',
-			masonryHorizontal: {
-				rowHeight: ".grid-sizer"
-			}
-		});
-		galleryLayout.bindResize();*/
-
-
-
-
-
-
-		//Gallery Page Isotope
-		/*var gallery = document.querySelector("#gallery");
-		var galleryLayout = new Isotope (gallery, {
-			// layoutMode: 'masonryHorizontal',
-			itemSelector: '.galleryImg'//,
-			// columnWidth: '25%'
-		});
-		galleryLayout.bindResize();*/
 
 
 
@@ -571,10 +537,13 @@ Global Event Bindings
 			var id;
 			clearTimeout(site.resizing);
 			site.resizing = setTimeout(function () {
-				site.resize(e);
-				resizeVideo();
-				id = $('.' + site.current).attr("id");
-				site.navTo(id);
+				site.resize(e, function() {
+					galleryLayout.layout();
+					resizeVideo();
+					id = $('.' + site.current).attr("id");
+					site.navTo(id);
+				});
+				
 			}, 400);
 		});
 
