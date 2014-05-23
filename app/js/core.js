@@ -19,9 +19,12 @@ Core Prototype
 			core.menuOpen 		= 		args.menuOpen 		|| 		'.menu-open',
 			core.menuSelection	=		args.menuSelection 	|| 		'#menu .button',
 			core.current 		= 		args.current 		|| 		'current',
+			core.videoElement 	= 		args.videoElement 	|| 		'.video-element',
 			core.mobile 		= 		(Modernizr.touch) ? true : false,
 			core.scrollData 	= 		{},
 			core.scrolling 		= 		false,
+			core.videos 		= 		{},
+			core.currentVideo,
 			core.height,
 			core.delta;
 	};
@@ -122,7 +125,7 @@ Core Prototype
 
 		//Direct Page Hash Navigation
 		Core.prototype.navTo 			= function (page) {
-			var loc = (page) ? '#'+ page : '#home', core = this;
+			var loc = (page) ? '#'+ page : (location.hash) ? location.hash : '#home', core = this;
 			if (history.pushState) {
 				history.pushState({}, document.title, loc);
 			} else {
@@ -180,6 +183,7 @@ Macro Methods
 		Core.prototype.init 			= function () {
 			console.log("Mobile: " + this.mobile);
 			console.log("Scrolling: " + this.scrolling);
+			console.log("Videos: " + this.videos);
 		};			
 
 		Core.prototype.toggleNav 		= function () {
@@ -331,14 +335,14 @@ Zip Modal Event Bindings
 	    //Open Zip Code Modal
 	    $(zipModal.open).on("click", function () {
 	        zipModal.openModal();
-	        $('.fader').fadeToggle();
+	        $(site.fader).fadeToggle();
 	        //Add Bootstrap Class
 	        $('body').addClass('modal-open');
 	    });
 	    //Close Zip Code Modal
 	    $(zipModal.element + " " + zipModal.close).on("click", function () {
 	        zipModal.closeModal();
-	        $('.fader').fadeToggle();
+	        $(site.fader).fadeToggle();
 	        //Remove Bootstrap Class
 	        $('body').removeClass('modal-open');
 	    });
@@ -369,57 +373,23 @@ Video Modal Instantiation
 	    });
 
 /*
-Video Player
+Video Player Methods
 */
-    	var args        =  [
-            {
-                name        :   "video-1",
-                id          :   "#video-1",
-                controls    :   true,
-                autoplay    :   false,
-                preload     :   "auto",
-            },
-            {
-                name        :   "video-2",
-                id          :   "#video-2",
-                controls    :   true,
-                autoplay    :   false,
-                preload     :   "auto",
-            },
-            {
-                name        :   "video-3",
-                id          :   "#video-3",
-                controls    :   true,
-                autoplay    :   false,
-                preload     :   "auto",
-            },
-            {
-                name        :   "video-4",
-                id          :   "#video-4",
-                controls    :   true,
-                autoplay    :   false,
-                preload     :   "auto",
-            }
-        ];
 
 	    //Creates VideoJS Instances
-	    function newVideos (args) {
-	        var obj = {};
-	        for (var i = 0; i < args.length; i++) {
-	            var instance = videojs(args[i].id, {
-	                "controls"      :       args[i].controls,
-	                "autoplay"      :       args[i].autoplay, 
-	                "preload"       :       args[i].preload
+	    function newVideo (id) {
+	    	var obj = {},
+	    		video = '#' + id,
+	            instance = videojs(video, {
+	                "controls"      :       true,
+	                "autoplay"      :       false, 
+	                "preload"       :       "auto"
 	            });
-
 	            instance.ready(function () {
-	                obj[args[i].name] = this;
+	                site.videos[id] = this;
 	            });
-	        };
-	        return obj;
+	        return site.videos;
 	    };
-	    //Instantiate Instances
-	    var videos = newVideos(args);
 	    //Resize Videos
 	    function resizeVideo () {
 	        var width = $(this).width() * 0.8;
@@ -435,15 +405,20 @@ Video Player
 	    };
 	    //Plays Video
 	    function playVideo (video) {
-	        videos[video].currentTime(0);
-	        videos[video].play();
+	    	//Setup Video
+	    	site.currentVideo = video;
+	        site.videos[video].currentTime(0);
+	        site.videos[video].play();
+	        videoModal.openModal();
+	        //Fade in Elements
+	        $("#" + video).show();
 	    };
 	    //Resets all Videos' Play Positions and Pauses them
-	    function resetVideos (video) {
-	        for (var i = 0; i < video.length; i++) {
-	            videos[video[i]].currentTime(0);
-	            videos[video[i]].pause();
-	        };
+	    function exitVideo () {
+	    	videoModal.closeModal();
+	    	$(site.videoElement).fadeOut();
+    		site.videos[site.currentVideo].currentTime(0);
+    		site.videos[site.currentVideo].pause();
 	    };
 
 /*
@@ -453,19 +428,15 @@ Video Modal Event Bindings
 	    //Open Video Modal
 	    $(videoModal.open).on("click", function (e) {
 	        var video = $(this).data().video;
-	        $("#" + video).show();
-	        playVideo(video);
-	        videoModal.openModal();
-	        $('.fader').fadeToggle();
+		        newVideo(video);
+		        resizeVideo();
+		        playVideo(video);
 	        //Add Bootstrap Class
 	        $('body').addClass('modal-open');
 	    });
 	    //Close Video Modal
 	    $(videoModal.element + " " + videoModal.close).on("click", function (e) {
-	        resetVideos(["video-1", "video-2", "video-3", "video-4"]);
-	        videoModal.closeModal();
-	        $('.video-element').fadeOut();
-	        $('.fader').fadeToggle();
+	        exitVideo();
 	        //Remove Bootstrap Class
 	        $('body').removeClass('modal-open');
 	    });
@@ -539,7 +510,7 @@ Masonry
 		//Trailers Page Masonry
 		var trailers = document.querySelector("#trailers.page");
 		var trailersLayout = new Isotope (trailers, {
-			itemSelector: '.thumbnail'
+			itemSelector: '.thumb-nail'
 		});
 		trailersLayout.bindResize();
 
