@@ -530,19 +530,17 @@ Statement Event Bindings
 Masonry
 */
 
-		//Press Page Masonry
-		var press = document.querySelector("#press.page");
-		var pressLayout = new Isotope (press, {
-			itemSelector: '.blurb'
-		});
-		pressLayout.bindResize();
-
 		//Trailers Page Masonry
 		var trailers = document.querySelector("#trailers.page");
 		var trailersLayout = new Isotope (trailers, {
 			itemSelector: '.thumb-nail'
 		});
-		trailersLayout.bindResize();
+
+		//Press Page Masonry
+		var press = document.querySelector("#press.page");
+		var pressLayout = new Isotope (press, {
+			itemSelector: '.blurb'
+		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -552,10 +550,14 @@ Global Event Bindings
 
 		//Setup DOM Sizing and Location
 		$(window).load(function (e) {
-			site.resize(e);
-			resizeVideo();
-			site.bindScroll();
-			site.navTo();
+			site.resize(e, function () {
+				trailersLayout.layout();
+				galleryLayout.layout();
+				pressLayout.layout();
+				resizeVideo();
+				site.bindScroll();
+				site.navTo();
+			});
 		});
 
 		//Resize
@@ -563,20 +565,14 @@ Global Event Bindings
 			var id;
 			clearTimeout(site.resizing);
 			site.resizing = setTimeout(function () {
-<<<<<<< HEAD
-				site.resize(e, function () {
-=======
 				site.resize(e, function() {
+					trailersLayout.layout();
 					galleryLayout.layout();
->>>>>>> b023a293251aa3e14993fd8c5fd20283fc2363ea
+					pressLayout.layout();
 					resizeVideo();
 					id = $('.' + site.current).attr("id");
 					site.navTo(id);
 				});
-<<<<<<< HEAD
-=======
-				
->>>>>>> b023a293251aa3e14993fd8c5fd20283fc2363ea
 			}, 400);
 		});
 
