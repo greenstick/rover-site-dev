@@ -1704,9 +1704,15 @@ Gallery Page
 	left: 0;
 }
 #gallery .galleryImgs .galleryImg {
-	max-width: 20%;
+	max-height: 20%;
+	min-width: 20px;
 	padding: 5px;
 }
+
+/*#gallery .galleryImgs .galleryImg {
+	max-width: 20%;
+	padding: 5px;
+}*/
 
 /*
 Press Page

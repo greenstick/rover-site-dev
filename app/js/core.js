@@ -453,11 +453,20 @@ Gallery
 
 
 		//Gallery Page Isotope
-		var gallery = document.querySelector("#gallery");
+		/*var gallery = document.querySelector("#gallery");
 		var galleryLayout = new Isotope (gallery, {
 			itemSelector: '.galleryImg'
-		});
+		});*/
 
+		//Gallery Page Isotope
+		var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			layoutMode: 'masonryHorizontal',
+			itemSelector: '.galleryImg'/*,
+			masonryHorizontal: {
+				rowHeight: '.grid-sizer'
+			}*/
+		});
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -530,6 +539,7 @@ Global Event Bindings
 			resizeVideo();
 			site.bindScroll();
 			site.navTo();
+			galleryLayout.layout();
 		});
 
 		//Resize
