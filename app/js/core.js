@@ -478,11 +478,57 @@ Gallery
 */
 
 
-		//Gallery Page Isotope
-		var gallery = document.querySelector("#gallery");
-		var galleryLayout = new Isotope (gallery, {
-			itemSelector: '.galleryImg'
+		Modal.prototype.getGalleryImage = function(data) {
+			this.imageSource = ko.observable($(data).attr('src'));
+			$('#modals #galleryModal img').attr('src', this.imageSource());
+			console.log(this.imageSource());
+		};
+
+/*
+Gallery Modal
+*/
+		//Instantiation
+		var galleryModal = new Modal ({
+			element      : "#galleryModal",
+			mask         : "#mask",
+			open         : ".gallery-open",
+			close        : ".closeIcon"
 		});
+
+		//Apply Knockout Bindings
+		ko.applyBindings(galleryModal, document.getElementById("galleryModal"));
+
+
+
+/*
+Gallery Modal Event Bindings
+*/
+
+	    //Open Release Dates Modal
+		$(galleryModal.open).on("click", function () {
+			galleryModal.openModal();
+		});
+	    //Close Release Dates modal
+		$(galleryModal.element + " " + galleryModal.close).on("click", function () {
+			galleryModal.closeModal();
+		});
+
+		//Open Zip Code Modal
+	    $(galleryModal.open).on("click", function () {
+	        galleryModal.openModal();
+	        galleryModal.getGalleryImage($(this));
+	        $(site.fader).fadeToggle();
+	        //Add Bootstrap Class
+	        $('body').addClass('modal-open');
+	    });
+	    //Close Zip Code Modal
+	    $(galleryModal.element + " " + galleryModal.close).on("click", function () {
+	        galleryModal.closeModal();
+	        $(site.fader).fadeToggle();
+	        //Remove Bootstrap Class
+	        $('body').removeClass('modal-open');
+	    });
+
 
 
 
@@ -535,6 +581,22 @@ Masonry
 		var trailersLayout = new Isotope (trailers, {
 			itemSelector: '.thumb-nail'
 		});
+
+		//Gallery Page Isotope
+		var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			itemSelector: '.galleryImg'
+		});
+
+		/*//Gallery Page Isotope
+		var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			layoutMode: 'masonryHorizontal',
+			itemSelector: '.galleryImg'/*,
+			masonryHorizontal: {
+				rowHeight: '.grid-sizer'
+			}*/
+		//});*/
 
 		//Press Page Masonry
 		var press = document.querySelector("#press.page");

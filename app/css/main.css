@@ -1702,16 +1702,57 @@ Gallery Page
 	top: 0;
 	left: 0;
 }
-#gallery .galleryImgs .galleryImg {
+/*#gallery .galleryImgs .galleryImg {
 	max-height: 20%;
 	min-width: 20px;
 	padding: 5px;
-}
+}*/
 
-/*#gallery .galleryImgs .galleryImg {
+#gallery .galleryImgs .galleryImg {
 	max-width: 20%;
 	padding: 5px;
-}*/
+}
+
+#galleryModal {
+	position: fixed;
+	top: 0px;
+	left: 0%;
+	height: 100%;
+	width: 100%;
+	z-index: 9999;
+	display: none;
+	-webkit-backface-visibility: hidden;
+}
+#galleryModal .closeIcon {	
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	-webkit-backface-visibility: hidden;
+}
+#video-1, #video-2, #video-3, #video-4 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: none;
+	-ms-transform: translate(-50%, -50%); /* IE 9 */
+	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+	transform: translate(-50%, -50%);
+	-webkit-backface-visibility: hidden;
+}
+
+/*
+Gallery Modal
+*/
+
+#modals #galleryModal img {
+	display: block;
+	max-height: 95%;
+	max-width: 95%;
+	margin-top: 2%;
+	margin: auto;
+}
+
+
 
 /*
 Press Page
