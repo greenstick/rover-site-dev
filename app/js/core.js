@@ -496,6 +496,58 @@ Video Modal Event Bindings
 Gallery
 */
 
+		Modal.prototype.getGalleryImage = function(data) {
+			var imageSource = $(data).attr('src');
+			$('#galleryModal img').attr('src', imageSource);
+			console.log(imageSource);
+		};
+
+/*
+Gallery Modal
+*/
+		//Instantiation
+		var galleryModal = new Modal ({
+			element      : "#galleryModal",
+			mask         : "#mask",
+			open         : ".gallery-open",
+			close        : ".closeIcon"
+		});
+
+		//Apply Knockout Bindings
+		// ko.applyBindings(galleryModal, document.getElementById("galleryModal"));
+
+
+
+/*
+Gallery Modal Event Bindings
+*/
+
+	    //Open Release Dates Modal
+		$(galleryModal.open).on("click", function () {
+			galleryModal.openModal();
+		});
+	    //Close Release Dates modal
+		$(galleryModal.element + " " + galleryModal.close).on("click", function () {
+			galleryModal.closeModal();
+		});
+
+		//Open Gallery Code Modal
+	    $(galleryModal.open).on("click", function () {
+	        galleryModal.openModal();
+	        galleryModal.getGalleryImage($(this));
+	        $(site.fader).fadeToggle();
+	        //Add Bootstrap Class
+	        $('body').addClass('modal-open');
+	    });
+	    //Close Gallery Code Modal
+	    $(galleryModal.element + " " + galleryModal.close).on("click", function () {
+	        galleryModal.closeModal();
+	        $(site.fader).fadeToggle();
+	        //Remove Bootstrap Class
+	        $('body').removeClass('modal-open');
+	    });
+
+
 		//Gallery Page Isotope
 		var gallery = document.querySelector("#gallery");
 		var galleryLayout = new Isotope (gallery, {
@@ -555,6 +607,12 @@ Masonry
 		var press = document.querySelector("#press.page");
 		var pressLayout = new Isotope (press, {
 			itemSelector: '.blurb'
+		});
+
+		//Gallery Page Isotope
+		var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			itemSelector: '.galleryImg'
 		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
