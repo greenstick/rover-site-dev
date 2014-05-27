@@ -42,15 +42,15 @@ Core Prototype
 			var core = this;
 			//Mobile
 			if (core.mobile === true) {
-				$(document).on("touchstart", function (e) {
+				$('.page').on("touchstart", function (e) {
 					core.touchStart(e);
 				});
-				$(document).on("touchmove", function (e) {
+				$('.page').on("touchmove", function (e) {
 					core.touchMove(e);
 				});
 			//Non-Mobile - Bind Scroll Event
 			} else {
-				$(document).on('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
+				$('.page').on('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
 					core.scrollDelta(e);
 				});
 			};
