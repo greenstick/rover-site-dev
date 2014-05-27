@@ -182,29 +182,24 @@ Core Prototype
 			$('body').width(core.width).height(core.height);
 			$(core.pageClass).width(core.width).height(core.height);
 			$(core.subPage).width(core.width).height(core.height);
-			//If Callback 
-			if (typeof callback == 'function') callback();
+			typeof callback == 'function' ? callback() : void(0);
 		};
-
 		//Fade Out Content When Interacting With Menu
 		Core.prototype.fadeElements 	= function () {
 			var core = this;
 			$(core.fader).fadeToggle();
 		};
-
 		//Toggle Menu 
 		Core.prototype.toggleMenu 		= function () {
 			var core = this;
 			$(core.menu).toggleClass('active');
 			$(core.menuOpen).toggleClass('close');
 		};
-
 		//Mouseover Menu Icon
 		Core.prototype.menuOver 		= function () {
 			var core = this;
 			$(core.menuOpen).addClass('active');
 		};
-
 		//Mouseout Menu Icon
 		Core.prototype.menuOut 			= function () {
 			var core = this;
@@ -214,14 +209,13 @@ Core Prototype
 /*		   
 Macro Methods
 */		   
-		//Log Init Variables
+		
 		Core.prototype.init 			= function () {
 			console.log("Mobile: " + this.mobile);
 			console.log("Scrolling: " + this.scrolling);
 			console.log("Videos: " + this.videos);
 		};			
 
-		//Show / Hide Navigation		
 		Core.prototype.toggleNav 		= function () {
 			this.fadeElements();
 			this.toggleMenu();
@@ -236,7 +230,6 @@ Instantiation
 			menu 			: '#navigation',
 			menuSelection	: '.menu-item'
 		});
-
 		//Initialize
 		site.init();
 
@@ -248,17 +241,14 @@ Core Event Bindings
 		$(site.menuOpen).on("click", function (e) {
 			site.toggleNav();
 		});
-
 		//Mouseover Menu Icon
 		$(site.menuOpen).on("mouseover", function (e) {
 			site.menuOver();
 		});
-
 		//Mouseout Menu Icon
 		$(site.menuOpen).on("mouseover", function (e) {
 			site.menuOut();
 		});
-
 		//Select Page From Menu
 		$(site.menuSelection).on("click", function (e) {
 			var page = $(this).data().to;
@@ -293,7 +283,6 @@ Basic Methods
 				};
 				$(modal.element).fadeIn();
 		};
-
 	    //Close Modal
 		Modal.prototype.closeModal  = function () {
 			var modal = this;
@@ -323,7 +312,6 @@ Release Dates Modal Event Bindings
 		$(releaseDates.open).on("click", function () {
 			releaseDates.openModal();
 		});
-
 	    //Close Release Dates modal
 		$(releaseDates.element + " " + releaseDates.close).on("click", function () {
 			releaseDates.closeModal();
@@ -363,12 +351,10 @@ Zip Modal Instantiation
         open        : "#getTickets",
         close       : ".closeIcon"
     });
-
     //Instantiate Zipcode Validation
     var zipValidation = zipModal.zipCode({
         location    :   "http://www.fandango.com/theRover_170724/movietimes?location="
     });
-
     //Apply Knockout Bindings
     ko.applyBindings(zipModal, document.getElementById("zipcode-modal"));
 
@@ -383,7 +369,6 @@ Zip Modal Event Bindings
 	        //Add Bootstrap Class
 	        $('body').addClass('modal-open');
 	    });
-
 	    //Close Zip Code Modal
 	    $(zipModal.element + " " + zipModal.close).on("click", function () {
 	        zipModal.closeModal();
@@ -435,12 +420,11 @@ Video Player Methods
 	            });
 	        return site.videos;
 	    };
-
 	    //Resize Videos
 	    function resizeVideo () {
 	        var width = $(this).width() * 0.8;
 	        var height = $(this).height() * 0.8;
-	        var $videos = $("#video-1, #video-2, #video-3");
+	        var $videos = $("#video-1, #video-2, #video-3, #video-4");
 	        if (width/height >= 16/9) {
 	            $videos.width(width);
 	            $videos.height(width * (10/24));
@@ -449,7 +433,6 @@ Video Player Methods
 	            $videos.width(height * (24/10));
 	        };
 	    };
-
 	    //Plays Video
 	    function playVideo (video) {
 	    	//Setup Video
@@ -460,7 +443,6 @@ Video Player Methods
 	        //Fade in Elements
 	        $("#" + video).show();
 	    };
-
 	    //Resets all Videos' Play Positions and Pauses them
 	    function exitVideo () {
 	    	videoModal.closeModal();
@@ -482,7 +464,6 @@ Video Modal Event Bindings
 	        //Add Bootstrap Class
 	        $('body').addClass('modal-open');
 	    });
-
 	    //Close Video Modal
 	    $(videoModal.element + " " + videoModal.close).on("click", function (e) {
 	        exitVideo();
@@ -496,13 +477,66 @@ Video Modal Event Bindings
 Gallery
 */
 
-		//Gallery Page Isotope
-		var gallery = document.querySelector("#gallery");
-		var galleryLayout = new Isotope (gallery, {
-			itemSelector: '.galleryImg'
+
+		Modal.prototype.getGalleryImage = function(data) {
+			this.imageSource = ko.observable($(data).attr('src'));
+			$('#modals #galleryModal img').attr('src', this.imageSource());
+			console.log(this.imageSource());
+		};
+
+/*
+Gallery Modal
+*/
+		//Instantiation
+		var galleryModal = new Modal ({
+			element      : "#galleryModal",
+			mask         : "#mask",
+			open         : ".gallery-open",
+			close        : ".closeIcon"
 		});
 
+		//Apply Knockout Bindings
+		ko.applyBindings(galleryModal, document.getElementById("galleryModal"));
+
+
+
+/*
+Gallery Modal Event Bindings
+*/
+
+	    //Open Release Dates Modal
+		$(galleryModal.open).on("click", function () {
+			galleryModal.openModal();
+		});
+	    //Close Release Dates modal
+		$(galleryModal.element + " " + galleryModal.close).on("click", function () {
+			galleryModal.closeModal();
+		});
+
+		//Open Zip Code Modal
+	    $(galleryModal.open).on("click", function () {
+	        galleryModal.openModal();
+	        galleryModal.getGalleryImage($(this));
+	        $(site.fader).fadeToggle();
+	        //Add Bootstrap Class
+	        $('body').addClass('modal-open');
+	    });
+	    //Close Zip Code Modal
+	    $(galleryModal.element + " " + galleryModal.close).on("click", function () {
+	        galleryModal.closeModal();
+	        $(site.fader).fadeToggle();
+	        //Remove Bootstrap Class
+	        $('body').removeClass('modal-open');
+	    });
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 /*
 Director's Statement Scrolling
@@ -523,17 +557,14 @@ Statement Event Bindings
 		$("#statement1 .next").on("click", function () {
 			toStatement('#statement', '#statement2', '#statement1 .blurb', 'easeOutCirc', 800);
 		});
-
 		//Statement 2 to Statement 3
 		$('#statement2 .next').on("click", function () {
 			toStatement('#statement', '#statement3', '#statement2 .blurb', 'easeOutCirc', 800);
 		});
-
 		//Statement 2 to Statement 1
 		$('#statement2 .prev').on("click", function () {
 			toStatement('#statement', '#statement1', '#statement2 .blurb', 'easeOutCirc', 800);
 		});
-
 		//Statement 3 to Statement 2
 		$("#statement3 .prev").on("click", function () {
 			toStatement('#statement', '#statement2', '#statement3 .blurb', 'easeOutCirc', 800);
@@ -550,6 +581,22 @@ Masonry
 		var trailersLayout = new Isotope (trailers, {
 			itemSelector: '.thumb-nail'
 		});
+
+		//Gallery Page Isotope
+		var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			itemSelector: '.galleryImg'
+		});
+
+		/*//Gallery Page Isotope
+		var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			layoutMode: 'masonryHorizontal',
+			itemSelector: '.galleryImg'/*,
+			masonryHorizontal: {
+				rowHeight: '.grid-sizer'
+			}*/
+		//});*/
 
 		//Press Page Masonry
 		var press = document.querySelector("#press.page");
