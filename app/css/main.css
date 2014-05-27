@@ -108,11 +108,11 @@ Page Backgrounds
 }
 .page .pageHeader {
 	position: absolute;
-	width: 320px;
+	top: 0px;
+	left: 0px;
 	height: 50px;
-	top: 50px;
-	left: 50%;
-	margin: 0 0 0 -160px;
+	width: 100%;
+	margin: 50px auto 10px;
 	color: rgba(255, 248, 217, 1);
 	font-size: 32px;
 	text-align: center;
@@ -446,8 +446,10 @@ Release Dates Modal
 	position: relative;
 	top: 0px;
 	left: 0px;
-	width: 100%;
+	width: 85%;
 	margin: 50px 0 50px 60px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	height: auto;
 }
 #release-dates .release-body .date {
@@ -502,7 +504,6 @@ Video Modal
 	-ms-transform: translate(-50%, -50%); /* IE 9 */
 	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
 	transform: translate(-50%, -50%);
-	-webkit-backface-visibility: hidden;
 }
 
 /*
@@ -530,7 +531,7 @@ Additional UI
 	top: 20px;
 	right: 20px;
 	z-index: 5000;
-	display: block;
+	display: none;
 	-webkit-backface-visibility: hidden;
 }
 
@@ -1670,103 +1671,42 @@ Trailers Page
 
 #trailers .thumb-nails {
 	position: relative;
- 	width: 80%;
- 	height: auto;
- 	margin: 120px auto 0 auto;
+	top: 100px;
+	width: 80%;
+	margin: 0 auto;
 }
 #trailers .thumb-nails .thumb-nail {
+	max-width: 32%;
+	padding: 1%;
 	cursor: pointer;
-}
-#trailers .thumb-nails .thumb-nail.big {
-
-}
-#trailers .thumb-nails .thumb-nail.small {
-
-}
-#trailers .thumb-nails .thumb-nail .play {
-
 }
 
 /*
 Gallery Page
 */
 
-#gallery.page .pageHeader {
-	position: relative;
-	height: 50px;
-	margin: 50px auto 10px;
-	color: rgba(255, 248, 217, 1);
-	font-size: 32px;
-	text-align: center;
-	z-index: 10;
-	top: 0;
-	left: 0;
-}
-/*#gallery .galleryImgs .galleryImg {
+#gallery .galleryImgs .galleryImg {
 	max-height: 20%;
 	min-width: 20px;
 	padding: 5px;
-}*/
+	cursor: pointer;
+}
 
-#gallery .galleryImgs .galleryImg {
+/*#gallery .galleryImgs .galleryImg {
 	max-width: 20%;
 	padding: 5px;
-}
-
-#galleryModal {
-	position: fixed;
-	top: 0px;
-	left: 0%;
-	height: 100%;
-	width: 100%;
-	z-index: 9999;
-	display: none;
-	-webkit-backface-visibility: hidden;
-}
-#galleryModal .closeIcon {	
-	position: fixed;
-	top: 20px;
-	right: 20px;
-	-webkit-backface-visibility: hidden;
-}
-#video-1, #video-2, #video-3, #video-4 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	display: none;
-	-ms-transform: translate(-50%, -50%); /* IE 9 */
-	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
-	transform: translate(-50%, -50%);
-	-webkit-backface-visibility: hidden;
-}
-
-/*
-Gallery Modal
-*/
-
-#modals #galleryModal img {
-	display: block;
-	max-height: 95%;
-	max-width: 95%;
-	margin-top: 2%;
-	margin: auto;
-}
-/**/
-
-
+}*/
 
 /*
 Press Page
 */
 
 #press .blurbs {
-	position: absolute;
 	top: 100px;
 	left: 0px;
 	width: 100%;
 }
 #press .blurbs .blurb {
-	position: relative;
 	width: 320px;
 	height: 200px;
 	padding: 20px;
