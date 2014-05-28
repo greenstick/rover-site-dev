@@ -46,6 +46,17 @@ body {
 	display: none !important;
 	opacity: 0;
 }
+.iso-fader {
+	opacity: 1;
+	-webkit-transition: opacity 0.6s linear;
+	-moz-transition: opacity 0.6s linear;
+	-ms-transition: opacity 0.6s linear;
+	-o-transition: opacity 0.6s linear;
+	transition: opacity 0.6s linear;
+}
+.iso-fader.faded {
+	opacity: 0;
+}
 
 /*
 Page Backgrounds
@@ -156,14 +167,21 @@ Navigation
 	border-bottom: 1px solid rgba(255, 255, 255, .7);
 	text-align: right;
 	cursor: pointer;
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+	-ms-transition: all .2s;
+	-o-transition: all .2s;
+	transition: all .2s;
 }
 #navigation .menu-expanded .menu-items .menu-item.hover, #navigation .menu-expanded .menu-items .menu-item:hover {
+	width: 290px;
 	color: rgba(255, 255, 255, 1);
 	border-color: rgba(255, 255, 255, 1);
 	border-bottom: 2px solid rgba(255, 255, 255, .7);
 }
 #navigation .menu-expanded .menu-items .menu-item.selected {
 	color: rgba(255, 248, 217, 1);
+	border-color: rgba(255, 255, 255, 1);
 	border-bottom: 2px solid rgba(255, 255, 255, .7);
 }
 
@@ -1880,15 +1898,17 @@ Gallery Page
 /*
 Gallery Modal
 */
+
 #galleryModal {
 	position: fixed;
 	top: 0px;
 	left: 0%;
 	height: 100%;
 	width: 100%;
-	z-index: 9999;
+	z-index: 7500;
 	display: none;
 	-webkit-backface-visibility: hidden;
+	text-align: center;
 }
 #galleryModal .closeIcon {	
 	position: fixed;
@@ -1896,12 +1916,17 @@ Gallery Modal
 	right: 20px;
 	-webkit-backface-visibility: hidden;
 }
-#modals #galleryModal img {
-	display: block;
+#galleryModal:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -0.25em;
+}
+#galleryModal img {
+	display: inline-block;
 	max-height: 95%;
 	max-width: 95%;
-	margin-top: 2%;
-	margin: auto;
 }
 
 /*

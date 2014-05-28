@@ -16,6 +16,7 @@ Core Prototype
 			core.pageClass 		= 		args.page 			||		'.page',
 			core.subPage 		= 		args.subPage  		|| 		'.subPage',
 			core.fader 			=		args.fader 			|| 		'.fader',
+			core.isoFader 		= 		args.isoFader 		|| 		'.iso-fader',
 			core.menu 			=		args.menu 			|| 		'#menu',
 			core.menuOpen 		= 		args.menuOpen 		|| 		'.menu-open',
 			core.menuSelection	=		args.menuSelection 	|| 		'#menu .button',
@@ -156,7 +157,7 @@ Core Prototype
 
 		//Direct Page Hash Navigation
 		Core.prototype.navTo 			= function (page, callback) {
-			var loc = (page !== null && page !== undefined) ? '#'+ page : (location.hash) ? location.hash : '#home', core = this;
+			var loc = (page !== null && page !== undefined) ? '#'+ page : (location.hash) ? location.hash : '#home', link = loc.substr(1), core = this;
 			if (history.pushState) {
 				history.pushState({}, document.title, loc);
 			} else {
@@ -165,6 +166,8 @@ Core Prototype
 			core.scrolling = true;
 			$('.' + core.current).removeClass(core.current);
 			$(loc).addClass(core.current);
+			$(core.menuSelection).removeClass('selected');
+			$('#menu-' + link).addClass('selected');
 			$(document).scrollTo(loc, {
 				duration: 600,
 					axis: "y"
@@ -208,6 +211,12 @@ Core Prototype
 			$(core.fader).fadeToggle();
 		};
 
+		//Fade Out Isotope Elements
+		Core.prototype.fadeIsoElements = function () {
+			var core = this;
+			$(core.isoFader).toggleClass('faded');
+		};
+
 		//Toggle Menu 
 		Core.prototype.toggleMenu 		= function () {
 			var core = this;
@@ -227,6 +236,18 @@ Core Prototype
 			$(core.menuOpen).removeClass('active');
 		};
 
+		//Menu Link Active
+		Core.prototype.menuHoverOver 	= function (link) {
+			var core = this;
+			$(link).addClass('hover');
+		};
+
+		//Menu Link Inactive
+		Core.prototype.menuHoverOut		= function () {
+			var core = this;
+			$(core.menuSelection).removeClass('hover');
+		};
+
 /*		   
 Macro Methods
 */		   
@@ -240,6 +261,7 @@ Macro Methods
 		//Show / Hide Navigation		
 		Core.prototype.toggleNav 		= function () {
 			this.fadeElements();
+			this.fadeIsoElements();
 			this.toggleMenu();
 		};
 
@@ -272,8 +294,19 @@ Core Event Bindings
 		});
 
 		//Mouseout Menu Icon
-		$(site.menuOpen).on("mouseover", function (e) {
+		$(site.menuOpen).on("mouseout", function (e) {
 			site.menuOut();
+		});
+
+		//Page Link Hover Over
+		$(site.menuSelection).on("mouseover", function (e) {
+			var link = e.currentTarget;
+			site.menuHoverOver(link);
+		});
+
+		//Page Link Hover Over
+		$(site.menuSelection).on("mouseout", function (e) {
+			site.menuHoverOut();
 		});
 
 		//Select Page From Menu
@@ -319,32 +352,6 @@ Basic Methods
 				};
 				$(modal.element).fadeOut();
 		};
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/*
-Release Dates Modal
-*/
-		//Instantiation
-		var releaseDates = new Modal ({
-			element      : "#release-dates",
-			open         : ".release-open",
-			close        : ".closeIcon"
-		});
-
-/*
-Release Dates Modal Event Bindings
-*/
-
-	    //Open Release Dates Modal
-		$(releaseDates.open).on("click", function () {
-			releaseDates.openModal();
-		});
-
-	    //Close Release Dates modal
-		$(releaseDates.element + " " + releaseDates.close).on("click", function () {
-			releaseDates.closeModal();
-		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -396,7 +403,8 @@ Zip Modal Event Bindings
 	    //Open Zip Code Modal
 	    $(zipModal.open).on("click", function () {
 	        zipModal.openModal();
-	        $(site.fader).fadeToggle();
+	        site.fadeElements();
+	        site.fadeIsoElements();
 	        //Add Bootstrap Class
 	        $('body').addClass('modal-open');
 	    });
@@ -404,7 +412,8 @@ Zip Modal Event Bindings
 	    //Close Zip Code Modal
 	    $(zipModal.element + " " + zipModal.close).on("click", function () {
 	        zipModal.closeModal();
-	        $(site.fader).fadeToggle();
+	        site.fadeElements();
+	        site.fadeIsoElements();
 	        //Remove Bootstrap Class
 	        $('body').removeClass('modal-open');
 	    });
@@ -419,6 +428,32 @@ Zip Validation Event Binding
 	            $('.submit img').click();
 	        };
 	    });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+Release Dates Modal
+*/
+		//Instantiation
+		var releaseDates = new Modal ({
+			element      : "#release-dates",
+			open         : ".release-open",
+			close        : ".closeIcon"
+		});
+
+/*
+Release Dates Modal Event Bindings
+*/
+
+	    //Open Release Dates Modal
+		$(releaseDates.open).on("click", function () {
+			releaseDates.openModal();
+		});
+
+	    //Close Release Dates modal
+		$(releaseDates.element + " " + releaseDates.close).on("click", function () {
+			releaseDates.closeModal();
+		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -493,6 +528,8 @@ Video Modal Event Bindings
 	    //Open Video Modal
 	    $(videoModal.open).on("click", function (e) {
 	        var video = $(this).data().video;
+	        	site.fadeElements();
+	        	site.fadeIsoElements();
 		        newVideo(video);
 		        resizeVideo();
 		        playVideo(video);
@@ -503,6 +540,8 @@ Video Modal Event Bindings
 	    //Close Video Modal
 	    $(videoModal.element + " " + videoModal.close).on("click", function (e) {
 	        exitVideo();
+	        site.fadeElements();
+	        site.fadeIsoElements();
 	        //Remove Bootstrap Class
 	        $('body').removeClass('modal-open');
 	    });
@@ -542,22 +581,25 @@ Gallery Modal Event Bindings
 	    //Close Release Dates modal
 		$(galleryModal.element + " " + galleryModal.close).on("click", function () {
 			galleryModal.closeModal();
+			galleryLayout.layout();
 		});
 
 		//Open Gallery Code Modal
 	    $(galleryModal.open).on("click", function () {
 	        galleryModal.openModal();
 	        galleryModal.getGalleryImage($(this));
-	        $(site.fader).fadeToggle();
+	        site.fadeElements();
+	        site.fadeIsoElements();
 	        //Add Bootstrap Class
 	        $('body').addClass('modal-open');
 	    });
 	    //Close Gallery Code Modal
 	    $(galleryModal.element + " " + galleryModal.close).on("click", function () {
 	        galleryModal.closeModal();
-	        $(site.fader).fadeToggle();
+	        site.fadeElements();
+	        site.fadeIsoElements();
 	        //Remove Bootstrap Class
-	        $('body').removeCslass('modal-open');
+	        $('body').removeClass('modal-open');
 	    });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -567,7 +609,7 @@ Director's Statement Scrolling
 */
 
 		//Scroll to Statement .subPage
-		function toStatement (parent, element, blurb, easing, duration) {
+		function toStatement (parent, element, duration) {
 			$(parent).scrollTo(element, {
 				duration: duration,
 				axis: "x"
@@ -579,28 +621,28 @@ Statement Event Bindings
 */
 		//Statement 1 to Statement 2
 		$("#statement1 .next").on("click", function () {
-			toStatement('#statement', '#statement2', '#statement1 .blurb', 'easeOutCirc', 800);
+			toStatement('#statement', '#statement2', 800);
 		});
 
 		//Statement 2 to Statement 3
 		$('#statement2 .next').on("click", function () {
-			toStatement('#statement', '#statement3', '#statement2 .blurb', 'easeOutCirc', 800);
+			toStatement('#statement', '#statement3', 800);
 		});
 
 		//Statement 2 to Statement 1
 		$('#statement2 .prev').on("click", function () {
-			toStatement('#statement', '#statement1', '#statement2 .blurb', 'easeOutCirc', 800);
+			toStatement('#statement', '#statement1', 800);
 		});
 
 		//Statement 3 to Statement 2
 		$("#statement3 .prev").on("click", function () {
-			toStatement('#statement', '#statement2', '#statement3 .blurb', 'easeOutCirc', 800);
+			toStatement('#statement', '#statement2', 800);
 		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
-Masonry
+Masonry Pages
 */
 
 		//Trailers Page Masonry
