@@ -1685,35 +1685,45 @@ Trailers Page
 Gallery Page
 */
 
-#gallery.page .pageHeader {
-	position: relative;
-	height: 50px;
-	margin: 50px auto 10px;
-	color: rgba(255, 248, 217, 1);
-	font-size: 32px;
-	text-align: center;
-	z-index: 10;
-	top: 0;
-	left: 0;
-}
-/*#gallery .galleryImgs .galleryImg {
-	max-height: 20%;
-	min-width: 20px;
-	padding: 5px;
-}*/
-/*#gallery .galleryImgs .galleryImg {
-	max-height: 20%;
-	min-width: 20px;
-	padding: 5px;
-	cursor: pointer;
-}*/
 
+#gallery .galleryImgs {
+	top: 160px;
+}
+
+/* MASONRY */
 #gallery .galleryImgs .galleryImg {
 	max-width: 20%;
+	min-width:250px;
 	padding: 5px;
 	cursor: pointer;
 }
 
+
+/* MASONRY HORIZONTAL */
+/*#gallery .isotope {
+  height: 80%;
+}
+#gallery .isotope:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+#gallery .galleryImgs .galleryImg {
+	width: 200px;
+	height: 100px;
+	float: left;
+	cursor: pointer;
+}
+#gallery .galleryImgs .galleryImg.height2 {
+	height: 200px;
+}
+#gallery .galleryImgs .galleryImg.width2 {
+	width: 300px;
+}*/
+
+/*
+Gallery Modal
+*/
 #galleryModal {
 	position: fixed;
 	top: 0px;
@@ -1730,11 +1740,6 @@ Gallery Page
 	right: 20px;
 	-webkit-backface-visibility: hidden;
 }
-
-/*
-Gallery Modal
-*/
-
 #modals #galleryModal img {
 	display: block;
 	max-height: 95%;
