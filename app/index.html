@@ -34,7 +34,7 @@
 			<div id="home" class="page current">
 				<div class="r1">
 					<img class="fader" src="img/home/cannes-logo.png" />
-					<div class="fader">
+					<div class="fader hidden-xs">
 						<div class="verbiage">
 							NYC/LA JUNE 13<br />
 							WIDE JUNE 20
@@ -43,29 +43,33 @@
 							WATCH TRAILER
 						</div>
 					</div>
+					<div class="fader social show-xs hidden-sm hidden-md hidden-lg">
+						<a href="http://therover-movie.tumblr.com/" target="_blank" class="tumblr"></a>
+						<a href="https://twitter.com/TheRoverMovie" target="_blank" class="twitter"></a>
+						<a href="https://facebook.com/TheRoverMovie" target="_blank" class="facebook"></a>
+	                </div>
 				</div>
 				<div class="r2">
 					<div class="fader">
 						<img class="fader" src="img/home/rover-logo.png" />
+						<div class="getTickets fader button show-xs hidden-sm hidden-md hidden-lg">GET TICKETS</div>
 					</div>
 				</div>
 				<div class="r3">
 					<div class="fader">
-						<div class="loaded">
+						<div class="loaded loading">
 							<img src="img/home/loaded.png" />
 						</div>
 					</div>
-					<div class="xs-hidden">
-						<div class="fader social">
-							<a href="http://therover-movie.tumblr.com/" target="_blank" class="tumblr"></a>
-							<a href="https://twitter.com/TheRoverMovie" target="_blank" class="twitter"></a>
-							<a href="https://facebook.com/TheRoverMovie" target="_blank" class="facebook"></a>
-		                </div>
-		            </div>
+					<div class="fader social hidden-xs">
+						<a href="http://therover-movie.tumblr.com/" target="_blank" class="tumblr"></a>
+						<a href="https://twitter.com/TheRoverMovie" target="_blank" class="twitter"></a>
+						<a href="https://facebook.com/TheRoverMovie" target="_blank" class="facebook"></a>
+	                </div>
 				</div>
 				<div class="parallax-element">
 					<div class="p1" data-parallaxify-range-x="10">
-						<div class="h-text fader xs-hidden">
+						<div class="h-text fader hidden-xs show-sm show-md show-lg">
 							FEAR THE MAN WITH<br />
 							NOTHING LEFT TO LOSE.
 						</div>
@@ -76,7 +80,7 @@
 					<div class="p5" data-parallaxify-range-x="125"></div>
 				</div>
 			</div>
-			<div id="statement" class="page next loaded-content">
+			<div id="statement" class="page next loading">
 				<div class="pageHeader fader">DIRECTOR'S STATEMENT</div>
 				<div class="slider">
 					<div id="statement1" class="subPage">
@@ -143,12 +147,12 @@
 					</div>
 				</div>
 			</div>
-			<div id="timeline" class="page loaded-content">
+			<div id="timeline" class="page loading">
 				<div class="fader">
 
 				</div>
 			</div>
-			<div id="map" class="page loaded-content">
+			<div id="map" class="page loading">
 				<div id="map-background" data-bind="style: {backgroundImage: 'url(' + background() + ')'}"></div>
 				<div class="fader">
 					<div id="map-wrapper" class="container-fluid" />
@@ -257,7 +261,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="trailers" class="page loaded-content">
+			<div id="trailers" class="page loading">
 				<div class="pageHeader fader">VIDEOS</div>
 				<div class="thumb-nails js-isotope fader">
 					<img class="thumb-nail video-open" data-video="video-1" src="img/trailers/rover-trailer.png" />
@@ -265,7 +269,7 @@
 					<img class="thumb-nail video-open" data-video="video-3" src="img/trailers/the-rover-teaser.png" />
 				</div>
 			</div>
-			<div id="gallery" class="page loaded-content">
+			<div id="gallery" class="page loading">
 				<div class="pageHeader fader">GALLERY</div>
 				<div class="galleryImgs fader isotope js-isotope">
 					<!-- <div class="grid-sizer"></div> -->
@@ -283,7 +287,7 @@
 					<img class="galleryImg gallery-open" src="img/gallery/tumblr12.png" />
 				</div>
 			</div>
-			<div id="press" class="page loaded-content">
+			<div id="press" class="page loading">
 				<div class="pageHeader fader">PRESS</div>
 				<div class="blurbs js-masonry fader">
 					<div class="blurb">
@@ -360,28 +364,26 @@
 					</div>
 				</div>
 			</div>
-			<div id="credits" class="page loaded-content">
+			<div id="credits" class="page loading">
 				<div class="pageHeader fader">CREDITS</div>
-				<div class="fader">
-					<div class="blurbs">
-						<div class="blurb">
-							<div class="role">STARRING</div>
-							<div class="credited">GUY PEARCE</div>
-							<div class="credited">ROBERT PATTINSON</div>
-						</div>
-						<div class="blurb">
-							<div class="role">WRITTEN AND DIRECTED BY</div>
-							<div class="credited">DAVID MICH&Ocirc;D</div>
-						</div>
-						<div class="blurb">
-							<div class="role">PRODUCERS</div>
-							<div class="credited">LIZ WATTS</div>
-							<div class="credited">DAVID LINDE</div>
-							<div class="credited">DAVID MICH&Ocirc;D</div>
-						</div>
+				<div class="blurbs fader">
+					<div class="blurb">
+						<div class="role">STARRING</div>
+						<div class="credited">GUY PEARCE</div>
+						<div class="credited">ROBERT PATTINSON</div>
 					</div>
-					<img class="block" src="img/credits/block.svg"></div>
+					<div class="blurb">
+						<div class="role">WRITTEN AND DIRECTED BY</div>
+						<div class="credited">DAVID MICH&Ocirc;D</div>
+					</div>
+					<div class="blurb">
+						<div class="role">PRODUCERS</div>
+						<div class="credited">LIZ WATTS</div>
+						<div class="credited">DAVID LINDE</div>
+						<div class="credited">DAVID MICH&Ocirc;D</div>
+					</div>
 				</div>
+				<img class="block" src="img/credits/block.svg">
 			</div>
 		</div>
 		<div id="navigation">
@@ -419,9 +421,18 @@
 				</div>
 			</div>
 		</div>
-		<div id="getTickets" class="fader button">GET TICKETS</div>
-		<div id="mask" class="container-fluid"></div>
-		<div id="modals" class="container-fluid">
+		<div class="getTickets fader button hidden-xs show-sm show-md show-lg">GET TICKETS</div>
+		<div id="mask"></div>
+		<div id="resizing">
+			<div class="note">
+				<div class="note-line"></div>
+				<div class="note-text">
+					RESIZING
+				</div>
+				<div class="note-line"></div>
+			</div>
+		</div>
+		<div id="modals">
 			<div id="zipcode-modal">
 				<div class="closeIcon">
 					<span class="outer top"></span>
@@ -880,15 +891,15 @@
 					<span class="outer top"></span>
 					<span class="outer bottom"></span>
 				</div>
-				<video id="video-1" class="video-element video-js vjs-default-skin" controls>
+				<video id="video-1" class="video-element video-js vjs-default-skin" controls preload="none">
 					<source src="video/rover_trailer.webm" type="video/webm"></source>
 					<source src="video/rover_trailer.mp4" type="video/mp4"></source>
 				</video>
-				<video id="video-2" class="video-element video-js vjs-default-skin" controls>
+				<video id="video-2" class="video-element video-js vjs-default-skin" controls preload="none">
 					<source src="video/god_gave_you_a_bullet.webm" type="video/webm"></source>
 					<source src="video/god_gave_you_a_bullet.mp4" type="video/mp4"></source>
 				</video>
-				<video id="video-3" class="video-element video-js vjs-default-skin" controls>
+				<video id="video-3" class="video-element video-js vjs-default-skin" controls preload="none">
 					<source src="video/the_rover_teaser.webm" type="video/webm"></source>
 					<source src="video/the_rover_teaser.mp4" type="video/mp4"></source>
 				</video>
@@ -949,16 +960,15 @@
 					motionType: 'linear',
 					mouseMotionType: 'linear'
 				});
-				$('#statement').stellar({
-					responsive: true,
-					verticalScrolling: false,
-					horizontalScrolling: true,
-					parallaxBackgrounds: false,
-					parallaxElements: true,
-					positionProperty: 'position'
-				});
-				jQuery(".loaded").fadeIn(2000);
-				jQuery(".loaded-content").show();
+				// $('#statement').stellar({
+				// 	responsive: true,
+				// 	verticalScrolling: false,
+				// 	horizontalScrolling: true,
+				// 	parallaxBackgrounds: false,
+				// 	parallaxElements: true,
+				// 	positionProperty: 'position'
+				// });
+				jQuery(".loading").removeClass("loading");
 			});
 	</script>
 	</body>

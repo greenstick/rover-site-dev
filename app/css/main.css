@@ -42,13 +42,9 @@ body {
 .container-fluid {
 	padding: 0 !important;
 }
-.loaded {
-	display: none;
-}
-.loaded-content {
-	position: relative;
-	height: 100%;
-	display: none;
+.loading {
+	display: none !important;
+	opacity: 0;
 }
 
 /*
@@ -87,7 +83,7 @@ Page Backgrounds
   	top: 0px;
   	left: 0px;
   	min-height: 100%;
-  	min-width: 360px;
+  	min-width: 320px;
   	width: 100%;
   	height: 100%;
 	-webkit-background-size: cover;
@@ -100,7 +96,7 @@ Page Backgrounds
 #statement.page {
 	position: relative;
 	min-height: 100%;
-  	min-width: 360px;
+  	min-width: 320px;
   	width: 100%;
   	height: 100%;
 	font-size: 0px;
@@ -496,7 +492,7 @@ Video Modal
 	right: 20px;
 	-webkit-backface-visibility: hidden;
 }
-#video-1, #video-2, #video-3, #video-4 {
+#video-1, #video-2, #video-3 {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -519,20 +515,65 @@ Mask
 	background-color: rgba(0, 0, 0, .9);
 	display: none;
 	z-index: 7500;
-	-webkit-backface-visibility: hidden;
+}
+
+/*
+Resizing Screen
+*/
+
+#resizing {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: #FFF8D9;
+	background-color: rgba(0, 0, 0, 1);
+	opacity: 0;
+	-webkit-transition: opacity 0.1s linear;
+	-moz-transition: opacity 0.1s linear;
+	-ms-transition: opacity 0.1s linear;
+	-o-transition: opacity 0.1s linear;
+	transition: opacity 0.1s linear;
+	z-index: -100;
+}
+#resizing.resizing {
+	opacity: 1;
+	z-index: 9999;
+}
+#resizing .note {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 148px;
+	margin: -100px 0 0 -150px;
+	font-weight: bold;
+	font-size: 22px;
+}
+#resizing .note .note-text {
+	top: 15%;
+	width: 300px;
+	height: 24px;
+	text-align: center;
+}
+#resizing .note .note-line {
+	margin: 30px 110px;
+	width: 72px;
+	height: 2px;
+	background-color: rgba(255, 255, 255, .8);
 }
 
 /*
 Additional UI
 */
 
-#getTickets {
+.getTickets {
 	position: fixed;
 	top: 20px;
 	right: 20px;
 	z-index: 5000;
 	display: none;
-	-webkit-backface-visibility: hidden;
 }
 
 /*
@@ -588,6 +629,15 @@ Home Page
 	bottom: 20px;
 	left: 50%;
 	margin: 0 0 0 -40px;
+	opacity: 1;
+}
+#home .r3 .loaded.loading {
+	-webkit-transition: opacity 0.6s linear;
+	-moz-transition: opacity 0.6s linear;
+	-ms-transition: opacity 0.6s linear;
+	-o-transition: opacity 0.6s linear;
+	transition: opacity 0.6s linear;
+	opacity: 0;
 }
 #home .r3 .social {
 	position: absolute;
@@ -630,7 +680,7 @@ Home Parallax
   	top: 0%;
   	left: 0%;
   	min-height: 100%;
-  	min-width: 432px;
+  	min-width: 320px;
   	width: 100%;
   	height: 100%;
   	margin: 0 0 0 -10%;
@@ -729,7 +779,7 @@ Directors Statement
 	top: 0px;
 	left: 0px;
 	min-height: 100%;
-	min-width: 1080px;
+	min-width: 960px;
 	width: 300%;
 	height: 100%;
 	font-size: 0px;
@@ -740,7 +790,7 @@ Directors Statement
   	top: 0px;
   	left: 0px;
 	min-height: 100%;
-  	min-width: 360px;
+  	min-width: 320px;
   	width: 33.33%;
   	height: 100%;
 	-webkit-background-size: cover;
@@ -901,6 +951,9 @@ svg g {
 	color: #FFF8D9;
 	background-color: rgba(0, 0, 0, 1);
 	-webkit-transition: opacity 0.6s linear;
+	-moz-transition: opacity 0.6s linear;
+	-ms-transition: opacity 0.6s linear;
+	-o-transition: opacity 0.6s linear;
 	transition: opacity 0.6s linear;
 	opacity: 0;
 	z-index: -100;
@@ -934,7 +987,7 @@ Map Intro Modal
 
 #map-intro {
 	position: absolute;
-	top: 25%;
+	top: 30%;
 	left: 50%;
 	width: 480px;
 	height: 242px;
@@ -1002,7 +1055,7 @@ Map Intro Modal
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-color: transparent;
+	background-color: rgba(0, 0, 0, .9);
 	z-index: 1000;
 }
 
@@ -1030,8 +1083,8 @@ Drop Down Menu
 	height: auto;
 	width: 228px;
 	font-size: 17px;
-	color: rgba(255, 248, 217, 1);
-	background-color: rgba(97, 80, 53, .8);
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(64, 63, 60, .9);
 }
 .dropdown .ddSelected {
 	position: relative;
@@ -1041,8 +1094,8 @@ Drop Down Menu
 	cursor: pointer;
 	display: block;
 	text-align: center;
-	color: rgba(255, 248, 217, 1);
-	background-color: rgba(97, 80, 53, .8);
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(64, 63, 60, .9);
 	border: none;
 }
 .dropdown .ddSelected img {
@@ -1052,9 +1105,9 @@ Drop Down Menu
 }
 .dropdown:hover .ddSelected, .dropdown.active .ddSelected {
 	height: 34px;
-	color: rgba(255, 248, 217, 1);
-	background-color: rgba(97, 80, 53, .8);
-	border-bottom: 2px solid rgba(255, 248, 217, 1);
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(115, 112, 108, .8);
+	border-bottom: 2px solid rgba(255, 255, 255, 1);
 }
 .dropdown .ddList {
 	height: 0px;
@@ -1079,11 +1132,11 @@ Drop Down Menu
 }
 .dropdown .ddList .ddOption:hover, .dropdown .ddList .ddOption.active {
 	color: rgba(255, 255, 255, 1);
-	background-color: rgba(97, 80, 53, .8);
+	background-color: rgba(64, 63, 60, .9);
 }
 .dropdown .ddList .ddOption.active:hover {
-	color: rgba(255, 248, 217, 1);
-	background-color: rgba(97, 80, 53, .9);
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(64, 63, 60, .9);
 }
 
 /*
@@ -1106,16 +1159,16 @@ Chronology Toggle
 	padding: 6px 0 0 0;
 	cursor: pointer;
 	display: inline-block;
-	font-size: 12px;
+	font-size: 14px;
 	text-align: center;
-	color: rgba(255, 248, 217, .9);
-	border: 2px solid #403524;
-	background-color: rgba(97, 80, 53, 1);
+	color: rgba(255, 255, 255, .9);
+	border: 2px solid rgba(64, 63, 61, 1);
+	background-color: rgba(98, 95, 91, 1);
 }
 #chronologySelect .chronology.active {
 	color: rgba(46, 39, 29, 1);
-	border: 2px solid rgba(255, 248, 217, .9);
-	background-color: rgba(255, 248, 217, .9);
+	border: 2px solid rgba(178, 179, 179, .9);
+	background-color: rgba(254, 255, 255, .9);
 }
 
 /*
@@ -1179,6 +1232,7 @@ Map Key Callout Box
 	height: 100%;
 	width: 80%;
 	padding: 0 0 0 20%;
+	font-family: 'TradeGothicLT-Cn18';
 }
 #map-callout {
 	position: absolute;
@@ -1187,7 +1241,7 @@ Map Key Callout Box
 	height: auto;
 	padding: 16px;
 	color: rgba(255, 255, 255, 1);
-	background-color: rgba(0, 0, 0, .5);
+	background-color: rgba(86, 84, 81, .5);
 	font-size: 14px;
 	line-height: 16px;
 	letter-spacing: 1px;
@@ -1199,7 +1253,7 @@ Map Key Callout Box
 	height: 0px;
 	border-style: solid;
 	border-width: 20px 20px 0 0;
-	border-color: #000000 transparent transparent transparent;
+	border-color: #565451 transparent transparent transparent;
 	opacity: .5;
 }
 
@@ -1215,7 +1269,7 @@ Map Tooltip
 	height: auto;
 	padding: 16px;
 	color: rgba(255, 255, 255, 1);
-	background-color: rgba(0, 0, 0, .9);
+	background-color: rgba(86, 84, 81, .9);
 	font-size: 12px;
 	line-height: 16px;
 	letter-spacing: 1px;
@@ -1246,7 +1300,6 @@ Map Interactive Core
 	#map-wrapper {
 		height: 100%;
 	}
-
 	#choropleth-wrapper {
 		height: 100%;
 	}
@@ -1357,9 +1410,6 @@ Drop Down Menu
 	}
 	.dropdown:hover .ddSelected, .dropdown.active .ddSelected {
 		height: 42px;
-		color: rgba(255, 248, 217, 1);
-		background-color: rgba(97, 80, 53, .8);
-		border-bottom: 2px solid rgba(255, 248, 217, 1);
 	}
 	.dropdown .ddList {
 		width: 248px;
@@ -1440,7 +1490,7 @@ Hide
 	#map-tooSmall {
 		-webkit-transition: opacity 0.6s linear;
 		transition: opacity 0.6s linear;
-		z-index: 9999;
+		z-index: 1000;
 		opacity: 1;	
 	}
 }
@@ -1448,7 +1498,7 @@ Hide
 	#map-tooSmall {
 		-webkit-transition: opacity 0.6s linear;
 		transition: opacity 0.6s linear;
-		z-index: 9999;
+		z-index: 1000;
 		opacity: 1;	
 	}	
 }
@@ -1489,8 +1539,8 @@ Map Color Layers
 	fill: #C2BA00;
 }
 .chartreuse-4 {
-	background-color: #CDC72C;
-	fill: #CDC72C;
+	background-color: #E6DF2C;
+	fill: #E6DF2C;
 }
 .chartreuse-3 {
 	background-color: #D8D459;
@@ -1784,14 +1834,11 @@ Credits Page
 }
 #credits .blurbs {
 	position: absolute;
-	top: 100px;
+	top: 40%;
 	left: 50%;
 	width: 320px;
-	height: auto;
-	margin: 0 0 0 -160px;
-}
-#credits .blurbs .grid-sizer {
-	width: 25%;
+	height: 290px;
+	margin: -145px 0 0 -160px;
 }
 #credits .blurbs .blurb {
 	text-align: center;
@@ -1800,6 +1847,7 @@ Credits Page
 	position: relative;
 	display: block;
 	font-size: 16px;
+	padding: 28px 0 0 0;
 	color: rgba(255, 248, 217, 1);
 }
 #credits .blurbs .blurb .credited {
@@ -1810,5 +1858,181 @@ Credits Page
 
 }
 
+/*
+Mobile Styles
+*/
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) {
+
+	.page .pageHeader {
+		height: 20px;
+		margin: 22px auto 10px;
+		font-size: 20px;
+	}
+
+	#home .r1 {
+		height: 20%;
+	}
+	#home .r1 img {
+		width: 80px;
+		margin: 0 0 0 -40px;
+	}
+	#home .r1 .social {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		width: 80px;
+		height: 20px;
+	}
+	#home .r1 .social .tumblr {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 20px;
+		height: 20px;
+		background: url('../img/social/tumblr.png');
+	}
+	#home .r1 .social .twitter {
+		position: absolute;
+		top: 0px;
+		left: 30px;
+		width: 20px;
+		height: 20px;
+		background: url('../img/social/twitter.png');
+	}
+	#home .r1 .social .facebook {
+		position: absolute;
+		top: 0px;
+		left: 60px;
+		width: 20px;
+		height: 20px;
+		background: url('../img/social/facebook.png');
+	}
+	#home .r2 {
+		height: 35%;
+	}
+	#home .r2 img {
+		position: relative;
+		width: 240px;
+		margin: 20px 0 20px -142px;
+	}
+
+	#home .getTickets {
+		position: relative;
+		top: 0px;
+		left: 50%;
+		margin: 0 0 0 -93px;
+		z-index: 5000;
+		display: block;
+	}
+
+	/*
+	Zip Code Modal
+	*/
+
+	#zipcode-modal {
+		left: 0;
+		width: 320px;
+		margin: 0;
+	}
+
+	/*
+	Release Dates Modal
+	*/
+
+	#release-dates {
+		left: 0px;
+		height: 100%;
+		width: 320px;
+		margin: 0;
+	}
+	#release-dates .release-body .date {
+		font-size: 20px;
+		margin: 8px 0 4px 0;
+	}
+	#release-dates .release-body .location {
+		font-size: 16px;
+	}
+	#release-dates .release-body .location .city {
+		display: block;
+		width: 250px;
+	}
+	#release-dates .release-body .location .air {
+		display: none;
+	}
+	#release-dates .release-body .location .theatre {
+		display: block;
+		width: 220px;
+		font-size: 12px;
+	}
+
+	/*
+	Statement
+	*/
+
+	#statement1 .blurb, #statement2 .blurb, #statement3 .blurb {
+		position: absolute;
+		top: 0;
+		left: 0;
+		min-width: 320px;
+		width: 100%;
+		height: 100%;
+	}
+	#statement1 .blurb .text-box, #statement2 .blurb .text-box, #statement3 .blurb .text-box {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		padding: 60px 25px 25px 25px;
+		background-color: rgba(46, 39, 29, .7);
+		line-height: 24px;
+	}
+	#statement .blurb .next, #statement .blurb .prev {
+		opacity: .8; 
+	}
+	#statement1 .blurb .next {
+		position: absolute;
+		bottom: 20px;
+		right: 135px;
+		width: 50px;
+		height: 50px;
+	}
+	#statement2 .blurb .next {
+		position: absolute;
+		bottom: 20px;
+		right: 105px;
+		width: 50px;
+		height: 50px;
+	}
+	#statement2 .blurb .prev, #statement3 .blurb .prev {
+		position: absolute;
+		bottom: 20px;
+		left: 105px;
+		width: 50px;
+		height: 50px;
+	}
+	#statement3 .blurb .prev {
+		position: absolute;
+		bottom: 20px;
+		left: 135px;
+		width: 50px;
+		height: 50px;
+	}
+
+	/*
+	Credits
+	*/
+
+	#credits .block {
+		position: absolute;
+		bottom: 20px;
+		left: 0;
+		width: 100%;
+	}
+	#credits .blurbs .blurb .role {
+		padding: 32px 0 0 0;
+	}
+}
 
 

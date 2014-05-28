@@ -3968,8 +3968,8 @@
         },
         "description": "Life expectancy is the number of years the average citizen of a country is expected to live.",
         "source": "Source: WHO",
-        "color": "red",
-        "sort": "ascending",
+        "color": "purple",
+        "sort": "descending",
         "format": null,
         "layers": 5,
         "image": false,
@@ -5295,7 +5295,7 @@
         },
         "description": "Measured in millions, the map above indicates the immigration and emigration of people within a specific country.",
         "source": "Source: WHO",
-        "color": "purple",
+        "color": "red",
         "sort": "descending",
         "format": null,
         "layers": 5,
@@ -5318,13 +5318,13 @@
                 "id": "DZ",
                 "country": "Algeria",
                 "present": -0.2,
-                "future": 1.2
+                "future": -0.8
             },
             {
                 "id": "AD",
                 "country": "Andorra",
-                "present": -0.3,
-                "future": 1.4
+                "present": null,
+                "future": null
             },
             {
                 "id": "AO",
@@ -5372,7 +5372,7 @@
                 "id": "AZ",
                 "country": "Azerbaijan",
                 "present": -0.9,
-                "future": 0.2
+                "future": -0.2
             },
             {
                 "id": "BS",
@@ -5390,7 +5390,7 @@
                 "id": "BD",
                 "country": "Bangladesh",
                 "present": 0.2,
-                "future": 2
+                "future": 1
             },
             {
                 "id": "BB",
@@ -5414,19 +5414,19 @@
                 "id": "BZ",
                 "country": "Belize",
                 "present": 0.5,
-                "future": -0.2
+                "future": 1.8
             },
             {
                 "id": "BJ",
                 "country": "Benin",
                 "present": 0.5,
-                "future": -0.2
+                "future": 0.8
             },
             {
                 "id": "BT",
                 "country": "Bhutan",
                 "present": 0.2,
-                "future": 2
+                "future": 1.1
             },
             {
                 "id": "BO",
@@ -5438,7 +5438,7 @@
                 "id": "BA",
                 "country": "Bosnia and Herzegovina",
                 "present": -0.3,
-                "future": -1.3
+                "future": 0.9
             },
             {
                 "id": "BW",
@@ -5450,19 +5450,19 @@
                 "id": "BR",
                 "country": "Brazil",
                 "present": 0.3,
-                "future": -0.4
+                "future": 2
             },
             {
                 "id": "BN",
                 "country": "Brunei ",
                 "present": 0.5,
-                "future": -0.2
+                "future": 0.9
             },
             {
                 "id": "BG",
                 "country": "Bulgaria",
                 "present": 0.5,
-                "future": -0.2
+                "future": 0.6
             },
             {
                 "id": "BF",
@@ -5486,7 +5486,7 @@
                 "id": "KH",
                 "country": "Cambodia",
                 "present": 0.1,
-                "future": 2
+                "future": 1.4
             },
             {
                 "id": "CM",
@@ -5504,19 +5504,19 @@
                 "id": "CV",
                 "country": "Cape Verde",
                 "present": -0.9,
-                "future": -0.1
+                "future": -1.0
             },
             {
                 "id": "CF",
                 "country": "Central African Republic",
                 "present": -1.9,
-                "future": -0.2
+                "future": -2.0
             },
             {
                 "id": "TD",
                 "country": "Chad",
                 "present": -1.2,
-                "future": 0.5
+                "future": -1.5
             },
             {
                 "id": "CL",
@@ -5527,7 +5527,7 @@
             {
                 "id": "CN",
                 "country": "China",
-                "present":0.4,
+                "present":1.3,
                 "future": 2
             },
             {
@@ -5546,7 +5546,7 @@
                 "id": "CD",
                 "country": "Democratic Republic of The Congo",
                 "present": 0.1,
-                "future": 2
+                "future": -0.4
             },
             {
                 "id": "CG",
@@ -5564,7 +5564,7 @@
                 "id": "CI",
                 "country": "Côte d'Ivoire",
                 "present": -0.9,
-                "future": -0.1
+                "future": -1.3
             },
             {
                 "id": "HR",
@@ -5576,19 +5576,19 @@
                 "id": "CU",
                 "country": "Cuba",
                 "present": -1.2,
-                "future": 0.5
+                "future": -1.5
             },
             {
                 "id": "CW",
                 "country": "Curacao",
-                "present": 1,
-                "future": -0.1
+                "present": null,
+                "future": null
             },
             {
                 "id": "CY",
                 "country": "Cyprus",
                 "present": 1.3,
-                "future": 2
+                "future": 1.4
             },
             {
                 "id": "CZ",
@@ -5618,7 +5618,7 @@
                 "id": "DO",
                 "country": "Dominican Republic",
                 "present": 0.1,
-                "future": 2
+                "future": -2
             },
             {
                 "id": "EC",
@@ -5647,32 +5647,32 @@
             {
                 "id": "ER",
                 "country": "Eritrea",
-                "present": -1.2,
-                "future": 0.5
+                "present": null,
+                "future": null
             },
             {
                 "id": "EE",
                 "country": "Estonia",
                 "present": 1,
-                "future": -0.1
+                "future": 0.8
             },
             {
                 "id": "ET",
                 "country": "Ethiopia",
                 "present": 1.3,
-                "future": 2
+                "future": -0.1
             },
             {
                 "id": "FO",
                 "country": "Faeroe Islands",
-                "present": 1.2,
-                "future": -0.7
+                "present": null,
+                "future": null
             },
             {
                 "id": "FK",
                 "country": "Falkland Islands",
-                "present": 0.3,
-                "future": 1.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "FJ",
@@ -5695,14 +5695,14 @@
             {
                 "id": "GF",
                 "country": "French Guiana",
-                "present": 0.1,
-                "future": 0.4
+                "present": null,
+                "future": null
             },
             {
                 "id": "TF",
                 "country": "French Southern and Antarctic Lands",
-                "present": -0.3,
-                "future": -0.4
+                "present": null,
+                "future": null
             },
             {
                 "id": "GA",
@@ -5714,7 +5714,7 @@
                 "id": "GM",
                 "country": "The Gambia",
                 "present": -0.3,
-                "future": 0.7
+                "future": -0.5
             },
             {
                 "id": "GE",
@@ -5732,7 +5732,7 @@
                 "id": "GH",
                 "country": "Ghana",
                 "present": -0.2,
-                "future": 1.2
+                "future": -0.5
             },
             {
                 "id": "GR",
@@ -5743,8 +5743,8 @@
             {
                 "id": "GL",
                 "country": "Greenland",
-                "present": 0.2,
-                "future": 1.8
+                "present": null,
+                "future": null
             },
             {
                 "id": "GD",
@@ -5755,50 +5755,50 @@
             {
                 "id": "GP",
                 "country": "Guadeloupe",
-                "present": 0.8,
-                "future": -0.4
+                "present": null,
+                "future": null
             },
             {
                 "id": "GT",
                 "country": "Guatemala",
                 "present": 0.5,
-                "future": 1.3
+                "future": 0.1
             },
             {
                 "id": "GN",
                 "country": "Guinea",
                 "present": -0.2,
-                "future": 0.8
+                "future": 2
             },
             {
                 "id": "GW",
                 "country": "Guinea-Bissau",
                 "present": -0.3,
-                "future": 0.7
+                "future": -0.7
             },
             {
                 "id": "GY",
                 "country": "Guyana",
                 "present": -0.3,
-                "future": 0.7
+                "future": -0.7
             },
             {
                 "id": "HT",
                 "country": "Haiti",
                 "present": -0.3,
-                "future": 0.7
+                "future": 0
             },
             {
                 "id": "VA",
                 "country": "Holy See",
-                "present": -0.3,
-                "future": 0.7
+                "present": null,
+                "future": null
             },
             {
                 "id": "HN",
                 "country": "Honduras",
                 "present": 0.3,
-                "future": 1.2
+                "future": -0.1
             },
             {
                 "id": "HK",
@@ -5816,7 +5816,7 @@
                 "id": "IS",
                 "country": "Iceland",
                 "present": -0.3,
-                "future": 0.7
+                "future": -0.7
             },
             {
                 "id": "IN",
@@ -5870,13 +5870,13 @@
                 "id": "JP",
                 "country": "Japan",
                 "present": 0.5,
-                "future": 2
+                "future": 0.1
             },
             {
                 "id": "JO",
                 "country": "Jordan",
                 "present": 0.2,
-                "future": -0.8
+                "future": 0.5
             },
             {
                 "id": "KZ",
@@ -5888,7 +5888,7 @@
                 "id": "KE",
                 "country": "Kenya",
                 "present": -0.9,
-                "future": -0.1
+                "future": -1.5
             },
             {
                 "id": "KI",
@@ -5906,7 +5906,7 @@
                 "id": "KR",
                 "country": "South Korea",
                 "present": -0.5,
-                "future": 0.1
+                "future": 0.5
             },
             {
                 "id": "XK",
@@ -5918,7 +5918,7 @@
                 "id": "KW",
                 "country": "Kuwait",
                 "present": -0.3,
-                "future": 0.7
+                "future": 0.1
             },
             {
                 "id": "KG",
@@ -5954,19 +5954,19 @@
                 "id": "LR",
                 "country": "Liberia",
                 "present": -0.2,
-                "future": 1.1
+                "future": -0.1
             },
             {
                 "id": "LY",
                 "country": "Libya",
                 "present": -0.2,
-                "future": 0.8
+                "future": 0.1
             },
             {
                 "id": "LI",
                 "country": "Liechtenstein",
-                "present": -0.3,
-                "future": 0.7
+                "present": null,
+                "future": null
             },
             {
                 "id": "LT",
@@ -6020,7 +6020,7 @@
                 "id": "ML",
                 "country": "Mali",
                 "present": -0.3,
-                "future": 0.7
+                "future": 0
             },
             {
                 "id": "MT",
@@ -6056,7 +6056,7 @@
                 "id": "MX",
                 "country": "Mexico",
                 "present": 1,
-                "future": -0.2
+                "future": -0.6
             },
             {
                 "id": "FM",
@@ -6073,8 +6073,8 @@
             {
                 "id": "MC",
                 "country": "Monaco",
-                "present": -0.3,
-                "future": 0.7
+                "present": null,
+                "future": null
             },
             {
                 "id": "MN",
@@ -6109,14 +6109,14 @@
             {
                 "id": "NR",
                 "country": "Nauru",
-                "present": 0.5,
-                "future": -0.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "NP",
                 "country": "Nepal",
                 "present": 0.5,
-                "future": -0.2
+                "future": 1.0
             },
             {
                 "id": "NL",
@@ -6127,14 +6127,14 @@
             {
                 "id": "AN",
                 "country": "Netherlands Antilles",
-                "present": 0.5,
-                "future": -0.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "NC",
                 "country": "New Caledonia",
-                "present": -0.2,
-                "future": 0.5
+                "present": null,
+                "future": null
             },
             {
                 "id": "NZ",
@@ -6152,19 +6152,19 @@
                 "id": "NE",
                 "country": "Niger",
                 "present": -0.3,
-                "future": 0.7
+                "future": -0.1
             },
             {
                 "id": "NG",
                 "country": "Nigeria",
                 "present": -0.5,
-                "future": 0.3
+                "future": -0.3
             },
             {
                 "id": "NO",
                 "country": "Norway",
                 "present": 1.2,
-                "future": 0.3
+                "future": -0.2
             },
             {
                 "id": "OM",
@@ -6187,8 +6187,8 @@
             {
                 "id": "PS",
                 "country": "Palestinian Territories",
-                "present": -1.8,
-                "future": -0.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "PA",
@@ -6218,25 +6218,25 @@
                 "id": "PH",
                 "country": "Philippines",
                 "present": 0.5,
-                "future": -0.2
+                "future": 0.1
             },
             {
                 "id": "PL",
                 "country": "Poland",
-                "present": 1,
+                "present": 1.0,
                 "future": -0.2
             },
             {
                 "id": "PT",
                 "country": "Portugal",
-                "present": 1,
+                "present": 1.0,
                 "future": -0.2
             },
             {
                 "id": "PR",
                 "country": "Puerto Rico",
-                "present": 1.1,
-                "future": -0.3
+                "present": null,
+                "future": null
             },
             {
                 "id": "QA",
@@ -6253,38 +6253,38 @@
             {
                 "id": "RU",
                 "country": "Russia",
-                "present": 0.4,
+                "present": 1.4,
                 "future": 2
             },
             {
                 "id": "RW",
                 "country": "Rwanda",
                 "present": -1.4,
-                "future": -0.3
+                "future": -1.6
             },
             {
                 "id": "KN",
                 "country": "Saint Kitts and Nevis",
-                "present": -0.3,
-                "future": -1.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "LC",
                 "country": "Saint Lucia",
-                "present": -0.3,
-                "future": -1.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "PM",
                 "country": "Saint Pierre and Miquelon",
-                "present": -0.4,
-                "future": -1.1
+                "present": null,
+                "future": null
             },
             {
                 "id": "VC",
                 "country": "Saint Vincent and the Grenadines",
-                "present": -0.3,
-                "future": -1.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "WS",
@@ -6295,8 +6295,8 @@
             {
                 "id": "SM",
                 "country": "San Marino",
-                "present": -0.3,
-                "future": -1.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "ST",
@@ -6320,7 +6320,7 @@
                 "id": "RS",
                 "country": "Serbia",
                 "present": -0.3,
-                "future": -1.2
+                "future": 0.1
             },
             {
                 "id": "SC",
@@ -6332,7 +6332,7 @@
                 "id": "SL",
                 "country": "Sierra Leone",
                 "present": -0.3,
-                "future": 1.5
+                "future": 2
             },
             {
                 "id": "SG",
@@ -6343,20 +6343,20 @@
             {
                 "id": "MF",
                 "country": "Saint Maarten",
-                "present": -0.3,
-                "future": -1.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "SK",
                 "country": "Slovakia",
                 "present": 0.4,
-                "future": 1.2
+                "future": -0.1
             },
             {
                 "id": "SI",
                 "country": "Slovenia",
                 "present": 0.2,
-                "future": 1
+                "future": -0.2
             },
             {
                 "id": "SB",
@@ -6374,19 +6374,19 @@
                 "id": "ZA",
                 "country": "South Africa",
                 "present": -0.2,
-                "future": 0.7
+                "future": 1.6
             },
             {
                 "id": "GS",
                 "country": "South Georgia and the South Sandwich Islands",
-                "present": -0.1,
-                "future": -0.5
+                "present": null,
+                "future": null
             },
             {
                 "id": "SS",
                 "country": "South Sudan",
-                "present": -0.3,
-                "future": -1.2
+                "present": null,
+                "future": null
             },
             {
                 "id": "ES",
@@ -6398,7 +6398,7 @@
                 "id": "LK",
                 "country": "Sri Lanka",
                 "present": -0.5,
-                "future": 2
+                "future": -0.2
             },
             {
                 "id": "SD",
@@ -6415,8 +6415,8 @@
             {
                 "id": "SJ",
                 "country": "Svalbard",
-                "present": 0.3,
-                "future": 0.6
+                "present": null,
+                "future": null
             },
             {
                 "id": "SZ",
@@ -6440,7 +6440,7 @@
                 "id": "SY",
                 "country": "Syria",
                 "present": 0.2,
-                "future": -1.2
+                "future": 1
             },
             {
                 "id": "TW",
@@ -6452,13 +6452,13 @@
                 "id": "TJ",
                 "country": "Tajikistan",
                 "present": -0.9,
-                "future": -0.3
+                "future": -1.1
             },
             {
                 "id": "TZ",
                 "country": "Tanzania",
                 "present": -0.2,
-                "future": 0.5
+                "future": -0.5
             },
             {
                 "id": "TH",
@@ -6500,7 +6500,7 @@
                 "id": "TR",
                 "country": "Turkey",
                 "present": 0.5,
-                "future": 1.4
+                "future": -0.5
             },
             {
                 "id": "TM",
@@ -6511,8 +6511,8 @@
             {
                 "id": "TV",
                 "country": "Tuvalu",
-                "present": -0.9,
-                "future": -0.3
+                "present": null,
+                "future": null
             },
             {
                 "id": "UG",
@@ -6530,7 +6530,7 @@
                 "id": "AE",
                 "country": "United Arab Emirates",
                 "present": 0.2,
-                "future": -0.9
+                "future": 0.5
             },
             {
                 "id": "GB",
@@ -6548,7 +6548,7 @@
                 "id": "UY",
                 "country": "Uruguay",
                 "present": 0.4,
-                "future": 1.2
+                "future": 1.8
             },
             {
                 "id": "UZ",
@@ -6583,14 +6583,14 @@
             {
                 "id": "EH",
                 "country": "Western Sahara",
-                "present": -0.1,
-                "future": 1.4
+                "present": null,
+                "future": null
             },
             {
                 "id": "ZM",
                 "country": "Zambia",
                 "present": -0.2,
-                "future": 0.3
+                "future": -0.6
             },
             {
                 "id": "ZW",

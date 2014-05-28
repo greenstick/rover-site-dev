@@ -20,8 +20,9 @@ Core Prototype
 			core.menuOpen 		= 		args.menuOpen 		|| 		'.menu-open',
 			core.menuSelection	=		args.menuSelection 	|| 		'#menu .button',
 			core.current 		= 		args.current 		|| 		'current',
+			core.resizer 		= 		args.resizer 		|| 		'#resizer',
 			core.videoElement 	= 		args.videoElement 	|| 		'.video-element',
-			core.mobile 		= 		(Modernizr.touch) ? true : false,
+			core.mobile 		= 		(Modernizr.touch) 	? 		true 	: false,
 			core.scrollData 	= 		{},
 			core.scrolling 		= 		false,
 			core.videos 		= 		{},
@@ -153,7 +154,7 @@ Core Prototype
 	*/
 
 		//Direct Page Hash Navigation
-		Core.prototype.navTo 			= function (page) {
+		Core.prototype.navTo 			= function (page, callback) {
 			var loc = (page) ? '#'+ page : (location.hash) ? location.hash : '#home', core = this;
 			if (history.pushState) {
 				history.pushState({}, document.title, loc);
@@ -168,6 +169,8 @@ Core Prototype
 					axis: "y"
 			});
 			core.scrolling = false;
+			//If Callback
+			if (typeof callback === 'function') callback();
 		};
 
 	/* 		  
@@ -183,7 +186,19 @@ Core Prototype
 			$(core.pageClass).width(core.width).height(core.height);
 			$(core.subPage).width(core.width).height(core.height);
 			//If Callback 
-			if (typeof callback == 'function') callback();
+			if (typeof callback === 'function') callback();
+		};
+
+		Core.prototype.showResizer 		= function () {
+			var core = this;
+			$(core.resizer).addClass('resizing');
+		};
+
+		Core.prototype.hideResizer 		= function () {
+			var core = this;
+			setTimeout(function () {
+				$(core.resizer).removeClass('resizing');
+			}, 600);
 		};
 
 		//Fade Out Content When Interacting With Menu
@@ -234,7 +249,8 @@ Instantiation
 		//New Core Prototype With Arguments
 		var site = new Core({
 			menu 			: '#navigation',
-			menuSelection	: '.menu-item'
+			menuSelection	: '.menu-item',
+			resizer 		: '#resizing'
 		});
 
 		//Initialize
@@ -360,7 +376,7 @@ Zip Modal Instantiation
     var zipModal = new Modal({
         element     : "#zipcode-modal",
         mask        : "#mask",
-        open        : "#getTickets",
+        open        : ".getTickets",
         close       : ".closeIcon"
     });
 
@@ -438,6 +454,7 @@ Video Player Methods
 
 	    //Resize Videos
 	    function resizeVideo () {
+	    	console.debug(site);
 	        var width = $(this).width() * 0.8;
 	        var height = $(this).height() * 0.8;
 	        var $videos = $("#video-1, #video-2, #video-3");
@@ -544,15 +561,8 @@ Gallery Modal Event Bindings
 	        galleryModal.closeModal();
 	        $(site.fader).fadeToggle();
 	        //Remove Bootstrap Class
-	        $('body').removeClass('modal-open');
+	        $('body').removeCslass('modal-open');
 	    });
-
-
-		//Gallery Page Isotope
-		var gallery = document.querySelector("#gallery");
-		var galleryLayout = new Isotope (gallery, {
-			itemSelector: '.galleryImg'
-		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -636,6 +646,7 @@ Global Event Bindings
 		//Resize
 		$(window).on("resize", function (e) {
 			var id;
+			site.showResizer();
 			clearTimeout(site.resizing);
 			site.resizing = setTimeout(function () {
 				site.resize(e, function() {
@@ -644,7 +655,9 @@ Global Event Bindings
 					pressLayout.layout();
 					resizeVideo();
 					id = $('.' + site.current).attr("id");
-					site.navTo(id);
+					site.navTo(id, function () {
+						site.hideResizer();
+					});
 				});
 			}, 400);
 		});
