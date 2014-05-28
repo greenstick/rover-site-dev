@@ -24,7 +24,6 @@
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
-		<link href="css/video-js.min.css" rel="stylesheet">
 		<script src="lib/video/video.js"></script>
 <!-- Flash Fallback -->
 		<script>videojs.options.flash.swf = "lib/video/video-js.swf"</script>
@@ -52,7 +51,7 @@
 				<div class="r2">
 					<div class="fader">
 						<img class="fader" src="img/home/rover-logo.png" />
-						<div class="getTickets fader button show-xs hidden-sm hidden-md hidden-lg">GET TICKETS</div>
+						<div class="getTickets button show-xs hidden-sm hidden-md hidden-lg">GET TICKETS</div>
 					</div>
 				</div>
 				<div class="r3">
@@ -437,13 +436,23 @@
 				</div>
 			</div>
 		</div>
-		<div class="getTickets fader button hidden-xs show-sm show-md show-lg">GET TICKETS</div>
+		<div class="getTickets button hidden-xs show-sm show-md show-lg">GET TICKETS</div>
 		<div id="mask"></div>
 		<div id="resizing">
 			<div class="note">
 				<div class="note-line"></div>
 				<div class="note-text">
 					RESIZING
+				</div>
+				<div class="note-line"></div>
+			</div>
+		</div>
+		<div id="load-screen">
+			<div class="note">
+				<img src="img/loader/loading.gif" />
+				<div class="note-line"></div>
+				<div class="note-text">
+					LOADING
 				</div>
 				<div class="note-line"></div>
 			</div>
@@ -976,14 +985,14 @@
 					motionType: 'linear',
 					mouseMotionType: 'linear'
 				});
-				// $('#statement').stellar({
-				// 	responsive: true,
-				// 	verticalScrolling: false,
-				// 	horizontalScrolling: true,
-				// 	parallaxBackgrounds: false,
-				// 	parallaxElements: true,
-				// 	positionProperty: 'position'
-				// });
+				$('#statement').stellar({
+					responsive: true,
+					verticalScrolling: false,
+					horizontalScrolling: true,
+					parallaxBackgrounds: false,
+					parallaxElements: true,
+					positionProperty: 'position'
+				});
 				jQuery(".loading").removeClass("loading");
 			});
 	</script>

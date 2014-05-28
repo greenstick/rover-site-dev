@@ -22,6 +22,7 @@ Core Prototype
 			core.current 		= 		args.current 		|| 		'current',
 			core.resizer 		= 		args.resizer 		|| 		'#resizer',
 			core.videoElement 	= 		args.videoElement 	|| 		'.video-element',
+			core.loadScreen 	= 		args.loadScreen 	|| 		'#load-screen',
 			core.mobile 		= 		(Modernizr.touch) 	? 		true 	: false,
 			core.scrollData 	= 		{},
 			core.scrolling 		= 		false,
@@ -155,7 +156,7 @@ Core Prototype
 
 		//Direct Page Hash Navigation
 		Core.prototype.navTo 			= function (page, callback) {
-			var loc = (page) ? '#'+ page : (location.hash) ? location.hash : '#home', core = this;
+			var loc = (page !== null && page !== undefined) ? '#'+ page : (location.hash) ? location.hash : '#home', core = this;
 			if (history.pushState) {
 				history.pushState({}, document.title, loc);
 			} else {
@@ -454,7 +455,6 @@ Video Player Methods
 
 	    //Resize Videos
 	    function resizeVideo () {
-	    	console.debug(site);
 	        var width = $(this).width() * 0.8;
 	        var height = $(this).height() * 0.8;
 	        var $videos = $("#video-1, #video-2, #video-3");
@@ -516,7 +516,6 @@ Gallery
 		Modal.prototype.getGalleryImage = function(data) {
 			var imageSource = $(data).attr('src');
 			$('#galleryModal img').attr('src', imageSource);
-			console.log(imageSource);
 		};
 
 /*
@@ -646,7 +645,11 @@ Global Event Bindings
 				pressLayout.layout();
 				resizeVideo();
 				site.bindScroll();
-				site.navTo();
+				site.navTo(null, function () {
+					setTimeout(function () {
+						$(site.loadScreen).addClass('done')
+					}, 200);
+				});
 			});
 		});
 

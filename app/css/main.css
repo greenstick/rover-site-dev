@@ -558,7 +558,56 @@ Resizing Screen
 	text-align: center;
 }
 #resizing .note .note-line {
-	margin: 30px 110px;
+	margin: 30px auto;
+	width: 72px;
+	height: 2px;
+	background-color: rgba(255, 255, 255, .8);
+}
+
+/*
+Loading Screens
+*/
+
+#load-screen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: #FFF8D9;
+	background-color: rgba(0, 0, 0, 1);
+	opacity: 1;
+	-webkit-transition: opacity 0.1s linear;
+	-moz-transition: opacity 0.1s linear;
+	-ms-transition: opacity 0.1s linear;
+	-o-transition: opacity 0.1s linear;
+	transition: opacity 0.1s linear;
+	z-index: 9999;
+}
+#load-screen.done {
+	opacity: 0;
+	display: none;
+}
+#load-screen .note {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 148px;
+	margin: -100px 0 0 -150px;
+	font-weight: bold;
+	font-size: 22px;
+	text-align: center;
+}
+#load-screen .note img {
+	height: 160px;
+}
+#load-screen .note .note-text {
+	width: 300px;
+	height: 24px;
+}
+#load-screen .note .note-line {
+	margin: 8px auto;
 	width: 72px;
 	height: 2px;
 	background-color: rgba(255, 255, 255, .8);
@@ -978,7 +1027,7 @@ svg g {
 	margin: 30px 110px;
 	width: 80px;
 	height: 2px;
-	background-color: c;
+	background-color: #FFF8D9;
 }
 
 /*
@@ -1157,7 +1206,7 @@ Drop Down Menu
 }
 .dropdown .ddList .ddOption:hover {
 	color: rgba(255, 255, 255, 1);
-	background-color: rgba(115, 112, 108, .8);
+	background-color: rgba(115, 112, 108, 1);
 }
 
 .dropdown .ddList .ddOption.active {
@@ -1368,40 +1417,43 @@ Map Interactive Core
 /*
 Map Intro Modal
 */
-
 	#map-intro {
-		top: 25%;
-		width: 720px;
-		height: 360px;
-		margin: 0 0 0 -360px;
+		width: 780px;
+		height: 500px;
+		margin: -250px 0 0 -390px;
+	}
+	#map-intro .corner {
+		width: 40px;
+		height: 40px;
+	}
+	#map-intro .center {
+		top: 20px;
+		left: 20px;
+		width: 740px;
+		height: 460px;
 		padding: 32px;
 		font-size: 22px;
 		line-height: 30px;
 	}
-	#map-intro .modal-head {
+	#map-intro .center .modal-head {
 		top: -12px;
-		width: 90%;
+		width: 680px;
 		font-size: 36px;
 		letter-spacing: 4px;
 		line-height: 48px;
 	}
-	#map-intro .modal-exit {
-		top: 0px;
-		height: 10%;
+	#map-intro .center .modal-exit {
+		top: 32px;
+		width: 120px;
+		height: 40px;
+		padding-top: 6px;
+		font-size: 20px;
 	}
-	#map-intro .modal-exit .exit {
-		left: 0px;
-		top: -12px;
-	}
-	#map-intro .modal-exit .exit .exit-line-a, #map-intro .modal-exit .exit .exit-line-b {
+	#map-intro .center .modalbody {
 		top: 12px;
-		height: 3px;
-		width: 30px;
-	}
-	#map-intro .modalbody {
-		top: 20%;
+		width: 680px;
 		line-height: 26px;
-		height: 73%;
+		height: 280px;
 	}
 
 /*
