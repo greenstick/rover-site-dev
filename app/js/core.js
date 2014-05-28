@@ -530,9 +530,6 @@ Gallery Modal
 			close        : ".closeIcon"
 		});
 
-		//Apply Knockout Bindings
-		// ko.applyBindings(galleryModal, document.getElementById("galleryModal"));
-
 
 
 /*
@@ -619,11 +616,21 @@ Masonry
 			itemSelector: '.blurb'
 		});
 
-		//Gallery Page Isotope
+		//Gallery Page MASONRY
 		var gallery = document.querySelector("#gallery");
 		var galleryLayout = new Isotope (gallery, {
 			itemSelector: '.galleryImg'
 		});
+
+		// Gallery Page MASONRY HORIZONTAL
+		/*var gallery = document.querySelector("#gallery");
+		var galleryLayout = new Isotope (gallery, {
+			layoutMode: 'masonryHorizontal',
+			masonryHorizontal: {
+				rowHeight: 100
+			},
+			itemSelector: '.galleryImg'
+		});*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -651,9 +658,9 @@ Global Event Bindings
 			site.resizing = setTimeout(function () {
 				site.resize(e, function() {
 					trailersLayout.layout();
-					galleryLayout.layout();
 					pressLayout.layout();
 					resizeVideo();
+					galleryLayout.layout();
 					id = $('.' + site.current).attr("id");
 					site.navTo(id, function () {
 						site.hideResizer();
