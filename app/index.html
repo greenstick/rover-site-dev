@@ -398,9 +398,10 @@
 						<div class="credited">DAVID MICH&Ocirc;D</div>
 					</div>
 				</div>
-				<img class="block" src="img/credits/block.svg">
+				<img class="block fader" src="img/credits/block.svg">
 			</div>
 		</div>
+		<div id="nav-mask"></div>
 		<div id="navigation">
 			<div class="menu-open">
 				<span class="menu-line outer top"></span>
@@ -452,7 +453,7 @@
 				<img src="img/loader/loading.gif" />
 				<div class="note-line"></div>
 				<div class="note-text">
-					LOADING
+					ROVING
 				</div>
 				<div class="note-line"></div>
 			</div>
@@ -916,15 +917,15 @@
 					<span class="outer top"></span>
 					<span class="outer bottom"></span>
 				</div>
-				<video id="video-1" class="video-element video-js vjs-default-skin" controls preload="none">
+				<video id="video-1" class="video-element video-js vjs-default-skin" controls preload="none" width="100%">
 					<source src="video/rover_trailer.webm" type="video/webm"></source>
 					<source src="video/rover_trailer.mp4" type="video/mp4"></source>
 				</video>
-				<video id="video-2" class="video-element video-js vjs-default-skin" controls preload="none">
+				<video id="video-2" class="video-element video-js vjs-default-skin" controls preload="none" width="100%">
 					<source src="video/god_gave_you_a_bullet.webm" type="video/webm"></source>
 					<source src="video/god_gave_you_a_bullet.mp4" type="video/mp4"></source>
 				</video>
-				<video id="video-3" class="video-element video-js vjs-default-skin" controls preload="none">
+				<video id="video-3" class="video-element video-js vjs-default-skin" controls preload="none" width="100%">
 					<source src="video/the_rover_teaser.webm" type="video/webm"></source>
 					<source src="video/the_rover_teaser.mp4" type="video/mp4"></source>
 				</video>
@@ -955,18 +956,19 @@
 	<script src="lib/LAB/LAB.min.js" type="text/javascript"></script>
 <!-- Script Loader -->
 	<script>
+				// .script("lib/modernizr/modernizr-custom.min.js").wait()
+			// .script("lib/jquery/dist/jquery.min.js").wait()
+			// .script("lib/knockout/dist/ko.min.js").wait()
+			// .script("lib/d3/d3.min.js").wait()
+			// .script("lib/isotope/isotope.min.js").wait()
+			// .script("lib/isotope/masonry-horizontal.js").wait()
+			// .script("lib/jquery/plugins/jquery.scrollTo.min.js")
+			// .script("lib/d3/d3.queue.min.js")
+			// .script("lib/topojson/topojson.min.js")
+			// .script("lib/bootstrap/dist/js/bootstrap.min.js")
+			// .script("lib/parallax/parallaxify.min.js")
 		$LAB.script("js/image-preloader.js")
-			.script("lib/modernizr/modernizr-custom.min.js").wait()
-			.script("lib/jquery/dist/jquery.min.js").wait()
-			.script("lib/knockout/dist/ko.min.js").wait()
-			.script("lib/d3/d3.min.js").wait()
-			.script("lib/isotope/isotope.min.js").wait()
-			.script("lib/isotope/masonry-horizontal.js").wait()
-			.script("lib/jquery/plugins/jquery.scrollTo.min.js")
-			.script("lib/d3/d3.queue.min.js")
-			.script("lib/topojson/topojson.min.js")
-			.script("lib/bootstrap/dist/js/bootstrap.min.js")
-			.script("lib/parallax/parallaxify.min.js")
+			.script("lib/dist/plugins.js").wait()
 			.script("lib/parallax/stellar.js")
 			.script("js/core.js")
 			.script("js/map.js").wait(function () {

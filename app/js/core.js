@@ -12,22 +12,25 @@ Core Prototype
 		var core = this;
 
 			//Set Elements
-			core.wrapper 		=		args.wrapper 		|| 		'#wrapper',
-			core.pageClass 		= 		args.page 			||		'.page',
-			core.subPage 		= 		args.subPage  		|| 		'.subPage',
-			core.fader 			=		args.fader 			|| 		'.fader',
-			core.isoFader 		= 		args.isoFader 		|| 		'.iso-fader',
-			core.menu 			=		args.menu 			|| 		'#menu',
-			core.menuOpen 		= 		args.menuOpen 		|| 		'.menu-open',
-			core.menuSelection	=		args.menuSelection 	|| 		'#menu .button',
-			core.current 		= 		args.current 		|| 		'current',
-			core.resizer 		= 		args.resizer 		|| 		'#resizer',
-			core.videoElement 	= 		args.videoElement 	|| 		'.video-element',
-			core.loadScreen 	= 		args.loadScreen 	|| 		'#load-screen',
-			core.mobile 		= 		(Modernizr.touch) 	? 		true 	: false,
-			core.scrollData 	= 		{},
-			core.scrolling 		= 		false,
-			core.videos 		= 		{},
+			core.wrapper 			=		args.wrapper 			|| 		'#wrapper',
+			core.pageClass 			= 		args.page 				||		'.page',
+			core.subPage 			= 		args.subPage  			|| 		'.subPage',
+			core.menuMask			= 		args.menuMask		 	|| 		'#nav-mask',
+			core.fader 				=		args.fader 				|| 		'.fader',
+			core.isoFader 			= 		args.isoFader 			|| 		'.iso-fader',
+			core.menu 				=		args.menu 				|| 		'#menu',
+			core.menuOpen 			= 		args.menuOpen 			|| 		'.menu-open',
+			core.menuSelection		=		args.menuSelection 		|| 		'#menu .button',
+			core.current 			= 		args.current 			|| 		'current',
+			core.resizer 			= 		args.resizer 			|| 		'#resizer',
+			core.videoElement 		= 		args.videoElement 		|| 		'.video-element',
+			core.loadScreen 		= 		args.loadScreen 		|| 		'#load-screen',
+			core.firstPage 			= 		args.firstPage 			|| 		'.firstPage',
+			core.lastPage 			= 		args.lastPage 			|| 		'.lastPage',
+			core.mobile 			= 		(Modernizr.touch) 		? 		true 	: false,
+			core.scrollData 		= 		{},
+			core.scrolling 			= 		false,
+			core.videos 			= 		{},
 			core.startPosition,
 			core.resizing,
 			core.currentVideo,
@@ -37,7 +40,7 @@ Core Prototype
 	};
 
 	/*
-	Bind Scroll
+	Controlled Scrolling
 	*/
 
 		//Determines Whether to Bind Scroll Handler to Touch Events or Desktop Scroll
@@ -45,15 +48,15 @@ Core Prototype
 			var core = this;
 			//Mobile
 			if (core.mobile === true) {
-				$('.page').on("touchstart", function (e) {
+				$(core.pageClass).on("touchstart", function (e) {
 					core.touchStart(e);
 				});
-				$('.page').on("touchmove", function (e) {
+				$(core.pageClass).on("touchmove", function (e) {
 					core.touchMove(e);
 				});
 			//Non-Mobile - Bind Scroll Event
 			} else {
-				$('.page').on('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
+				$(core.pageClass).on('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
 					core.scrollDelta(e);
 				});
 			};
@@ -96,7 +99,7 @@ Core Prototype
 			};
 		};
 
-		//Determined direction to Scroll and Calls scrollPage Function
+		//Determines direction to Scroll and Calls scrollPage Function
 		Core.prototype.scrollDirection 	= function () {
 			if (this.mobile === true) {
 				if (this.scrolling === false) {
@@ -126,7 +129,7 @@ Core Prototype
 			var core = this, id;
 			//Next Page
 			if (destination === 'next') {
-				if ($('#credits').hasClass('current')) {
+				if ($(core.lastPage).hasClass(core.current)) {
 					core.scrolling = false;
 					return;
 				} else {
@@ -138,7 +141,7 @@ Core Prototype
 				};
 			//Previous Page
 			} else {
-				if ($('#home').hasClass(core.current)) {
+				if ($(core.firstPage).hasClass(core.current)) {
 					core.scrolling = false;
 					return;
 				} else {
@@ -222,6 +225,7 @@ Core Prototype
 			var core = this;
 			$(core.menu).toggleClass('active');
 			$(core.menuOpen).toggleClass('close');
+			$(core.menuMask).toggleClass('menu-dismiss');
 		};
 
 		//Mouseover Menu Icon
@@ -246,17 +250,7 @@ Core Prototype
 		Core.prototype.menuHoverOut		= function () {
 			var core = this;
 			$(core.menuSelection).removeClass('hover');
-		};
-
-/*		   
-Macro Methods
-*/		   
-		//Log Init Variables
-		Core.prototype.init 			= function () {
-			console.log("Mobile: " + this.mobile);
-			console.log("Scrolling: " + this.scrolling);
-			console.log("Videos: " + this.videos);
-		};			
+		};   		
 
 		//Show / Hide Navigation		
 		Core.prototype.toggleNav 		= function () {
@@ -273,11 +267,10 @@ Instantiation
 		var site = new Core({
 			menu 			: '#navigation',
 			menuSelection	: '.menu-item',
-			resizer 		: '#resizing'
+			resizer 		: '#resizing',
+			firstPage 		: '#home',
+			lastPage 		: '#credits'
 		});
-
-		//Initialize
-		site.init();
 
 /*			
 Core Event Bindings
@@ -313,6 +306,11 @@ Core Event Bindings
 		$(site.menuSelection).on("click", function (e) {
 			var page = $(this).data().to;
 			site.navTo(page);
+		});
+		//Click Anywhere to Dismiss
+		$(site.menuMask).on("click", function (e) {
+			console.log('dismiss');
+			site.toggleNav();
 		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

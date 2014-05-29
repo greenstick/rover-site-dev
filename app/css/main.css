@@ -46,17 +46,6 @@ body {
 	display: none !important;
 	opacity: 0;
 }
-.iso-fader {
-	opacity: 1;
-	-webkit-transition: opacity 0.6s linear;
-	-moz-transition: opacity 0.6s linear;
-	-ms-transition: opacity 0.6s linear;
-	-o-transition: opacity 0.6s linear;
-	transition: opacity 0.6s linear;
-}
-.iso-fader.faded {
-	opacity: 0;
-}
 
 /*
 Page Backgrounds
@@ -130,6 +119,19 @@ Page Backgrounds
 Navigation
 */
 
+#nav-mask {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	display: none;
+	-webkit-backface-visibility: hidden;
+}
+#nav-mask.menu-dismiss {
+	display: block;
+}
 #navigation {
 	position: fixed;
 	top: 0;
@@ -629,18 +631,6 @@ Loading Screens
 	width: 72px;
 	height: 2px;
 	background-color: rgba(255, 255, 255, .8);
-}
-
-/*
-Additional UI
-*/
-
-.getTickets {
-	position: fixed;
-	top: 20px;
-	right: 20px;
-	z-index: 5000;
-	display: none;
 }
 
 /*
@@ -1383,232 +1373,6 @@ Map Tooltip
 }
 
 /*
-Media Queries
-*/
-
-/* Huge */
-@media (min-width: 1560px) {
-
-/* 
-Map Interactive Core
-*/
-	
-	#map-wrapper {
-		height: 100%;
-	}
-	#choropleth-wrapper {
-		height: 100%;
-	}
-	#map-container {
-		height: 100%;
-	}
-	#map-header {
-		top: 0px;
-		font-size: 32px;
-		margin: 1% 0 0 0;
-		height: 5%;
-	}
-	#map-ui {
-		top: 0px;
-		margin: 0 0 23% 0;
-		height: 4%;
-	}
-	#map-metric {
-		top: 0px;
-		height: 35%;
-	}
-	#map-legend {
-		top: 0px;
-		height: 10%;
-	}
-	svg g {
-		-webkit-transform: translate(168px, 202px);
-		-moz-transform: translate(168px, 202px);
-    	transform: translate(168px, 202px);
-	}
-	.sourceText {
-		font-size: 8px;
-		line-height: 10px;
-		opacity: .5;
-	}
-
-/*
-Map Intro Modal
-*/
-	#map-intro {
-		width: 780px;
-		height: 500px;
-		margin: -250px 0 0 -390px;
-	}
-	#map-intro .corner {
-		width: 40px;
-		height: 40px;
-	}
-	#map-intro .center {
-		top: 20px;
-		left: 20px;
-		width: 740px;
-		height: 460px;
-		padding: 32px;
-		font-size: 22px;
-		line-height: 30px;
-	}
-	#map-intro .center .modal-head {
-		top: -12px;
-		width: 680px;
-		font-size: 36px;
-		letter-spacing: 4px;
-		line-height: 48px;
-	}
-	#map-intro .center .modal-exit {
-		top: 32px;
-		width: 120px;
-		height: 40px;
-		padding-top: 6px;
-		font-size: 20px;
-	}
-	#map-intro .center .modalbody {
-		top: 12px;
-		width: 680px;
-		line-height: 26px;
-		height: 280px;
-	}
-
-/*
-Filter Selection
-*/
-
-#filterSelect {
-	position: absolute;
-	top: 0px;	
-	left: 50%;
-	height: 40px;
-	margin: 0 0 0 -124px;
-	z-index: 1000;
-	letter-spacing: 1px;
-	width: 248px
-}
-
-/*
-Drop Down Menu
-*/
-
-	.dropdown {
-		width: 248px;
-		font-size: 19px;
-	}
-	.dropdown .ddSelected {
-		padding: 8px 0 0 0;
-		width: 248px;
-		height: 40px;
-		padding: 9px 0 0 0;
-	}
-	.dropdown .ddSelected img {
-		left: 224px;
-		top: 17px;
-	}
-	.dropdown:hover .ddSelected, .dropdown.active .ddSelected {
-		height: 42px;
-	}
-	.dropdown .ddList {
-		width: 248px;
-	}
-	.dropdown:hover .ddList, .dropdown.active .ddList {
-		height: 200px;
-	}
-	.dropdown .ddList .ddOption{
-		width: 248px;
-		padding: 9px 0 0 0;
-		height: 40px;
-		padding: 9px 0 0 0;
-	}
-
-/*
-Chronology Toggle 
-*/
-
-	#chronologySelect {
-		height: 38px;
-		margin: 0 0 0 -148px;
-	}
-	#chronologySelect .chronology {
-		height: 32px;
-		padding: 6px 0 0 0;
-		font-size: 16px;
-	}
-
-/*
-Dynamic Map Key
-*/
-	
-	#map-key {
-		padding: 8px 0 0 0;
-	}
-	#filter-metric {
-		font-size: 22px;
-		line-height: 28px;
-	}
-	#filter-range .key-color {
-		margin: 0 8px 0 8px;
-	}
-	#filter-range .key-color .text-value {
-		font-size: 22px;
-	}
-
-/*
-Map Key Callout Box
-*/
-
-	.callout {
-		height: 100%;
-	}
-	#map-callout {
-		width: 240px;
-		font-size: 16px;
-		line-height: 20px;
-	}
-
-/*
-Map Tooltip
-*/
-
-	#map-tooltip  {
-		font-size: 16px;
-		line-height: 24px;
-	}
-	#map-tooltip .data {
-		font-size: 16px;
-	}
-}
-
-/*
-Hide
-*/
-
-@media (max-width: 992px) {
-	#map-tooSmall {
-		-webkit-transition: opacity 0.6s linear;
-		-moz-transition: opacity 0.6s linear;
-		-ms-transition: opacity 0.6s linear;
-		-o-transition: opacity 0.6s linear;
-		transition: opacity 0.6s linear;
-		z-index: 1000;
-		opacity: 1;	
-	}
-}
-@media (max-height: 580px) {
-	#map-tooSmall {
-		-webkit-transition: opacity 0.6s linear;
-		-moz-transition: opacity 0.6s linear;
-		-ms-transition: opacity 0.6s linear;
-		-o-transition: opacity 0.6s linear;
-		transition: opacity 0.6s linear;
-		z-index: 1000;
-		opacity: 1;	
-	}	
-}
-
-/*
 Map Color Layers
 */
 
@@ -1852,6 +1616,7 @@ Gallery Page
 	padding: 5px;
 	cursor: pointer;
 }
+
 @media all and (max-height: 768px) {
 	#gallery .galleryImgs .galleryImg {
 		max-width: 10%;
@@ -1995,8 +1760,275 @@ Credits Page
 }
 
 /*
-Mobile Styles
+Additional UI
 */
+
+.getTickets {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 5000;
+	display: none;
+}
+.iso-fader {
+	opacity: 1;
+	-webkit-transition: opacity 0.6s linear;
+	-moz-transition: opacity 0.6s linear;
+	-ms-transition: opacity 0.6s linear;
+	-o-transition: opacity 0.6s linear;
+	transition: opacity 0.6s linear;
+}
+.iso-fader.faded {
+	opacity: 0;
+}
+
+/*
+Media Queries
+*/
+
+/* Huge */
+@media (min-width: 1560px) {
+
+/* 
+Map Interactive Core
+*/
+	
+	#map-wrapper {
+		height: 100%;
+	}
+	#choropleth-wrapper {
+		height: 100%;
+	}
+	#map-container {
+		height: 100%;
+	}
+	#map-header {
+		top: 0px;
+		font-size: 32px;
+		margin: 1% 0 0 0;
+		height: 5%;
+	}
+	#map-ui {
+		top: 0px;
+		margin: 0 0 23% 0;
+		height: 4%;
+	}
+	#map-metric {
+		top: 0px;
+		height: 35%;
+	}
+	#map-legend {
+		top: 0px;
+		height: 10%;
+	}
+	svg g {
+		-webkit-transform: translate(168px, 202px);
+		-moz-transform: translate(168px, 202px);
+    	transform: translate(168px, 202px);
+	}
+	.sourceText {
+		font-size: 8px;
+		line-height: 10px;
+		opacity: .5;
+	}
+
+/*
+Map Intro Modal
+*/
+	#map-intro {
+		width: 780px;
+		height: 500px;
+		margin: -250px 0 0 -390px;
+	}
+	#map-intro .corner {
+		width: 40px;
+		height: 40px;
+	}
+	#map-intro .center {
+		top: 20px;
+		left: 20px;
+		width: 740px;
+		height: 460px;
+		padding: 32px;
+		font-size: 22px;
+		line-height: 30px;
+	}
+	#map-intro .center .modal-head {
+		top: -12px;
+		width: 680px;
+		font-size: 36px;
+		letter-spacing: 4px;
+		line-height: 48px;
+	}
+	#map-intro .center .modal-exit {
+		top: 32px;
+		width: 120px;
+		height: 40px;
+		padding-top: 6px;
+		font-size: 20px;
+	}
+	#map-intro .center .modalbody {
+		top: 12px;
+		width: 680px;
+		line-height: 26px;
+		height: 280px;
+	}
+
+/*
+Filter Selection
+*/
+
+	#filterSelect {
+		position: absolute;
+		top: 0px;	
+		left: 50%;
+		height: 40px;
+		margin: 0 0 0 -124px;
+		z-index: 1000;
+		letter-spacing: 1px;
+		width: 248px
+	}
+
+/*
+Drop Down Menu
+*/
+
+	.dropdown {
+		width: 248px;
+		font-size: 19px;
+	}
+	.dropdown .ddSelected {
+		padding: 8px 0 0 0;
+		width: 248px;
+		height: 40px;
+		padding: 9px 0 0 0;
+	}
+	.dropdown .ddSelected img {
+		left: 224px;
+		top: 17px;
+	}
+	.dropdown:hover .ddSelected, .dropdown.active .ddSelected {
+		height: 42px;
+	}
+	.dropdown .ddList {
+		width: 248px;
+	}
+	.dropdown:hover .ddList, .dropdown.active .ddList {
+		height: 200px;
+	}
+	.dropdown .ddList .ddOption{
+		width: 248px;
+		padding: 9px 0 0 0;
+		height: 40px;
+		padding: 9px 0 0 0;
+	}
+
+/*
+Chronology Toggle 
+*/
+
+	#chronologySelect {
+		height: 38px;
+		margin: 0 0 0 -148px;
+	}
+	#chronologySelect .chronology {
+		height: 32px;
+		padding: 6px 0 0 0;
+		font-size: 16px;
+	}
+
+/*
+Dynamic Map Key
+*/
+	
+	#map-key {
+		padding: 8px 0 0 0;
+	}
+	#filter-metric {
+		font-size: 22px;
+		line-height: 28px;
+	}
+	#filter-range .key-color {
+		margin: 0 8px 0 8px;
+	}
+	#filter-range .key-color .text-value {
+		font-size: 22px;
+	}
+
+/*
+Map Key Callout Box
+*/
+
+	.callout {
+		height: 100%;
+	}
+	#map-callout {
+		width: 240px;
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+/*
+Map Tooltip
+*/
+
+	#map-tooltip  {
+		font-size: 16px;
+		line-height: 24px;
+	}
+	#map-tooltip .data {
+		font-size: 16px;
+	}
+
+/*
+Credits
+*/
+
+	#credits .block {
+		bottom: 50px;
+		left: 15%;
+		width: 70%;
+	}
+	#credits .blurbs {
+		top: 35%;
+		height: 420px;
+	}
+	#credits .blurbs .blurb .role {
+		font-size: 20px;
+		padding: 28px 0 0 0;
+	}
+	#credits .blurbs .blurb .credited {
+		font-size: 28px;
+	}
+
+}
+
+/*
+Hide Interactives
+*/
+
+@media (max-width: 992px) {
+	#map-tooSmall {
+		-webkit-transition: opacity 0.6s linear;
+		-moz-transition: opacity 0.6s linear;
+		-ms-transition: opacity 0.6s linear;
+		-o-transition: opacity 0.6s linear;
+		transition: opacity 0.6s linear;
+		z-index: 1000;
+		opacity: 1;	
+	}
+}
+@media (max-height: 580px) {
+	#map-tooSmall {
+		-webkit-transition: opacity 0.6s linear;
+		-moz-transition: opacity 0.6s linear;
+		-ms-transition: opacity 0.6s linear;
+		-o-transition: opacity 0.6s linear;
+		transition: opacity 0.6s linear;
+		z-index: 1000;
+		opacity: 1;	
+	}	
+}
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px) {
 
@@ -2170,5 +2202,3 @@ Mobile Styles
 		padding: 32px 0 0 0;
 	}
 }
-
-
