@@ -488,8 +488,10 @@ Video Player Methods
 
 	    //Resize Videos
 	    function resizeVideo () {
-	        var width = $(this).width() * 0.8;
-	        var height = $(this).height() * 0.8;
+	    	console.log("resizing video");
+	    	console.log(this);
+	        var width = site.width * 0.8;
+	        var height = site.height * 0.8;
 	        var $videos = $("#video-1, #video-2, #video-3");
 	        if (width/height >= 16/9) {
 	            $videos.width(width);
@@ -507,6 +509,7 @@ Video Player Methods
 	        site.videos[video].currentTime(0);
 	        site.videos[video].play();
 	        videoModal.openModal();
+	        $(videoModal.element).removeClass('hide');
 	        //Fade in Elements
 	        $("#" + video).show();
 	    };
@@ -685,6 +688,7 @@ Global Event Bindings
 				pressLayout.layout();
 				resizeVideo();
 				site.bindScroll();
+				$('#videos').addClass('hide');
 				site.navTo(null, function () {
 					setTimeout(function () {
 						$(site.loadScreen).addClass('done')

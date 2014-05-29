@@ -502,9 +502,12 @@ Video Modal
 	left: 0%;
 	height: 100%;
 	width: 100%;
-	z-index: 9999;
-	display: none;
+	z-index: 7500;
+	display: block;
 	-webkit-backface-visibility: hidden;
+}
+#videos.hide {
+	display: none;
 }
 #videos .closeIcon {	
 	position: fixed;
@@ -512,15 +515,46 @@ Video Modal
 	right: 20px;
 	-webkit-backface-visibility: hidden;
 }
-#video-1, #video-2, #video-3 {
+#videos #video-1, #videos #video-2, #videos #video-3 {
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	width: 100%;
+	min-width: 90%
 	display: none;
 	-ms-transform: translate(-50%, -50%); /* IE 9 */
 	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
 	transform: translate(-50%, -50%);
 }
+#videos.hide #video-1, #videos.hide #video-2, #videos.hide #video-3 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	min-width: 90%
+	display: block;
+	-ms-transform: translate(-50%, -50%); /* IE 9 */
+	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+	transform: translate(-50%, -50%);
+}
+#videos #video-1, #videos #video-2, #videos #video-3 {
+	display: none;
+}
+#track_html5_api {
+	min-height: 100%; 
+	min-width: 100%; 
+	height: auto !important; 
+	width: auto !important; 
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+}
+/*.video-js .vjs-tech {
+	min-width: 100%;
+}
+video {
+	vertical-align: middle;
+}*/
 
 /*
 Mask
@@ -616,19 +650,19 @@ Loading Screens
 	height: 148px;
 	margin: -100px 0 0 -150px;
 	font-weight: bold;
-	font-size: 22px;
+	font-size: 16px;
 	text-align: center;
 }
 #load-screen .note img {
-	height: 160px;
+	height: 80px;
 }
 #load-screen .note .note-text {
 	width: 300px;
-	height: 24px;
+	height: 20px;
 }
 #load-screen .note .note-line {
 	margin: 8px auto;
-	width: 72px;
+	width: 64px;
 	height: 2px;
 	background-color: rgba(255, 255, 255, .8);
 }
@@ -672,7 +706,7 @@ Home Page
 }
 #home .r2 img {
 	position: absolute;
-	bottom: 0%;
+	bottom: 5%;
 	left: 50%;
 	margin: 0 0 0 -212px;
 }
@@ -976,9 +1010,9 @@ Map Interactive Core
 	margin: 2% 0 0 0;
 }
 #map-ui {
-	top: 0px;
+	top: 20px;
 	height: 9%;
-	margin: 0 0 23% 0;
+	margin: 0 0 28% 0;
 }
 #map-metric {
 	top: 0px;
@@ -996,7 +1030,7 @@ svg g {
 	transform: translate(168px, 228px);
 }
 .country {
-	fill: rgba(115, 112, 108, .8);
+	fill: rgba(115, 112, 108, .2);
 	cursor: pointer;
 }
 #map-tooSmall {
@@ -1047,8 +1081,8 @@ Map Intro Modal
 	top: 50%;
 	left: 50%;
 	width: 500px;
-	height: 360px;
-	margin: -160px 0 0 -260px;
+	height: 380px;
+	margin: -190px 0 0 -250px;
 }
 #map-intro .corner {
 	position: absolute;
@@ -1084,10 +1118,10 @@ Map Intro Modal
 	top: 10px;
 	left: 10px;
 	width: 480px;
-	height: 340px;
+	height: 360px;
 	padding: 16px;
 	color: rgba(255, 255, 255, 1);
-	background-color: rgba(0, 0, 0, .8);
+	background-color: rgba(46, 39, 29, .9);
 	font-size: 14px;
 	line-height: 20px;
 	letter-spacing: 1px;
@@ -1096,9 +1130,9 @@ Map Intro Modal
 #map-intro .center .modal-head {
 	position: relative;
 	top: 0px;
-	left: 20px;
-	width: 400px;
-	height: 48px;
+	left: 12px;
+	width: 424px;
+	height: 52px;
 	padding: 12px 0 0 0;
 	color: #FFF8D9;
 	font-size: 28px;
@@ -1121,15 +1155,15 @@ Map Intro Modal
 	top: 0px;
 	left: 0px;
 	width: 420px;
-	height: 200px;
+	height: 216px;
 	margin: 0 auto;
 	line-height: 18px;
 }
-#transparent-mask {
+#map-mask {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, .9);
+	background-color: rgba(0, 0, 0, .7);
 	z-index: 1000;
 }
 
@@ -1789,6 +1823,14 @@ Media Queries
 /* Huge */
 @media (min-width: 1560px) {
 
+/*
+Home
+*/
+
+#home .r2 img {
+	bottom: 15%;
+}
+
 /* 
 Map Interactive Core
 */
@@ -1802,29 +1844,23 @@ Map Interactive Core
 	#map-container {
 		height: 100%;
 	}
-	#map-header {
-		top: 0px;
-		font-size: 32px;
-		margin: 1% 0 0 0;
-		height: 5%;
-	}
 	#map-ui {
-		top: 0px;
-		margin: 0 0 23% 0;
+		top: 20px;
+		margin: 0 0 28% 0;
 		height: 4%;
 	}
 	#map-metric {
 		top: 0px;
-		height: 35%;
+		height: 30%;
 	}
 	#map-legend {
 		top: 0px;
 		height: 10%;
 	}
 	svg g {
-		-webkit-transform: translate(168px, 202px);
-		-moz-transform: translate(168px, 202px);
-    	transform: translate(168px, 202px);
+		-webkit-transform: translate(168px, 222px);
+		-moz-transform: translate(168px, 222px);
+    	transform: translate(168px, 222px);
 	}
 	.sourceText {
 		font-size: 8px;
@@ -1837,8 +1873,8 @@ Map Intro Modal
 */
 	#map-intro {
 		width: 780px;
-		height: 500px;
-		margin: -250px 0 0 -390px;
+		height: 520px;
+		margin: -260px 0 0 -390px;
 	}
 	#map-intro .corner {
 		width: 40px;
@@ -1848,7 +1884,7 @@ Map Intro Modal
 		top: 20px;
 		left: 20px;
 		width: 740px;
-		height: 460px;
+		height: 480px;
 		padding: 32px;
 		font-size: 22px;
 		line-height: 30px;
@@ -1871,7 +1907,7 @@ Map Intro Modal
 		top: 12px;
 		width: 680px;
 		line-height: 26px;
-		height: 280px;
+		height: 290px;
 	}
 
 /*

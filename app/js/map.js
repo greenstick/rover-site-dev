@@ -452,8 +452,8 @@ Event Bindings
         e.stopPropagation();
     });
     //Exit Map Intro Modal
-    $('#transparent-mask .exit').on("click", function () {
-        $('#transparent-mask').fadeOut();
+    $('#map-mask .exit').on("click", function () {
+        $('#map-mask').fadeOut();
     });
     //Drop Down Click & Mouseover
     $('.dropdown').on("click mouseenter", function () {

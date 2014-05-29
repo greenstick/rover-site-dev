@@ -6,8 +6,8 @@
             "present": ["LESS THAN $20,971", "$20,972 - $41,692", "$41,693 - $62,413", "$62,414 - $83,135", "$83,136 OR MORE"],
             "future": ["LESS THAN $17,835", "$17,836 - $35,382", "$35,383 - $52,929", "$52,930 - $70,476", "$70,477 OR MORE"]
         },
-        "description": "Economic wealth or GDP per capita is a good indication of the financial health of a country’s economy.",
-        "source": "Source: WHO",
+        "description": "Gross Domestic Product (GDP) is a good indicator of a country’s economic health and overall standard of living.",
+        "source": "Source: World Bank",
         "color": "green",
         "sort": "descending",
         "format": "monetary",
@@ -1253,7 +1253,7 @@
             },
             {
                 "id": "US",
-                "country": "United States of America",
+                "country": "United States",
                 "present": 51749,
                 "future": 18476
             },
@@ -1320,8 +1320,8 @@
             "present": ["LESS THAN 25", "26 - 35", "36 - 45", "46 - 55", "56 OR MORE"],
             "future": ["LESS THAN 35", "36 - 49", "50 - 63", "64 - 78", "79 OR MORE"]
         },
-        "description": "Income inequality (un r/p 10%) shows the equal or unequal share of the country’s wealth across the number of people who reside in that country. The higher the number, the more “unequal” the wealth distribution.",
-        "source": "Source: Organization for Economic Co-operation and Development (OECD), United Nations(UN), US Central Intelligence Agency (CIA), and the World Bank",
+        "description": "The GINI index measures the income inequality in a given population on a 0 - 100 scale. A higher number implies more “unequal” wealth distribution and a wide gap between the rich and poor.",
+        "source": "Source/s: World Bank, CIA World Factbook",
         "color": "chartreuse",
         "sort": "descending",
         "format": null,
@@ -2579,7 +2579,7 @@
             },
             {
                 "id": "US",
-                "country": "United States of America",
+                "country": "United States",
                 "present": 45,
                 "future": 60.8
             },
@@ -2647,7 +2647,7 @@
             "future": ["LESS THAN 15%", "16% - 30%", "31% - 45%", "46% - 60%", "61% OR MORE"]
         },
         "description": "Unemployment rate is the percentage of a country’s population that is not employed.",
-        "source": "Source: WHO",
+        "source": "Source/s: World Bank, CIA World Factbook, International Monetary Fund",
         "color": "vermillion",
         "sort": "descending",
         "format": "percentage",
@@ -3899,7 +3899,7 @@
             },
             {
                 "id": "US",
-                "country": "United States of America",
+                "country": "United States",
                 "present": 7.3,
                 "future": 66.2
             },
@@ -3967,7 +3967,7 @@
             "future": ["LESS THAN 53", "54 - 61", "62 - 69", "70 - 77", "78 OR MORE"]
         },
         "description": "Life expectancy is the number of years the average citizen of a country is expected to live.",
-        "source": "Source: WHO",
+        "source": "Source: World Health Organization",
         "color": "purple",
         "sort": "descending",
         "format": null,
@@ -5213,7 +5213,7 @@
             },
             {
                 "id": "US",
-                "country": "United States of America",
+                "country": "United States",
                 "present": 79,
                 "future": 71
             },
@@ -6540,7 +6540,7 @@
             },
             {
                 "id": "US",
-                "country": "United States of America",
+                "country": "United States",
                 "present": 2,
                 "future": -0.5
             },
