@@ -217,7 +217,8 @@ Function Specific Methods
             map.bucket = function (value, max, min, layers, color, sort) {
                 //If Descending Sort Descending Else Default to Ascending
                 var bucket = d3.scale.quantize().domain([max, min]).range(d3.range(layers).map(function (i) {
-                     return (sort === "descending" || sort == "dsc" || sort === 0) ? color + "-" + (layers - (i + 1)) : color + "-" + i;
+                    // console.log("Layer " + (i + 1) + " value: " + ((((max - min) / layers) * i) + min) + " - " + ((((max - min) / layers) * (i + 1)) + min));
+                    return (sort === "descending" || sort == "dsc" || sort === 0) ? color + "-" + (layers - (i + 1)) : color + "-" + i;
                 }));
                 return bucket(value);
             },

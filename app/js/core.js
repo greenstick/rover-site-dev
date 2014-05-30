@@ -647,10 +647,10 @@ Masonry Pages
 */
 
 		//Trailers Page Masonry
-		var trailers = document.querySelector("#trailers.page");
-		var trailersLayout = new Isotope (trailers, {
-			itemSelector: '.thumb-nail'
-		});
+		// var trailers = document.querySelector("#trailers.page");
+		// var trailersLayout = new Isotope (trailers, {
+		// 	itemSelector: '.thumb-nail'
+		// });
 
 		//Press Page Masonry
 		var press = document.querySelector("#press.page");
@@ -683,7 +683,7 @@ Global Event Bindings
 		//Setup DOM Sizing and Location
 		$(window).load(function (e) {
 			site.resize(e, function () {
-				trailersLayout.layout();
+				// trailersLayout.layout();
 				galleryLayout.layout();
 				pressLayout.layout();
 				resizeVideo();
@@ -704,7 +704,7 @@ Global Event Bindings
 			clearTimeout(site.resizing);
 			site.resizing = setTimeout(function () {
 				site.resize(e, function() {
-					trailersLayout.layout();
+					// trailersLayout.layout();
 					pressLayout.layout();
 					resizeVideo();
 					galleryLayout.layout();

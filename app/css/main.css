@@ -8,11 +8,20 @@ Fonts
 }
 @font-face {
 	font-family: 'TradeGothicLT-BdCn20';
-	src: url('../font/TradeGothicLTStd BdCn20.woff');
+	src: url('../font/TradeGothicLTStd-BdCn20.woff');
+}
+@font-face {
+	font-family: 'TradeGothicLT-BdCn20Obl';
+	src: url('../font/TradeGothicLTStd-BdCn20Obl.woff');
 }
 @font-face {
 	font-family: 'TradeGothicLT-Cn18';
 	src: url('../font/TradeGothicLTStd-Cn18.woff');
+}
+@font-face {
+	font-family: 'TradeGothicLT-Cn18Obl';
+	src: url('../font/TradeGothicLTStd-Cn18Obl.woff');
+	font-style: italic;
 }
 @font-face {
 	font-family: 'AdobeGaramondPro-Regular';
@@ -46,6 +55,9 @@ body {
 	display: none !important;
 	opacity: 0;
 }
+.italic {
+	font-family: 'TradeGothicLT-BdCn20Obl' !important;
+}
 
 /*
 Page Backgrounds
@@ -78,7 +90,7 @@ Page Backgrounds
 #credits {
 	background: url('../img/backgrounds/credits-bg.jpg') no-repeat center top;
 }
-#home.page, #map.page, #timeline.page, #trailers.page, #gallery.page, #press.page, #credits.page {
+#home.page, #timeline.page, #trailers.page, #gallery.page, #press.page, #credits.page {
 	position: relative;
   	top: 0px;
   	left: 0px;
@@ -979,7 +991,6 @@ Map Interactive Core
 }
 #map-background {
 	position: absolute;
-	top: 0px;
 	left: 0px;
 	width: 100%;
 	height: 100%;
@@ -1080,9 +1091,14 @@ Map Intro Modal
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 500px;
-	height: 380px;
-	margin: -190px 0 0 -250px;
+	width: 95%;
+	max-width: 590px;
+	min-width: 300px;
+	height: 360px;
+	-ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%);  /* Chrome, Safari, Opera */
+    -moz-transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 #map-intro .corner {
 	position: absolute;
@@ -1115,23 +1131,30 @@ Map Intro Modal
 }
 #map-intro .center {
 	position: absolute;
-	top: 10px;
-	left: 10px;
-	width: 480px;
-	height: 360px;
-	padding: 16px;
+	top: 50%;
+	left: 50%;
+	width: 95%;
+	max-width: 590px;
+	min-width: 300px;
+	height: 330px;
+	padding: 15px 30px;
+
 	color: rgba(255, 255, 255, 1);
-	background-color: rgba(46, 39, 29, .9);
+	background-color: rgba(0, 0, 0, .8);
 	font-size: 14px;
 	line-height: 20px;
 	letter-spacing: 1px;
-	z-index: 500;
+
+	-ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%);  /* Chrome, Safari, Opera */
+    -moz-transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 #map-intro .center .modal-head {
 	position: relative;
 	top: 0px;
-	left: 12px;
-	width: 424px;
+	left: 0px;
+	width: 100%;
 	height: 52px;
 	padding: 12px 0 0 0;
 	color: #FFF8D9;
@@ -1142,7 +1165,7 @@ Map Intro Modal
 }
 #map-intro .center .modal-exit {
 	position: relative;
-	top: 20px;
+	top: 0px;
 	left: 0px;
 	width: 72px;
 	height: 28px;
@@ -1163,7 +1186,7 @@ Map Intro Modal
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, .7);
+	background-color: rgba(0, 0, 0, .5);
 	z-index: 1000;
 }
 
@@ -1624,14 +1647,44 @@ Trailers Page
 
 #trailers .thumb-nails {
 	position: relative;
-	top: 100px;
+	top: 140px;
 	width: 80%;
 	margin: 0 auto;
 }
 #trailers .thumb-nails .thumb-nail {
-	max-width: 32%;
-	padding: 1%;
+	float: left;
+	padding: 2%;
 	cursor: pointer;
+	display: inline-block;
+}
+#trailers .thumb-nails .thumb-nail.small {
+	padding-left: 0%;
+	width: 100%;
+	max-width: 30.33%;
+}
+#trailers .thumb-nails .thumb-nail.small.top {
+	padding-bottom: 1%;
+	width: 100%;
+}
+#trailers .thumb-nails .thumb-nail.small.bottom {
+	padding-top: 1%;
+	width: 100%;
+}
+#trailers .thumb-nails .thumb-nail.big {
+	width: 100%;
+	max-width: 64%;
+}
+#trailers .thumb-nails .thumb-nail img {
+	width: 100%;
+}
+#trailers .thumb-nails .thumb-nail .video-title {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 10%;
+	color: #FFF8D9;
+	background-color: rgba(46, 39, 29, .9);
 }
 
 /*
@@ -1839,23 +1892,30 @@ Map Interactive Core
 		height: 100%;
 	}
 	#choropleth-wrapper {
-		height: 100%;
+		height: 80%;
 	}
 	#map-container {
 		height: 100%;
 	}
 	#map-ui {
 		top: 20px;
-		margin: 0 0 28% 0;
+		margin: 0 0 23% 0;
 		height: 4%;
+		max-width: 1720px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	#map-metric {
 		top: 0px;
 		height: 30%;
+		max-width: 1720px;
+		margin: 0 auto;
 	}
 	#map-legend {
 		top: 0px;
 		height: 10%;
+		max-width: 1720px;
+		margin: 0 auto;
 	}
 	svg g {
 		-webkit-transform: translate(168px, 222px);
@@ -1872,19 +1932,16 @@ Map Interactive Core
 Map Intro Modal
 */
 	#map-intro {
-		width: 780px;
-		height: 520px;
-		margin: -260px 0 0 -390px;
+		max-width: 780px;
+		height: 500px;
 	}
 	#map-intro .corner {
 		width: 40px;
 		height: 40px;
 	}
 	#map-intro .center {
-		top: 20px;
-		left: 20px;
-		width: 740px;
-		height: 480px;
+		max-width: 740px;
+		height: 460px;
 		padding: 32px;
 		font-size: 22px;
 		line-height: 30px;
@@ -1907,7 +1964,7 @@ Map Intro Modal
 		top: 12px;
 		width: 680px;
 		line-height: 26px;
-		height: 290px;
+		height: 270px;
 	}
 
 /*
