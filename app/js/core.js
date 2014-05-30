@@ -603,6 +603,82 @@ Gallery Modal Event Bindings
 	        $('body').removeClass('modal-open');
 	    });
 
+/*
+Gallery Scrolling
+*/
+
+		//Scroll to Statement .subPage
+		function toGalleryImage (parent, element, duration) {
+			$(parent).scrollTo(element, {
+				duration: duration,
+				axis: "x"
+			});
+		};
+
+/*
+Gallery Event Bindings
+*/
+		var currentGallerySlide = 1;
+
+		$("#gallery .next").on("click", function () {
+			if(currentGallerySlide < 12) {
+				currentGallerySlide++;
+			}
+			else {
+				currentGallerySlide = 1;
+			}
+			toGalleryImage('.gSlideContainer', '.gContainer' + currentGallerySlide, 800);
+		});
+		$("#gallery .prev").on("click", function () {
+			if(currentGallerySlide > 1) {
+				currentGallerySlide--;
+			}
+			else {
+				currentGallerySlide = 12;
+			}
+			toGalleryImage('.gSlideContainer', '.gContainer' + currentGallerySlide, 800);
+		});
+
+/*
+		$(".gContainer1 .next").on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer2', 800);
+		});
+
+		$('.gContainer2 .prev').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer1', 800);
+		});
+		$('.gContainer2 .next').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer3', 800);
+		});
+
+		$('.gContainer3 .prev').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer2', 800);
+		});
+		$('.gContainer3 .next').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer4', 800);
+		});
+
+		$('.gContainer4 .prev').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer3', 800);
+		});
+		$('.gContainer4 .next').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer5', 800);
+		});
+
+		$('.gContainer5 .prev').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer4', 800);
+		});
+		$('.gContainer5 .next').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer6', 800);
+		});
+
+		$('.gContainer6 .prev').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer5', 800);
+		});
+		$('.gContainer6 .next').on("click", function () {
+			toGalleryImage('.gSlideContainer', '.gContainer7', 800);
+		});*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
