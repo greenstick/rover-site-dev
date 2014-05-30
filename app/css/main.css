@@ -90,7 +90,7 @@ Page Backgrounds
 #credits {
 	background: url('../img/backgrounds/credits-bg.jpg') no-repeat center top;
 }
-#home.page, #timeline.page, #trailers.page, #gallery.page, #press.page, #credits.page {
+#home.page, #map.page, #timeline.page, #trailers.page, #gallery.page, #press.page, #credits.page {
 	position: relative;
   	top: 0px;
   	left: 0px;
@@ -114,6 +114,33 @@ Page Backgrounds
 	font-size: 0px;
 	overflow: hidden;
 }
+/*Only Show Map Interactive*/
+/*#home.page, #timeline.page, #trailers.page, #gallery.page, #press.page, #credits.page {
+	position: relative;
+  	top: 0px;
+  	left: 0px;
+  	min-height: 100%;
+  	min-width: 320px;
+  	width: 100%;
+  	height: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-size: 0px;
+	overflow: hidden;
+	display: none;
+}
+#statement.page {
+	position: relative;
+	min-height: 100%;
+  	min-width: 320px;
+  	width: 100%;
+  	height: 100%;
+	font-size: 0px;
+	overflow: hidden;
+	display: none;
+}*/
 .page .pageHeader {
 	position: absolute;
 	top: 0px;
@@ -157,7 +184,7 @@ Navigation
 	-ms-transition: left 550ms;
 	-o-transition: left 550ms;
 	transition: left 550ms;
-	font-size: 22px;
+	font-size: 18px;
 	z-index: 5000;
 	-webkit-backface-visibility: hidden;
 }
@@ -176,7 +203,8 @@ Navigation
 #navigation .menu-expanded .menu-items .menu-item {
 	width: 280px;
 	height: 40px;
-	padding: 8px 0 0 0;
+	padding: 10px 0 0 0;
+	letter-spacing: 2px;
 	color: rgba(255, 255, 255, .7);
 	border-bottom: 1px solid rgba(255, 255, 255, .7);
 	text-align: right;
@@ -239,19 +267,19 @@ Nom Nom I Can Haz Cheezbrgr Menu
 	width: 30px;
 	height: 3px;
 }
-.menu-open:hover .top {
-	-webkit-transform: rotateZ(0deg) translateX(0px) translateY(-3px);
-	-moz-transform: rotateZ(0deg) translateX(0px) translateY(-3px);
-	-ms-transform: rotateZ(0deg) translateX(0px) translateY(-3px);
-	-o-transform: rotateZ(0deg) translateX(0px) translateY(-3px);
-	transform: rotateZ(0deg) translateX(0px) translateY(-3px);
+.menu-open .top {
+	-webkit-transform: rotateZ(0deg) translateX(0px) translateY(-4px);
+	-moz-transform: rotateZ(0deg) translateX(0px) translateY(-4px);
+	-ms-transform: rotateZ(0deg) translateX(0px) translateY(-4px);
+	-o-transform: rotateZ(0deg) translateX(0px) translateY(-4px);
+	transform: rotateZ(0deg) translateX(0px) translateY(-4px);
 }
-.menu-open:hover .bottom {
-	-webkit-transform: rotateZ(0deg) translateX(0px) translateY(3px);
-	-moz-transform: rotateZ(0deg) translateX(0px) translateY(3px);
-	-ms-transform: rotateZ(0deg) translateX(0px) translateY(3px);
-	-o-transform: rotateZ(0deg) translateX(0px) translateY(3px);
-	transform: rotateZ(0deg) translateX(0px) translateY(3px);
+.menu-open .bottom {
+	-webkit-transform: rotateZ(0deg) translateX(0px) translateY(4px);
+	-moz-transform: rotateZ(0deg) translateX(0px) translateY(4px);
+	-ms-transform: rotateZ(0deg) translateX(0px) translateY(4px);
+	-o-transform: rotateZ(0deg) translateX(0px) translateY(4px);
+	transform: rotateZ(0deg) translateX(0px) translateY(4px);
 }
 .menu-open .menu-line.inner {
 	-webkit-transition: opacity 300ms ease-in-out 0ms;
@@ -259,27 +287,27 @@ Nom Nom I Can Haz Cheezbrgr Menu
 	-ms-transition: opacity 300ms ease-in-out 0ms;
 	-o-transition: opacity 300ms ease-in-out 0ms;
 	transition: opacity 300ms ease-in-out 0ms;
-	margin: 0 0 3px 0;
+	margin: 0 0 4px 0;
 }
 .menu-open .top, .menu .inner {
-	margin: 0 0 3px 0;
+	margin: 0 0 4px 0;
 }
 .menu-open.close {
-	left: 250px;
+	left: 254px;
 }
 .menu-open.close .top {
-	-webkit-transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
-	-moz-transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
-	-ms-transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
-	-o-transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
-	transform: rotateZ(45deg) translateX(5px) translateY(5px) !important;
+	-webkit-transform: rotateZ(45deg) translateX(4px) translateY(8px) !important;
+	-moz-transform: rotateZ(45deg) translateX(4px) translateY(8px) !important;
+	-ms-transform: rotateZ(45deg) translateX(4px) translateY(8px) !important;
+	-o-transform: rotateZ(45deg) translateX(4px) translateY(8px) !important;
+	transform: rotateZ(45deg) translateX(4px) translateY(8px) !important;
 }
 .menu-open.close .bottom {
-	-webkit-transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
-	-moz-transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
-	-ms-transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
-	-o-transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
-	transform: rotateZ(-45deg) translateX(4px) translateY(-3px) !important;
+	-webkit-transform: rotateZ(-45deg) translateX(3px) translateY(-6px) !important;
+	-moz-transform: rotateZ(-45deg) translateX(3px) translateY(-6px) !important;
+	-ms-transform: rotateZ(-45deg) translateX(3px) translateY(-6px) !important;
+	-o-transform: rotateZ(-45deg) translateX(3px) translateY(-6px) !important;
+	transform: rotateZ(-45deg) translateX(3px) translateY(-6px) !important;
 }
 .menu-open.close .inner {
 	opacity: 0;
@@ -670,7 +698,7 @@ Loading Screens
 }
 #load-screen .note .note-text {
 	width: 300px;
-	height: 20px;
+	height: 18px;
 }
 #load-screen .note .note-line {
 	margin: 8px auto;
@@ -1092,9 +1120,9 @@ Map Intro Modal
 	top: 50%;
 	left: 50%;
 	width: 95%;
-	max-width: 590px;
+	max-width: 620px;
 	min-width: 300px;
-	height: 360px;
+	height: 340px;
 	-ms-transform: translate(-50%, -50%); /* IE 9 */
     -webkit-transform: translate(-50%, -50%);  /* Chrome, Safari, Opera */
     -moz-transform: translate(-50%, -50%); 
@@ -1136,7 +1164,7 @@ Map Intro Modal
 	width: 95%;
 	max-width: 590px;
 	min-width: 300px;
-	height: 330px;
+	height: 310px;
 	padding: 15px 30px;
 
 	color: rgba(255, 255, 255, 1);
@@ -1155,7 +1183,7 @@ Map Intro Modal
 	top: 0px;
 	left: 0px;
 	width: 100%;
-	height: 52px;
+	height: 46px;
 	padding: 12px 0 0 0;
 	color: #FFF8D9;
 	font-size: 28px;
@@ -1177,8 +1205,8 @@ Map Intro Modal
 	position: relative;
 	top: 0px;
 	left: 0px;
-	width: 420px;
-	height: 216px;
+	width: 530px;
+	height: 200px;
 	margin: 0 auto;
 	line-height: 18px;
 }
@@ -1646,23 +1674,19 @@ Trailers Page
 */
 
 #trailers .thumb-nails {
-	position: relative;
-	top: 140px;
-	height: 60%;
-	margin: 0 auto;
+	top: 130px;
 }
 #trailers .thumb-nails .thumb-nail {
-	float: left;
 	cursor: pointer;
-	display: inline-block;
 	text-align: center;
 }
 #trailers .thumb-nails .thumb-nail.small {
-	/*width: 100%;*/
+	max-width: 33.33%;
+	margin: 0 0 0 1%;
 	/*max-width: 30.33%;*/
 }
 #trailers .thumb-nails .thumb-nail.big {
-	/*width: 100%;*/
+	max-width: 64.66%;
 	/*max-width: 64%;*/
 }
 #trailers .thumb-nails .thumb-nail img {
@@ -1670,7 +1694,7 @@ Trailers Page
 }
 #trailers .thumb-nails .thumb-nail .video-title {
 	position: absolute;
-	bottom: 90px;
+	bottom: 0px;
 	left: 0px;
 	width: 100%;
 	height: 40px;
@@ -1683,9 +1707,10 @@ Trailers Page
 #trailers .thumb-nails .thumb-nail .play-button {
 	position: absolute;
 	top: 50%;
-	left: 0px;
+	left: 50%;
 	max-width: 40px;
 	max-height: 50px;
+	margin: -25px 0 0;
 }
 
 /*
@@ -1860,24 +1885,12 @@ Press Page
 	width: 100%;
 }
 #press .blurbs .blurb {
-	width: 320px;
-	height: 200px;
-	padding: 20px;
+	width: 25%;
+	padding: 2%;
 	font-size: 16px;
 	color: rgba(255, 255, 255, 1);
 	text-align: center;
 }
-#press .blurbs .blurb .emphasis {
-	font-size: 36px;
-	line-height: 32px;
-	color: rgba(255, 248, 217, 1);
-}
-#press .blurbs .blurb .critic {
-	font-size: 12px;
-	color: rgba(255, 248, 217, 1);
-}
-
-
 
 /*
 Credits Page
@@ -1924,7 +1937,7 @@ Additional UI
 	top: 20px;
 	right: 20px;
 	z-index: 5000;
-	display: none;
+	/*display: none;*/
 }
 .iso-fader {
 	opacity: 1;
@@ -1986,6 +1999,9 @@ Map Interactive Core
 		max-width: 1720px;
 		margin: 0 auto;
 	}
+	#map-intro {
+		top: 40%;
+	}
 	svg g {
 		-webkit-transform: translate(168px, 222px);
 		-moz-transform: translate(168px, 222px);
@@ -1995,45 +2011,6 @@ Map Interactive Core
 		font-size: 8px;
 		line-height: 10px;
 		opacity: .5;
-	}
-
-/*
-Map Intro Modal
-*/
-	#map-intro {
-		max-width: 780px;
-		height: 500px;
-	}
-	#map-intro .corner {
-		width: 40px;
-		height: 40px;
-	}
-	#map-intro .center {
-		max-width: 740px;
-		height: 460px;
-		padding: 32px;
-		font-size: 22px;
-		line-height: 30px;
-	}
-	#map-intro .center .modal-head {
-		top: -12px;
-		width: 680px;
-		font-size: 36px;
-		letter-spacing: 4px;
-		line-height: 48px;
-	}
-	#map-intro .center .modal-exit {
-		top: 32px;
-		width: 120px;
-		height: 40px;
-		padding-top: 6px;
-		font-size: 20px;
-	}
-	#map-intro .center .modalbody {
-		top: 12px;
-		width: 680px;
-		line-height: 26px;
-		height: 270px;
 	}
 
 /*

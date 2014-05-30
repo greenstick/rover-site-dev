@@ -52,7 +52,7 @@ Core Prototype
 					core.touchStart(e);
 				});
 				$(core.pageClass).on("touchmove", function (e) {
-					core.touchMove(e);
+					core.touchMoveY(e);
 				});
 			//Non-Mobile - Bind Scroll Event
 			} else {
@@ -75,7 +75,7 @@ Core Prototype
 			};
 			if (this.delta) {
 				e.preventDefault ? e.preventDefault() : e.returnValue = false;
-				this.scrollDirection();
+				this.scrollDirectionY();
 			};
 		};
 
@@ -87,45 +87,56 @@ Core Prototype
 				this.startPosition = start;
 		};
 
-		//Binds touchmove Event to Delta
-		Core.prototype.touchMove 		= function (e) {
+		//Binds touchmove Y Axis Event to Delta
+		Core.prototype.touchMoveY 		= function (e) {
 			var offset = {};
-			offset.x = this.startPosition.x - e.originalEvent.pageX;
 			offset.y = this.startPosition.y - e.originalEvent.pageY;
 			this.delta = offset.y;
 			if (Math.abs(this.delta) >= 10) {
 				e.preventDefault ? e.preventDefault() : e.returnValue = false;
-				this.scrollDirection();
+				this.scrollDirectionY();
 			};
 		};
 
+		//Binds touchmove X Axis Event to Delta
+		Core.prototype.touchMoveX 			= function (e) {
+			var offset = {};
+			offset.x = this.startPosition.x - e.originalEvent.pageX;
+			this.delta = offset.x;
+			if (Math.abs(this.delta) >= 10) {
+				e.preventDefault ? e.preventDefault() : e.returnValue = false;
+				this.scrollDirectionX();
+			};
+		};
+
+
 		//Determines direction to Scroll and Calls scrollPage Function
-		Core.prototype.scrollDirection 	= function () {
+		Core.prototype.scrollDirectionY 	= function () {
 			if (this.mobile === true) {
 				if (this.scrolling === false) {
 					if (this.delta > -1.25) {
 						this.scrolling = true;
-						this.scrollPage('next');
+						this.scrollPageY('next');
 					} else  if (this.delta < 1.25) {
 						this.scrolling = true;
-						this.scrollPage('prev');
+						this.scrollPageY('prev');
 					};
 				};
 			} else {
 				if (this.scrolling === false) {
 					if (this.delta < -1.25) {
 						this.scrolling = true;
-						this.scrollPage('next');
+						this.scrollPageY('next');
 					} else  if (this.delta > 1.25) {
 						this.scrolling = true;
-						this.scrollPage('prev');
+						this.scrollPageY('prev');
 					};
 				};
 			};
 		};
 
 		//Scrolls to Next or Previous Page
-		Core.prototype.scrollPage		= function (destination) {
+		Core.prototype.scrollPageY		= function (destination) {
 			var core = this, id;
 			//Next Page
 			if (destination === 'next') {
@@ -192,7 +203,7 @@ Core Prototype
 			$('body').width(core.width).height(core.height);
 			$(core.pageClass).width(core.width).height(core.height);
 			$(core.subPage).width(core.width).height(core.height);
-			//If Callback 
+			//If Callback
 			if (typeof callback === 'function') callback();
 		};
 
@@ -215,7 +226,7 @@ Core Prototype
 		};
 
 		//Fade Out Isotope Elements
-		Core.prototype.fadeIsoElements = function () {
+		Core.prototype.fadeIsoElements 	= function () {
 			var core = this;
 			$(core.isoFader).toggleClass('faded');
 		};
@@ -293,8 +304,7 @@ Core Event Bindings
 
 		//Page Link Hover Over
 		$(site.menuSelection).on("mouseover", function (e) {
-			var link = e.currentTarget;
-			site.menuHoverOver(link);
+			site.menuHoverOver(e.currentTarget);
 		});
 
 		//Page Link Hover Over
@@ -304,18 +314,16 @@ Core Event Bindings
 
 		//Select Page From Menu
 		$(site.menuSelection).on("click", function (e) {
-			var page = $(this).data().to;
-			site.navTo(page);
+			site.navTo($(this).data().to);
 		});
 		//Click Anywhere to Dismiss
 		$(site.menuMask).on("click", function (e) {
-			console.log('dismiss');
 			site.toggleNav();
 		});
 		//Arrow Up & Down Navigation
 		$(window).on('keydown', function (e) {
-			if (e.keyCode == 40) (e.preventDefault(), site.scrollPage("next"));
-	    	if (e.keyCode == 38) (e.preventDefault(), site.scrollPage("prev"));
+			if (e.keyCode == 40) (e.preventDefault(), site.scrollPageY("next"));
+	    	if (e.keyCode == 38) (e.preventDefault(), site.scrollPageY("prev"));
 		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -367,8 +375,7 @@ Extends Modal Prototype - Performs Zipcode Validation
             zip.valid               = ko.computed(function () {
                 if (typeof zip.zipcode() === 'undefined') return;
                 if (zip.zipcode().match(zip.pattern)) {
-                    var zipcode = zip.zipcode().substr(0, 5);
-                    return zip.location + zipcode;
+                    return zip.location + zip.zipcode().substr(0, 5);
                 };
             });
     };
@@ -713,15 +720,16 @@ Masonry Pages
 */
 
 		// Trailers Page Masonry
-		// var trailers = document.querySelector("#trailers .thumb-nails");
-		// var trailersLayout = new Isotope (trailers, {
-		// 	itemSelector: '.thumb-nail'
-		// });
+		var trailers = document.querySelector("#trailers .thumb-nails");
+		var trailersLayout = new Isotope (trailers, {
+			itemSelector: '.thumb-nail'
+		});
 
 		//Press Page Masonry
 		var press = document.querySelector("#press.page");
 		var pressLayout = new Isotope (press, {
-			itemSelector: '.blurb'
+			itemSelector: '.blurb',
+			gutter: 10
 		});
 
 		//Gallery Page MASONRY
@@ -749,7 +757,7 @@ Global Event Bindings
 		//Setup DOM Sizing and Location
 		$(window).load(function (e) {
 			site.resize(e, function () {
-				// trailersLayout.layout();
+				trailersLayout.layout();
 				galleryLayout.layout();
 				pressLayout.layout();
 				resizeVideo();
@@ -770,7 +778,7 @@ Global Event Bindings
 			clearTimeout(site.resizing);
 			site.resizing = setTimeout(function () {
 				site.resize(e, function() {
-					// trailersLayout.layout();
+					trailersLayout.layout();
 					pressLayout.layout();
 					resizeVideo();
 					galleryLayout.layout();
@@ -782,4 +790,4 @@ Global Event Bindings
 			}, 400);
 		});
 
-}(jQuery, d3));
+}(jQuery, d3, ko));

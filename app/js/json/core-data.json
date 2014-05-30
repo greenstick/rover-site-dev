@@ -225,7 +225,7 @@
                 "id": "CA",
                 "country": "Canada",
                 "present": 51206,
-                "future": 12231
+                "future": 18476
             },
             {
                 "id": "CV",
@@ -1269,7 +1269,7 @@
                 "id": "US",
                 "country": "United States",
                 "present": 51749,
-                "future": 18476
+                "future": 12231
             },
             {
                 "id": "UY",
@@ -1553,7 +1553,7 @@
                 "id": "CA",
                 "country": "Canada",
                 "present": 32.1,
-                "future": 64.1
+                "future": 60.8
             },
             {
                 "id": "CV",
@@ -2609,7 +2609,7 @@
                 "id": "US",
                 "country": "United States",
                 "present": 45,
-                "future": 60.8
+                "future": 64.1
             },
             {
                 "id": "UY",
@@ -5632,7 +5632,7 @@
                 "id": "CD",
                 "country": "Democratic Republic of The Congo",
                 "present": -0.08,
-                "future": 2
+                "future": -0.1
             },
             {
                 "id": "CG",
