@@ -1648,43 +1648,44 @@ Trailers Page
 #trailers .thumb-nails {
 	position: relative;
 	top: 140px;
-	width: 80%;
+	height: 60%;
 	margin: 0 auto;
 }
 #trailers .thumb-nails .thumb-nail {
 	float: left;
-	padding: 2%;
 	cursor: pointer;
 	display: inline-block;
+	text-align: center;
 }
 #trailers .thumb-nails .thumb-nail.small {
-	padding-left: 0%;
-	width: 100%;
-	max-width: 30.33%;
-}
-#trailers .thumb-nails .thumb-nail.small.top {
-	padding-bottom: 1%;
-	width: 100%;
-}
-#trailers .thumb-nails .thumb-nail.small.bottom {
-	padding-top: 1%;
-	width: 100%;
+	/*width: 100%;*/
+	/*max-width: 30.33%;*/
 }
 #trailers .thumb-nails .thumb-nail.big {
-	width: 100%;
-	max-width: 64%;
+	/*width: 100%;*/
+	/*max-width: 64%;*/
 }
 #trailers .thumb-nails .thumb-nail img {
 	width: 100%;
 }
 #trailers .thumb-nails .thumb-nail .video-title {
 	position: absolute;
-	bottom: 0px;
+	bottom: 90px;
 	left: 0px;
 	width: 100%;
-	height: 10%;
+	height: 40px;
 	color: #FFF8D9;
 	background-color: rgba(46, 39, 29, .9);
+	padding: 10px 0 0 10px;
+	font-size: 16px;
+	text-align: left;
+}
+#trailers .thumb-nails .thumb-nail .play-button {
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	max-width: 40px;
+	max-height: 50px;
 }
 
 /*

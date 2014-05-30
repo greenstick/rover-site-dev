@@ -312,6 +312,11 @@ Core Event Bindings
 			console.log('dismiss');
 			site.toggleNav();
 		});
+		//Arrow Up & Down Navigation
+		$(window).on('keydown', function (e) {
+			if (e.keyCode == 40) (e.preventDefault(), site.scrollPage("next"));
+	    	if (e.keyCode == 38) (e.preventDefault(), site.scrollPage("prev"));
+		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -336,19 +341,15 @@ Basic Methods
 	    //Open Modal
 		Modal.prototype.openModal   = function () {
 			var modal = this;
-				if (this.mask !== false) {
-					$(modal.mask).fadeIn();
-				};
-				$(modal.element).fadeIn();
+			if (this.mask !== false) $(modal.mask).fadeIn();
+			$(modal.element).fadeIn();
 		};
 
 	    //Close Modal
 		Modal.prototype.closeModal  = function () {
 			var modal = this;
-				if (this.mask !== false) {
-					$(modal.mask).fadeOut();
-				};
-				$(modal.element).fadeOut();
+			if (this.mask !== false) $(modal.mask).fadeOut();
+			$(modal.element).fadeOut();
 		};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -364,9 +365,7 @@ Extends Modal Prototype - Performs Zipcode Validation
             zip.zipcode             = ko.observable(),
             //Outputs HREF if Valid
             zip.valid               = ko.computed(function () {
-                if (typeof zip.zipcode() === 'undefined') {
-                    return;
-                };
+                if (typeof zip.zipcode() === 'undefined') return;
                 if (zip.zipcode().match(zip.pattern)) {
                     var zipcode = zip.zipcode().substr(0, 5);
                     return zip.location + zipcode;
@@ -422,9 +421,7 @@ Zip Validation Event Binding
 
 	    //Enable Enter to Submit Input
 	    $('#zipcode-modal .input').on("keyup", function (e) {
-	        if (e.keyCode == 13) {
-	            $('.submit img').click();
-	        };
+	        if (e.keyCode == 13) $('.submit img').click();
 	    });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -488,17 +485,12 @@ Video Player Methods
 
 	    //Resize Videos
 	    function resizeVideo () {
-	    	console.log("resizing video");
-	    	console.log(this);
-	        var width = site.width * 0.8;
-	        var height = site.height * 0.8;
-	        var $videos = $("#video-1, #video-2, #video-3");
+	        var width = site.width * 0.8,
+	        height = site.height * 0.8;
 	        if (width/height >= 16/9) {
-	            $videos.width(width);
-	            $videos.height(width * (10/24));
+	            $("#video-1, #video-2, #video-3").width(width).height(width * (10/24));
 	        } else {
-	            $videos.height(height);
-	            $videos.width(height * (24/10));
+	            $("#video-1, #video-2, #video-3").height(height).width(height * (24/10));
 	        };
 	    };
 
@@ -607,7 +599,7 @@ Gallery Modal Event Bindings
 Gallery Scrolling
 */
 
-		//Scroll to Statement .subPage
+		//Scroll to Gallery Image Function
 		function toGalleryImage (parent, element, duration) {
 			$(parent).scrollTo(element, {
 				duration: duration,
@@ -621,21 +613,19 @@ Gallery Event Bindings
 		var currentGallerySlide = 1;
 
 		$("#gallery .next").on("click", function () {
-			if(currentGallerySlide < 12) {
+			if (currentGallerySlide < 12) {
 				currentGallerySlide++;
-			}
-			else {
+			} else {
 				currentGallerySlide = 1;
-			}
+			};
 			toGalleryImage('.gSlideContainer', '.gContainer' + currentGallerySlide, 800);
 		});
 		$("#gallery .prev").on("click", function () {
-			if(currentGallerySlide > 1) {
+			if (currentGallerySlide > 1) {
 				currentGallerySlide--;
-			}
-			else {
+			} else {
 				currentGallerySlide = 12;
-			}
+			};
 			toGalleryImage('.gSlideContainer', '.gContainer' + currentGallerySlide, 800);
 		});
 
@@ -722,8 +712,8 @@ Statement Event Bindings
 Masonry Pages
 */
 
-		//Trailers Page Masonry
-		// var trailers = document.querySelector("#trailers.page");
+		// Trailers Page Masonry
+		// var trailers = document.querySelector("#trailers .thumb-nails");
 		// var trailersLayout = new Isotope (trailers, {
 		// 	itemSelector: '.thumb-nail'
 		// });
