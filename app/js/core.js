@@ -53,6 +53,7 @@ Core Prototype
 				});
 				$(core.pageClass).on("touchmove", function (e) {
 					core.touchMoveY(e);
+					core.touchMoveX(e);
 				});
 			//Non-Mobile - Bind Scroll Event
 			} else {
@@ -84,30 +85,38 @@ Core Prototype
 			var start = {x: 0, y: 0};
 				start.x = e.originalEvent.pageX;
 				start.y = e.originalEvent.pageY;
+				// console.log("START.X: " + start.x);
+				// console.log("START.Y: " + start.y);
 				this.startPosition = start;
 		};
 
 		//Binds touchmove Y Axis Event to Delta
 		Core.prototype.touchMoveY 		= function (e) {
+			// console.log("In touchMoveY");
 			var offset = {};
 			offset.y = this.startPosition.y - e.originalEvent.pageY;
 			this.delta = offset.y;
+			// console.log("DELTA touchMoveY: " + this.delta);
 			if (Math.abs(this.delta) >= 10) {
 				e.preventDefault ? e.preventDefault() : e.returnValue = false;
 				this.scrollDirectionY();
 			};
 		};
 
-		//Binds touchmove X Axis Event to Delta
+		/*//Binds touchmove X Axis Event to Delta
 		Core.prototype.touchMoveX 			= function (e) {
+			// console.log("In touchMoveX");
 			var offset = {};
 			offset.x = this.startPosition.x - e.originalEvent.pageX;
+			// console.log("START POSITOIN: " + this.startPosition.x);
+			// console.log("ORIGINAL EVENT: " + e.originalEvent.pageX);
 			this.delta = offset.x;
+			// console.log("DELTA touchMoveX: " + this.delta);
 			if (Math.abs(this.delta) >= 10) {
 				e.preventDefault ? e.preventDefault() : e.returnValue = false;
 				this.scrollDirectionX();
 			};
-		};
+		};*/
 
 
 		//Determines direction to Scroll and Calls scrollPage Function
@@ -134,6 +143,31 @@ Core Prototype
 				};
 			};
 		};
+
+		// //Determines direction to Scroll and Calls scrollPage Function
+		// Core.prototype.scrollDirectionX 	= function () {
+		// 	if (this.mobile === true) {
+		// 		if (this.scrolling === false) {
+		// 			if (this.delta > -1.25) {
+		// 				this.scrolling = true;
+		// 				this.scrollPageX('next');
+		// 			} else  if (this.delta < 1.25) {
+		// 				this.scrolling = true;
+		// 				this.scrollPageX('prev');
+		// 			};
+		// 		};
+		// 	} /*else {
+		// 		if (this.scrolling === false) {
+		// 			if (this.delta < -1.25) {
+		// 				this.scrolling = true;
+		// 				this.scrollPageX('next');
+		// 			} else  if (this.delta > 1.25) {
+		// 				this.scrolling = true;
+		// 				this.scrollPageX('prev');
+		// 			};
+		// 		};
+		// 	};*/
+		// };
 
 		//Scrolls to Next or Previous Page
 		Core.prototype.scrollPageY		= function (destination) {
@@ -164,6 +198,39 @@ Core Prototype
 				};
 			};
 		};
+
+		/*//Scrolls to Next or Previous Page
+		Core.prototype.scrollPageX		= function (destination) {
+			var core = this, id;
+			//Next Page
+			if (destination === 'next') {
+				if($(core.current).is('#gallery')) {
+					console.log("GALLERY PAGE IS CURRENT");
+				}*/
+				/*if ($(core.lastPage).hasClass(core.current)) {
+					core.scrolling = false;
+					return;
+				} else {
+					$('.' + core.current).removeClass(core.current).next().addClass(core.current);
+					id = $('.' + core.current).attr("id");
+					var navTimer = setTimeout(function () {
+						core.navTo(id);
+					}, 600);
+				};*/
+			//Previous Page
+			/*} else {
+				if ($(core.firstPage).hasClass(core.current)) {
+					core.scrolling = false;
+					return;
+				} else {
+					$('.' + core.current).removeClass(core.current).prev().addClass(core.current);
+					id = $('.' + core.current).attr("id");
+					var navTimer = setTimeout(function () {
+						core.navTo(id);
+					}, 600);
+				};
+			};
+		};*/
 
 	/*
 	Hash Navigation
@@ -620,7 +687,7 @@ Gallery Event Bindings
 		var currentGallerySlide = 1;
 
 		$("#gallery .next").on("click", function () {
-			if (currentGallerySlide < 12) {
+			if (currentGallerySlide < 26) {
 				currentGallerySlide++;
 			} else {
 				currentGallerySlide = 1;
@@ -631,7 +698,7 @@ Gallery Event Bindings
 			if (currentGallerySlide > 1) {
 				currentGallerySlide--;
 			} else {
-				currentGallerySlide = 12;
+				currentGallerySlide = 26;
 			};
 			toGalleryImage('.gSlideContainer', '.gContainer' + currentGallerySlide, 800);
 		});
