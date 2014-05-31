@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Rover - Timeline Interactive</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+      <!--[if lt IE 7]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+      <div id="wrapper">
+        <div id="timeline" class="page">
+          <div class="intro-container">
+            <div class="intro-copy">
+              <div class="corner top-left"></div>
+              <div class="corner bottom-left"></div>
+              <div class="corner top-right"></div>
+              <div class="corner bottom-right"></div>
+
+              <h3>A Timeline of the Collapse</h3>
+              <p>The near-future of <em>The Rover</em> is one in which a steady but catastrophic Western economic collapse has reduced Australia to the status of a dangerous, resource-rich third-world country, where a brutal social order now reigns. It is not the devastating aftermath of a single unforeseen cataclysmic or apocalyptic event. It’s a dark future vision of a world despoiled by some of the very real forces and systems at work all around us today.</p>
+              <p>This timeline shows what it might look like if under-regulated, rapacious Western economies destroyed themselves from the inside. Browse news accounts of the West’s steady economic decline and the shifting geopolitical landscape. Sort by topic, or scroll through all five categories of archived news coverage.</p>
+              <div class="start" data-bind="click: init">START</div>
+            </div>
+          </div>
+          <div class="timeline-container" data-bind="visible: isVisible, articleScroll: true"> <!-- change this to a fade at some point -->
+            <div class="backgrounds" data-bind="if: activeArticle()">
+              <div class="background bg1" data-bind="opacity: activeArticle().location >= 0"></div>
+              <div class="background bg2" data-bind="opacity: activeArticle().location > 20"></div>
+              <div class="background bg3" data-bind="opacity: activeArticle().location > 40"></div>
+              <div class="background bg4" data-bind="opacity: activeArticle().location > 60"></div>
+              <div class="background bg5" data-bind="opacity: activeArticle().location > 80"></div>
+            </div>
+            <div class="back" data-bind="click: close"></div>
+            <div class="legend">
+              <ul class="topics" data-bind="foreach: topics">
+                <li class="topic" data-bind="click: $parent.setTopic, css: { 'active' : $parent.activeTopic() === $data }">
+                  <div class="icon" data-bind="css: name"></div>
+                </li>
+              </ul>
+              <div class="border" data-bind="visible: hoverArticle"></div>
+              <p class="headline" data-bind="with: hoverArticle">
+                <span data-bind="headline: headline"></span>
+              </p>
+            </div>
+            <div class="article-container" data-bind="foreach: { data : activeArticle, afterAdd: animateArticleIn }">
+              <img class="article" src="" data-bind="attr: { src : filename }, style: { 'max-height' : $parent.articleHeight }" />
+            </div>
+            <div class="navigation">
+              <div class="previous button" data-bind="visible: hasPreviousArticle, click: previousArticle"></div>
+              <div class="next button" data-bind="visible: hasNextArticle, click: nextArticle"></div>
+            </div>
+            <div class="timeline-scrubber">
+              <div class="right arrow" data-bind="click: scrollRight, visible: canScrollRight">
+                <div class="highlight"></div>
+              </div>
+              <div class="left arrow" data-bind="click: scrollLeft, visible: canScrollLeft">
+                <div class="highlight"></div>
+              </div>
+              <div class="scrubber-mask" id="timeline-scrubber-mask">
+                <div class="scrubber-container" id="timeline-scrubber-container">
+                  <div class="centered">
+                    <div class="line"></div>
+                    <div class="articles" data-bind="foreach: articles">
+                      <div class="article" data-bind="click: $parent.setArticle, timelineArticle: $data, style: { 'left' : remappedLocation + '%' }, event: { mouseover: $parent.setHoverArticle, mouseout: $parent.clearHoverArticle }">
+                        <div class="icon" data-bind="css: topic"></div>
+                      </div>
+                    </div>
+                    <div class="years" data-bind="foreach: years">
+                      <div class="year" data-bind="text: name, style : { 'left' : location + '%' }"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-scrollbar" id="timeline-scrollbar">
+              <div class="articles" data-bind="foreach: filteredArticles">
+                <div class="article" data-bind="style: { 'left' : remappedLocation + '%' }"></div>
+              </div>
+              <div class="bar" id="timeline-drag-bar" data-bind="style: { 'width' : scrollbarWidth }, draggable: updateTimelinePosition"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+
+      <script src="js/vendor/bootstrap.min.js"></script>
+      <script src="js/plugins.js"></script>
+      <script src="js/bindings.js"></script>
+      <script src="js/main.js"></script>
+    </body>
+</html>

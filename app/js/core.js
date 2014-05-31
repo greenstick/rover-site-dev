@@ -46,7 +46,7 @@ Core Prototype
 		//Determines Whether to Bind Scroll Handler to Touch Events or Desktop Scroll
 		Core.prototype.bindScroll  		= function () {
 			var core = this;
-			//Mobile
+			//Mobile Touch
 			if (core.mobile === true) {
 				$(core.pageClass).on("touchstart", function (e) {
 					core.touchStart(e);
@@ -54,7 +54,7 @@ Core Prototype
 				$(core.pageClass).on("touchmove", function (e) {
 					core.touchMoveY(e);
 				});
-			//Non-Mobile - Bind Scroll Event
+			//Mouse Scroll
 			} else {
 				$(core.pageClass).on('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
 					core.scrollDelta(e);
@@ -136,7 +136,7 @@ Core Prototype
 		};
 
 		//Scrolls to Next or Previous Page
-		Core.prototype.scrollPageY		= function (destination) {
+		Core.prototype.scrollPageY			= function (destination) {
 			var core = this, id;
 			//Next Page
 			if (destination === 'next') {
@@ -720,16 +720,17 @@ Masonry Pages
 */
 
 		// Trailers Page Masonry
-		var trailers = document.querySelector("#trailers .thumb-nails");
-		var trailersLayout = new Isotope (trailers, {
-			itemSelector: '.thumb-nail'
-		});
-
+		// var trailers = document.querySelector("#trailers .thumb-nails");
+		// var trailersLayout = new Isotope (trailers, {
+		// 	itemSelector: '.thumb-nail',
+		// 	resizable: true,
+		// 	masonryHorizontal: {rowHeight: 400}
+		// });
+	
 		//Press Page Masonry
 		var press = document.querySelector("#press.page");
 		var pressLayout = new Isotope (press, {
-			itemSelector: '.blurb',
-			gutter: 10
+			itemSelector: '.blurb'
 		});
 
 		//Gallery Page MASONRY
@@ -757,7 +758,7 @@ Global Event Bindings
 		//Setup DOM Sizing and Location
 		$(window).load(function (e) {
 			site.resize(e, function () {
-				trailersLayout.layout();
+				// trailersLayout.layout();
 				galleryLayout.layout();
 				pressLayout.layout();
 				resizeVideo();
@@ -778,7 +779,7 @@ Global Event Bindings
 			clearTimeout(site.resizing);
 			site.resizing = setTimeout(function () {
 				site.resize(e, function() {
-					trailersLayout.layout();
+					// trailersLayout.layout();
 					pressLayout.layout();
 					resizeVideo();
 					galleryLayout.layout();

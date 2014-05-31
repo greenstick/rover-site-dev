@@ -148,7 +148,16 @@
 				</div>
 			</div>
 			<div id="timeline" class="page loading">
-				
+				<iframe class="page fader" src="timeline/index.html" seamless width="100%"></iframe>
+				<div id="timeline-tooSmall">
+					<div class="note">
+						<div class="note-line"></div>
+						<div class="note-text">
+							INCREASE YOUR<br />BROWSER SIZE FOR THE<br />INTERACTIVE EXPERIENCE.
+						</div>
+						<div class="note-line"></div>
+					</div>
+				</div>
 			</div>
 			<div id="map" class="page loading">
 				<div id="map-background" data-bind="style: {backgroundImage: 'url(' + background() + ')'}"></div>
@@ -259,21 +268,23 @@
 			</div>
 			<div id="trailers" class="page loading">
 				<div class="pageHeader fader">VIDEOS</div>
-				<div class="row thumb-nails iso-fader js-isotope hidden-xs visible-sm visible-md visible-lg">
-					<div class="thumb-nail big">
-						<img class="video-open" data-video="video-1" src="img/trailers/rover-trailer-big.png" />
-						<img class="play-button" src="img/trailers/play-button.png" />
-						<div class="video-title">OFFICIAL TRAILER</div>
-					</div>
-					<div class="thumb-nail small">
-						<img class="video-open" data-video="video-2" src="img/trailers/god-gave-you-a-bullet.png" />
-						<img class="play-button" src="img/trailers/play-button.png" />
-						<div class="video-title">GOD GAVE YOU A BULLET</div>
-					</div>
-					<div class="thumb-nail small">
-						<img class="video-open" data-video="video-3" src="img/trailers/the-rover-teaser.png" />
-						<img class="play-button" src="img/trailers/play-button.png" />
-						<div class="video-title">TEASER</div>
+				<div class="tn-wrapper fader">
+					<div class="thumb-nails hidden-xs visible-sm visible-md visible-lg">
+						<div class="thumb-nail big">
+							<img class="video-open" data-video="video-1" src="img/trailers/rover-trailer-big.png" />
+							<img class="play-button" src="img/trailers/play-button.png" />
+							<div class="video-title">OFFICIAL TRAILER</div>
+						</div>
+						<div class="thumb-nail small top">
+							<img class="video-open" data-video="video-2" src="img/trailers/god-gave-you-a-bullet.png" />
+							<img class="play-button" src="img/trailers/play-button.png" />
+							<div class="video-title">FEATURETTE</div>
+						</div>
+						<div class="thumb-nail small bottom">
+							<img class="video-open" data-video="video-3" src="img/trailers/rover-teaser.png" />
+							<img class="play-button" src="img/trailers/play-button.png" />
+							<div class="video-title">TEASER</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -456,6 +467,8 @@
 						CREDITS
 					</div>
 				</div>
+				<img id="a24-logo" src="img/navigation/a24-logo.svg" />
+				<img id="c5-logo" src="img/navigation/c5-logo.svg" />
 			</div>
 		</div>
 		<div class="getTickets button hidden-xs show-sm show-md show-lg">GET TICKETS</div>

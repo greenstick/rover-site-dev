@@ -76,7 +76,8 @@ Page Backgrounds
 	background: url('../img/map-interactive/background-present.jpg') no-repeat center center;
 }
 #timeline {
-	background: url('../img/timeline-interactive/bg1.png') no-repeat center center;
+	background: url('../img/backgrounds/timeline.png') no-repeat center center;
+	height: 100%;
 }
 #trailers {
 	background: url('../img/backgrounds/videos-bg.jpg') no-repeat bottom right;
@@ -979,6 +980,48 @@ Directors Statement
 Timeline Interactive Page 
 */
 
+#timeline iframe {
+	border: 0;
+}
+#timeline-tooSmall {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	color: #FFF8D9;
+	background-color: rgba(0, 0, 0, 1);
+	-webkit-transition: opacity 0.6s linear;
+	-moz-transition: opacity 0.6s linear;
+	-ms-transition: opacity 0.6s linear;
+	-o-transition: opacity 0.6s linear;
+	transition: opacity 0.6s linear;
+	opacity: 0;
+	z-index: -100;
+}
+#timeline-tooSmall .note {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 200px;
+	margin: -100px 0 0 -150px;
+	font-weight: bold;
+	font-size: 22px;
+}
+#timeline-tooSmall .note .note-text {
+	top: 15%;
+	width: 300px;
+	height: 92px;
+	text-align: center;
+}
+#timeline-tooSmall .note .note-line {
+	margin: 30px 110px;
+	width: 80px;
+	height: 2px;
+	background-color: #FFF8D9;
+}
+
 /*
 Map Interactive Page
 */
@@ -1673,26 +1716,41 @@ Map Color Layers
 Trailers Page
 */
 
-#trailers .thumb-nails {
+#trailers .tn-wrapper {
+	position: relative;
 	top: 130px;
+	margin: 0 auto;
+	width: 1200px;
+	height: 675px;
 }
-#trailers .thumb-nails .thumb-nail {
+#trailers .tn-wrapper .thumb-nails {
+	width: 100%;
+}
+#trailers .tn-wrapper .thumb-nails .thumb-nail {
+	position: absolute;
 	cursor: pointer;
 	text-align: center;
 }
-#trailers .thumb-nails .thumb-nail.small {
-	max-width: 33.33%;
-	margin: 0 0 0 1%;
+#trailers .tn-wrapper .thumb-nails .thumb-nail.small {
+	left: 66.66%;
+	width: 32%;
+	/*margin: 0 0 0 1%;*/
 	/*max-width: 30.33%;*/
 }
-#trailers .thumb-nails .thumb-nail.big {
-	max-width: 64.66%;
+#trailers .tn-wrapper .thumb-nails .thumb-nail.small.top {
+	top: 0%;
+}
+#trailers .tn-wrapper .thumb-nails .thumb-nail.small.bottom {
+	top: 33.8%;
+}
+#trailers .tn-wrapper .thumb-nails .thumb-nail.big {
+	width: 65.70%;
 	/*max-width: 64%;*/
 }
-#trailers .thumb-nails .thumb-nail img {
+#trailers .tn-wrapper .thumb-nails .thumb-nail img {
 	width: 100%;
 }
-#trailers .thumb-nails .thumb-nail .video-title {
+#trailers .tn-wrapper .thumb-nails .thumb-nail .video-title {
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
@@ -1704,7 +1762,7 @@ Trailers Page
 	font-size: 16px;
 	text-align: left;
 }
-#trailers .thumb-nails .thumb-nail .play-button {
+#trailers .tn-wrapper .thumb-nails .thumb-nail .play-button {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -1728,6 +1786,7 @@ Gallery Page
 }
 #gallery .galleryImgs {
 	top: 130px;
+	margin: 20px;
 }
 
 /* MASONRY */
@@ -1761,6 +1820,7 @@ Gallery Page
 	right: 5px;
 	bottom: 5px;
 	background-color: rgba(46, 39, 29, .9);
+	cursor: pointer;
 }
 #gallery .prev {
 	position: absolute;
@@ -1769,6 +1829,7 @@ Gallery Page
 	left: 5px;
 	bottom: 5px;
 	background-color: rgba(46, 39, 29, .9);
+	cursor: pointer;
 }
 #gallery .gSlideContainer .gallerySlider {
 	position: absolute;
@@ -1899,19 +1960,21 @@ Credits Page
 #credits .block {
 	position: absolute;
 	bottom: 50px;
-	left: 5%;
-	width: 90%;
+	left: 20%;
+	width: 60%;
 }
 #credits .blurbs {
 	position: absolute;
-	top: 40%;
+	top: 30%;
 	left: 50%;
 	width: 320px;
 	height: 290px;
 	margin: -145px 0 0 -160px;
+	letter-spacing: 4px;
 }
 #credits .blurbs .blurb {
 	text-align: center;
+	padding-bottom: 32px;
 }
 #credits .blurbs .blurb .role {
 	position: relative;
@@ -1924,6 +1987,7 @@ Credits Page
 	position: relative;
 	display: block;
 	font-size: 20px;
+	line-height: 24px;
 	color: rgba(255, 255, 255, 1);
 
 }
@@ -1937,7 +2001,7 @@ Additional UI
 	top: 20px;
 	right: 20px;
 	z-index: 5000;
-	/*display: none;*/
+	display: none;
 }
 .iso-fader {
 	opacity: 1;
@@ -1949,6 +2013,20 @@ Additional UI
 }
 .iso-fader.faded {
 	opacity: 0;
+}
+#c5-logo {
+	position: absolute;
+ 	right: 36px;
+	bottom: 18px;
+	width: 120px;
+	opacity: .7;
+}
+#a24-logo {
+	position: absolute;
+	left: 40px;
+	bottom: 25px;
+	width: 96px;
+	opacity: .7;
 }
 
 /*
@@ -2120,24 +2198,52 @@ Map Tooltip
 	}
 
 /*
+Trailers
+*/
+
+	#trailers .tn-wrapper {
+		width: 1600px;
+		height: 900px;
+	}
+	#trailers .tn-wrapper .thumb-nails .thumb-nail.big {
+		width: 65.72%;
+	}
+	#trailers .tn-wrapper .thumb-nails .thumb-nail.small.bottom {
+		top: 33.8%;
+	}
+
+/*
+Press
+*/
+
+	#press .blurbs .blurb {
+		padding: 4%;
+	}
+
+/*
 Credits
 */
 
 	#credits .block {
 		bottom: 50px;
-		left: 15%;
-		width: 70%;
+		left: 20%;
+		width: 60%;
 	}
 	#credits .blurbs {
 		top: 35%;
 		height: 420px;
 	}
+	#credits .blurbs .blurb {
+		padding-bottom: 28px;
+	}
 	#credits .blurbs .blurb .role {
 		font-size: 20px;
-		padding: 28px 0 0 0;
+		padding: 28px 0 10px 0;
+		line-height: 28px;
 	}
 	#credits .blurbs .blurb .credited {
 		font-size: 28px;
+		line-height: 28px;
 	}
 
 }
@@ -2156,15 +2262,33 @@ Hide Interactives
 		z-index: 1000;
 		opacity: 1;	
 	}
-}
-@media (max-height: 580px) {
-	#map-tooSmall {
+	#timeline-tooSmall {
 		-webkit-transition: opacity 0.6s linear;
 		-moz-transition: opacity 0.6s linear;
 		-ms-transition: opacity 0.6s linear;
 		-o-transition: opacity 0.6s linear;
 		transition: opacity 0.6s linear;
 		z-index: 1000;
+		opacity: 1;	
+	}
+}
+@media (max-height: 580px) {
+	#timeline-tooSmall {
+		-webkit-transition: opacity 0.6s linear;
+		-moz-transition: opacity 0.6s linear;
+		-ms-transition: opacity 0.6s linear;
+		-o-transition: opacity 0.6s linear;
+		transition: opacity 0.6s linear;
+		z-index: 9999;
+		opacity: 1;	
+	}
+	#timeline-tooSmall {
+		-webkit-transition: opacity 0.6s linear;
+		-moz-transition: opacity 0.6s linear;
+		-ms-transition: opacity 0.6s linear;
+		-o-transition: opacity 0.6s linear;
+		transition: opacity 0.6s linear;
+		z-index: 9999;
 		opacity: 1;	
 	}	
 }
