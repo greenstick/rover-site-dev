@@ -247,14 +247,14 @@ Nom Nom I Can Haz Cheezbrgr Menu
 .menu-open .top {
 	-webkit-transform: rotateZ(0deg) translateX(0px) translateY(-4px);
 	-moz-transform: rotateZ(0deg) translateX(0px) translateY(-4px);
-	-ms-transform: rotateZ(0deg) translateX(0px) translateY(-4px);
+	-ms-transform: translateX(0px) translateY(-4px);
 	-o-transform: rotateZ(0deg) translateX(0px) translateY(-4px);
 	transform: rotateZ(0deg) translateX(0px) translateY(-4px);
 }
 .menu-open .bottom {
 	-webkit-transform: rotateZ(0deg) translateX(0px) translateY(4px);
 	-moz-transform: rotateZ(0deg) translateX(0px) translateY(4px);
-	-ms-transform: rotateZ(0deg) translateX(0px) translateY(4px);
+	-ms-transform: translateX(0px) translateY(4px);
 	-o-transform: rotateZ(0deg) translateX(0px) translateY(4px);
 	transform: rotateZ(0deg) translateX(0px) translateY(4px);
 }
@@ -371,6 +371,7 @@ Zip Code Modal
 	background: url('../img/backgrounds/home-bg.jpg') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
+	-ms-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	-webkit-backface-visibility: hidden;
@@ -540,8 +541,10 @@ Video Modal
 	width: 100%;
 	min-width: 90%
 	display: none;
-	-ms-transform: translate(-50%, -50%); /* IE 9 */
 	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%); /* IE 9 */
+	-o-transform: translate(-50%, -50%); /* IE 9 */
 	transform: translate(-50%, -50%);
 }
 #video-players.hide #video-1, #video-players.hide #video-2, #video-players.hide #video-3 {
@@ -551,8 +554,10 @@ Video Modal
 	width: 100%;
 	min-width: 90%
 	display: block;
-	-ms-transform: translate(-50%, -50%); /* IE 9 */
 	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%); /* IE 9 */
+	-o-transform: translate(-50%, -50%); /* IE 9 */
 	transform: translate(-50%, -50%);
 }
 #video-players #video-1, #video-players #video-2, #video-players #video-3 {
@@ -778,8 +783,10 @@ Home Parallax
   	height: 100%;
   	margin: 0 0 0 -10%;
 	z-index: -10;
-	-ms-transform: translate(5%, 0%); /* IE 9 */
 	-webkit-transform: translate(5%, 0%); /* Chrome, Safari, Opera */
+	-moz-transform: translate(5%, 0%); /* IE 9 */
+	-ms-transform: translate(5%, 0%); /* IE 9 */
+	-o-transform: translate(5%, 0%); /* IE 9 */
 	transform: translate(5%, 0%);
 }
 #home .parallax-element .p1 {
@@ -792,6 +799,7 @@ Home Parallax
 	background: url('../img/home/parallax-clouds.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
+	-ms-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
@@ -816,6 +824,7 @@ Home Parallax
 	background: url('../img/home/parallax-mountains.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
+	-ms-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	z-index: 10;
@@ -830,6 +839,7 @@ Home Parallax
 	background: url('../img/home/parallax-middleground.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
+	-ms-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	z-index: 20;
@@ -844,6 +854,7 @@ Home Parallax
 	background: url('../img/home/parallax-protagonist.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
+	-ms-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	z-index: 30;
@@ -858,6 +869,7 @@ Home Parallax
 	background: url('../img/home/parallax-foreground.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
+	-ms-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	z-index: 40;
@@ -888,6 +900,7 @@ Directors Statement
   	height: 100%;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
+	-ms-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	float: left;
@@ -1049,6 +1062,7 @@ Map Interactive Core
 	height: 100%;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
+	-ms-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	background-origin: center;
@@ -1091,6 +1105,8 @@ Map Interactive Core
 svg g {
 	-webkit-transform: translate(168px, 228px);
 	-moz-transform: translate(168px, 228px);
+	-ms-transform: translate(168px, 228px);
+	-o-transform: translate(168px, 228px);
 	transform: translate(168px, 228px);
 }
 .country {
@@ -1148,9 +1164,10 @@ Map Intro Modal
 	max-width: 620px;
 	min-width: 300px;
 	height: 340px;
-	-ms-transform: translate(-50%, -50%); /* IE 9 */
     -webkit-transform: translate(-50%, -50%);  /* Chrome, Safari, Opera */
     -moz-transform: translate(-50%, -50%); 
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 #map-intro .corner {
@@ -1198,9 +1215,10 @@ Map Intro Modal
 	line-height: 20px;
 	letter-spacing: 1px;
 
-	-ms-transform: translate(-50%, -50%); /* IE 9 */
     -webkit-transform: translate(-50%, -50%);  /* Chrome, Safari, Opera */
     -moz-transform: translate(-50%, -50%); 
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 #map-intro .center .modal-head {
@@ -2270,6 +2288,8 @@ Map Interactive Core
 	svg g {
 		-webkit-transform: translate(168px, 222px);
 		-moz-transform: translate(168px, 222px);
+		-ms-transform: translate(168px, 222px);
+		-o-transform: translate(168px, 222px);
     	transform: translate(168px, 222px);
 	}
 	.sourceText {
