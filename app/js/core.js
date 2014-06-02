@@ -665,7 +665,7 @@ Press Event Bindings
 		var currentPressSlide = 1;
 
 		$("#press .next").on("click", function () {
-			if (currentPressSlide < 11) {
+			if (currentPressSlide < 9) {
 				currentPressSlide++;
 			} else {
 				currentPressSlide = 1;
@@ -676,7 +676,7 @@ Press Event Bindings
 			if (currentPressSlide > 1) {
 				currentPressSlide--;
 			} else {
-				currentPressSlide = 11;
+				currentPressSlide = 9;
 			};
 			toPressImage('.pSlideContainer', '.pContainer' + currentPressSlide, 800);
 		});

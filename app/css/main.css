@@ -1743,7 +1743,7 @@ Trailers Page
 
 #trailers .tn-wrapper {
 	position: relative;
-	top: 130px;
+	top: 24%;
 	margin: 0 auto;
 	width: 800px;
 	height: 450px;
@@ -1781,7 +1781,7 @@ Trailers Page
 	color: #FFF8D9;
 	background-color: rgba(46, 39, 29, .8);
 	padding: 12px 0 0 10px;
-	font-size: 16px;
+	font-size: 14px;
 	letter-spacing: 1px;
 	text-align: left;
 }
@@ -2036,13 +2036,13 @@ Press Page
 
 #press .blurbs {
 	position: absolute;
-	top: 100px;
+	top: 130px;
 	left: 0px;
 	width: 100%;
 }
 #press .blurbs .blurb {
-	width: 25%;
-	padding: 2%;
+	width: 33%;
+	padding: 0% 4%;
 	font-size: 16px;
 	color: rgba(255, 255, 255, 1);
 	text-align: center;
@@ -2396,7 +2396,7 @@ Press
 */
 
 	#press .blurbs .blurb {
-		padding: 4%;
+		padding: 2% 4% 0;
 	}
 
 /*
