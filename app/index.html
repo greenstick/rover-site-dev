@@ -1050,18 +1050,34 @@
 					test: Modernizr.touch,
 					yep: "lib/jquery/plugins/touchswipe.min.js"
 				});
-				//Init Parallax Elements
-				jQuery(".parallax-element").parallaxify({
-					horizontalParallax: true,
-					verticalParallax: false,
-					positionProperty: 'position',
-					responsive: true,
-					useMouseMove: true,
-					useGyroscope: true,
-					alphaFilter: 0.5,
-					motionType: 'linear',
-					mouseMotionType: 'linear'
-				});
+				if(Modernizr.csstransforms3d) {
+					//Init Parallax Elements
+					jQuery(".parallax-element").parallaxify({
+						horizontalParallax: true,
+						verticalParallax: false,
+						positionProperty: 'transform',
+						responsive: true,
+						useMouseMove: true,
+						useGyroscope: true,
+						alphaFilter: 0.5,
+						motionType: 'linear',
+						mouseMotionType: 'linear'
+					});
+				}
+				else {
+					//Init Parallax Elements
+					jQuery(".parallax-element").parallaxify({
+						horizontalParallax: true,
+						verticalParallax: false,
+						positionProperty: 'position',
+						responsive: true,
+						useMouseMove: true,
+						useGyroscope: true,
+						alphaFilter: 0.5,
+						motionType: 'linear',
+						mouseMotionType: 'linear'
+					});
+				}
 				//Remove Loading Screen
 				jQuery(".loading").removeClass("loading");
 			});
