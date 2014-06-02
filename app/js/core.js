@@ -270,10 +270,14 @@ Core Prototype
 		};   		
 
 		//Show / Hide Navigation		
-		Core.prototype.toggleNav 		= function () {
-			this.fadeElements();
-			this.fadeIsoElements();
+		Core.prototype.toggleNav 		= function (fade, callback) {
+			if (fade === true) {
+				this.fadeElements();
+				this.fadeIsoElements();
+			}
 			this.toggleMenu();
+			//If Callback
+			if (typeof callback === 'function') callback();
 		};
 
 /*		  
@@ -295,7 +299,7 @@ Core Event Bindings
 
 		//Toggle Menu
 		$(site.menuOpen).on("click", function (e) {
-			site.toggleNav();
+			site.toggleNav(true);
 		});
 
 		//Mouseover Menu Icon
@@ -320,15 +324,21 @@ Core Event Bindings
 
 		//Select Page From Menu
 		$(site.menuSelection).on("click", function (e) {
-			site.navTo($(this).data().to, 600, function () {
-				//Reset Statement Location
-				toStatement('#statement', "#statement1", 600);
-				site.toggleNav();
+			var location = $(this).data().to;
+			site.toggleNav(false, function () {
+				setTimeout(function () {
+					site.navTo(location, 600, function () {
+						site.fadeElements();
+						site.fadeIsoElements();
+						//Reset Statement Location
+						toStatement('#statement', "#statement1", 600);
+					});
+				}, 600);
 			});
 		});
 		//Click Anywhere to Dismiss
 		$(site.menuMask).on("click", function (e) {
-			site.toggleNav();
+			site.toggleNav(true);
 		});
 		//Arrow Up & Down Navigation
 		$(window).on('keydown', function (e) {

@@ -1907,6 +1907,12 @@ Gallery Page
 	margin: 1%;
 	cursor: pointer;
 }
+/*#gallery .galleryImgs .galleryImg {
+	max-width: 15%;
+	min-width: 125px;
+	margin: 1%;
+	cursor: pointer;
+}*/
 #gallery .gSlideContainer {
 	position: relative;
 	min-height: 100%;
@@ -2132,6 +2138,9 @@ Credits Page
 	bottom: 50px;
 	left: 20%;
 	width: 60%;
+}
+#credits .block svg {
+	shape-rendering: geometricPrecision;
 }
 #credits .blurbs {
 	position: absolute;
