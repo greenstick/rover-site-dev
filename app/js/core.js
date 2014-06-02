@@ -56,11 +56,10 @@ Core Prototype
 				});
 				$(core.pageClass).on("touchmove", function (e) {
 					core.touchMoveY(e);
-					core.touchMoveX(e);
 				});
 			//Mouse Scroll
 			} else {
-				$(core.pageClass).on('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
+				$(core.pageClass).on('mousewheel DOMMouseScroll MozMousePixelScroll wheel', function (e) {
 					core.scrollDelta(e);
 				});
 			};
@@ -120,10 +119,10 @@ Core Prototype
 				};
 			} else {
 				if (this.scrolling === false) {
-					if (this.delta < -1.25) {
+					if (this.delta <= -1) {
 						this.scrolling = true;
 						this.scrollPageY('next');
-					} else  if (this.delta > 1.25) {
+					} else  if (this.delta >= 1) {
 						this.scrolling = true;
 						this.scrollPageY('prev');
 					};
