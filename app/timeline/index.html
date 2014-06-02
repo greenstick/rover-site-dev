@@ -30,7 +30,7 @@
               <div class="start" data-bind="click: init">START</div>
             </div>
           </div>
-          <div class="timeline-container" data-bind="visible: isVisible, articleScroll: true"> <!-- change this to a fade at some point -->
+          <div class="timeline-container" data-bind="visible: isVisible"> <!-- change this to a fade at some point -->
             <div class="backgrounds" data-bind="if: activeArticle()">
               <div class="background bg1" data-bind="opacity: activeArticle().location >= 0"></div>
               <div class="background bg2" data-bind="opacity: activeArticle().location > 20"></div>

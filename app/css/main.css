@@ -82,7 +82,7 @@ Page Backgrounds
 	background: url('../img/backgrounds/timeline.png') no-repeat center center;
 	height: 100%;
 }
-#trailers {
+#videos {
 	background: url('../img/backgrounds/videos-bg.jpg') no-repeat bottom right;
 }
 #gallery {
@@ -94,7 +94,7 @@ Page Backgrounds
 #credits {
 	background: url('../img/backgrounds/credits-bg.jpg') no-repeat center top;
 }
-#home.page, #map.page, #timeline.page, #trailers.page, #gallery.page, #press.page, #credits.page {
+#home.page, #map.page, #timeline.page, #videos.page, #gallery.page, #press.page, #credits.page {
 	position: relative;
   	top: 0px;
   	left: 0px;
@@ -118,33 +118,6 @@ Page Backgrounds
 	font-size: 0px;
 	overflow: hidden;
 }
-/*Only Show Map Interactive*/
-/*#home.page, #timeline.page, #trailers.page, #gallery.page, #press.page, #credits.page {
-	position: relative;
-  	top: 0px;
-  	left: 0px;
-  	min-height: 100%;
-  	min-width: 320px;
-  	width: 100%;
-  	height: 100%;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	font-size: 0px;
-	overflow: hidden;
-	display: none;
-}
-#statement.page {
-	position: relative;
-	min-height: 100%;
-  	min-width: 320px;
-  	width: 100%;
-  	height: 100%;
-	font-size: 0px;
-	overflow: hidden;
-	display: none;
-}*/
 .page .pageHeader {
 	position: absolute;
 	top: 0px;
@@ -541,7 +514,7 @@ Release Dates Modal
 Video Modal
 */
 
-#videos {
+#video-players {
 	position: fixed;
 	top: 0px;
 	left: 0%;
@@ -551,16 +524,16 @@ Video Modal
 	display: block;
 	-webkit-backface-visibility: hidden;
 }
-#videos.hide {
+#video-players.hide {
 	display: none;
 }
-#videos .closeIcon {	
+#video-players .closeIcon {	
 	position: fixed;
 	top: 20px;
 	right: 20px;
 	-webkit-backface-visibility: hidden;
 }
-#videos #video-1, #videos #video-2, #videos #video-3 {
+#video-players #video-1, #video-players #video-2, #video-players #video-3 {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -571,7 +544,7 @@ Video Modal
 	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
 	transform: translate(-50%, -50%);
 }
-#videos.hide #video-1, #videos.hide #video-2, #videos.hide #video-3 {
+#video-players.hide #video-1, #video-players.hide #video-2, #video-players.hide #video-3 {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -582,7 +555,7 @@ Video Modal
 	-webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
 	transform: translate(-50%, -50%);
 }
-#videos #video-1, #videos #video-2, #videos #video-3 {
+#video-players #video-1, #video-players #video-2, #video-players #video-3 {
 	display: none;
 }
 #track_html5_api {
@@ -594,12 +567,6 @@ Video Modal
 	left: 0; 
 	top: 0; 
 }
-/*.video-js .vjs-tech {
-	min-width: 100%;
-}
-video {
-	vertical-align: middle;
-}*/
 
 /*
 Mask
@@ -691,25 +658,15 @@ Loading Screens
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 300px;
+	width: 120px;
 	height: 148px;
-	margin: -100px 0 0 -150px;
+	margin: -100px 0 0 -60px;
 	font-weight: bold;
 	font-size: 16px;
 	text-align: center;
 }
-#load-screen .note img {
+#load-screen .note .gif {
 	height: 80px;
-}
-#load-screen .note .note-text {
-	width: 300px;
-	height: 18px;
-}
-#load-screen .note .note-line {
-	margin: 8px auto;
-	width: 64px;
-	height: 2px;
-	background-color: rgba(255, 255, 255, .8);
 }
 
 /*
@@ -1738,41 +1695,41 @@ Map Color Layers
 }
 
 /*
-Trailers Page
+Videos Page
 */
 
-#trailers .tn-wrapper {
+#videos .tn-wrapper {
 	position: relative;
 	top: 24%;
 	margin: 0 auto;
 	width: 800px;
 	height: 450px;
 }
-#trailers .tn-wrapper .thumb-nails {
+#videos .tn-wrapper .thumb-nails {
 	width: 100%;
 }
-#trailers .tn-wrapper .thumb-nails .thumb-nail {
+#videos .tn-wrapper .thumb-nails .thumb-nail {
 	position: absolute;
 	cursor: pointer;
 	text-align: center;
 }
-#trailers .tn-wrapper .thumb-nails .thumb-nail.small {
+#videos .tn-wrapper .thumb-nails .thumb-nail.small {
 	left: 66.66%;
 	width: 32%;
 }
-#trailers .tn-wrapper .thumb-nails .thumb-nail.small.top {
+#videos .tn-wrapper .thumb-nails .thumb-nail.small.top {
 	top: 0%;
 }
-#trailers .tn-wrapper .thumb-nails .thumb-nail.small.bottom {
+#videos .tn-wrapper .thumb-nails .thumb-nail.small.bottom {
 	top: 33.8%;
 }
-#trailers .tn-wrapper .thumb-nails .thumb-nail.big {
+#videos .tn-wrapper .thumb-nails .thumb-nail.big {
 	width: 65.70%;
 }
-#trailers .thumb-nail img {
+#videos .thumb-nail img {
 	width: 100%;
 }
-#trailers .thumb-nail .video-title {
+#videos .thumb-nail .video-title {
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
@@ -1785,7 +1742,7 @@ Trailers Page
 	letter-spacing: 1px;
 	text-align: left;
 }
-#trailers .thumb-nail .play-button {
+#videos .thumb-nail .play-button {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -1793,7 +1750,7 @@ Trailers Page
 	max-height: 50px;
 	margin: -45px 0 0 -20px;
 }
-#trailers .tSlideContainer {
+#videos .tSlideContainer {
 	position: relative;
 	min-height: 100%;
 	min-width: 320px;
@@ -1802,7 +1759,7 @@ Trailers Page
 	font-size: 0px;
 	overflow: hidden;
 }
-#trailers .trailerSliderButtonContainer {
+#videos .trailerSliderButtonContainer {
 	position: absolute;
 	margin-left: auto;
 	margin-right: auto;
@@ -1812,7 +1769,7 @@ Trailers Page
 	width: 110px;
 	height: 50px;
 }
-#trailers .trailerSliderButtonContainer .next {
+#videos .trailerSliderButtonContainer .next {
 	position: relative;
 	float: right;
 	height: 50px;
@@ -1820,7 +1777,7 @@ Trailers Page
 	background-color: rgba(46, 39, 29, .9);
 	cursor: pointer;
 }
-#trailers .trailerSliderButtonContainer .prev {
+#videos .trailerSliderButtonContainer .prev {
 	position: relative;
 	float: left;
 	height: 50px;
@@ -1828,7 +1785,7 @@ Trailers Page
 	background-color: rgba(46, 39, 29, .9);
 	cursor: pointer;
 }
-#trailers .tSlideContainer .trailerSlider {
+#videos .tSlideContainer .trailerSlider {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -1839,7 +1796,7 @@ Trailers Page
 	font-size: 0px;
 	overflow: hidden;
 }
-#trailers .tSlideContainer .trailerSlider .trailerSlideContainer {
+#videos .tSlideContainer .trailerSlider .trailerSlideContainer {
 	position: relative;
 	top: 0px;
 	left: 0px;
@@ -1849,7 +1806,7 @@ Trailers Page
 	height: 100%;
 	float: left;
 }
-#trailers .tSlideContainer .trailerSlider .trailerSlideContainer .contentContainer {
+#videos .tSlideContainer .trailerSlider .trailerSlideContainer .contentContainer {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -1858,14 +1815,14 @@ Trailers Page
 	text-align: center;
 	margin: 0 auto;
 }
-#trailers .tSlideContainer .trailerSlider .trailerSlideContainer .contentContainer:before {
+#videos .tSlideContainer .trailerSlider .trailerSlideContainer .contentContainer:before {
 	content: '';
 	display: inline-block;
 	height: 100%;
 	vertical-align: middle;
 	margin-right: -0.25em;
 }
-#trailers .tSlideContainer .trailerSlider .trailerSlideContainer .contentContainer .thumb-nail {
+#videos .tSlideContainer .trailerSlider .trailerSlideContainer .contentContainer .thumb-nail {
 	position: relative;
 	max-width: 90%;
 	min-width: 100px;
@@ -1874,7 +1831,7 @@ Trailers Page
 	margin: auto;
 	display: inline-block;
 }
-#trailers .tSlideContainer .trailerSlider .trailerSlideContainer .contentContainer .thumb-nail .video-title {
+#videos .tSlideContainer .trailerSlider .trailerSlideContainer .contentContainer .thumb-nail .video-title {
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
@@ -2135,12 +2092,19 @@ Credits Page
 
 #credits .block {
 	position: absolute;
-	bottom: 50px;
+	bottom: 80px;
 	left: 20%;
 	width: 60%;
 }
 #credits .block svg {
 	shape-rendering: geometricPrecision;
+}
+#credits .c5-attribution {
+	position: absolute;
+	max-height: 120px;
+	bottom: 20px;
+	width: 20%;
+	left: 40%;
 }
 #credits .blurbs {
 	position: absolute;
@@ -2193,7 +2157,7 @@ Additional UI
 .iso-fader.faded {
 	opacity: 0;
 }
-/*#c5-logo {
+#c5-logo {
 	position: absolute;
  	right: 36px;
 	bottom: 18px;
@@ -2206,7 +2170,51 @@ Additional UI
 	bottom: 25px;
 	width: 68px;
 	opacity: .7;
+}
+/*.share {
+    position: absolute;
+    top: 20px:
+    left: 20px;
+    width: 100px;
+    height: 20px;
+    cursor: pointer;
+    color: #FFF8D9;
+    font-size: 16px;
+}
+.share .hovered {
+    opacity: 0;
+    position: relative;
+    left: 50px;
+    top: -4px;
+    -webkit-transform: translate(-40px, 0);
+    transform: translate(-40px, 0);
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+.share:hover .hovered {
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+    opacity: 1;
+}
+.share .facebook {
+    display:block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    background: url('../img/social/facebook.png') no-repeat;
+    margin: 0px 5px;
+}
+.share .twitter {
+    display:block;
+    float: left;
+    width: 24px;
+    height: 20px;
+    background: url('../img/social/twitter.png') no-repeat;
+}
+.share:hover .no-hover {
+    display:none;
 }*/
+
 
 /*
 Media Queries
@@ -2380,14 +2388,14 @@ Map Tooltip
 Trailers
 */
 
-	#trailers .tn-wrapper {
+	#videos .tn-wrapper {
 		width: 1600px;
 		height: 900px;
 	}
-	#trailers .tn-wrapper .thumb-nails .thumb-nail.big {
+	#videos .tn-wrapper .thumb-nails .thumb-nail.big {
 		width: 65.72%;
 	}
-	#trailers .tn-wrapper .thumb-nails .thumb-nail.small.bottom {
+	#videos .tn-wrapper .thumb-nails .thumb-nail.small.bottom {
 		top: 33.8%;
 	}
 
@@ -2404,7 +2412,7 @@ Credits
 */
 
 	#credits .block {
-		bottom: 50px;
+		bottom: 120px;
 		left: 20%;
 		width: 60%;
 	}
