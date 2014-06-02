@@ -72,7 +72,9 @@ body {
 	text-align: center;
 	z-index: 10;
 }
-
+.smallCaps {
+  font-size: 13px;
+}
 .TradeGothicLT { 
 	font-family: TradeGothicLT;
 	font-weight: normal;
@@ -892,6 +894,7 @@ border: 2px solid rgba(255, 255, 255, .9);
 	font-size: 28px;
 	letter-spacing: 4px;
 	text-align: center;
+  margin-top: 8px;
 }
 
 #timeline .timeline-container {
