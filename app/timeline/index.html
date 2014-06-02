@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>The Rover - Timeline Interactive</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <!-- <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
         <link rel="stylesheet" href="css/main.css">
-
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
@@ -40,7 +38,6 @@
               <div class="background bg4" data-bind="opacity: activeArticle().location > 60"></div>
               <div class="background bg5" data-bind="opacity: activeArticle().location > 80"></div>
             </div>
-            <div class="back" data-bind="click: close"></div>
             <div class="legend">
               <ul class="topics" data-bind="foreach: topics">
                 <li class="topic" data-bind="click: $parent.setTopic, css: { 'active' : $parent.activeTopic() === $data }">

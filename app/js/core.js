@@ -32,6 +32,7 @@ Core Prototype
 			core.scrolling 			= 		false,
 			core.videos 			= 		{},
 			core.statementHistory 	= 		'#statement1',
+			core.autoScroll,
 			core.startPosition,
 			core.resizing,
 			core.currentVideo,
@@ -171,6 +172,8 @@ Core Prototype
 
 		//Direct Page Hash Navigation
 		Core.prototype.navTo 			= function (page, duration, callback) {
+			var core = this;
+			clearInterval(core.autoScroll);
 			//Set Location
 			var loc = (page !== null && page !== undefined) ? '#'+ page : (location.hash) ? location.hash : '#home', link = loc.substr(1), core = this;
 			if (history.pushState) {
@@ -186,12 +189,23 @@ Core Prototype
 			$('#menu-' + link).addClass('selected');
 			$(document).scrollTo(loc, {
 				duration: duration,
-					axis: "y",
-					onAfter: function () {
-						core.scrolling = false;
-						//If Callback
-						if (typeof callback === 'function') callback();
-					}
+				axis: "y",
+				easing: "easeInQuad",
+				onAfter: function () {
+					core.scrolling = false;
+					//If Callback
+					if (loc === "#statement") {
+						setTimeout(function () {
+							var i = 1;
+							core.autoScroll = setInterval(function () {
+								i++;
+								if (i === 4) i = 1;
+								toStatement('#statement', '#statement' + i, 800);
+							}, 12000);
+						}, 12000);
+					};
+					if (typeof callback === 'function') callback();
+				}
 			});
 		};
 
@@ -582,7 +596,7 @@ Gallery Modal
 		//Retrieve Gallery Image
 		Modal.prototype.getGalleryImage = function (data) {
 			var source = data.source;
-			$(gallerModal.element + ' img').attr('src', '');
+			$(galleryModal.element + ' img').attr('src', '');
 			$(galleryModal.element + ' img').attr('src', source);
 		};
 
@@ -593,10 +607,10 @@ Gallery Modal Event Bindings
 
 		//Open Gallery Code Modal
 	    $(galleryModal.open).on("click", function () {
-	        galleryModal.openModal();
 	        galleryModal.getGalleryImage($(this).data());
 	        site.fadeElements();
 	        site.fadeIsoElements();
+	        galleryModal.openModal();
 	        //Add Bootstrap Class
 	        $('body').addClass('modal-open');
 	    });
@@ -729,7 +743,8 @@ Director's Statement Scrolling
 			site.statementHistory = element;
 			$(parent).scrollTo(element, {
 				duration: duration,
-				axis: "x"
+				axis: "x",
+				easing: "easeInQuad"
 			});
 		};
 
@@ -738,21 +753,25 @@ Statement Event Bindings
 */
 		//Statement 1 to Statement 2
 		$("#statement1 .next").on("click", function () {
+			clearInterval(site.autoScroll);
 			toStatement('#statement', '#statement2', 800);
 		});
 
 		//Statement 2 to Statement 3
 		$('#statement2 .next').on("click", function () {
+			clearInterval(site.autoScroll);
 			toStatement('#statement', '#statement3', 800);
 		});
 
 		//Statement 2 to Statement 1
 		$('#statement2 .prev').on("click", function () {
+			clearInterval(site.autoScroll);
 			toStatement('#statement', '#statement1', 800);
 		});
 
 		//Statement 3 to Statement 2
 		$("#statement3 .prev").on("click", function () {
+			clearInterval(site.autoScroll);
 			toStatement('#statement', '#statement2', 800);
 		});
 
@@ -1294,5 +1313,18 @@ Event Bindings
         $('#' + e.currentTarget.id).addClass('active');
         choropleth.updateChronology(e.currentTarget.id);
     });
+
+/*
+Easings
+*/
+
+jQuery.easing['jswing'] = jQuery.easing['swing'];
+
+jQuery.extend(jQuery.easing, {
+	def: 'easeInQuad',
+	easeInQuad: function (x, t, b, c, d) {
+		return c*(t/=d)*t + b;
+	}
+});
 
 }(jQuery, d3, ko));
