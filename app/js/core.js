@@ -65,8 +65,6 @@ Core Prototype
 			};
 		};
 
-
-
 		//Set Scroll Delta
 		Core.prototype.scrollDelta 		= function (e) {
 			this.delta = 0;
@@ -87,18 +85,14 @@ Core Prototype
 			var start = {x: 0, y: 0};
 				start.x = e.originalEvent.pageX;
 				start.y = e.originalEvent.pageY;
-				// console.log("START.X: " + start.x);
-				// console.log("START.Y: " + start.y);
 				this.startPosition = start;
 		};
 
 		//Binds touchmove Y Axis Event to Delta
 		Core.prototype.touchMoveY 		= function (e) {
-			// console.log("In touchMoveY");
 			var offset = {};
 			offset.y = this.startPosition.y - e.originalEvent.pageY;
 			this.delta = offset.y;
-			// console.log("DELTA touchMoveY: " + this.delta);
 			if (Math.abs(this.delta) >= 10) {
 				e.preventDefault ? e.preventDefault() : e.returnValue = false;
 				this.scrollDirectionY();
@@ -517,7 +511,7 @@ Video Player Methods
 	            instance = videojs(video, {
 	                "controls"      :       true,
 	                "autoplay"      :       false, 
-	                "preload"       :       "auto"
+	                "preload"       :       false
 	            });
 	            instance.ready(function () {
 	                site.videos[id] = this;
@@ -805,7 +799,7 @@ Global Event Bindings
 			site.resize(e, function () {
 				galleryLayout.layout();
 				pressLayout.layout();
-				resizeVideo();
+				// resizeVideo();
 				site.bindScroll();
 				$('#video-players').addClass('hide');
 				site.navTo(null, 50, function () {
@@ -824,7 +818,7 @@ Global Event Bindings
 			site.resizing = setTimeout(function () {
 				site.resize(e, function() {
 					pressLayout.layout();
-					resizeVideo();
+					// resizeVideo();
 					galleryLayout.layout();
 					id = $('.' + site.current).attr("id");
 					toGalleryImage('.gSlideContainer', '.gContainer' + currentGallerySlide, 800);
@@ -1284,12 +1278,6 @@ Apply Bindings & Initialize
 Event Bindings
 */
 
-    /*
-    NOT FINISHED - TO STOP EVENT BUBBLING
-    */
-    $('#map-tooltip').on("mouseover mouseenter mouseleave", function (e) {
-        e.stopPropagation();
-    });
     //Exit Map Intro Modal
     $('#map-mask .exit').on("click", function () {
         $('#map-mask').fadeOut();
@@ -1314,34 +1302,6 @@ Event Bindings
         $('#' + e.currentTarget.id).addClass('active');
         choropleth.updateChronology(e.currentTarget.id);
     });
-
-/*
-Social Bindings
-*/
-
-ko.bindingHandlers.twitter = {
-	update: function (element, valueAccessor, allBindingsAccessor) {
-        var copy = ko.utils.unwrapObservable(valueAccessor());
-        var image = ko.utils.unwrapObservable(allBindingsAccessor().param);
-        
-		ko.utils.registerEventHandler(element, "click", function(e) {
-			var wnd = window.open('http://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(copy), '', 'height=480,width=640');
-			if(window.focus) { wnd.focus(); }
-        }); 
-    }
-};
-
-ko.bindingHandlers.facebook = {
-	update: function (element, valueAccessor, allBindingsAccessor) {
-     	var copy = ko.utils.unwrapObservable(valueAccessor());
-        var image = ko.utils.unwrapObservable(allBindingsAccessor().param);
-        
-		ko.utils.registerEventHandler(element, "click", function(e) {
-			var wnd = window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(window.location.href) + '&p[summary]=' + encodeURIComponent(copy), '', 'height=320,width=640');
-			if(window.focus) { wnd.focus(); }
-        }); 
-    }
-};
 
 /*
 Easings

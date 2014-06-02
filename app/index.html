@@ -14,10 +14,7 @@
 	    <meta name="description" content="">
 <!-- CSS -->
 		<style>.video-js {padding-top: 50%;} .vjs-fullscreen{padding-top: 50%; width: 100%;}</style>
-		<link href="css/normalize.min.css" type="text/css" rel="stylesheet" />
-		<link href="lib/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-		<link href="css/main.css" type="text/css" rel="stylesheet" />
-		<link href="css/video-js.min.css" rel="stylesheet">
+		<link href="css/main.min.css" type="text/css" rel="stylesheet" />
 <!-- More IE Stuff -->
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -1017,15 +1014,15 @@
 					<span class="outer top"></span>
 					<span class="outer bottom"></span>
 				</div>
-				<video id="video-1" class="video-element video-js vjs-default-skin" controls preload="none" width="auto" height="auto" data-setup='{"controls":true, "autoplay": false, "preload": "false"}'>
+				<video id="video-1" class="video-element video-js vjs-default-skin" controls width="auto" height="auto">
 					<source src="video/rover_trailer.webm" type="video/webm"></source>
 					<source src="video/rover_trailer.mp4" type="video/mp4"></source>
 				</video>
-				<video id="video-2" class="video-element video-js vjs-default-skin" controls preload="none" width="auto" height="auto" data-setup='{"controls":true, "autoplay": false, "preload": "false"}'>
+				<video id="video-2" class="video-element video-js vjs-default-skin" controls width="auto" height="auto">
 					<source src="video/god_gave_you_a_bullet.webm" type="video/webm"></source>
 					<source src="video/god_gave_you_a_bullet.mp4" type="video/mp4"></source>
 				</video>
-				<video id="video-3" class="video-element video-js vjs-default-skin" controls preload="none" width="auto" height="auto" data-setup='{"controls":true, "autoplay": false, "preload": "false"}'>
+				<video id="video-3" class="video-element video-js vjs-default-skin" controls width="auto" height="auto">
 					<source src="video/the_rover_teaser.webm" type="video/webm"></source>
 					<source src="video/the_rover_teaser.mp4" type="video/mp4"></source>
 				</video>
@@ -1043,9 +1040,8 @@
 <!-- Script Loader -->
 	<script>
 		var position
-		$LAB.script("js/image-preloader.js")
-			.script("lib/production/plugins.js").wait()
-			.script("js/core.js").wait(function () {
+		$LAB.script("lib/production/plugins.js").wait()
+			.script("js/core.min.js").wait(function () {
 				Modernizr.load({
 					test: Modernizr.touch,
 					yep: "lib/jquery/plugins/touchswipe.min.js"

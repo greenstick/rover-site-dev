@@ -2175,64 +2175,6 @@ Additional UI
 .iso-fader.faded {
 	opacity: 0;
 }
-/*#c5-logo {
-	position: absolute;
- 	right: 36px;
-	bottom: 18px;
-	width: 80px;
-	opacity: .7;
-}
-#a24-logo {
-	position: absolute;
-	left: 40px;
-	bottom: 25px;
-	width: 68px;
-	opacity: .7;
-}*/
-/*.share {
-    position: absolute;
-    top: 20px:
-    left: 20px;
-    width: 100px;
-    height: 20px;
-    cursor: pointer;
-    color: #FFF8D9;
-    font-size: 16px;
-}
-.share .hovered {
-    opacity: 0;
-    position: relative;
-    left: 50px;
-    top: -4px;
-    -webkit-transform: translate(-40px, 0);
-    transform: translate(-40px, 0);
-    -webkit-transition: all .2s;
-    transition: all .2s;
-}
-.share:hover .hovered {
-    -webkit-transform: translate(0,0);
-    transform: translate(0,0);
-    opacity: 1;
-}
-.share .facebook {
-    display:block;
-    float: left;
-    width: 20px;
-    height: 20px;
-    background: url('../img/social/facebook.png') no-repeat;
-    margin: 0px 5px;
-}
-.share .twitter {
-    display:block;
-    float: left;
-    width: 24px;
-    height: 20px;
-    background: url('../img/social/twitter.png') no-repeat;
-}
-.share:hover .no-hover {
-    display:none;
-}*/
-
 
 /*
 Media Queries
