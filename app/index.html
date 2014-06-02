@@ -516,7 +516,7 @@
 					</div>
 				</div>
 				<img class="block fader" src="img/credits/block.svg" />
-				<img class="c5-attribution" src="img/credits/designed-by-c5.svg" />
+				<img class="c5-attribution fader" src="img/credits/designed-by-c5.svg" />
 			</div>
 		</div>
 		<div id="nav-mask"></div>
@@ -1050,7 +1050,7 @@
 					test: Modernizr.touch,
 					yep: "lib/jquery/plugins/touchswipe.min.js"
 				});
-				if(Modernizr.csstransforms3d) {
+				if (Modernizr.csstransforms3d) {
 					//Init Parallax Elements
 					jQuery(".parallax-element").parallaxify({
 						horizontalParallax: true,
@@ -1063,8 +1063,7 @@
 						motionType: 'linear',
 						mouseMotionType: 'linear'
 					});
-				}
-				else {
+				} else {
 					//Init Parallax Elements
 					jQuery(".parallax-element").parallaxify({
 						horizontalParallax: true,
@@ -1077,7 +1076,7 @@
 						motionType: 'linear',
 						mouseMotionType: 'linear'
 					});
-				}
+				};
 				//Remove Loading Screen
 				jQuery(".loading").removeClass("loading");
 			});
