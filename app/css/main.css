@@ -2175,7 +2175,7 @@ Additional UI
 .iso-fader.faded {
 	opacity: 0;
 }
-#c5-logo {
+/*#c5-logo {
 	position: absolute;
  	right: 36px;
 	bottom: 18px;
@@ -2188,7 +2188,7 @@ Additional UI
 	bottom: 25px;
 	width: 68px;
 	opacity: .7;
-}
+}*/
 /*.share {
     position: absolute;
     top: 20px:

@@ -716,7 +716,7 @@ Trailers Event Bindings
 */
 		var currentTrailerSlide = 1;
 
-		$("#video-players .next").on("click", function () {
+		$("#videos .next").on("click", function () {
 			if (currentTrailerSlide < 3) {
 				currentTrailerSlide++;
 			} else {
@@ -724,7 +724,7 @@ Trailers Event Bindings
 			};
 			toTrailerImage('.tSlideContainer', '.tContainer' + currentTrailerSlide, 800);
 		});
-		$("#video-players .prev").on("click", function () {
+		$("#videos .prev").on("click", function () {
 			if (currentTrailerSlide > 1) {
 				currentTrailerSlide--;
 			} else {
