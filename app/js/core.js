@@ -55,7 +55,6 @@ Core Prototype
 				});
 				$(core.pageClass).on("touchmove", function (e) {
 					core.touchMoveY(e);
-					core.touchMoveX(e);
 				});
 			//Mouse Scroll
 			} else {
