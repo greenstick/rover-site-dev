@@ -939,20 +939,41 @@ Directors Statement
 	position: absolute;
 	bottom: 10%;
 	left: 10%;
-	width: 340px;
+	width: 505px;
 	height: auto;
 }
 #statement1 .blurb .text-box, #statement2 .blurb .text-box, #statement3 .blurb .text-box {
 	position: relative;
 	top: 0px;
 	left: 0px;
-	width: 340px;
+	width: 505px;
 	padding: 25px;
 	background-color: rgba(46, 39, 29, .9);
 	color: #FFF8D9;
 	font-size: 20px;
 	font-family: 'AdobeGaramondPro-Regular';
 	line-height: 24px;
+}
+@media all and (max-width : 575px) {
+	#statement1 .blurb, #statement2 .blurb, #statement3 .blurb {
+		position: absolute;
+		bottom: 10%;
+		left: 10%;
+		width: 340px;
+		height: auto;
+	}
+	#statement1 .blurb .text-box, #statement2 .blurb .text-box, #statement3 .blurb .text-box {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 340px;
+		padding: 25px;
+		background-color: rgba(46, 39, 29, .9);
+		color: #FFF8D9;
+		font-size: 20px;
+		font-family: 'AdobeGaramondPro-Regular';
+		line-height: 24px;
+	}
 }
 #statement1 .blurb .next, #statement2 .blurb .next {
 	position: relative;
@@ -1306,8 +1327,8 @@ Drop Down Menu
 }
 .dropdown .ddSelected img {
 	position: absolute;
-	top: 14px;
-	left: 208px;
+	top: 13px;
+	left: 200px;
 }
 .dropdown:hover .ddSelected, .dropdown.active .ddSelected {
 	height: 34px;
