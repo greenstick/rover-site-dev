@@ -1881,9 +1881,9 @@ Gallery Page
 	width: 100%;
 }
 #gallery .galleryImgs .galleryImg {
-	max-width: 16%;
+	max-width: 15%;
 	min-width: 125px;
-	padding: 1%;
+	margin: 1%;
 	cursor: pointer;
 }
 #gallery .gSlideContainer {
