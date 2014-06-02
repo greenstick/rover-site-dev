@@ -332,8 +332,8 @@ Core Event Bindings
 		});
 		//Arrow Up & Down Navigation
 		$(window).on('keydown', function (e) {
-			if (e.keyCode == 40) (e.preventDefault(), site.scrollPageY("next"));
-	    	if (e.keyCode == 38) (e.preventDefault(), site.scrollPageY("prev"));
+			if (e.keyCode === 40) (e.preventDefault(), site.scrollPageY("next"));
+	    	if (e.keyCode === 38) (e.preventDefault(), site.scrollPageY("prev"));
 		});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -438,7 +438,7 @@ Zip Validation Event Binding
 
 	    //Enable Enter to Submit Input
 	    $('#zipcode-modal .input').on("keyup", function (e) {
-	        if (e.keyCode == 13) $('.submit img').click();
+	        if (e.keyCode === 13) $('.submit img').click();
 	    });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -572,6 +572,7 @@ Gallery Modal
 		//Retrieve Gallery Image
 		Modal.prototype.getGalleryImage = function (data) {
 			var source = data.source;
+			$(gallerModal.element + ' img').attr('src', '');
 			$(galleryModal.element + ' img').attr('src', source);
 		};
 
@@ -970,7 +971,7 @@ Function Specific Methods
                     .attr('stroke', map.stroke)
                     .attr('stroke-width', map.strokeWidth);
                 //Execute Callback
-                typeof callback == 'function' ? callback() : void(0);
+                typeof callback === 'function' ? callback() : void(0);
             },
 
             //Parse Filter Argument, XHR Data, Apply Quantize Function, Then Bind to Elements - Callback Optional
@@ -1016,7 +1017,7 @@ Function Specific Methods
                 //Cache Filter
                 this.currentFilter = filter;
                 //Execute Callback
-                typeof callback == 'function' ? callback() : void(0);
+                typeof callback === 'function' ? callback() : void(0);
             },
 
             //Bucketing / Quantization Function
@@ -1025,7 +1026,7 @@ Function Specific Methods
                 //If Descending Sort Descending Else Default to Ascending
                 var bucket = d3.scale.quantize().domain([max, min]).range(d3.range(layers).map(function (i) {
                     // console.log("Layer " + (i + 1) + " value: " + ((((max - min) / layers) * i) + min) + " - " + ((((max - min) / layers) * (i + 1)) + min));
-                    return (sort === "descending" || sort == "dsc" || sort === 0) ? color + "-" + (layers - (i + 1)) : color + "-" + i;
+                    return (sort === "descending" || sort === "dsc" || sort === 0) ? color + "-" + (layers - (i + 1)) : color + "-" + i;
                 }));
                 return bucket(value);
             },
@@ -1046,7 +1047,7 @@ Function Specific Methods
                 //Order Temp Array to Correctly Output Color Gradient
                 for (var i = 0; i < temp.length; i++) {
                     //Order Gradient Colors Based on Sort Function
-                    var position = (sort === "descending" || sort == "dsc" || sort === 0) ? parseInt(temp[i].split('-')[1] - (data[filter].layers)) : (data[filter].layers - temp[i].split('-')[1] - 1);
+                    var position = (sort === "descending" || sort === "dsc" || sort === 0) ? parseInt(temp[i].split('-')[1] - (data[filter].layers)) : (data[filter].layers - temp[i].split('-')[1] - 1);
                     arr.splice(position, 1, temp[i]);
                 };
                 //Push Unique Values to Observable Array
@@ -1122,10 +1123,10 @@ Function Specific Methods
                         //And the Data is a Number...
                         if (typeof data === 'number') {
                             //And the Format is Monetary
-                            if (format == 'monetary') {
+                            if (format ==='monetary') {
                                 output = "$" + commaNumbers(data);
                             //Or a Percentage
-                            } else if (format == 'percentage') {
+                            } else if (format === 'percentage') {
                                 output = data + "%";
                             //Or Just a Regular Numbers
                             } else {
