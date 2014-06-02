@@ -33,6 +33,7 @@ Core Prototype
 			core.videos 			= 		{},
 			core.statementHistory 	= 		'#statement1',
 			core.autoScroll,
+			core.statementScroll,
 			core.startPosition,
 			core.resizing,
 			core.currentVideo,
@@ -172,7 +173,8 @@ Core Prototype
 		//Direct Page Hash Navigation
 		Core.prototype.navTo 			= function (page, duration, callback) {
 			var core = this;
-			clearInterval(core.autoScroll);
+			clearTimeout(core.autoScroll);
+			clearInterval(core.statementScroll);
 			//Set Location
 			var loc = (page !== null && page !== undefined) ? '#'+ page : (location.hash) ? location.hash : '#home', link = loc.substr(1), core = this;
 			if (history.pushState) {
@@ -194,14 +196,14 @@ Core Prototype
 					core.scrolling = false;
 					//If Callback
 					if (loc === "#statement") {
-						setTimeout(function () {
+						core.autoScroll = setTimeout(function () {
 							var i = 1;
-							core.autoScroll = setInterval(function () {
+							core.statementScroll = setInterval(function () {
 								i++;
 								if (i === 4) i = 1;
 								toStatement('#statement', '#statement' + i, 800);
-							}, 12000);
-						}, 12000);
+							}, 10000);
+						}, 10000);
 					};
 					if (typeof callback === 'function') callback();
 				}
@@ -354,7 +356,7 @@ Core Event Bindings
 			site.toggleNav(true);
 		});
 		//Arrow Up & Down Navigation
-		$(window).on('keydown', function (e) {
+		$(window, "#iframe").on('keydown', function (e) {
 			if (e.keyCode === 40) (e.preventDefault(), site.scrollPageY("next"));
 	    	if (e.keyCode === 38) (e.preventDefault(), site.scrollPageY("prev"));
 		});
@@ -498,7 +500,7 @@ Video Modal Instantiation
 
 	    //Instantiate Modal
 	    var videoModal = new Modal({
-	        element     : "#videos",
+	        element     : "#video-players",
 	        mask        : "#mask",
 	        open        : ".video-open",
 	        close       : ".closeIcon"
@@ -714,7 +716,7 @@ Trailers Event Bindings
 */
 		var currentTrailerSlide = 1;
 
-		$("#trailers .next").on("click", function () {
+		$("#video-players .next").on("click", function () {
 			if (currentTrailerSlide < 3) {
 				currentTrailerSlide++;
 			} else {
@@ -722,7 +724,7 @@ Trailers Event Bindings
 			};
 			toTrailerImage('.tSlideContainer', '.tContainer' + currentTrailerSlide, 800);
 		});
-		$("#trailers .prev").on("click", function () {
+		$("#video-players .prev").on("click", function () {
 			if (currentTrailerSlide > 1) {
 				currentTrailerSlide--;
 			} else {
@@ -752,25 +754,25 @@ Statement Event Bindings
 */
 		//Statement 1 to Statement 2
 		$("#statement1 .next").on("click", function () {
-			clearInterval(site.autoScroll);
+			clearInterval(site.statementScroll);
 			toStatement('#statement', '#statement2', 800);
 		});
 
 		//Statement 2 to Statement 3
 		$('#statement2 .next').on("click", function () {
-			clearInterval(site.autoScroll);
+			clearInterval(site.statementScroll);
 			toStatement('#statement', '#statement3', 800);
 		});
 
 		//Statement 2 to Statement 1
 		$('#statement2 .prev').on("click", function () {
-			clearInterval(site.autoScroll);
+			clearInterval(site.statementScroll);
 			toStatement('#statement', '#statement1', 800);
 		});
 
 		//Statement 3 to Statement 2
 		$("#statement3 .prev").on("click", function () {
-			clearInterval(site.autoScroll);
+			clearInterval(site.statementScroll);
 			toStatement('#statement', '#statement2', 800);
 		});
 
@@ -805,7 +807,7 @@ Global Event Bindings
 				pressLayout.layout();
 				resizeVideo();
 				site.bindScroll();
-				$('#videos').addClass('hide');
+				$('#video-players').addClass('hide');
 				site.navTo(null, 50, function () {
 					setTimeout(function () {
 						$(site.loadScreen).addClass('done')
@@ -1312,6 +1314,34 @@ Event Bindings
         $('#' + e.currentTarget.id).addClass('active');
         choropleth.updateChronology(e.currentTarget.id);
     });
+
+/*
+Social Bindings
+*/
+
+ko.bindingHandlers.twitter = {
+	update: function (element, valueAccessor, allBindingsAccessor) {
+        var copy = ko.utils.unwrapObservable(valueAccessor());
+        var image = ko.utils.unwrapObservable(allBindingsAccessor().param);
+        
+		ko.utils.registerEventHandler(element, "click", function(e) {
+			var wnd = window.open('http://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(copy), '', 'height=480,width=640');
+			if(window.focus) { wnd.focus(); }
+        }); 
+    }
+};
+
+ko.bindingHandlers.facebook = {
+	update: function (element, valueAccessor, allBindingsAccessor) {
+     	var copy = ko.utils.unwrapObservable(valueAccessor());
+        var image = ko.utils.unwrapObservable(allBindingsAccessor().param);
+        
+		ko.utils.registerEventHandler(element, "click", function(e) {
+			var wnd = window.open('http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(window.location.href) + '&p[summary]=' + encodeURIComponent(copy), '', 'height=320,width=640');
+			if(window.focus) { wnd.focus(); }
+        }); 
+    }
+};
 
 /*
 Easings
