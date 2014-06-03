@@ -24,7 +24,7 @@ Core Prototype
 			core.current 			= 		args.current 			|| 		'current',
 			core.resizer 			= 		args.resizer 			|| 		'#resizer',
 			core.videoElement 		= 		args.videoElement 		|| 		'.video-element',
-			core.loadScreen 		= 		args.loadScreen 		|| 		'#load-screen',
+			core.loadScreen 		= 		args.loadScreen 		|| 		'.load-screen',
 			core.firstPage 			= 		args.firstPage 			|| 		'.firstPage',
 			core.lastPage 			= 		args.lastPage 			|| 		'.lastPage',
 			core.mobile 			= 		(Modernizr.touch) 		? 		true : false,
@@ -196,8 +196,8 @@ Core Prototype
 								i++;
 								if (i === 4) i = 1;
 								toStatement('#statement', '#statement' + i, 800);
-							}, 10000);
-						}, 10000);
+							}, 5000);
+						}, 500);
 					};
 					if (typeof callback === 'function') callback();
 				}
@@ -524,9 +524,9 @@ Video Player Methods
 	        var width = site.width * 0.8,
 	        height = site.height * 0.8;
 	        if (width/height >= 24/10) {
-	        	$("#video-1, #video-2, #video-3").height(height).width(height * (24/10));
+	        	$("#video-1, #video-1 video, #video-2, #video-2 video, #video-3, #video-3 video").height(height).width(height * (24/10));
 	        } else {
-	            $("#video-1, #video-2, #video-3").width(width).height(width * (10/24));
+	            $("#video-1, #video-1 video, #video-2, #video-2 video, #video-3, #video-3 video").width(width).height(width * (10/24));
 	        };
 	    };
 

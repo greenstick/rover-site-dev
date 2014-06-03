@@ -38,7 +38,7 @@
 	    if (images.hasOwnProperty(p)) {
 	        img = new Image();
 	        img.src = images[p];
-	        images[p] = img;
+	        images[p] = $(img).load();
 	    };
 	};
 })
