@@ -27,6 +27,12 @@
 		<script>videojs.options.flash.swf = "lib/video/video-js.swf"</script>
 	</head>
 	<body>
+		<div id="load-screen">
+			<div class="note">
+				<img class="gif" src="img/loader/loading.gif" />
+				<img src="img/loader/loading-text.png" />
+			</div>
+		</div>
 		<div id="wrapper" class="container-fluid">
 			<div id="home" class="page current">
 				<div class="r1">
@@ -513,7 +519,6 @@
 					</div>
 				</div>
 				<img class="block fader" src="img/credits/block.svg" />
-				<img class="c5-attribution fader" src="img/credits/designed-by-c5.svg" />
 			</div>
 		</div>
 		<div id="nav-mask"></div>
@@ -550,6 +555,12 @@
 						CREDITS
 					</div>
 				</div>
+				<a href="http://www.a24films.com" target="_blank">
+					<img id="a24-logo" src="img/navigation/a24-logo.svg" />
+				</a>
+				<a href="http://www.columnfivemedia.com" target="_blank">
+					<img id="c5-logo" src="img/navigation/c5-no-logo.svg" />
+				</a>
 			</div>
 		</div>
 		<div class="getTickets button hidden-xs show-sm show-md show-lg">GET TICKETS</div>
@@ -561,12 +572,6 @@
 					RESIZING
 				</div>
 				<div class="note-line"></div>
-			</div>
-		</div>
-		<div id="load-screen">
-			<div class="note">
-				<img class="gif" src="img/loader/loading.gif" />
-				<img src="img/loader/loading-text.png" />
 			</div>
 		</div>
 		<div id="modals">
@@ -1041,7 +1046,8 @@
 	<script>
 		var position
 		$LAB.script("lib/production/plugins.js").wait()
-			.script("js/core.min.js").wait(function () {
+			.script("js/image-preloader.js")
+			.script("js/core.js").wait(function () {
 				Modernizr.load({
 					test: Modernizr.touch,
 					yep: "lib/jquery/plugins/touchswipe.min.js"

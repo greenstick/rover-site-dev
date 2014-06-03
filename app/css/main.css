@@ -2110,7 +2110,7 @@ Credits Page
 
 #credits .block {
 	position: absolute;
-	bottom: 80px;
+	bottom: 50px;
 	left: 20%;
 	width: 60%;
 }
@@ -2175,6 +2175,20 @@ Additional UI
 .iso-fader.faded {
 	opacity: 0;
 }
+#c5-logo {
+	position: absolute;
+	bottom: 16px;
+	right: 20px;
+	width: 220px;
+	opacity: .7;
+}
+#a24-logo {
+	position: absolute;
+	bottom: 42px;
+	left: 106px;
+	width: 48px;
+	opacity: .7;
+}
 
 /*
 Media Queries
@@ -2187,9 +2201,9 @@ Media Queries
 Home
 */
 
-#home .r2 img {
-	bottom: 15%;
-}
+	#home .r2 img {
+		bottom: 15%;
+	}
 
 /* 
 Map Interactive Core
@@ -2374,7 +2388,7 @@ Credits
 */
 
 	#credits .block {
-		bottom: 120px;
+		bottom: 50px;
 		left: 20%;
 		width: 60%;
 	}
@@ -2467,12 +2481,13 @@ Navigation
 	.menu-open.close {
 		left: 256px;
 	}
-/*	#c5-logo {
-		width: 120px;
+	#c5-logo {
+		right: 38px;
+		width: 244px;
 	}
 	#a24-logo {
-		width: 94px;
-	}*/
+		left: 146px;
+	}
 
 /*
 Home
@@ -2533,7 +2548,7 @@ Home
 		left: 50%;
 		margin: 0 0 0 -82px;
 		z-index: 5000;
-		display: block;
+		display: none;
 	}
 
 	/*

@@ -27,7 +27,7 @@ Core Prototype
 			core.loadScreen 		= 		args.loadScreen 		|| 		'#load-screen',
 			core.firstPage 			= 		args.firstPage 			|| 		'.firstPage',
 			core.lastPage 			= 		args.lastPage 			|| 		'.lastPage',
-			core.mobile 			= 		(Modernizr.touch) 		? 		true 	: false,
+			core.mobile 			= 		(Modernizr.touch) 		? 		true : false,
 			core.scrollData 		= 		{},
 			core.scrolling 			= 		false,
 			core.videos 			= 		{},
@@ -350,7 +350,7 @@ Core Event Bindings
 			site.toggleNav(true);
 		});
 		//Arrow Up & Down Navigation
-		$(window, "#iframe").on('keydown', function (e) {
+		$(window).on('keydown', function (e) {
 			if (e.keyCode === 40) (e.preventDefault(), site.scrollPageY("next"));
 	    	if (e.keyCode === 38) (e.preventDefault(), site.scrollPageY("prev"));
 		});
@@ -799,7 +799,7 @@ Global Event Bindings
 			site.resize(e, function () {
 				galleryLayout.layout();
 				pressLayout.layout();
-				// resizeVideo();
+				resizeVideo();
 				site.bindScroll();
 				$('#video-players').addClass('hide');
 				site.navTo(null, 50, function () {
@@ -818,7 +818,7 @@ Global Event Bindings
 			site.resizing = setTimeout(function () {
 				site.resize(e, function() {
 					pressLayout.layout();
-					// resizeVideo();
+					resizeVideo();
 					galleryLayout.layout();
 					id = $('.' + site.current).attr("id");
 					toGalleryImage('.gSlideContainer', '.gContainer' + currentGallerySlide, 800);
