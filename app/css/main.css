@@ -2646,7 +2646,7 @@ Home
 		top: 192px;
 	}
 	#credtis .blurbs .blurb {
-		padding-top: 0px;
+		padding-bottom: 0px;
 	}
 	#credits .block {
 		position: absolute;
@@ -2656,5 +2656,8 @@ Home
 	}
 	#credits .blurbs .blurb .role {
 		padding: 32px 0 0 0;
+	}
+	#credits .blurbs .blurb .credited {
+		line-height: 20px;
 	}
 }
