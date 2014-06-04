@@ -2642,6 +2642,12 @@ Home
 	Credits
 	*/
 
+	#credits .blurbs {
+		top: 192px;
+	}
+	#credtis .blurbs .blurb {
+		padding-top: 0px;
+	}
 	#credits .block {
 		position: absolute;
 		bottom: 20px;

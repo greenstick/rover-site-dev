@@ -35,10 +35,7 @@
 	p = null,
 	img = null;
 	for (p in images) {
-	    if (images.hasOwnProperty(p)) {
-	        img = new Image();
-	        img.src = images[p];
-	        images[p] = $(img).load();
-	    };
+		$.get(images[p]);
 	};
+	console.trace();
 })
