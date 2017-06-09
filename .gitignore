@@ -1,6 +1,9 @@
 .sass-cache
 .tmp
 *.zip
+*.ai
+*.webm
+*.mp4
 video
 assets
 map-interactive
