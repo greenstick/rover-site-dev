@@ -1,11 +1,7 @@
 .sass-cache
 .tmp
 *.zip
-dist
-node_modules
-app/_/bower_components
-app/assets
-app/video/1080_burn_loop_4_15.webm
-app/video/1080_burn_loop_4_15_fallback.mp4
-app/map-interactive
-assets/
+video
+assets
+map-interactive
+lib
